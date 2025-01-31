@@ -148,10 +148,10 @@ class Plan_Controller extends \Voxel\Controllers\Base_Controller {
 			$pricing = $plan->get_pricing();
 			$mode = ( $_POST['mode'] ?? 'test' ) === 'test' ? 'test' : 'live';
 			$client = ( $mode === 'live' )
-				? \Voxel\CloudPayments::getLiveClient()
-				: \Voxel\CloudPayments::getTestClient();
+				? \Voxel\Stripe::getLiveClient()
+				: \Voxel\Stripe::getTestClient();
 
-			// create cloudpayments product if it doesn't exist
+			// create stripe product if it doesn't exist
 			if ( empty( $pricing[ $mode ] ) ) {
 				$args = [
 					'name' => $plan->get_label(),
@@ -187,7 +187,7 @@ class Plan_Controller extends \Voxel\Controllers\Base_Controller {
 				throw new \Exception( __( 'Please provide an amount and a currency.', 'voxel-backend' ) );
 			}
 
-			if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( $currency ) ) {
+			if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( $currency ) ) {
 				$amount *= 100;
 			}
 
@@ -250,8 +250,8 @@ class Plan_Controller extends \Voxel\Controllers\Base_Controller {
 			$pricing = $plan->get_pricing();
 			$mode = ( $_GET['mode'] ?? 'test' ) === 'test' ? 'test' : 'live';
 			$client = ( $mode === 'live' )
-				? \Voxel\CloudPayments::getLiveClient()
-				: \Voxel\CloudPayments::getTestClient();
+				? \Voxel\Stripe::getLiveClient()
+				: \Voxel\Stripe::getTestClient();
 
 			$product_id = $pricing[ $mode ]['product_id'];
 			$prices = $client->prices->all( [
@@ -307,8 +307,8 @@ class Plan_Controller extends \Voxel\Controllers\Base_Controller {
 			}
 
 			$client = ( $mode === 'live' )
-				? \Voxel\CloudPayments::getLiveClient()
-				: \Voxel\CloudPayments::getTestClient();
+				? \Voxel\Stripe::getLiveClient()
+				: \Voxel\Stripe::getTestClient();
 
 			$isActive = (bool) $pricing[ $mode ]['prices'][ $priceId ]['active'];
 			$prices = $client->prices->update( $priceId, [
@@ -340,8 +340,8 @@ class Plan_Controller extends \Voxel\Controllers\Base_Controller {
 			$pricing = $plan->get_pricing();
 			$mode = ( $_GET['mode'] ?? 'test' ) === 'test' ? 'test' : 'live';
 			$client = ( $mode === 'live' )
-				? \Voxel\CloudPayments::getLiveClient()
-				: \Voxel\CloudPayments::getTestClient();
+				? \Voxel\Stripe::getLiveClient()
+				: \Voxel\Stripe::getTestClient();
 
 			$createProduct = function() use ( $plan, $pricing, $client, $mode ) {
 				$args = [
@@ -373,8 +373,8 @@ class Plan_Controller extends \Voxel\Controllers\Base_Controller {
 				try {
 					$product = $client->products->retrieve( $product_id );
 					// \Voxel\log('product id exists and retrieved');
-				} catch ( \Voxel\Vendor\CloudPayments\Exception\ApiErrorException $e ) {
-					if ( $e->getCloudPaymentsCode() === 'resource_missing' ) {
+				} catch ( \Voxel\Vendor\Stripe\Exception\ApiErrorException $e ) {
+					if ( $e->getStripeCode() === 'resource_missing' ) {
 						$product = $createProduct();
 						// \Voxel\log('product id exists but retrieval failed');
 					}

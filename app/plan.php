@@ -387,7 +387,7 @@ class Plan {
 
 			foreach ( $pricing['prices'] as $price_id => $price ) {
 				$pricing['prices'][ $price_id ]['id'] = $price_id;
-				$pricing['prices'][ $price_id ]['is_zero_decimal'] = \Voxel\CloudPayments\Currencies::is_zero_decimal( strtoupper( $price['currency'] ) );
+				$pricing['prices'][ $price_id ]['is_zero_decimal'] = \Voxel\Stripe\Currencies::is_zero_decimal( strtoupper( $price['currency'] ) );
 				$pricing['prices'][ $price_id ]['tax_behavior'] = $price['tax_behavior'] ?? 'n/a';
 			}
 

@@ -16,11 +16,11 @@ class Checkout_Controller extends \Voxel\Controllers\Base_Controller {
 		try {
 			\Voxel\verify_nonce( $_REQUEST['_wpnonce'] ?? '', 'vx_choose_plan' );
 
-			$cloudpayments = \Voxel\CloudPayments::getClient();
+			$stripe = \Voxel\Stripe::getClient();
 			$user = \Voxel\current_user();
 			$role = \Voxel\Role::get( $user->get_role_keys()[0] ?? null );
 			$membership = $user->get_membership();
-			$customer = $user->get_or_create_cloudpayments_customer();
+			$customer = $user->get_or_create_stripe_customer();
 
 			if ( ( $_GET['plan'] ?? '' ) === 'default' ) {
 				$plan = \Voxel\Plan::get_or_create_default_plan();
@@ -119,10 +119,10 @@ class Checkout_Controller extends \Voxel\Controllers\Base_Controller {
 
 				$membership = $user->get_membership();
 				if ( $membership->get_type() === 'subscription' && $membership->is_active() ) {
-					\Voxel\CloudPayments::getClient()->subscriptions->cancel( $membership->get_subscription_id() );
+					\Voxel\Stripe::getClient()->subscriptions->cancel( $membership->get_subscription_id() );
 				}
 
-				$meta_key = \Voxel\CloudPayments::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
+				$meta_key = \Voxel\Stripe::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
 				update_user_meta( $user->get_id(), $meta_key, wp_slash( wp_json_encode( [
 					'plan' => 'default',
 					'created' => \Voxel\utc()->format( 'Y-m-d H:i:s' ),
@@ -171,7 +171,7 @@ class Checkout_Controller extends \Voxel\Controllers\Base_Controller {
 						throw new \Exception( _x( 'You are already on this plan.', 'pricing plans', 'voxel' ) );
 					}
 
-					$subscription = \Voxel\Vendor\CloudPayments\Subscription::retrieve( $membership->get_subscription_id() );
+					$subscription = \Voxel\Vendor\Stripe\Subscription::retrieve( $membership->get_subscription_id() );
 
 					$args = [
 						'items' => [ [
@@ -190,7 +190,7 @@ class Checkout_Controller extends \Voxel\Controllers\Base_Controller {
 					];
 
 					$args = \Voxel\Membership\Tax_Details::apply_to_subscription_upgrade( $args );
-					$updatedSubscription = \Voxel\Vendor\CloudPayments\Subscription::update( $subscription->id, $args );
+					$updatedSubscription = \Voxel\Vendor\Stripe\Subscription::update( $subscription->id, $args );
 
 					do_action( 'voxel/membership/subscription-updated', $updatedSubscription );
 
@@ -255,7 +255,7 @@ class Checkout_Controller extends \Voxel\Controllers\Base_Controller {
 						}
 
 						$args = \Voxel\Membership\Tax_Details::apply_to_checkout_session( $args );
-						$session = \Voxel\Vendor\CloudPayments\Checkout\Session::create( $args );
+						$session = \Voxel\Vendor\Stripe\Checkout\Session::create( $args );
 						update_user_meta( $user->get_id(), 'voxel:tmp_last_session_id', $session->id );
 
 						return wp_send_json( [
@@ -270,10 +270,10 @@ class Checkout_Controller extends \Voxel\Controllers\Base_Controller {
 						if ( floatval( $price->get_amount() ) === floatval(0) ) {
 							$membership = $user->get_membership();
 							if ( $membership->get_type() === 'subscription' && $membership->is_active() ) {
-								\Voxel\CloudPayments::getClient()->subscriptions->cancel( $membership->get_subscription_id() );
+								\Voxel\Stripe::getClient()->subscriptions->cancel( $membership->get_subscription_id() );
 							}
 
-							$meta_key = \Voxel\CloudPayments::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
+							$meta_key = \Voxel\Stripe::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
 							update_user_meta( $user->get_id(), $meta_key, wp_slash( wp_json_encode( [
 								'plan' => $plan->get_key(),
 								'type' => 'payment',
@@ -342,7 +342,7 @@ class Checkout_Controller extends \Voxel\Controllers\Base_Controller {
 							}
 
 							$args = \Voxel\Membership\Tax_Details::apply_to_checkout_session( $args );
-							$session = \Voxel\Vendor\CloudPayments\Checkout\Session::create( $args );
+							$session = \Voxel\Vendor\Stripe\Checkout\Session::create( $args );
 							update_user_meta( $user->get_id(), 'voxel:tmp_last_session_id', $session->id );
 
 							return wp_send_json( [
@@ -353,11 +353,11 @@ class Checkout_Controller extends \Voxel\Controllers\Base_Controller {
 					}
 				}
 			}
-		} catch ( \Voxel\Vendor\CloudPayments\Exception\ApiErrorException | \Voxel\Vendor\CloudPayments\Exception\InvalidArgumentException $e ) {
+		} catch ( \Voxel\Vendor\Stripe\Exception\ApiErrorException | \Voxel\Vendor\Stripe\Exception\InvalidArgumentException $e ) {
 			return wp_send_json( [
 				'success' => false,
 				'message' => __( 'An error occurred.', 'voxel' ),
-				'cloudpayments_error' => $e->getMessage(),
+				'stripe_error' => $e->getMessage(),
 			] );
 		} catch ( \Exception $e ) {
 			return wp_send_json( [

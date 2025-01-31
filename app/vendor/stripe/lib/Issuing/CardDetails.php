@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\CloudPayments\Issuing;
+namespace Voxel\Vendor\Stripe\Issuing;
 
 /**
  * Class CardDetails.
@@ -13,7 +13,7 @@ namespace Voxel\Vendor\CloudPayments\Issuing;
  * @property int $exp_year
  * @property string $number
  */
-class CardDetails extends \Voxel\Vendor\CloudPayments\ApiResource
+class CardDetails extends \Voxel\Vendor\Stripe\ApiResource
 {
     const OBJECT_NAME = 'issuing.card_details';
 }

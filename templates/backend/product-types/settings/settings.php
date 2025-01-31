@@ -21,13 +21,13 @@ require_once locate_template( 'templates/backend/product-types/partials/rate-lis
 		<form method="POST" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ) ?>" @submit="state.submit_config = JSON.stringify( config )">
 			<div class="sticky-top">
 				<div class="vx-head x-container">
-					<h2 v-if="tab === 'cloudpayments_payments'">CloudPayments payments</h2>
-					<h2 v-if="tab === 'cloudpayments_subscriptions'">CloudPayments subscriptions</h2>
+					<h2 v-if="tab === 'stripe_payments'">Stripe payments</h2>
+					<h2 v-if="tab === 'stripe_subscriptions'">Stripe subscriptions</h2>
 					<h2 v-if="tab === 'offline_payments'">Offline payments</h2>
 					<h2 v-if="tab === 'cart_summary'">Cart summary</h2>
 					<h2 v-if="tab === 'tax_settings'">Tax collection</h2>
 					<h2 v-else-if="tab === 'claim_posts'">Claim listing</h2>
-					<h2 v-else-if="tab === 'cloudpayments_connect'">Marketplace</h2>
+					<h2 v-else-if="tab === 'stripe_connect'">Marketplace</h2>
 					<h2 v-else-if="tab === 'promoted_posts'">Promoted posts</h2>
 					<h2 v-else-if="tab === 'shipping'">Shipping</h2>
 					<h2 v-else-if="tab === 'orders'">Orders</h2>
@@ -48,11 +48,11 @@ require_once locate_template( 'templates/backend/product-types/partials/rate-lis
 				<div class="x-row">
 					<div class="x-col-3">
 						<ul class="inner-tabs vertical-tabs">
-							<li :class="{'current-item': tab === 'cloudpayments_payments'}">
-								<a href="#" @click.prevent="setTab('cloudpayments_payments')">CloudPayments payments</a>
+							<li :class="{'current-item': tab === 'stripe_payments'}">
+								<a href="#" @click.prevent="setTab('stripe_payments')">Stripe payments</a>
 							</li>
-							<li :class="{'current-item': tab === 'cloudpayments_subscriptions'}">
-								<a href="#" @click.prevent="setTab('cloudpayments_subscriptions')">CloudPayments subscriptions</a>
+							<li :class="{'current-item': tab === 'stripe_subscriptions'}">
+								<a href="#" @click.prevent="setTab('stripe_subscriptions')">Stripe subscriptions</a>
 							</li>
 							<li :class="{'current-item': tab === 'offline_payments'}">
 								<a href="#" @click.prevent="setTab('offline_payments')">Offline payments</a>
@@ -69,8 +69,8 @@ require_once locate_template( 'templates/backend/product-types/partials/rate-lis
 							<li :class="{'current-item': tab === 'promoted_posts'}">
 								<a href="#" @click.prevent="setTab('promoted_posts')">Promoted posts</a>
 							</li>
-							<li :class="{'current-item': tab === 'cloudpayments_connect'}">
-								<a href="#" @click.prevent="setTab('cloudpayments_connect')">Marketplace</a>
+							<li :class="{'current-item': tab === 'stripe_connect'}">
+								<a href="#" @click.prevent="setTab('stripe_connect')">Marketplace</a>
 							</li>
 							<li :class="{'current-item': tab === 'shipping'}">
 								<a href="#" @click.prevent="setTab('shipping')">Shipping</a>
@@ -81,14 +81,14 @@ require_once locate_template( 'templates/backend/product-types/partials/rate-lis
 						</ul>
 					</div>
 
-					<div v-if="tab === 'cloudpayments_connect'" class="x-col-9">
-						<?php require_once locate_template('templates/backend/product-types/settings/cloudpayments-connect.php') ?>
+					<div v-if="tab === 'stripe_connect'" class="x-col-9">
+						<?php require_once locate_template('templates/backend/product-types/settings/stripe-connect.php') ?>
 					</div>
-					<div v-if="tab === 'cloudpayments_payments'" class="x-col-9">
-						<?php require_once locate_template('templates/backend/product-types/settings/cloudpayments-payments.php') ?>
+					<div v-if="tab === 'stripe_payments'" class="x-col-9">
+						<?php require_once locate_template('templates/backend/product-types/settings/stripe-payments.php') ?>
 					</div>
-					<div v-if="tab === 'cloudpayments_subscriptions'" class="x-col-9">
-						<?php require_once locate_template('templates/backend/product-types/settings/cloudpayments-subscriptions.php') ?>
+					<div v-if="tab === 'stripe_subscriptions'" class="x-col-9">
+						<?php require_once locate_template('templates/backend/product-types/settings/stripe-subscriptions.php') ?>
 					</div>
 					<div v-if="tab === 'offline_payments'" class="x-col-9">
 						<?php require_once locate_template('templates/backend/product-types/settings/offline-payments.php') ?>

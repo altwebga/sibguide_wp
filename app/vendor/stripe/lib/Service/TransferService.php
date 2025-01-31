@@ -2,15 +2,15 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service;
+namespace Voxel\Vendor\Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
-class TransferService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
+class TransferService extends \Voxel\Vendor\Stripe\Service\AbstractService
 {
     /**
      * Returns a list of existing transfers sent to connected accounts. The transfers
@@ -18,11 +18,11 @@ class TransferService extends \Voxel\Vendor\CloudPayments\Service\AbstractServic
      * first.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Transfer>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Transfer>
      */
     public function all($params = null, $opts = null)
     {
@@ -38,11 +38,11 @@ class TransferService extends \Voxel\Vendor\CloudPayments\Service\AbstractServic
      *
      * @param string $parentId
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\TransferReversal>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\TransferReversal>
      */
     public function allReversals($parentId, $params = null, $opts = null)
     {
@@ -50,16 +50,16 @@ class TransferService extends \Voxel\Vendor\CloudPayments\Service\AbstractServic
     }
 
     /**
-     * To send funds from your CloudPayments account to a connected account, you create a new
-     * transfer object. Your <a href="#balance">CloudPayments balance</a> must be able to
+     * To send funds from your Stripe account to a connected account, you create a new
+     * transfer object. Your <a href="#balance">Stripe balance</a> must be able to
      * cover the transfer amount, or you’ll receive an “Insufficient Funds” error.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Transfer
+     * @return \Voxel\Vendor\Stripe\Transfer
      */
     public function create($params = null, $opts = null)
     {
@@ -78,11 +78,11 @@ class TransferService extends \Voxel\Vendor\CloudPayments\Service\AbstractServic
      *
      * @param string $parentId
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\TransferReversal
+     * @return \Voxel\Vendor\Stripe\TransferReversal
      */
     public function createReversal($parentId, $params = null, $opts = null)
     {
@@ -91,16 +91,16 @@ class TransferService extends \Voxel\Vendor\CloudPayments\Service\AbstractServic
 
     /**
      * Retrieves the details of an existing transfer. Supply the unique transfer ID
-     * from either a transfer creation request or the transfer list, and CloudPayments will
+     * from either a transfer creation request or the transfer list, and Stripe will
      * return the corresponding transfer information.
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Transfer
+     * @return \Voxel\Vendor\Stripe\Transfer
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -115,11 +115,11 @@ class TransferService extends \Voxel\Vendor\CloudPayments\Service\AbstractServic
      * @param string $parentId
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\TransferReversal
+     * @return \Voxel\Vendor\Stripe\TransferReversal
      */
     public function retrieveReversal($parentId, $id, $params = null, $opts = null)
     {
@@ -134,11 +134,11 @@ class TransferService extends \Voxel\Vendor\CloudPayments\Service\AbstractServic
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Transfer
+     * @return \Voxel\Vendor\Stripe\Transfer
      */
     public function update($id, $params = null, $opts = null)
     {
@@ -154,11 +154,11 @@ class TransferService extends \Voxel\Vendor\CloudPayments\Service\AbstractServic
      * @param string $parentId
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\TransferReversal
+     * @return \Voxel\Vendor\Stripe\TransferReversal
      */
     public function updateReversal($parentId, $id, $params = null, $opts = null)
     {

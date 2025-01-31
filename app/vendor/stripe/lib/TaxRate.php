@@ -2,12 +2,12 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments;
+namespace Voxel\Vendor\Stripe;
 
 /**
- * Tax rates can be applied to <a href="https://cloudpayments.com/docs/billing/invoices/tax-rates">invoices</a>, <a href="https://cloudpayments.com/docs/billing/subscriptions/taxes">subscriptions</a> and <a href="https://cloudpayments.com/docs/payments/checkout/set-up-a-subscription#tax-rates">Checkout Sessions</a> to collect tax.
+ * Tax rates can be applied to <a href="https://stripe.com/docs/billing/invoices/tax-rates">invoices</a>, <a href="https://stripe.com/docs/billing/subscriptions/taxes">subscriptions</a> and <a href="https://stripe.com/docs/payments/checkout/set-up-a-subscription#tax-rates">Checkout Sessions</a> to collect tax.
  *
- * Related guide: <a href="https://cloudpayments.com/docs/billing/taxes/tax-rates">Tax rates</a>
+ * Related guide: <a href="https://stripe.com/docs/billing/taxes/tax-rates">Tax rates</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -21,7 +21,7 @@ namespace Voxel\Vendor\CloudPayments;
  * @property null|string $jurisdiction The jurisdiction for the tax rate. You can use this label field for tax reporting purposes. It also appears on your customer’s invoice.
  * @property null|string $jurisdiction_level The level of the jurisdiction that imposes this tax rate. Will be <code>null</code> for manually defined tax rates.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $metadata Set of <a href="https://cloudpayments.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property float $percentage Tax rate percentage out of 100. For tax calculations with automatic_tax[enabled]=true, this percentage includes the statutory tax rate of non-taxable jurisdictions.
  * @property null|string $state <a href="https://en.wikipedia.org/wiki/ISO_3166-2:US">ISO 3166-2 subdivision code</a>, without country prefix. For example, &quot;NY&quot; for New York, United States.
  * @property null|string $tax_type The high-level tax type, such as <code>vat</code> or <code>sales_tax</code>.

@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\CloudPayments\Util;
+namespace Voxel\Vendor\Stripe\Util;
 
 /**
  * Describes a logger instance.

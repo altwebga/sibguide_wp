@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\CloudPayments\Exception\OAuth;
+namespace Voxel\Vendor\Stripe\Exception\OAuth;
 
 /**
  * UnsupportedGrantTypeException is thrown when an unuspported grant type

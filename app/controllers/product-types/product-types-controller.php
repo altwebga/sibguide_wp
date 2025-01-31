@@ -69,7 +69,7 @@ class Product_Types_Controller extends \Voxel\Controllers\Base_Controller {
 						$order_amount = $order->get_subtotal();
 					}
 
-					$cloudpayments_base_url = $order->is_test_mode() ? 'https://dashboard.cloudpayments.com/test/' : 'https://dashboard.cloudpayments.com/';
+					$stripe_base_url = $order->is_test_mode() ? 'https://dashboard.stripe.com/test/' : 'https://dashboard.stripe.com/';
 
 					// $vendor_actions = $payment_method !== null ? $payment_method->get_vendor_actions() : [];
 					// $admin_actions = $payment_method !== null ? $payment_method->get_admin_actions() : [];
@@ -99,7 +99,7 @@ class Product_Types_Controller extends \Voxel\Controllers\Base_Controller {
 				}
 
 				$config = $schema->export();
-				$config['tab'] = $_GET['tab'] ?? 'cloudpayments_payments';
+				$config['tab'] = $_GET['tab'] ?? 'stripe_payments';
 
 				$product_types = [];
 				foreach ( array_merge( \Voxel\Product_Type::get_all(), [
@@ -120,7 +120,7 @@ class Product_Types_Controller extends \Voxel\Controllers\Base_Controller {
 						];
 					}, \Voxel\Post_Type::get_voxel_types() ),
 					'product_types' => $product_types,
-					'shipping_countries' => \Voxel\CloudPayments\Country_Codes::shipping_supported(),
+					'shipping_countries' => \Voxel\Stripe\Country_Codes::shipping_supported(),
 				];
 
 				require locate_template( 'templates/backend/product-types/settings/settings.php' );
@@ -204,7 +204,7 @@ class Product_Types_Controller extends \Voxel\Controllers\Base_Controller {
 
 	public static function get_settings_schema() {
 		return Schema::Object( [
-			'cloudpayments_payments' => Schema::Object( [
+			'stripe_payments' => Schema::Object( [
 				'order_approval' => Schema::enum( [ 'automatic', 'deferred', 'manual' ] )->default('automatic'),
 				'billing_address_collection' => Schema::enum( [ 'auto', 'required' ] )->default('auto'),
 				'tax_id_collection' => Schema::Object( [
@@ -218,7 +218,7 @@ class Product_Types_Controller extends \Voxel\Controllers\Base_Controller {
 				] ),
 			] ),
 
-			'cloudpayments_subscriptions' => Schema::Object( [
+			'stripe_subscriptions' => Schema::Object( [
 				'billing_address_collection' => Schema::enum( [ 'auto', 'required' ] )->default('auto'),
 				'tax_id_collection' => Schema::Object( [
 					'enabled' => Schema::Bool()->default(true),
@@ -314,8 +314,8 @@ class Product_Types_Controller extends \Voxel\Controllers\Base_Controller {
 
 			'tax_collection' => Schema::Object( [
 				'enabled' => Schema::Bool()->default(false),
-				'collection_method' => Schema::enum( [ 'cloudpayments_tax', 'tax_rates' ] )->default('cloudpayments_tax'),
-				'cloudpayments_tax' => Schema::Object( [
+				'collection_method' => Schema::enum( [ 'stripe_tax', 'tax_rates' ] )->default('stripe_tax'),
+				'stripe_tax' => Schema::Object( [
 					'product_types' => Schema::Keyed_Object_List( [
 						'tax_behavior' => Schema::Enum( [ 'default', 'inclusive', 'exclusive' ] )->default('default'),
 						'tax_code' => Schema::String()->default(''),

@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service\Identity;
+namespace Voxel\Vendor\Stripe\Service\Identity;
 
 /**
  * Service factory class for API resources in the Identity namespace.
@@ -10,7 +10,7 @@ namespace Voxel\Vendor\CloudPayments\Service\Identity;
  * @property VerificationReportService $verificationReports
  * @property VerificationSessionService $verificationSessions
  */
-class IdentityServiceFactory extends \Voxel\Vendor\CloudPayments\Service\AbstractServiceFactory
+class IdentityServiceFactory extends \Voxel\Vendor\Stripe\Service\AbstractServiceFactory
 {
     /**
      * @var array<string, string>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\CloudPayments\Exception\OAuth;
+namespace Voxel\Vendor\Stripe\Exception\OAuth;
 
 /**
  * UnsupportedResponseTypeException is thrown when an unsupported response type

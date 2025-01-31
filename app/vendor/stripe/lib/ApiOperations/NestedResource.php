@@ -1,11 +1,11 @@
 <?php
 
-namespace Voxel\Vendor\CloudPayments\ApiOperations;
+namespace Voxel\Vendor\Stripe\ApiOperations;
 
 /**
  * Trait for resources that have nested resources.
  *
- * This trait should only be applied to classes that derive from CloudPaymentsObject.
+ * This trait should only be applied to classes that derive from StripeObject.
  */
 trait NestedResource
 {
@@ -15,14 +15,14 @@ trait NestedResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @return \Voxel\Vendor\CloudPayments\CloudPaymentsObject
+     * @return \Voxel\Vendor\Stripe\StripeObject
      */
     protected static function _nestedResourceOperation($method, $url, $params = null, $options = null)
     {
         self::_validateParams($params);
 
         list($response, $opts) = static::_staticRequest($method, $url, $params, $options);
-        $obj = \Voxel\Vendor\CloudPayments\Util\Util::convertToCloudPaymentsObject($response->json, $opts);
+        $obj = \Voxel\Vendor\Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -51,9 +51,9 @@ trait NestedResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\CloudPaymentsObject
+     * @return \Voxel\Vendor\Stripe\StripeObject
      */
     protected static function _createNestedResource($id, $nestedPath, $params = null, $options = null)
     {
@@ -69,9 +69,9 @@ trait NestedResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\CloudPaymentsObject
+     * @return \Voxel\Vendor\Stripe\StripeObject
      */
     protected static function _retrieveNestedResource($id, $nestedPath, $nestedId, $params = null, $options = null)
     {
@@ -87,9 +87,9 @@ trait NestedResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\CloudPaymentsObject
+     * @return \Voxel\Vendor\Stripe\StripeObject
      */
     protected static function _updateNestedResource($id, $nestedPath, $nestedId, $params = null, $options = null)
     {
@@ -105,9 +105,9 @@ trait NestedResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\CloudPaymentsObject
+     * @return \Voxel\Vendor\Stripe\StripeObject
      */
     protected static function _deleteNestedResource($id, $nestedPath, $nestedId, $params = null, $options = null)
     {
@@ -122,9 +122,9 @@ trait NestedResource
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\CloudPaymentsObject
+     * @return \Voxel\Vendor\Stripe\StripeObject
      */
     protected static function _allNestedResources($id, $nestedPath, $params = null, $options = null)
     {

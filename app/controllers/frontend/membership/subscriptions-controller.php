@@ -36,7 +36,7 @@ class Subscriptions_Controller extends \Voxel\Controllers\Base_Controller {
 		 * the subscription gets canceled right-away and the user is assigned the new
 		 * plan details on that same request.
 		 *
-		 * However, the CloudPayments webhook for the canceled subscription will arrive a few
+		 * However, the Stripe webhook for the canceled subscription will arrive a few
 		 * moments later, and would override the new plan details, re-assigning the user
 		 * their old subscription (with the status set to canceled). On this specific
 		 * scenario, we stop processing the webhook to get around this.
@@ -48,7 +48,7 @@ class Subscriptions_Controller extends \Voxel\Controllers\Base_Controller {
 		}
 
 		// $subscription->status: trialing, active, incomplete, incomplete_expired, past_due, canceled, unpaid
-		$meta_key = \Voxel\CloudPayments::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
+		$meta_key = \Voxel\Stripe::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
 		update_user_meta( $user->get_id(), $meta_key, wp_slash( wp_json_encode( [
 			'plan' => $plan->get_key(),
 			'type' => 'subscription',
@@ -86,22 +86,22 @@ class Subscriptions_Controller extends \Voxel\Controllers\Base_Controller {
 		try {
 			\Voxel\verify_nonce( $_REQUEST['_wpnonce'] ?? '', 'vx_retry_payment' );
 
-			$cloudpayments = \Voxel\CloudPayments::getClient();
+			$stripe = \Voxel\Stripe::getClient();
 			$user = \Voxel\current_user();
 			$membership = $user->get_membership();
 			if ( $membership->get_type() !== 'subscription' || ! in_array( $membership->get_status(), [ 'incomplete', 'past_due', 'unpaid' ], true ) ) {
 				throw new \Exception( __( 'Invalid request', 'voxel' ) );
 			}
 
-			$subscription = \Voxel\Vendor\CloudPayments\Subscription::retrieve( $membership->get_subscription_id() );
+			$subscription = \Voxel\Vendor\Stripe\Subscription::retrieve( $membership->get_subscription_id() );
 
 			if ( $membership->get_status() === 'unpaid' ) {
-				$cloudpayments->invoices->finalizeInvoice( $subscription->latest_invoice, [
+				$stripe->invoices->finalizeInvoice( $subscription->latest_invoice, [
 					'auto_advance' => true,
 				] );
 			}
 
-			$cloudpayments->invoices->pay( $subscription->latest_invoice );
+			$stripe->invoices->pay( $subscription->latest_invoice );
 
 			return wp_send_json( [
 				'success' => true,
@@ -120,7 +120,7 @@ class Subscriptions_Controller extends \Voxel\Controllers\Base_Controller {
 		try {
 			\Voxel\verify_nonce( $_REQUEST['_wpnonce'] ?? '', 'vx_cancel_plan' );
 
-			$cloudpayments = \Voxel\CloudPayments::getClient();
+			$stripe = \Voxel\Stripe::getClient();
 			$user = \Voxel\current_user();
 			$membership = $user->get_membership();
 			if ( ! ( $membership->get_type() === 'subscription' && $membership->is_active() ) ) {
@@ -128,10 +128,10 @@ class Subscriptions_Controller extends \Voxel\Controllers\Base_Controller {
 			}
 
 			if ( \Voxel\get( 'settings.membership.cancel.behavior', 'at_period_end' ) === 'immediately' ) {
-				$subscription = $cloudpayments->subscriptions->cancel( $membership->get_subscription_id() );
+				$subscription = $stripe->subscriptions->cancel( $membership->get_subscription_id() );
 				do_action( 'voxel/membership/subscription-updated', $subscription );
 			} else {
-				$subscription = \Voxel\Vendor\CloudPayments\Subscription::update( $membership->get_subscription_id(), [
+				$subscription = \Voxel\Vendor\Stripe\Subscription::update( $membership->get_subscription_id(), [
 					'cancel_at_period_end' => true,
 				] );
 				do_action( 'voxel/membership/subscription-updated', $subscription );
@@ -153,14 +153,14 @@ class Subscriptions_Controller extends \Voxel\Controllers\Base_Controller {
 		try {
 			\Voxel\verify_nonce( $_REQUEST['_wpnonce'] ?? '', 'vx_reactivate_plan' );
 
-			$cloudpayments = \Voxel\CloudPayments::getClient();
+			$stripe = \Voxel\Stripe::getClient();
 			$user = \Voxel\current_user();
 			$membership = $user->get_membership();
 			if ( $membership->get_type() !== 'subscription' || ! $membership->will_cancel_at_period_end() ) {
 				throw new \Exception( __( 'Invalid request', 'voxel' ) );
 			}
 
-			$subscription = \Voxel\Vendor\CloudPayments\Subscription::update( $membership->get_subscription_id(), [
+			$subscription = \Voxel\Vendor\Stripe\Subscription::update( $membership->get_subscription_id(), [
 				'cancel_at_period_end' => false,
 			] );
 

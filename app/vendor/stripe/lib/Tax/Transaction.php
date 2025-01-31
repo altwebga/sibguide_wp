@@ -2,33 +2,33 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Tax;
+namespace Voxel\Vendor\Stripe\Tax;
 
 /**
  * A Tax Transaction records the tax collected from or refunded to your customer.
  *
- * Related guide: <a href="https://cloudpayments.com/docs/tax/custom#tax-transaction">Calculate tax in your custom payment flow</a>
+ * Related guide: <a href="https://stripe.com/docs/tax/custom#tax-transaction">Calculate tax in your custom payment flow</a>
  *
  * @property string $id Unique identifier for the transaction.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://cloudpayments.com/docs/currencies">supported currency</a>.
- * @property null|string $customer The ID of an existing <a href="https://cloudpayments.com/docs/api/customers/object">Customer</a> used for the resource.
- * @property \Voxel\Vendor\CloudPayments\CloudPaymentsObject $customer_details
- * @property null|\Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Tax\TransactionLineItem> $line_items The tax collected or refunded, by line item.
+ * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
+ * @property null|string $customer The ID of an existing <a href="https://stripe.com/docs/api/customers/object">Customer</a> used for the resource.
+ * @property \Voxel\Vendor\Stripe\StripeObject $customer_details
+ * @property null|\Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Tax\TransactionLineItem> $line_items The tax collected or refunded, by line item.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $metadata Set of <a href="https://cloudpayments.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $reference A custom unique identifier, such as 'myOrder_123'.
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $reversal If <code>type=reversal</code>, contains information about what was reversed.
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $shipping_cost The shipping cost details for the transaction.
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $reversal If <code>type=reversal</code>, contains information about what was reversed.
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $shipping_cost The shipping cost details for the transaction.
  * @property int $tax_date Timestamp of date at which the tax rules and rates in effect applies for the calculation.
  * @property string $type If <code>reversal</code>, this transaction reverses an earlier transaction.
  */
-class Transaction extends \Voxel\Vendor\CloudPayments\ApiResource
+class Transaction extends \Voxel\Vendor\Stripe\ApiResource
 {
     const OBJECT_NAME = 'tax.transaction';
 
-    use \Voxel\Vendor\CloudPayments\ApiOperations\Retrieve;
+    use \Voxel\Vendor\Stripe\ApiOperations\Retrieve;
 
     const TYPE_REVERSAL = 'reversal';
     const TYPE_TRANSACTION = 'transaction';
@@ -37,15 +37,15 @@ class Transaction extends \Voxel\Vendor\CloudPayments\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Tax\Transaction the created transaction
+     * @return \Voxel\Vendor\Stripe\Tax\Transaction the created transaction
      */
     public static function createFromCalculation($params = null, $opts = null)
     {
         $url = static::classUrl() . '/create_from_calculation';
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
-        $obj = \Voxel\Vendor\CloudPayments\Util\Util::convertToCloudPaymentsObject($response->json, $opts);
+        $obj = \Voxel\Vendor\Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -55,15 +55,15 @@ class Transaction extends \Voxel\Vendor\CloudPayments\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Tax\Transaction the created transaction
+     * @return \Voxel\Vendor\Stripe\Tax\Transaction the created transaction
      */
     public static function createReversal($params = null, $opts = null)
     {
         $url = static::classUrl() . '/create_reversal';
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
-        $obj = \Voxel\Vendor\CloudPayments\Util\Util::convertToCloudPaymentsObject($response->json, $opts);
+        $obj = \Voxel\Vendor\Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -74,15 +74,15 @@ class Transaction extends \Voxel\Vendor\CloudPayments\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Tax\TransactionLineItem> list of transaction line items
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Tax\TransactionLineItem> list of transaction line items
      */
     public static function allLineItems($id, $params = null, $opts = null)
     {
         $url = static::resourceUrl($id) . '/line_items';
         list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
-        $obj = \Voxel\Vendor\CloudPayments\Util\Util::convertToCloudPaymentsObject($response->json, $opts);
+        $obj = \Voxel\Vendor\Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;

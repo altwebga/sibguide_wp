@@ -2,25 +2,25 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service;
+namespace Voxel\Vendor\Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
-class SetupAttemptService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
+class SetupAttemptService extends \Voxel\Vendor\Stripe\Service\AbstractService
 {
     /**
      * Returns a list of SetupAttempts that associate with a provided SetupIntent.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\SetupAttempt>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\SetupAttempt>
      */
     public function all($params = null, $opts = null)
     {

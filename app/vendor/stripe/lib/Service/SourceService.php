@@ -2,26 +2,26 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service;
+namespace Voxel\Vendor\Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
-class SourceService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
+class SourceService extends \Voxel\Vendor\Stripe\Service\AbstractService
 {
     /**
      * List source transactions for a given source.
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\SourceTransaction>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\SourceTransaction>
      */
     public function allSourceTransactions($id, $params = null, $opts = null)
     {
@@ -32,11 +32,11 @@ class SourceService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      * Creates a new source object.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Source
+     * @return \Voxel\Vendor\Stripe\Source
      */
     public function create($params = null, $opts = null)
     {
@@ -49,11 +49,11 @@ class SourceService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      * @param string $parentId
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Account|\Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card|\Voxel\Vendor\CloudPayments\Source
+     * @return \Voxel\Vendor\Stripe\Account|\Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card|\Voxel\Vendor\Stripe\Source
      */
     public function detach($parentId, $id, $params = null, $opts = null)
     {
@@ -62,16 +62,16 @@ class SourceService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 
     /**
      * Retrieves an existing source object. Supply the unique source ID from a source
-     * creation request and CloudPayments will return the corresponding up-to-date source
+     * creation request and Stripe will return the corresponding up-to-date source
      * object information.
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Source
+     * @return \Voxel\Vendor\Stripe\Source
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -89,11 +89,11 @@ class SourceService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Source
+     * @return \Voxel\Vendor\Stripe\Source
      */
     public function update($id, $params = null, $opts = null)
     {
@@ -105,11 +105,11 @@ class SourceService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Source
+     * @return \Voxel\Vendor\Stripe\Source
      */
     public function verify($id, $params = null, $opts = null)
     {

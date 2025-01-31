@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments;
+namespace Voxel\Vendor\Stripe;
 
 /**
  * Events are our way of letting you know when something interesting happens in
@@ -20,34 +20,34 @@ namespace Voxel\Vendor\CloudPayments;
  * <code>invoice.payment_failed</code> event contains an invoice.
  *
  * As with other API resources, you can use endpoints to retrieve an
- * <a href="https://cloudpayments.com/docs/api#retrieve_event">individual event</a> or a <a href="https://cloudpayments.com/docs/api#list_events">list of events</a>
+ * <a href="https://stripe.com/docs/api#retrieve_event">individual event</a> or a <a href="https://stripe.com/docs/api#list_events">list of events</a>
  * from the API. We also have a separate
  * <a href="http://en.wikipedia.org/wiki/Webhook">webhooks</a> system for sending the
  * <code>Event</code> objects directly to an endpoint on your server. You can manage
  * webhooks in your
- * <a href="https://dashboard.cloudpayments.com/account/webhooks">account settings</a>. Learn how
- * to <a href="https://cloudpayments.com/docs/webhooks">listen for events</a>
+ * <a href="https://dashboard.stripe.com/account/webhooks">account settings</a>. Learn how
+ * to <a href="https://stripe.com/docs/webhooks">listen for events</a>
  * so that your integration can automatically trigger reactions.
  *
- * When using <a href="https://cloudpayments.com/docs/connect">Connect</a>, you can also receive event notifications
+ * When using <a href="https://stripe.com/docs/connect">Connect</a>, you can also receive event notifications
  * that occur in connected accounts. For these events, there's an
  * additional <code>account</code> attribute in the received <code>Event</code> object.
  *
- * We only guarantee access to events through the <a href="https://cloudpayments.com/docs/api#retrieve_event">Retrieve Event API</a>
+ * We only guarantee access to events through the <a href="https://stripe.com/docs/api#retrieve_event">Retrieve Event API</a>
  * for 30 days.
  *
  * This class includes constants for the possible string representations of
- * event types. See https://cloudpayments.com/docs/api#event_types for more details.
+ * event types. See https://stripe.com/docs/api#event_types for more details.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|string $account The connected account that originates the event.
- * @property null|string $api_version The CloudPayments API version used to render <code>data</code>. This property is populated only for events on or after October 31, 2014.
+ * @property null|string $api_version The Stripe API version used to render <code>data</code>. This property is populated only for events on or after October 31, 2014.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property \Voxel\Vendor\CloudPayments\CloudPaymentsObject $data
+ * @property \Voxel\Vendor\Stripe\StripeObject $data
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property int $pending_webhooks Number of webhooks that haven't been successfully delivered (for example, to return a 20x response) to the URLs you specify.
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $request Information on the API request that triggers the event.
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $request Information on the API request that triggers the event.
  * @property string $type Description of the event (for example, <code>invoice.created</code> or <code>charge.refunded</code>).
  */
 class Event extends ApiResource

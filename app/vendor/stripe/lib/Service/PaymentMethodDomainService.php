@@ -2,25 +2,25 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service;
+namespace Voxel\Vendor\Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
-class PaymentMethodDomainService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
+class PaymentMethodDomainService extends \Voxel\Vendor\Stripe\Service\AbstractService
 {
     /**
      * Lists the details of existing payment method domains.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\PaymentMethodDomain>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\PaymentMethodDomain>
      */
     public function all($params = null, $opts = null)
     {
@@ -31,11 +31,11 @@ class PaymentMethodDomainService extends \Voxel\Vendor\CloudPayments\Service\Abs
      * Creates a payment method domain.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\PaymentMethodDomain
+     * @return \Voxel\Vendor\Stripe\PaymentMethodDomain
      */
     public function create($params = null, $opts = null)
     {
@@ -47,11 +47,11 @@ class PaymentMethodDomainService extends \Voxel\Vendor\CloudPayments\Service\Abs
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\PaymentMethodDomain
+     * @return \Voxel\Vendor\Stripe\PaymentMethodDomain
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -63,11 +63,11 @@ class PaymentMethodDomainService extends \Voxel\Vendor\CloudPayments\Service\Abs
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\PaymentMethodDomain
+     * @return \Voxel\Vendor\Stripe\PaymentMethodDomain
      */
     public function update($id, $params = null, $opts = null)
     {
@@ -90,11 +90,11 @@ class PaymentMethodDomainService extends \Voxel\Vendor\CloudPayments\Service\Abs
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\PaymentMethodDomain
+     * @return \Voxel\Vendor\Stripe\PaymentMethodDomain
      */
     public function validate($id, $params = null, $opts = null)
     {

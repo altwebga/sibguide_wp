@@ -2,25 +2,25 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service;
+namespace Voxel\Vendor\Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
-class CreditNoteService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
+class CreditNoteService extends \Voxel\Vendor\Stripe\Service\AbstractService
 {
     /**
      * Returns a list of credit notes.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\CreditNote>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\CreditNote>
      */
     public function all($params = null, $opts = null)
     {
@@ -34,11 +34,11 @@ class CreditNoteService extends \Voxel\Vendor\CloudPayments\Service\AbstractServ
      *
      * @param string $parentId
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\CreditNoteLineItem>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\CreditNoteLineItem>
      */
     public function allLines($parentId, $params = null, $opts = null)
     {
@@ -56,11 +56,11 @@ class CreditNoteService extends \Voxel\Vendor\CloudPayments\Service\AbstractServ
      * an existing refund (using <code>refund</code>).</li> <li>Customer balance
      * credit: credit the customer’s balance (using <code>credit_amount</code>) which
      * will be automatically applied to their next invoice when it’s finalized.</li>
-     * <li>Outside of CloudPayments credit: record the amount that is or will be credited
-     * outside of CloudPayments (using <code>out_of_band_amount</code>).</li> </ul>
+     * <li>Outside of Stripe credit: record the amount that is or will be credited
+     * outside of Stripe (using <code>out_of_band_amount</code>).</li> </ul>
      *
      * For post-payment credit notes the sum of the refund, credit and outside of
-     * CloudPayments amounts must equal the credit note total.
+     * Stripe amounts must equal the credit note total.
      *
      * You may issue multiple credit notes for an invoice. Each credit note will
      * increment the invoice’s <code>pre_payment_credit_notes_amount</code> or
@@ -68,11 +68,11 @@ class CreditNoteService extends \Voxel\Vendor\CloudPayments\Service\AbstractServ
      * <code>status</code> at the time of credit note creation.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\CreditNote
+     * @return \Voxel\Vendor\Stripe\CreditNote
      */
     public function create($params = null, $opts = null)
     {
@@ -83,11 +83,11 @@ class CreditNoteService extends \Voxel\Vendor\CloudPayments\Service\AbstractServ
      * Get a preview of a credit note without creating it.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\CreditNote
+     * @return \Voxel\Vendor\Stripe\CreditNote
      */
     public function preview($params = null, $opts = null)
     {
@@ -100,11 +100,11 @@ class CreditNoteService extends \Voxel\Vendor\CloudPayments\Service\AbstractServ
      * the full (paginated) list of line items.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\CreditNoteLineItem>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\CreditNoteLineItem>
      */
     public function previewLines($params = null, $opts = null)
     {
@@ -116,11 +116,11 @@ class CreditNoteService extends \Voxel\Vendor\CloudPayments\Service\AbstractServ
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\CreditNote
+     * @return \Voxel\Vendor\Stripe\CreditNote
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -132,11 +132,11 @@ class CreditNoteService extends \Voxel\Vendor\CloudPayments\Service\AbstractServ
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\CreditNote
+     * @return \Voxel\Vendor\Stripe\CreditNote
      */
     public function update($id, $params = null, $opts = null)
     {
@@ -149,11 +149,11 @@ class CreditNoteService extends \Voxel\Vendor\CloudPayments\Service\AbstractServ
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\CreditNote
+     * @return \Voxel\Vendor\Stripe\CreditNote
      */
     public function voidCreditNote($id, $params = null, $opts = null)
     {

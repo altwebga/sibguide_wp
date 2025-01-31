@@ -1,13 +1,13 @@
 <?php
 
-namespace Voxel\Vendor\CloudPayments;
+namespace Voxel\Vendor\Stripe;
 
 /**
- * Class CloudPaymentsObject.
+ * Class StripeObject.
  *
  * @property null|string $id
  */
-class CloudPaymentsObject implements \ArrayAccess, \Countable, \JsonSerializable
+class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
 {
     /** @var Util\RequestOptions */
     protected $_opts;
@@ -146,7 +146,7 @@ class CloudPaymentsObject implements \ArrayAccess, \Countable, \JsonSerializable
             );
         }
 
-        $this->_values[$k] = Util\Util::convertToCloudPaymentsObject($v, $this->_opts);
+        $this->_values[$k] = Util\Util::convertToStripeObject($v, $this->_opts);
         $this->dirtyValue($this->_values[$k]);
         $this->_unsavedValues->add($k);
     }
@@ -178,18 +178,18 @@ class CloudPaymentsObject implements \ArrayAccess, \Countable, \JsonSerializable
         if (!empty($this->_transientValues) && $this->_transientValues->includes($k)) {
             $class = static::class;
             $attrs = \implode(', ', \array_keys($this->_values));
-            $message = "CloudPayments Notice: Undefined property of {$class} instance: {$k}. "
+            $message = "Stripe Notice: Undefined property of {$class} instance: {$k}. "
                     . "HINT: The {$k} attribute was set in the past, however. "
                     . 'It was then wiped when refreshing the object '
-                    . "with the result returned by CloudPayments's API, "
+                    . "with the result returned by Stripe's API, "
                     . 'probably as a result of a save(). The attributes currently '
                     . "available on this object are: {$attrs}";
-            CloudPayments::getLogger()->error($message);
+            Stripe::getLogger()->error($message);
 
             return $nullval;
         }
         $class = static::class;
-        CloudPayments::getLogger()->error("CloudPayments Notice: Undefined property of {$class} instance: {$k}");
+        Stripe::getLogger()->error("Stripe Notice: Undefined property of {$class} instance: {$k}");
 
         return $nullval;
     }
@@ -290,7 +290,7 @@ class CloudPaymentsObject implements \ArrayAccess, \Countable, \JsonSerializable
 
         $this->_originalValues = self::deepCopy($values);
 
-        if ($values instanceof CloudPaymentsObject) {
+        if ($values instanceof StripeObject) {
             $values = $values->toArray();
         }
 
@@ -324,14 +324,14 @@ class CloudPaymentsObject implements \ArrayAccess, \Countable, \JsonSerializable
     public function updateAttributes($values, $opts = null, $dirty = true)
     {
         foreach ($values as $k => $v) {
-            // Special-case metadata to always be cast as a CloudPaymentsObject
+            // Special-case metadata to always be cast as a StripeObject
             // This is necessary in case metadata is empty, as PHP arrays do
             // not differentiate between lists and hashes, and we consider
             // empty arrays to be lists.
             if (('metadata' === $k) && (\is_array($v))) {
-                $this->_values[$k] = CloudPaymentsObject::constructFrom($v, $opts);
+                $this->_values[$k] = StripeObject::constructFrom($v, $opts);
             } else {
-                $this->_values[$k] = Util\Util::convertToCloudPaymentsObject($v, $opts);
+                $this->_values[$k] = Util\Util::convertToStripeObject($v, $opts);
             }
             if ($dirty) {
                 $this->dirtyValue($this->_values[$k]);
@@ -356,12 +356,12 @@ class CloudPaymentsObject implements \ArrayAccess, \Countable, \JsonSerializable
             //
             //   1. The `$force` option has been set.
             //   2. We know that it was modified.
-            //   3. Its value is a CloudPaymentsObject. A CloudPaymentsObject may contain modified
-            //      values within in that its parent CloudPaymentsObject doesn't know about.
+            //   3. Its value is a StripeObject. A StripeObject may contain modified
+            //      values within in that its parent StripeObject doesn't know about.
             //
             $original = \array_key_exists($k, $this->_originalValues) ? $this->_originalValues[$k] : null;
             $unsaved = $this->_unsavedValues->includes($k);
-            if ($force || $unsaved || $v instanceof CloudPaymentsObject) {
+            if ($force || $unsaved || $v instanceof StripeObject) {
                 $updateParams[$k] = $this->serializeParamsValue(
                     $this->_values[$k],
                     $original,
@@ -436,9 +436,9 @@ class CloudPaymentsObject implements \ArrayAccess, \Countable, \JsonSerializable
                 }
             } else {
                 // Associative array, i.e. a map
-                return Util\Util::convertToCloudPaymentsObject($value, $this->_opts)->serializeParameters();
+                return Util\Util::convertToStripeObject($value, $this->_opts)->serializeParameters();
             }
-        } elseif ($value instanceof CloudPaymentsObject) {
+        } elseif ($value instanceof StripeObject) {
             $update = $value->serializeParameters($force);
             if ($original && $unsaved && $key && static::getAdditiveParams()->includes($key)) {
                 $update = \array_merge(self::emptyValues($original), $update);
@@ -461,7 +461,7 @@ class CloudPaymentsObject implements \ArrayAccess, \Countable, \JsonSerializable
 
     /**
      * Returns an associative array with the key and values composing the
-     * CloudPayments object.
+     * Stripe object.
      *
      * @return array the associative array
      */
@@ -491,9 +491,9 @@ class CloudPaymentsObject implements \ArrayAccess, \Countable, \JsonSerializable
     }
 
     /**
-     * Returns a pretty JSON representation of the CloudPayments object.
+     * Returns a pretty JSON representation of the Stripe object.
      *
-     * @return string the JSON representation of the CloudPayments object
+     * @return string the JSON representation of the Stripe object
      */
     public function toJSON()
     {
@@ -508,9 +508,9 @@ class CloudPaymentsObject implements \ArrayAccess, \Countable, \JsonSerializable
     }
 
     /**
-     * Sets all keys within the CloudPaymentsObject as unsaved so that they will be
+     * Sets all keys within the StripeObject as unsaved so that they will be
      * included with an update when `serializeParameters` is called. This
-     * method is also recursive, so any CloudPaymentsObjects contained as values or
+     * method is also recursive, so any StripeObjects contained as values or
      * which are values in a tenant array are also marked as dirty.
      */
     public function dirty()
@@ -527,14 +527,14 @@ class CloudPaymentsObject implements \ArrayAccess, \Countable, \JsonSerializable
             foreach ($value as $v) {
                 $this->dirtyValue($v);
             }
-        } elseif ($value instanceof CloudPaymentsObject) {
+        } elseif ($value instanceof StripeObject) {
             $value->dirty();
         }
     }
 
     /**
      * Produces a deep copy of the given object including support for arrays
-     * and CloudPaymentsObjects.
+     * and StripeObjects.
      *
      * @param mixed $obj
      */
@@ -548,7 +548,7 @@ class CloudPaymentsObject implements \ArrayAccess, \Countable, \JsonSerializable
 
             return $copy;
         }
-        if ($obj instanceof CloudPaymentsObject) {
+        if ($obj instanceof StripeObject) {
             return $obj::constructFrom(
                 self::deepCopy($obj->_values),
                 clone $obj->_opts
@@ -560,7 +560,7 @@ class CloudPaymentsObject implements \ArrayAccess, \Countable, \JsonSerializable
 
     /**
      * Returns a hash of empty values for all the values that are in the given
-     * CloudPaymentsObject.
+     * StripeObject.
      *
      * @param mixed $obj
      */
@@ -568,7 +568,7 @@ class CloudPaymentsObject implements \ArrayAccess, \Countable, \JsonSerializable
     {
         if (\is_array($obj)) {
             $values = $obj;
-        } elseif ($obj instanceof CloudPaymentsObject) {
+        } elseif ($obj instanceof StripeObject) {
             $values = $obj->_values;
         } else {
             throw new Exception\InvalidArgumentException(
@@ -580,7 +580,7 @@ class CloudPaymentsObject implements \ArrayAccess, \Countable, \JsonSerializable
     }
 
     /**
-     * @return null|ApiResponse The last response from the CloudPayments API
+     * @return null|ApiResponse The last response from the Stripe API
      */
     public function getLastResponse()
     {
@@ -588,7 +588,7 @@ class CloudPaymentsObject implements \ArrayAccess, \Countable, \JsonSerializable
     }
 
     /**
-     * Sets the last response from the CloudPayments API.
+     * Sets the last response from the Stripe API.
      *
      * @param ApiResponse $resp
      */

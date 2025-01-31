@@ -2,38 +2,38 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Issuing;
+namespace Voxel\Vendor\Stripe\Issuing;
 
 /**
- * An Issuing <code>Cardholder</code> object represents an individual or business entity who is <a href="https://cloudpayments.com/docs/issuing">issued</a> cards.
+ * An Issuing <code>Cardholder</code> object represents an individual or business entity who is <a href="https://stripe.com/docs/issuing">issued</a> cards.
  *
- * Related guide: <a href="https://cloudpayments.com/docs/issuing/cards#create-cardholder">How to create a cardholder</a>
+ * Related guide: <a href="https://stripe.com/docs/issuing/cards#create-cardholder">How to create a cardholder</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property \Voxel\Vendor\CloudPayments\CloudPaymentsObject $billing
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $company Additional information about a <code>company</code> cardholder.
+ * @property \Voxel\Vendor\Stripe\StripeObject $billing
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $company Additional information about a <code>company</code> cardholder.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $email The cardholder's email address.
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $individual Additional information about an <code>individual</code> cardholder.
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $individual Additional information about an <code>individual</code> cardholder.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property \Voxel\Vendor\CloudPayments\CloudPaymentsObject $metadata Set of <a href="https://cloudpayments.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property \Voxel\Vendor\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $name The cardholder's name. This will be printed on cards issued to them.
- * @property null|string $phone_number The cardholder's phone number. This is required for all cardholders who will be creating EU cards. See the <a href="https://cloudpayments.com/docs/issuing/3d-secure#when-is-3d-secure-applied">3D Secure documentation</a> for more details.
- * @property null|string[] $preferred_locales The cardholder’s preferred locales (languages), ordered by preference. Locales can be <code>de</code>, <code>en</code>, <code>es</code>, <code>fr</code>, or <code>it</code>. This changes the language of the <a href="https://cloudpayments.com/docs/issuing/3d-secure">3D Secure flow</a> and one-time password messages sent to the cardholder.
- * @property \Voxel\Vendor\CloudPayments\CloudPaymentsObject $requirements
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $spending_controls Rules that control spending across this cardholder's cards. Refer to our <a href="https://cloudpayments.com/docs/issuing/controls/spending-controls">documentation</a> for more details.
+ * @property null|string $phone_number The cardholder's phone number. This is required for all cardholders who will be creating EU cards. See the <a href="https://stripe.com/docs/issuing/3d-secure#when-is-3d-secure-applied">3D Secure documentation</a> for more details.
+ * @property null|string[] $preferred_locales The cardholder’s preferred locales (languages), ordered by preference. Locales can be <code>de</code>, <code>en</code>, <code>es</code>, <code>fr</code>, or <code>it</code>. This changes the language of the <a href="https://stripe.com/docs/issuing/3d-secure">3D Secure flow</a> and one-time password messages sent to the cardholder.
+ * @property \Voxel\Vendor\Stripe\StripeObject $requirements
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $spending_controls Rules that control spending across this cardholder's cards. Refer to our <a href="https://stripe.com/docs/issuing/controls/spending-controls">documentation</a> for more details.
  * @property string $status Specifies whether to permit authorizations on this cardholder's cards.
- * @property string $type One of <code>individual</code> or <code>company</code>. See <a href="https://cloudpayments.com/docs/issuing/other/choose-cardholder">Choose a cardholder type</a> for more details.
+ * @property string $type One of <code>individual</code> or <code>company</code>. See <a href="https://stripe.com/docs/issuing/other/choose-cardholder">Choose a cardholder type</a> for more details.
  */
-class Cardholder extends \Voxel\Vendor\CloudPayments\ApiResource
+class Cardholder extends \Voxel\Vendor\Stripe\ApiResource
 {
     const OBJECT_NAME = 'issuing.cardholder';
 
-    use \Voxel\Vendor\CloudPayments\ApiOperations\All;
-    use \Voxel\Vendor\CloudPayments\ApiOperations\Create;
-    use \Voxel\Vendor\CloudPayments\ApiOperations\Retrieve;
-    use \Voxel\Vendor\CloudPayments\ApiOperations\Update;
+    use \Voxel\Vendor\Stripe\ApiOperations\All;
+    use \Voxel\Vendor\Stripe\ApiOperations\Create;
+    use \Voxel\Vendor\Stripe\ApiOperations\Retrieve;
+    use \Voxel\Vendor\Stripe\ApiOperations\Update;
 
     const STATUS_ACTIVE = 'active';
     const STATUS_BLOCKED = 'blocked';

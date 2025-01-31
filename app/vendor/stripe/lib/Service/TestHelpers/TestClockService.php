@@ -2,15 +2,15 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service\TestHelpers;
+namespace Voxel\Vendor\Stripe\Service\TestHelpers;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
-class TestClockService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
+class TestClockService extends \Voxel\Vendor\Stripe\Service\AbstractService
 {
     /**
      * Starts advancing a test clock to a specified time in the future. Advancement is
@@ -18,11 +18,11 @@ class TestClockService extends \Voxel\Vendor\CloudPayments\Service\AbstractServi
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\TestHelpers\TestClock
+     * @return \Voxel\Vendor\Stripe\TestHelpers\TestClock
      */
     public function advance($id, $params = null, $opts = null)
     {
@@ -33,11 +33,11 @@ class TestClockService extends \Voxel\Vendor\CloudPayments\Service\AbstractServi
      * Returns a list of your test clocks.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\TestHelpers\TestClock>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\TestHelpers\TestClock>
      */
     public function all($params = null, $opts = null)
     {
@@ -48,11 +48,11 @@ class TestClockService extends \Voxel\Vendor\CloudPayments\Service\AbstractServi
      * Creates a new test clock that can be attached to new customers and quotes.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\TestHelpers\TestClock
+     * @return \Voxel\Vendor\Stripe\TestHelpers\TestClock
      */
     public function create($params = null, $opts = null)
     {
@@ -64,11 +64,11 @@ class TestClockService extends \Voxel\Vendor\CloudPayments\Service\AbstractServi
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\TestHelpers\TestClock
+     * @return \Voxel\Vendor\Stripe\TestHelpers\TestClock
      */
     public function delete($id, $params = null, $opts = null)
     {
@@ -80,11 +80,11 @@ class TestClockService extends \Voxel\Vendor\CloudPayments\Service\AbstractServi
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\TestHelpers\TestClock
+     * @return \Voxel\Vendor\Stripe\TestHelpers\TestClock
      */
     public function retrieve($id, $params = null, $opts = null)
     {

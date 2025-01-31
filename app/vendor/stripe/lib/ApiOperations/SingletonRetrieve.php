@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\CloudPayments\ApiOperations;
+namespace Voxel\Vendor\Stripe\ApiOperations;
 
 /**
  * Trait for retrievable singleton resources. Adds a `retrieve()` static method to the
@@ -14,13 +14,13 @@ trait SingletonRetrieve
      * @param null|array|string $opts the ID of the API resource to retrieve,
      *     or an options array containing an `id` key
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
      * @return static
      */
     public static function retrieve($opts = null)
     {
-        $opts = \Voxel\Vendor\CloudPayments\Util\RequestOptions::parse($opts);
+        $opts = \Voxel\Vendor\Stripe\Util\RequestOptions::parse($opts);
         $instance = new static(null, $opts);
         $instance->refresh();
 

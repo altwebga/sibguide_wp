@@ -16,23 +16,23 @@ if ( ! defined('ABSPATH') ) {
 				'label' => 'Collection method',
 				'classes' => 'x-col-12',
 				'choices' => [
-					'cloudpayments_tax' => 'Automatic: Collect taxes automatically through CloudPayments Tax',
+					'stripe_tax' => 'Automatic: Collect taxes automatically through Stripe Tax',
 					'tax_rates' => 'Manual: Configure tax rates manually',
 				],
 			] ) ?>
 
-			<template v-if="config.tax_collection.collection_method === 'cloudpayments_tax'">
+			<template v-if="config.tax_collection.collection_method === 'stripe_tax'">
 				<div class="ts-form-group x-col-12 basic-ul">
 					<li>
-						<a class="ts-button ts-outline" href="https://cloudpayments.com/tax" target="_blank">
+						<a class="ts-button ts-outline" href="https://stripe.com/tax" target="_blank">
 							<i class="las la-external-link-alt icon-sm"></i>
-							Getting started with CloudPayments Tax
+							Getting started with Stripe Tax
 						</a>
 					</li>
 					<li>
-						<a class="ts-button ts-outline" href="<?= esc_url( \Voxel\CloudPayments::dashboard_url( '/settings/tax' ) ) ?>" target="_blank">
+						<a class="ts-button ts-outline" href="<?= esc_url( \Voxel\Stripe::dashboard_url( '/settings/tax' ) ) ?>" target="_blank">
 							<i class="las la-external-link-alt icon-sm"></i>
-							Configure CloudPayments Tax
+							Configure Stripe Tax
 						</a>
 					</li>
 				</div>
@@ -40,7 +40,7 @@ if ( ! defined('ABSPATH') ) {
 			<template v-if="config.tax_collection.collection_method === 'tax_rates'">
 				<div class="ts-form-group x-col-12 basic-ul">
 					<li>
-						<a class="ts-button ts-outline" href="<?= esc_url( \Voxel\CloudPayments::dashboard_url( '/tax-rates' ) ) ?>" target="_blank">
+						<a class="ts-button ts-outline" href="<?= esc_url( \Voxel\Stripe::dashboard_url( '/tax-rates' ) ) ?>" target="_blank">
 							<i class="las la-external-link-alt icon-sm"></i>
 							Setup tax rates
 						</a>
@@ -52,15 +52,15 @@ if ( ! defined('ABSPATH') ) {
 </div>
 
 <template v-if="config.tax_collection.enabled">
-	<template v-if="config.tax_collection.collection_method === 'cloudpayments_tax'">
+	<template v-if="config.tax_collection.collection_method === 'stripe_tax'">
 		<div class="ts-group">
 			<div class="ts-group-head">
 				<h3>Product types</h3>
 			</div>
 			<div class="x-row">
 				<div class="x-col-12 field-container">
-					<template v-if="config.tax_collection.cloudpayments_tax.product_types !== null && Object.keys(config.tax_collection.cloudpayments_tax.product_types).length">
-						<template v-for="product_type, product_type_key in config.tax_collection.cloudpayments_tax.product_types">
+					<template v-if="config.tax_collection.stripe_tax.product_types !== null && Object.keys(config.tax_collection.stripe_tax.product_types).length">
+						<template v-for="product_type, product_type_key in config.tax_collection.stripe_tax.product_types">
 							<div
 								v-if="props.product_types[ product_type_key ]"
 								class="single-field wide"
@@ -71,7 +71,7 @@ if ( ! defined('ABSPATH') ) {
 									<p class="field-type">{{ product_type_key }}</p>
 									<div class="field-actions">
 										<span class="field-action all-center">
-											<a href="#" @click.stop.prevent="delete config.tax_collection.cloudpayments_tax.product_types[ product_type_key ]">
+											<a href="#" @click.stop.prevent="delete config.tax_collection.stripe_tax.product_types[ product_type_key ]">
 												<i class="lar la-trash-alt icon-sm"></i>
 											</a>
 										</span>
@@ -81,17 +81,17 @@ if ( ! defined('ABSPATH') ) {
 									<div class="x-row">
 										<?php \Voxel\Form_Models\Select_Model::render( [
 											'v-model' => 'product_type.tax_code',
-											'label' => 'Product tax code <a style="float:right;" href="https://cloudpayments.com/docs/tax/tax-codes" target="_blank">View available tax codes</a>',
+											'label' => 'Product tax code <a style="float:right;" href="https://stripe.com/docs/tax/tax-codes" target="_blank">View available tax codes</a>',
 											'classes' => 'x-col-12',
-											'choices' => [ '' => 'Select a code' ] + \Voxel\CloudPayments\Tax_Codes::all(),
+											'choices' => [ '' => 'Select a code' ] + \Voxel\Stripe\Tax_Codes::all(),
 										] ) ?>
 
 										<?php \Voxel\Form_Models\Select_Model::render( [
 											'v-model' => 'product_type.tax_behavior',
-											'label' => sprintf( 'Tax behavior <a style="float:right;" href="%s" target="_blank">Set default tax behavior</a>', esc_url( \Voxel\CloudPayments::dashboard_url( '/settings/tax' ) ) ),
+											'label' => sprintf( 'Tax behavior <a style="float:right;" href="%s" target="_blank">Set default tax behavior</a>', esc_url( \Voxel\Stripe::dashboard_url( '/settings/tax' ) ) ),
 											'classes' => 'x-col-12',
 											'choices' => [
-												'default' => 'Default: Use default tax behavior configured in your CloudPayments dashboard',
+												'default' => 'Default: Use default tax behavior configured in your Stripe dashboard',
 												'inclusive' => 'Inclusive: Tax is included in the price',
 												'exclusive' => 'Exclusive: Tax is added on top of the price',
 											],
@@ -110,11 +110,11 @@ if ( ! defined('ABSPATH') ) {
 					<div class="add-field">
 						<template v-for="product_type in props.product_types">
 							<div
-								v-if="!config.tax_collection.cloudpayments_tax.product_types?.[ product_type.key ]"
+								v-if="!config.tax_collection.stripe_tax.product_types?.[ product_type.key ]"
 								class="ts-button ts-outline"
 								@click.prevent="
-									config.tax_collection.cloudpayments_tax.product_types === null && ( config.tax_collection.cloudpayments_tax.product_types = {} );
-									config.tax_collection.cloudpayments_tax.product_types[ product_type.key ] = {
+									config.tax_collection.stripe_tax.product_types === null && ( config.tax_collection.stripe_tax.product_types = {} );
+									config.tax_collection.stripe_tax.product_types[ product_type.key ] = {
 										tax_behavior: 'inclusive',
 										tax_code: '',
 									};
@@ -161,7 +161,7 @@ if ( ! defined('ABSPATH') ) {
 											'classes' => 'x-col-12',
 											'description' => join( "\n\n", [
 												'Use fixed tax rates when you know the exact tax rate to charge your customer before they start the checkout process (for example, you only sell to customers in the UK and always charge 20% VAT).',
-												'Use dynamic tax rates when you need more information from your customer (for example, their billing or shipping address) to determine the tax rate to charge. With dynamic tax rates, you create tax rates for different regions (for example, a 20% VAT tax rate for customers in the UK and a 7.25% sales tax rate for customers in California, US) and CloudPayments attempts to match your customer’s location to one of those tax rates.',
+												'Use dynamic tax rates when you need more information from your customer (for example, their billing or shipping address) to determine the tax rate to charge. With dynamic tax rates, you create tax rates for different regions (for example, a 20% VAT tax rate for customers in the UK and a 7.25% sales tax rate for customers in California, US) and Stripe attempts to match your customer’s location to one of those tax rates.',
 											] ),
 											'choices' => [
 												'fixed' => '<strong>Fixed Tax Rates</strong> <p style="display: inline;">Use fixed tax rates when you know the exact tax rate to charge your customer (for example, you only sell to customers in the UK and always charge 20% VAT).</p>',

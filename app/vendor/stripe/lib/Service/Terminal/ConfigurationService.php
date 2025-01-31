@@ -2,25 +2,25 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service\Terminal;
+namespace Voxel\Vendor\Stripe\Service\Terminal;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
-class ConfigurationService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
+class ConfigurationService extends \Voxel\Vendor\Stripe\Service\AbstractService
 {
     /**
      * Returns a list of <code>Configuration</code> objects.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Terminal\Configuration>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Terminal\Configuration>
      */
     public function all($params = null, $opts = null)
     {
@@ -31,11 +31,11 @@ class ConfigurationService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      * Creates a new <code>Configuration</code> object.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Terminal\Configuration
+     * @return \Voxel\Vendor\Stripe\Terminal\Configuration
      */
     public function create($params = null, $opts = null)
     {
@@ -47,11 +47,11 @@ class ConfigurationService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Terminal\Configuration
+     * @return \Voxel\Vendor\Stripe\Terminal\Configuration
      */
     public function delete($id, $params = null, $opts = null)
     {
@@ -63,11 +63,11 @@ class ConfigurationService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Terminal\Configuration
+     * @return \Voxel\Vendor\Stripe\Terminal\Configuration
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -79,11 +79,11 @@ class ConfigurationService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Terminal\Configuration
+     * @return \Voxel\Vendor\Stripe\Terminal\Configuration
      */
     public function update($id, $params = null, $opts = null)
     {

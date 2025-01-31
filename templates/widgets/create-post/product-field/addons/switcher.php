@@ -28,7 +28,7 @@ if ( ! defined('ABSPATH') ) {
 					<label><?= _x( 'Enter price for this add-on', 'product field', 'voxel' ) ?></label>
 					<div class="input-container">
 						<input type="number" v-model="value.price" class="ts-filter" placeholder="<?= esc_attr( _x( 'Add price', 'product field', 'voxel' ) ) ?>" min="0">
-						<span class="input-suffix"><?= \Voxel\get('settings.cloudpayments.currency') ?></span>
+						<span class="input-suffix"><?= \Voxel\get('settings.stripe.currency') ?></span>
 					</div>
 				</div>
 			</div>

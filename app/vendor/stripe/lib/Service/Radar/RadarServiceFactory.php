@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service\Radar;
+namespace Voxel\Vendor\Stripe\Service\Radar;
 
 /**
  * Service factory class for API resources in the Radar namespace.
@@ -11,7 +11,7 @@ namespace Voxel\Vendor\CloudPayments\Service\Radar;
  * @property ValueListItemService $valueListItems
  * @property ValueListService $valueLists
  */
-class RadarServiceFactory extends \Voxel\Vendor\CloudPayments\Service\AbstractServiceFactory
+class RadarServiceFactory extends \Voxel\Vendor\Stripe\Service\AbstractServiceFactory
 {
     /**
      * @var array<string, string>

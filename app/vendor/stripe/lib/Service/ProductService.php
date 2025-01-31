@@ -2,26 +2,26 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service;
+namespace Voxel\Vendor\Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
-class ProductService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
+class ProductService extends \Voxel\Vendor\Stripe\Service\AbstractService
 {
     /**
      * Returns a list of your products. The products are returned sorted by creation
      * date, with the most recently created products appearing first.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Product>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Product>
      */
     public function all($params = null, $opts = null)
     {
@@ -32,11 +32,11 @@ class ProductService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      * Creates a new product object.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Product
+     * @return \Voxel\Vendor\Stripe\Product
      */
     public function create($params = null, $opts = null)
     {
@@ -50,11 +50,11 @@ class ProductService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Product
+     * @return \Voxel\Vendor\Stripe\Product
      */
     public function delete($id, $params = null, $opts = null)
     {
@@ -63,16 +63,16 @@ class ProductService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 
     /**
      * Retrieves the details of an existing product. Supply the unique product ID from
-     * either a product creation request or the product list, and CloudPayments will return
+     * either a product creation request or the product list, and Stripe will return
      * the corresponding product information.
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Product
+     * @return \Voxel\Vendor\Stripe\Product
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -80,7 +80,7 @@ class ProductService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
     }
 
     /**
-     * Search for products you’ve previously created using CloudPayments’s <a
+     * Search for products you’ve previously created using Stripe’s <a
      * href="/docs/search#search-query-language">Search Query Language</a>. Don’t use
      * search in read-after-write flows where strict consistency is necessary. Under
      * normal operating conditions, data is searchable in less than a minute.
@@ -88,11 +88,11 @@ class ProductService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      * during outages. Search functionality is not available to merchants in India.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\SearchResult<\Voxel\Vendor\CloudPayments\Product>
+     * @return \Voxel\Vendor\Stripe\SearchResult<\Voxel\Vendor\Stripe\Product>
      */
     public function search($params = null, $opts = null)
     {
@@ -105,11 +105,11 @@ class ProductService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Product
+     * @return \Voxel\Vendor\Stripe\Product
      */
     public function update($id, $params = null, $opts = null)
     {

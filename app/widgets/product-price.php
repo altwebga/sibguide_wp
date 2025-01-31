@@ -141,7 +141,7 @@ class Product_Price extends Base_Widget {
 				'with_discounts' => true,
 				'addons' => $GLOBALS['_addon_filters'] ?? null,
 			] );
-			$currency = \Voxel\get( 'settings.cloudpayments.currency', 'USD' );
+			$currency = \Voxel\get( 'settings.stripe.currency', 'USD' );
 
 			$product_type = $field->get_product_type();
 			if ( $booking = $field->get_product_field('booking') ) {

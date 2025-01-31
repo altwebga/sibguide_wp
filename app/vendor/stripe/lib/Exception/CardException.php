@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\CloudPayments\Exception;
+namespace Voxel\Vendor\Stripe\Exception;
 
 /**
  * CardException is thrown when a user enters a card that can't be charged for
@@ -9,7 +9,7 @@ namespace Voxel\Vendor\CloudPayments\Exception;
 class CardException extends ApiErrorException
 {
     protected $declineCode;
-    protected $cloudpaymentsParam;
+    protected $stripeParam;
 
     /**
      * Creates a new CardException exception.
@@ -18,10 +18,10 @@ class CardException extends ApiErrorException
      * @param null|int $httpStatus the HTTP status code
      * @param null|string $httpBody the HTTP body as a string
      * @param null|array $jsonBody the JSON deserialized body
-     * @param null|array|\Voxel\Vendor\CloudPayments\Util\CaseInsensitiveArray $httpHeaders the HTTP headers array
-     * @param null|string $cloudpaymentsCode the CloudPayments error code
+     * @param null|array|\Voxel\Vendor\Stripe\Util\CaseInsensitiveArray $httpHeaders the HTTP headers array
+     * @param null|string $stripeCode the Stripe error code
      * @param null|string $declineCode the decline code
-     * @param null|string $cloudpaymentsParam the parameter related to the error
+     * @param null|string $stripeParam the parameter related to the error
      *
      * @return CardException
      */
@@ -31,13 +31,13 @@ class CardException extends ApiErrorException
         $httpBody = null,
         $jsonBody = null,
         $httpHeaders = null,
-        $cloudpaymentsCode = null,
+        $stripeCode = null,
         $declineCode = null,
-        $cloudpaymentsParam = null
+        $stripeParam = null
     ) {
-        $instance = parent::factory($message, $httpStatus, $httpBody, $jsonBody, $httpHeaders, $cloudpaymentsCode);
+        $instance = parent::factory($message, $httpStatus, $httpBody, $jsonBody, $httpHeaders, $stripeCode);
         $instance->setDeclineCode($declineCode);
-        $instance->setCloudPaymentsParam($cloudpaymentsParam);
+        $instance->setStripeParam($stripeParam);
 
         return $instance;
     }
@@ -67,18 +67,18 @@ class CardException extends ApiErrorException
      *
      * @return null|string
      */
-    public function getCloudPaymentsParam()
+    public function getStripeParam()
     {
-        return $this->cloudpaymentsParam;
+        return $this->stripeParam;
     }
 
     /**
      * Sets the parameter related to the error.
      *
-     * @param null|string $cloudpaymentsParam
+     * @param null|string $stripeParam
      */
-    public function setCloudPaymentsParam($cloudpaymentsParam)
+    public function setStripeParam($stripeParam)
     {
-        $this->cloudpaymentsParam = $cloudpaymentsParam;
+        $this->stripeParam = $stripeParam;
     }
 }

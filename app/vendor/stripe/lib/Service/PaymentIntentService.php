@@ -2,25 +2,25 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service;
+namespace Voxel\Vendor\Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
-class PaymentIntentService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
+class PaymentIntentService extends \Voxel\Vendor\Stripe\Service\AbstractService
 {
     /**
      * Returns a list of PaymentIntents.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\PaymentIntent>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\PaymentIntent>
      */
     public function all($params = null, $opts = null)
     {
@@ -33,11 +33,11 @@ class PaymentIntentService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\PaymentIntent
+     * @return \Voxel\Vendor\Stripe\PaymentIntent
      */
     public function applyCustomerBalance($id, $params = null, $opts = null)
     {
@@ -61,11 +61,11 @@ class PaymentIntentService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\PaymentIntent
+     * @return \Voxel\Vendor\Stripe\PaymentIntent
      */
     public function cancel($id, $params = null, $opts = null)
     {
@@ -84,11 +84,11 @@ class PaymentIntentService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\PaymentIntent
+     * @return \Voxel\Vendor\Stripe\PaymentIntent
      */
     public function capture($id, $params = null, $opts = null)
     {
@@ -108,7 +108,7 @@ class PaymentIntentService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      * <code>capture_method</code> is set to <code>manual</code>). If the
      * <code>confirmation_method</code> is <code>automatic</code>, payment may be
      * attempted using our <a
-     * href="/docs/cloudpayments-js/reference#cloudpayments-handle-card-payment">client SDKs</a> and
+     * href="/docs/stripe-js/reference#stripe-handle-card-payment">client SDKs</a> and
      * the PaymentIntent’s <a
      * href="#payment_intent_object-client_secret">client_secret</a>. After
      * <code>next_action</code>s are handled by the client, no additional confirmation
@@ -121,11 +121,11 @@ class PaymentIntentService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\PaymentIntent
+     * @return \Voxel\Vendor\Stripe\PaymentIntent
      */
     public function confirm($id, $params = null, $opts = null)
     {
@@ -146,11 +146,11 @@ class PaymentIntentService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      * API</a> when you supply <code>confirm=true</code>.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\PaymentIntent
+     * @return \Voxel\Vendor\Stripe\PaymentIntent
      */
     public function create($params = null, $opts = null)
     {
@@ -188,11 +188,11 @@ class PaymentIntentService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\PaymentIntent
+     * @return \Voxel\Vendor\Stripe\PaymentIntent
      */
     public function incrementAuthorization($id, $params = null, $opts = null)
     {
@@ -211,11 +211,11 @@ class PaymentIntentService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\PaymentIntent
+     * @return \Voxel\Vendor\Stripe\PaymentIntent
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -223,7 +223,7 @@ class PaymentIntentService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
     }
 
     /**
-     * Search for PaymentIntents you’ve previously created using CloudPayments’s <a
+     * Search for PaymentIntents you’ve previously created using Stripe’s <a
      * href="/docs/search#search-query-language">Search Query Language</a>. Don’t use
      * search in read-after-write flows where strict consistency is necessary. Under
      * normal operating conditions, data is searchable in less than a minute.
@@ -231,11 +231,11 @@ class PaymentIntentService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      * during outages. Search functionality is not available to merchants in India.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\SearchResult<\Voxel\Vendor\CloudPayments\PaymentIntent>
+     * @return \Voxel\Vendor\Stripe\SearchResult<\Voxel\Vendor\Stripe\PaymentIntent>
      */
     public function search($params = null, $opts = null)
     {
@@ -253,11 +253,11 @@ class PaymentIntentService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\PaymentIntent
+     * @return \Voxel\Vendor\Stripe\PaymentIntent
      */
     public function update($id, $params = null, $opts = null)
     {
@@ -269,11 +269,11 @@ class PaymentIntentService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\PaymentIntent
+     * @return \Voxel\Vendor\Stripe\PaymentIntent
      */
     public function verifyMicrodeposits($id, $params = null, $opts = null)
     {

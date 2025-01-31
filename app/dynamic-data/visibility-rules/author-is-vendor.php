@@ -13,7 +13,7 @@ class Author_Is_Vendor extends Base_Visibility_Rule {
 	}
 
 	public function get_label(): string {
-		return _x( 'Author is a CloudPayments Connect vendor', 'visibility rules', 'voxel-backend' );
+		return _x( 'Author is a Stripe Connect vendor', 'visibility rules', 'voxel-backend' );
 	}
 
 	public function evaluate(): bool {

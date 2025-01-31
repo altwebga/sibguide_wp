@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\CloudPayments\HttpClient;
+namespace Voxel\Vendor\Stripe\HttpClient;
 
 interface StreamingClientInterface
 {
@@ -13,8 +13,8 @@ interface StreamingClientInterface
      *                         CURLFile)
      * @param callable $readBodyChunkCallable a function that will be called with chunks of bytes from the body if the request is successful
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiConnectionException
-     * @throws \Voxel\Vendor\CloudPayments\Exception\UnexpectedValueException
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiConnectionException
+     * @throws \Voxel\Vendor\Stripe\Exception\UnexpectedValueException
      *
      * @return array an array whose first element is raw request body, second
      *    element is HTTP status code and third array of HTTP headers

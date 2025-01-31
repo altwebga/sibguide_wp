@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service\FinancialConnections;
+namespace Voxel\Vendor\Stripe\Service\FinancialConnections;
 
 /**
  * Service factory class for API resources in the FinancialConnections namespace.
@@ -11,7 +11,7 @@ namespace Voxel\Vendor\CloudPayments\Service\FinancialConnections;
  * @property SessionService $sessions
  * @property TransactionService $transactions
  */
-class FinancialConnectionsServiceFactory extends \Voxel\Vendor\CloudPayments\Service\AbstractServiceFactory
+class FinancialConnectionsServiceFactory extends \Voxel\Vendor\Stripe\Service\AbstractServiceFactory
 {
     /**
      * @var array<string, string>

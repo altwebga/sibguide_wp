@@ -10,8 +10,8 @@ if ( ! defined('ABSPATH') ) {
 
 trait Vendor_Trait {
 
-	public static function get_by_cloudpayments_vendor_id( $vendor_id ): ?\Voxel\User {
-		$meta_key = \Voxel\CloudPayments::is_test_mode() ? 'voxel:test_cloudpayments_account_id' : 'voxel:cloudpayments_account_id';
+	public static function get_by_stripe_vendor_id( $vendor_id ): ?\Voxel\User {
+		$meta_key = \Voxel\Stripe::is_test_mode() ? 'voxel:test_stripe_account_id' : 'voxel:stripe_account_id';
 		$results = get_users( [
 			'meta_key' => $meta_key,
 			'meta_value' => $vendor_id,
@@ -22,41 +22,41 @@ trait Vendor_Trait {
 		return \Voxel\User::get( array_shift( $results ) );
 	}
 
-	public function get_cloudpayments_vendor_id() {
-		$meta_key = \Voxel\CloudPayments::is_test_mode() ? 'voxel:test_cloudpayments_account_id' : 'voxel:cloudpayments_account_id';
+	public function get_stripe_vendor_id() {
+		$meta_key = \Voxel\Stripe::is_test_mode() ? 'voxel:test_stripe_account_id' : 'voxel:stripe_account_id';
 		return get_user_meta( $this->get_id(), $meta_key, true );
 	}
 
-	public function get_cloudpayments_vendor() {
-		$vendor_id = $this->get_cloudpayments_vendor_id();
+	public function get_stripe_vendor() {
+		$vendor_id = $this->get_stripe_vendor_id();
 		if ( empty( $vendor_id ) ) {
-			throw new \Exception( _x( 'CloudPayments account not set up for this user.', 'orders', 'voxel' ) );
+			throw new \Exception( _x( 'Stripe account not set up for this user.', 'orders', 'voxel' ) );
 		}
 
-		$cloudpayments = \Voxel\CloudPayments::getClient();
-		return $cloudpayments->accounts->retrieve( $vendor_id );
+		$stripe = \Voxel\Stripe::getClient();
+		return $stripe->accounts->retrieve( $vendor_id );
 	}
 
-	public function get_or_create_cloudpayments_vendor() {
+	public function get_or_create_stripe_vendor() {
 		try {
-			$account = $this->get_cloudpayments_vendor();
+			$account = $this->get_stripe_vendor();
 		} catch ( \Exception $e ) {
-			$cloudpayments = \Voxel\CloudPayments::getClient();
-			$account = $cloudpayments->accounts->create( [
+			$stripe = \Voxel\Stripe::getClient();
+			$account = $stripe->accounts->create( [
 				'type' => 'express',
 				'email' => $this->get_email(),
 			] );
 
-			$meta_key = \Voxel\CloudPayments::is_test_mode() ? 'voxel:test_cloudpayments_account_id' : 'voxel:cloudpayments_account_id';
+			$meta_key = \Voxel\Stripe::is_test_mode() ? 'voxel:test_stripe_account_id' : 'voxel:stripe_account_id';
 			update_user_meta( $this->get_id(), $meta_key, $account->id );
-			$this->cloudpayments_vendor_updated( $account );
+			$this->stripe_vendor_updated( $account );
 		}
 
 		return $account;
 	}
 
-	public function cloudpayments_vendor_updated( \Voxel\Vendor\CloudPayments\Account $account ) {
-		$meta_key = \Voxel\CloudPayments::is_test_mode() ? 'voxel:test_cloudpayments_account' : 'voxel:cloudpayments_account';
+	public function stripe_vendor_updated( \Voxel\Vendor\Stripe\Account $account ) {
+		$meta_key = \Voxel\Stripe::is_test_mode() ? 'voxel:test_stripe_account' : 'voxel:stripe_account';
 		update_user_meta( $this->get_id(), $meta_key, wp_slash( wp_json_encode( [
 			'charges_enabled' => $account->charges_enabled,
 			'details_submitted' => $account->details_submitted,
@@ -64,13 +64,13 @@ trait Vendor_Trait {
 		] ) ) );
 	}
 
-	public function get_cloudpayments_vendor_details() {
+	public function get_stripe_vendor_details() {
 		if ( ! is_null( $this->account_details ) ) {
 			return $this->account_details;
 		}
 
-		$account_id = $this->get_cloudpayments_vendor_id();
-		$meta_key = \Voxel\CloudPayments::is_test_mode() ? 'voxel:test_cloudpayments_account' : 'voxel:cloudpayments_account';
+		$account_id = $this->get_stripe_vendor_id();
+		$meta_key = \Voxel\Stripe::is_test_mode() ? 'voxel:test_stripe_account' : 'voxel:stripe_account';
 		$details = (array) json_decode( get_user_meta( $this->get_id(), $meta_key, true ), true );
 
 		$this->account_details = (object) [
@@ -89,11 +89,11 @@ trait Vendor_Trait {
 			return false;
 		}
 
-		if ( $this->has_cap('administrator') && apply_filters( 'voxel/cloudpayments_connect/enable_onboarding_for_admins', false ) !== true ) {
+		if ( $this->has_cap('administrator') && apply_filters( 'voxel/stripe_connect/enable_onboarding_for_admins', false ) !== true ) {
 			return false;
 		}
 
-		$details = $this->get_cloudpayments_vendor_details();
+		$details = $this->get_stripe_vendor_details();
 
 		return $details->exists && $details->charges_enabled;
 	}
@@ -200,7 +200,7 @@ trait Vendor_Trait {
 	}
 
 	public function get_vendor_shipping_zones_schema(): \Voxel\Utils\Config_Schema\Data_Object_List {
-		$shipping_countries = \Voxel\CloudPayments\Country_Codes::shipping_supported();
+		$shipping_countries = \Voxel\Stripe\Country_Codes::shipping_supported();
 		return Schema::Object_List( [
 			'key' => Schema::String(),
 			'label' => Schema::String(),

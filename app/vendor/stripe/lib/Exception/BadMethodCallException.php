@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\CloudPayments\Exception;
+namespace Voxel\Vendor\Stripe\Exception;
 
 class BadMethodCallException extends \BadMethodCallException implements ExceptionInterface
 {

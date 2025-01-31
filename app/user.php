@@ -210,7 +210,7 @@ class User {
 			try {
 				$price = new \Voxel\Plan_Price( [
 					'id' => $membership->get_price_id(),
-					'mode' => \Voxel\CloudPayments::is_test_mode() ? 'test' : 'live',
+					'mode' => \Voxel\Stripe::is_test_mode() ? 'test' : 'live',
 					'plan' => $plan->get_key(),
 				] );
 			} catch ( \Exception $e ) {
@@ -245,7 +245,7 @@ class User {
 			try {
 				$price = new \Voxel\Plan_Price( [
 					'id' => $membership->get_price_id(),
-					'mode' => \Voxel\CloudPayments::is_test_mode() ? 'test' : 'live',
+					'mode' => \Voxel\Stripe::is_test_mode() ? 'test' : 'live',
 					'plan' => $plan->get_key(),
 				] );
 

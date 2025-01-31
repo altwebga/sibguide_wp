@@ -2,15 +2,15 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service\Issuing;
+namespace Voxel\Vendor\Stripe\Service\Issuing;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
-class CardholderService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
+class CardholderService extends \Voxel\Vendor\Stripe\Service\AbstractService
 {
     /**
      * Returns a list of Issuing <code>Cardholder</code> objects. The objects are
@@ -18,11 +18,11 @@ class CardholderService extends \Voxel\Vendor\CloudPayments\Service\AbstractServ
      * object appearing first.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Issuing\Cardholder>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Issuing\Cardholder>
      */
     public function all($params = null, $opts = null)
     {
@@ -33,11 +33,11 @@ class CardholderService extends \Voxel\Vendor\CloudPayments\Service\AbstractServ
      * Creates a new Issuing <code>Cardholder</code> object that can be issued cards.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Issuing\Cardholder
+     * @return \Voxel\Vendor\Stripe\Issuing\Cardholder
      */
     public function create($params = null, $opts = null)
     {
@@ -49,11 +49,11 @@ class CardholderService extends \Voxel\Vendor\CloudPayments\Service\AbstractServ
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Issuing\Cardholder
+     * @return \Voxel\Vendor\Stripe\Issuing\Cardholder
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -67,11 +67,11 @@ class CardholderService extends \Voxel\Vendor\CloudPayments\Service\AbstractServ
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Issuing\Cardholder
+     * @return \Voxel\Vendor\Stripe\Issuing\Cardholder
      */
     public function update($id, $params = null, $opts = null)
     {

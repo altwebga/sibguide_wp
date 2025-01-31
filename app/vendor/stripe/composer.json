@@ -1,17 +1,17 @@
 {
-  "name": "cloudpayments/cloudpayments-php",
-  "description": "CloudPayments PHP Library",
+  "name": "stripe/stripe-php",
+  "description": "Stripe PHP Library",
   "keywords": [
-    "cloudpayments",
+    "stripe",
     "payment processing",
     "api"
   ],
-  "homepage": "https://cloudpayments.com/",
+  "homepage": "https://stripe.com/",
   "license": "MIT",
   "authors": [
     {
-      "name": "CloudPayments and contributors",
-      "homepage": "https://github.com/cloudpayments/cloudpayments-php/contributors"
+      "name": "Stripe and contributors",
+      "homepage": "https://github.com/stripe/stripe-php/contributors"
     }
   ],
   "require": {
@@ -27,14 +27,14 @@
   },
   "autoload": {
     "psr-4": {
-      "CloudPayments\\": "lib/"
+      "Stripe\\": "lib/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "CloudPayments\\": [
+      "Stripe\\": [
         "tests/",
-        "tests/CloudPayments/"
+        "tests/Stripe/"
       ]
     }
   },

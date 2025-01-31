@@ -2,12 +2,12 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Radar;
+namespace Voxel\Vendor\Stripe\Radar;
 
 /**
  * Value lists allow you to group values together which can then be referenced in rules.
  *
- * Related guide: <a href="https://cloudpayments.com/docs/radar/lists#managing-list-items">Default CloudPayments lists</a>
+ * Related guide: <a href="https://stripe.com/docs/radar/lists#managing-list-items">Default Stripe lists</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -15,20 +15,20 @@ namespace Voxel\Vendor\CloudPayments\Radar;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $created_by The name or email address of the user who created this value list.
  * @property string $item_type The type of items in the value list. One of <code>card_fingerprint</code>, <code>us_bank_account_fingerprint</code>, <code>sepa_debit_fingerprint</code>, <code>card_bin</code>, <code>email</code>, <code>ip_address</code>, <code>country</code>, <code>string</code>, <code>case_sensitive_string</code>, or <code>customer_id</code>.
- * @property \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Radar\ValueListItem> $list_items List of items contained within this value list.
+ * @property \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Radar\ValueListItem> $list_items List of items contained within this value list.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property \Voxel\Vendor\CloudPayments\CloudPaymentsObject $metadata Set of <a href="https://cloudpayments.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property \Voxel\Vendor\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $name The name of the value list.
  */
-class ValueList extends \Voxel\Vendor\CloudPayments\ApiResource
+class ValueList extends \Voxel\Vendor\Stripe\ApiResource
 {
     const OBJECT_NAME = 'radar.value_list';
 
-    use \Voxel\Vendor\CloudPayments\ApiOperations\All;
-    use \Voxel\Vendor\CloudPayments\ApiOperations\Create;
-    use \Voxel\Vendor\CloudPayments\ApiOperations\Delete;
-    use \Voxel\Vendor\CloudPayments\ApiOperations\Retrieve;
-    use \Voxel\Vendor\CloudPayments\ApiOperations\Update;
+    use \Voxel\Vendor\Stripe\ApiOperations\All;
+    use \Voxel\Vendor\Stripe\ApiOperations\Create;
+    use \Voxel\Vendor\Stripe\ApiOperations\Delete;
+    use \Voxel\Vendor\Stripe\ApiOperations\Retrieve;
+    use \Voxel\Vendor\Stripe\ApiOperations\Update;
 
     const ITEM_TYPE_CARD_BIN = 'card_bin';
     const ITEM_TYPE_CARD_FINGERPRINT = 'card_fingerprint';

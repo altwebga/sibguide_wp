@@ -1,8 +1,8 @@
 <?php
 
-namespace Voxel\Vendor\CloudPayments\Util;
+namespace Voxel\Vendor\Stripe\Util;
 
-use Voxel\Vendor\CloudPayments\CloudPaymentsObject;
+use Voxel\Vendor\Stripe\StripeObject;
 
 abstract class Util
 {
@@ -34,20 +34,20 @@ abstract class Util
     }
 
     /**
-     * Converts a response from the CloudPayments API to the corresponding PHP object.
+     * Converts a response from the Stripe API to the corresponding PHP object.
      *
-     * @param array $resp the response from the CloudPayments API
+     * @param array $resp the response from the Stripe API
      * @param array $opts
      *
-     * @return array|CloudPaymentsObject
+     * @return array|StripeObject
      */
-    public static function convertToCloudPaymentsObject($resp, $opts)
+    public static function convertToStripeObject($resp, $opts)
     {
-        $types = \Voxel\Vendor\CloudPayments\Util\ObjectTypes::mapping;
+        $types = \Voxel\Vendor\Stripe\Util\ObjectTypes::mapping;
         if (self::isList($resp)) {
             $mapped = [];
             foreach ($resp as $i) {
-                $mapped[] = self::convertToCloudPaymentsObject($i, $opts);
+                $mapped[] = self::convertToStripeObject($i, $opts);
             }
 
             return $mapped;
@@ -56,7 +56,7 @@ abstract class Util
             if (isset($resp['object']) && \is_string($resp['object']) && isset($types[$resp['object']])) {
                 $class = $types[$resp['object']];
             } else {
-                $class = \Voxel\Vendor\CloudPayments\CloudPaymentsObject::class;
+                $class = \Voxel\Vendor\Stripe\StripeObject::class;
             }
 
             return $class::constructFrom($resp, $opts);
@@ -80,7 +80,7 @@ abstract class Util
                 \trigger_error('It looks like the mbstring extension is not enabled. ' .
                     'UTF-8 strings will not properly be encoded. Ask your system ' .
                     'administrator to enable the mbstring extension, or write to ' .
-                    'support@cloudpayments.com if you have any questions.', \E_USER_WARNING);
+                    'support@stripe.com if you have any questions.', \E_USER_WARNING);
             }
         }
 
@@ -132,7 +132,7 @@ abstract class Util
      */
     public static function objectsToIds($h)
     {
-        if ($h instanceof \Voxel\Vendor\CloudPayments\ApiResource) {
+        if ($h instanceof \Voxel\Vendor\Stripe\ApiResource) {
             return $h->id;
         }
         if (static::isList($h)) {
@@ -243,7 +243,7 @@ abstract class Util
     public static function normalizeId($id)
     {
         if (\is_array($id)) {
-            // see https://github.com/cloudpayments/cloudpayments-php/pull/1602
+            // see https://github.com/stripe/stripe-php/pull/1602
             if (!isset($id['id'])) {
                 return [null, $id];
             }

@@ -79,8 +79,8 @@ class Type_Subscription extends Base_Type {
 	public function get_price_for_additional_posts() {
 		$prices = [];
 		$limits = $this->plan->get_submission_limits();
-		$mode = \Voxel\CloudPayments::is_test_mode() ? 'test' : 'live';
-		$is_zero_decimal = \Voxel\CloudPayments\Currencies::is_zero_decimal( strtoupper( $this->get_currency() ) );
+		$mode = \Voxel\Stripe::is_test_mode() ? 'test' : 'live';
+		$is_zero_decimal = \Voxel\Stripe\Currencies::is_zero_decimal( strtoupper( $this->get_currency() ) );
 
 		foreach ( $limits as $post_type_key => $limit ) {
 			$price_per_addition = $limit['price_per_addition'][ $mode ][ $this->price_id ] ?? null;

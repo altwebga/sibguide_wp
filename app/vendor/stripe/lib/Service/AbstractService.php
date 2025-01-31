@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\CloudPayments\Service;
+namespace Voxel\Vendor\Stripe\Service;
 
 /**
  * Abstract base class for all services.
@@ -8,19 +8,19 @@ namespace Voxel\Vendor\CloudPayments\Service;
 abstract class AbstractService
 {
     /**
-     * @var \Voxel\Vendor\CloudPayments\CloudPaymentsClientInterface
+     * @var \Voxel\Vendor\Stripe\StripeClientInterface
      */
     protected $client;
 
     /**
-     * @var \Voxel\Vendor\CloudPayments\CloudPaymentsStreamingClientInterface
+     * @var \Voxel\Vendor\Stripe\StripeStreamingClientInterface
      */
     protected $streamingClient;
 
     /**
      * Initializes a new instance of the {@link AbstractService} class.
      *
-     * @param \Voxel\Vendor\CloudPayments\CloudPaymentsClientInterface $client
+     * @param \Voxel\Vendor\Stripe\StripeClientInterface $client
      */
     public function __construct($client)
     {
@@ -31,7 +31,7 @@ abstract class AbstractService
     /**
      * Gets the client used by this service to send requests.
      *
-     * @return \Voxel\Vendor\CloudPayments\CloudPaymentsClientInterface
+     * @return \Voxel\Vendor\Stripe\StripeClientInterface
      */
     public function getClient()
     {
@@ -41,7 +41,7 @@ abstract class AbstractService
     /**
      * Gets the client used by this service to send requests.
      *
-     * @return \Voxel\Vendor\CloudPayments\CloudPaymentsStreamingClientInterface
+     * @return \Voxel\Vendor\Stripe\StripeStreamingClientInterface
      */
     public function getStreamingClient()
     {
@@ -77,21 +77,21 @@ abstract class AbstractService
 
     protected function requestStream($method, $path, $readBodyChunkCallable, $params, $opts)
     {
-        // TODO (MAJOR): Add this method to CloudPaymentsClientInterface
+        // TODO (MAJOR): Add this method to StripeClientInterface
         // @phpstan-ignore-next-line
         return $this->getStreamingClient()->requestStream($method, $path, $readBodyChunkCallable, self::formatParams($params), $opts);
     }
 
     protected function requestCollection($method, $path, $params, $opts)
     {
-        // TODO (MAJOR): Add this method to CloudPaymentsClientInterface
+        // TODO (MAJOR): Add this method to StripeClientInterface
         // @phpstan-ignore-next-line
         return $this->getClient()->requestCollection($method, $path, self::formatParams($params), $opts);
     }
 
     protected function requestSearchResult($method, $path, $params, $opts)
     {
-        // TODO (MAJOR): Add this method to CloudPaymentsClientInterface
+        // TODO (MAJOR): Add this method to StripeClientInterface
         // @phpstan-ignore-next-line
         return $this->getClient()->requestSearchResult($method, $path, self::formatParams($params), $opts);
     }
@@ -102,7 +102,7 @@ abstract class AbstractService
             if (null === $id || '' === \trim($id)) {
                 $msg = 'The resource ID cannot be null or whitespace.';
 
-                throw new \Voxel\Vendor\CloudPayments\Exception\InvalidArgumentException($msg);
+                throw new \Voxel\Vendor\Stripe\Exception\InvalidArgumentException($msg);
             }
         }
 

@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\TestHelpers;
+namespace Voxel\Vendor\Stripe\TestHelpers;
 
 /**
  * A test clock enables deterministic control over objects in testmode. With a test clock, you can create
@@ -18,14 +18,14 @@ namespace Voxel\Vendor\CloudPayments\TestHelpers;
  * @property null|string $name The custom name supplied at creation.
  * @property string $status The status of the Test Clock.
  */
-class TestClock extends \Voxel\Vendor\CloudPayments\ApiResource
+class TestClock extends \Voxel\Vendor\Stripe\ApiResource
 {
     const OBJECT_NAME = 'test_helpers.test_clock';
 
-    use \Voxel\Vendor\CloudPayments\ApiOperations\All;
-    use \Voxel\Vendor\CloudPayments\ApiOperations\Create;
-    use \Voxel\Vendor\CloudPayments\ApiOperations\Delete;
-    use \Voxel\Vendor\CloudPayments\ApiOperations\Retrieve;
+    use \Voxel\Vendor\Stripe\ApiOperations\All;
+    use \Voxel\Vendor\Stripe\ApiOperations\Create;
+    use \Voxel\Vendor\Stripe\ApiOperations\Delete;
+    use \Voxel\Vendor\Stripe\ApiOperations\Retrieve;
 
     const STATUS_ADVANCING = 'advancing';
     const STATUS_INTERNAL_FAILURE = 'internal_failure';
@@ -35,9 +35,9 @@ class TestClock extends \Voxel\Vendor\CloudPayments\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\TestHelpers\TestClock the advanced test clock
+     * @return \Voxel\Vendor\Stripe\TestHelpers\TestClock the advanced test clock
      */
     public function advance($params = null, $opts = null)
     {

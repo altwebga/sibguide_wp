@@ -2,13 +2,13 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments;
+namespace Voxel\Vendor\Stripe;
 
 /**
- * Usage records allow you to report customer usage and metrics to CloudPayments for
+ * Usage records allow you to report customer usage and metrics to Stripe for
  * metered billing of subscription prices.
  *
- * Related guide: <a href="https://cloudpayments.com/docs/billing/subscriptions/metered-billing">Metered billing</a>
+ * Related guide: <a href="https://stripe.com/docs/billing/subscriptions/metered-billing">Metered billing</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.

@@ -10,7 +10,7 @@ if ( ! defined('ABSPATH') ) {
 				type="number" class="ts-filter" v-model="value.amount" min="0"
 				placeholder="<?= esc_attr( _x( 'Add price', 'product field', 'voxel' ) ) ?>"
 			>
-			<span class="input-suffix"><?= \Voxel\get('settings.cloudpayments.currency') ?></span>
+			<span class="input-suffix"><?= \Voxel\get('settings.stripe.currency') ?></span>
 		</div>
 	</div>
 
@@ -21,7 +21,7 @@ if ( ! defined('ABSPATH') ) {
 				type="number" class="ts-filter" v-model="value.discount_amount" min="0"
 				placeholder="<?= esc_attr( _x( 'Add price', 'product field', 'voxel' ) ) ?>"
 			>
-			<span class="input-suffix"><?= \Voxel\get('settings.cloudpayments.currency') ?></span>
+			<span class="input-suffix"><?= \Voxel\get('settings.stripe.currency') ?></span>
 		</div>
 	</div>
 </script>

@@ -1,12 +1,12 @@
 <?php
 
-namespace Voxel\Vendor\CloudPayments\ApiOperations;
+namespace Voxel\Vendor\Stripe\ApiOperations;
 
 /**
  * Trait for updatable resources. Adds an `update()` static method and a
  * `save()` method to the class.
  *
- * This trait should only be applied to classes that derive from CloudPaymentsObject.
+ * This trait should only be applied to classes that derive from StripeObject.
  */
 trait Update
 {
@@ -15,7 +15,7 @@ trait Update
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
      * @return static the updated resource
      */
@@ -25,7 +25,7 @@ trait Update
         $url = static::resourceUrl($id);
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
-        $obj = \Voxel\Vendor\CloudPayments\Util\Util::convertToCloudPaymentsObject($response->json, $opts);
+        $obj = \Voxel\Vendor\Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -34,7 +34,7 @@ trait Update
     /**
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
      * @return static the saved resource
      *

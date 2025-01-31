@@ -1,29 +1,29 @@
 <?php
 
-namespace Voxel\Controllers\Frontend\Payments\CloudPayments;
+namespace Voxel\Controllers\Frontend\Payments\Stripe;
 
 if ( ! defined('ABSPATH') ) {
 	exit;
 }
 
-class CloudPayments_Controller extends \Voxel\Controllers\Base_Controller {
+class Stripe_Controller extends \Voxel\Controllers\Base_Controller {
 
 	protected function hooks() {
-		$this->on( 'voxel_ajax_cloudpayments.webhooks', '@handle_webhooks' );
-		$this->on( 'voxel_ajax_nopriv_cloudpayments.webhooks', '@handle_webhooks' );
+		$this->on( 'voxel_ajax_stripe.webhooks', '@handle_webhooks' );
+		$this->on( 'voxel_ajax_nopriv_stripe.webhooks', '@handle_webhooks' );
 
-		$this->on( 'voxel_ajax_cloudpayments.connect_webhooks', '@handle_connect_webhooks' );
-		$this->on( 'voxel_ajax_nopriv_cloudpayments.connect_webhooks', '@handle_connect_webhooks' );
+		$this->on( 'voxel_ajax_stripe.connect_webhooks', '@handle_connect_webhooks' );
+		$this->on( 'voxel_ajax_nopriv_stripe.connect_webhooks', '@handle_connect_webhooks' );
 	}
 
 	protected function handle_webhooks() {
-		$cloudpayments = \Voxel\CloudPayments::getClient();
+		$stripe = \Voxel\Stripe::getClient();
 
-		if ( \Voxel\get( 'settings.cloudpayments.webhooks.local.enabled' ) ) {
-			$endpoint_secret = \Voxel\get( 'settings.cloudpayments.webhooks.local.secret' );
+		if ( \Voxel\get( 'settings.stripe.webhooks.local.enabled' ) ) {
+			$endpoint_secret = \Voxel\get( 'settings.stripe.webhooks.local.secret' );
 		} else {
-			$mode = \Voxel\CloudPayments::is_test_mode() ? 'test' : 'live';
-			$endpoint_secret = \Voxel\get( 'settings.cloudpayments.webhooks.'.$mode.'.secret' );
+			$mode = \Voxel\Stripe::is_test_mode() ? 'test' : 'live';
+			$endpoint_secret = \Voxel\get( 'settings.stripe.webhooks.'.$mode.'.secret' );
 		}
 
 		$payload = @file_get_contents('php://input');
@@ -31,14 +31,14 @@ class CloudPayments_Controller extends \Voxel\Controllers\Base_Controller {
 		$event = null;
 
 		try {
-			$event = \Voxel\Vendor\CloudPayments\Webhook::constructEvent(
+			$event = \Voxel\Vendor\Stripe\Webhook::constructEvent(
 				$payload, $sig_header, $endpoint_secret
 			);
 		} catch( \UnexpectedValueException $e ) {
 			// Invalid payload
 			http_response_code(400);
 			exit();
-		} catch( \Voxel\Vendor\CloudPayments\Exception\SignatureVerificationException $e ) {
+		} catch( \Voxel\Vendor\Stripe\Exception\SignatureVerificationException $e ) {
 			// Invalid signature
 			http_response_code(400);
 			exit();
@@ -64,14 +64,14 @@ class CloudPayments_Controller extends \Voxel\Controllers\Base_Controller {
 						if ( $order ) {
 							if ( $session->mode === 'payment' ) {
 								if ( $session->payment_intent === null && $order->get_details( 'checkout.is_zero_amount' ) ) {
-									do_action( 'voxel/cloudpayments_payments/zero_amount/event:'.$event_type, $event, $session, $order );
+									do_action( 'voxel/stripe_payments/zero_amount/event:'.$event_type, $event, $session, $order );
 								} else {
-									$payment_intent = $cloudpayments->paymentIntents->retrieve( $session->payment_intent );
-									do_action( 'voxel/cloudpayments_payments/event:'.$event_type, $event, $session, $payment_intent, $order );
+									$payment_intent = $stripe->paymentIntents->retrieve( $session->payment_intent );
+									do_action( 'voxel/stripe_payments/event:'.$event_type, $event, $session, $payment_intent, $order );
 								}
 							} elseif ( $session->mode === 'subscription' ) {
-								$subscription = $cloudpayments->subscriptions->retrieve( $session->subscription );
-								do_action( 'voxel/cloudpayments_subscriptions/event:'.$event_type, $event, $session, $subscription, $order );
+								$subscription = $stripe->subscriptions->retrieve( $session->subscription );
+								do_action( 'voxel/stripe_subscriptions/event:'.$event_type, $event, $session, $subscription, $order );
 							}
 						}
 					}
@@ -87,13 +87,13 @@ class CloudPayments_Controller extends \Voxel\Controllers\Base_Controller {
 					$charge = $event->data->object;
 					if ( $charge->payment_intent ) {
 						$order = \Voxel\Product_Types\Orders\Order::find( [
-							'payment_method' => 'cloudpayments_payment',
+							'payment_method' => 'stripe_payment',
 							'transaction_id' => $charge->payment_intent,
 						] );
 
 						if ( $order ) {
-							$payment_intent = $cloudpayments->paymentIntents->retrieve( $charge->payment_intent );
-							do_action( 'voxel/cloudpayments_payments/event:'.$event_type, $event, $charge, $payment_intent, $order );
+							$payment_intent = $stripe->paymentIntents->retrieve( $charge->payment_intent );
+							do_action( 'voxel/stripe_payments/event:'.$event_type, $event, $charge, $payment_intent, $order );
 						}
 					}
 				}
@@ -104,13 +104,13 @@ class CloudPayments_Controller extends \Voxel\Controllers\Base_Controller {
 				$refund = $event->data->object;
 				if ( $refund->payment_intent ) {
 					$order = \Voxel\Product_Types\Orders\Order::find( [
-						'payment_method' => 'cloudpayments_payment',
+						'payment_method' => 'stripe_payment',
 						'transaction_id' => $refund->payment_intent,
 					] );
 
 					if ( $order ) {
-						$payment_intent = $cloudpayments->paymentIntents->retrieve( $refund->payment_intent );
-						do_action( 'voxel/cloudpayments_payments/event:charge.refund.updated', $event, $refund, $payment_intent, $order );
+						$payment_intent = $stripe->paymentIntents->retrieve( $refund->payment_intent );
+						do_action( 'voxel/stripe_payments/event:charge.refund.updated', $event, $refund, $payment_intent, $order );
 					}
 				}
 			}
@@ -119,12 +119,12 @@ class CloudPayments_Controller extends \Voxel\Controllers\Base_Controller {
 			if ( $event->type === 'payment_intent.canceled' ) {
 				$payment_intent = $event->data->object;
 				$order = \Voxel\Product_Types\Orders\Order::find( [
-					'payment_method' => 'cloudpayments_payment',
+					'payment_method' => 'stripe_payment',
 					'transaction_id' => $payment_intent->id,
 				] );
 
 				if ( $order ) {
-					do_action( 'voxel/cloudpayments_payments/event:charge.refund.updated', $event, $payment_intent, $payment_intent, $order );
+					do_action( 'voxel/stripe_payments/event:charge.refund.updated', $event, $payment_intent, $payment_intent, $order );
 				}
 			}
 
@@ -137,12 +137,12 @@ class CloudPayments_Controller extends \Voxel\Controllers\Base_Controller {
 				if ( $event->type === $event_type ) {
 					$subscription = $event->data->object;
 					$order = \Voxel\Product_Types\Orders\Order::find( [
-						'payment_method' => 'cloudpayments_subscription',
+						'payment_method' => 'stripe_subscription',
 						'transaction_id' => $subscription->id,
 					] );
 
 					if ( $order ) {
-						do_action( 'voxel/cloudpayments_subscriptions/event:'.$event_type, $event, $subscription, $order );
+						do_action( 'voxel/stripe_subscriptions/event:'.$event_type, $event, $subscription, $order );
 					}
 
 					// membership
@@ -180,13 +180,13 @@ class CloudPayments_Controller extends \Voxel\Controllers\Base_Controller {
 	}
 
 	protected function handle_connect_webhooks() {
-		$cloudpayments = \Voxel\CloudPayments::getClient();
+		$stripe = \Voxel\Stripe::getClient();
 
-		if ( \Voxel\get( 'settings.cloudpayments.webhooks.local.enabled' ) ) {
-			$endpoint_secret = \Voxel\get( 'settings.cloudpayments.webhooks.local.secret' );
+		if ( \Voxel\get( 'settings.stripe.webhooks.local.enabled' ) ) {
+			$endpoint_secret = \Voxel\get( 'settings.stripe.webhooks.local.secret' );
 		} else {
-			$mode = \Voxel\CloudPayments::is_test_mode() ? 'test' : 'live';
-			$endpoint_secret = \Voxel\get( 'settings.cloudpayments.webhooks.'.$mode.'_connect.secret' );
+			$mode = \Voxel\Stripe::is_test_mode() ? 'test' : 'live';
+			$endpoint_secret = \Voxel\get( 'settings.stripe.webhooks.'.$mode.'_connect.secret' );
 		}
 
 		$payload = @file_get_contents('php://input');
@@ -194,14 +194,14 @@ class CloudPayments_Controller extends \Voxel\Controllers\Base_Controller {
 		$event = null;
 
 		try {
-			$event = \Voxel\Vendor\CloudPayments\Webhook::constructEvent(
+			$event = \Voxel\Vendor\Stripe\Webhook::constructEvent(
 				$payload, $sig_header, $endpoint_secret
 			);
 		} catch( \UnexpectedValueException $e ) {
 			// Invalid payload
 			http_response_code(400);
 			exit();
-		} catch( \Voxel\Vendor\CloudPayments\Exception\SignatureVerificationException $e ) {
+		} catch( \Voxel\Vendor\Stripe\Exception\SignatureVerificationException $e ) {
 			// Invalid signature
 			http_response_code(400);
 			exit();
@@ -211,7 +211,7 @@ class CloudPayments_Controller extends \Voxel\Controllers\Base_Controller {
 			// vendor account updated
 			if ( $event->type === 'account.updated' ) {
 				$account = $event->data->object;
-				do_action( 'voxel/cloudpayments_connect/event:'.$event->type, $event, $account );
+				do_action( 'voxel/stripe_connect/event:'.$event->type, $event, $account );
 			}
 		} catch ( \Exception $e ) {
 			\Voxel\log( $e->getMessage() );

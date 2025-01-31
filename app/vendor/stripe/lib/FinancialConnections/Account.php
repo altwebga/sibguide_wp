@@ -2,37 +2,37 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\FinancialConnections;
+namespace Voxel\Vendor\Stripe\FinancialConnections;
 
 /**
- * A Financial Connections Account represents an account that exists outside of CloudPayments, to which you have been granted some degree of access.
+ * A Financial Connections Account represents an account that exists outside of Stripe, to which you have been granted some degree of access.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $account_holder The account holder that this account belongs to.
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $balance The most recent information about the account's balance.
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $balance_refresh The state of the most recent attempt to refresh the account balance.
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $account_holder The account holder that this account belongs to.
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $balance The most recent information about the account's balance.
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $balance_refresh The state of the most recent attempt to refresh the account balance.
  * @property string $category The type of the account. Account category is further divided in <code>subcategory</code>.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $display_name A human-readable name that has been assigned to this account, either by the account holder or by the institution.
  * @property string $institution_name The name of the institution that holds this account.
  * @property null|string $last4 The last 4 digits of the account number. If present, this will be 4 numeric characters.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|string|\Voxel\Vendor\CloudPayments\FinancialConnections\AccountOwnership $ownership The most recent information about the account's owners.
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $ownership_refresh The state of the most recent attempt to refresh the account owners.
+ * @property null|string|\Voxel\Vendor\Stripe\FinancialConnections\AccountOwnership $ownership The most recent information about the account's owners.
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $ownership_refresh The state of the most recent attempt to refresh the account owners.
  * @property null|string[] $permissions The list of permissions granted by this account.
  * @property string $status The status of the link to the account.
  * @property string $subcategory <p>If <code>category</code> is <code>cash</code>, one of:</p><p>- <code>checking</code> - <code>savings</code> - <code>other</code></p><p>If <code>category</code> is <code>credit</code>, one of:</p><p>- <code>mortgage</code> - <code>line_of_credit</code> - <code>credit_card</code> - <code>other</code></p><p>If <code>category</code> is <code>investment</code> or <code>other</code>, this will be <code>other</code>.</p>
  * @property null|string[] $subscriptions The list of data refresh subscriptions requested on this account.
- * @property string[] $supported_payment_method_types The <a href="https://cloudpayments.com/docs/api/payment_methods/object#payment_method_object-type">PaymentMethod type</a>(s) that can be created from this account.
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $transaction_refresh The state of the most recent attempt to refresh the account transactions.
+ * @property string[] $supported_payment_method_types The <a href="https://stripe.com/docs/api/payment_methods/object#payment_method_object-type">PaymentMethod type</a>(s) that can be created from this account.
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $transaction_refresh The state of the most recent attempt to refresh the account transactions.
  */
-class Account extends \Voxel\Vendor\CloudPayments\ApiResource
+class Account extends \Voxel\Vendor\Stripe\ApiResource
 {
     const OBJECT_NAME = 'financial_connections.account';
 
-    use \Voxel\Vendor\CloudPayments\ApiOperations\All;
-    use \Voxel\Vendor\CloudPayments\ApiOperations\Retrieve;
+    use \Voxel\Vendor\Stripe\ApiOperations\All;
+    use \Voxel\Vendor\Stripe\ApiOperations\Retrieve;
 
     const CATEGORY_CASH = 'cash';
     const CATEGORY_CREDIT = 'credit';
@@ -54,9 +54,9 @@ class Account extends \Voxel\Vendor\CloudPayments\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\FinancialConnections\Account the disconnected account
+     * @return \Voxel\Vendor\Stripe\FinancialConnections\Account the disconnected account
      */
     public function disconnect($params = null, $opts = null)
     {
@@ -72,15 +72,15 @@ class Account extends \Voxel\Vendor\CloudPayments\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\FinancialConnections\AccountOwner> list of account owners
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\FinancialConnections\AccountOwner> list of account owners
      */
     public static function allOwners($id, $params = null, $opts = null)
     {
         $url = static::resourceUrl($id) . '/owners';
         list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
-        $obj = \Voxel\Vendor\CloudPayments\Util\Util::convertToCloudPaymentsObject($response->json, $opts);
+        $obj = \Voxel\Vendor\Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -90,9 +90,9 @@ class Account extends \Voxel\Vendor\CloudPayments\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\FinancialConnections\Account the refreshed account
+     * @return \Voxel\Vendor\Stripe\FinancialConnections\Account the refreshed account
      */
     public function refreshAccount($params = null, $opts = null)
     {
@@ -107,9 +107,9 @@ class Account extends \Voxel\Vendor\CloudPayments\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\FinancialConnections\Account the subscribed account
+     * @return \Voxel\Vendor\Stripe\FinancialConnections\Account the subscribed account
      */
     public function subscribe($params = null, $opts = null)
     {
@@ -124,9 +124,9 @@ class Account extends \Voxel\Vendor\CloudPayments\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\FinancialConnections\Account the unsubscribed account
+     * @return \Voxel\Vendor\Stripe\FinancialConnections\Account the unsubscribed account
      */
     public function unsubscribe($params = null, $opts = null)
     {

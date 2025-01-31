@@ -2,8 +2,8 @@
 
 require __DIR__ . '/lib/Util/ApiVersion.php';
 
-// CloudPayments singleton
-require __DIR__ . '/lib/CloudPayments.php';
+// Stripe singleton
+require __DIR__ . '/lib/Stripe.php';
 
 // Utilities
 require __DIR__ . '/lib/Util/CaseInsensitiveArray.php';
@@ -61,7 +61,7 @@ require __DIR__ . '/lib/ApiOperations/Update.php';
 // Plumbing
 require __DIR__ . '/lib/ApiResponse.php';
 require __DIR__ . '/lib/RequestTelemetry.php';
-require __DIR__ . '/lib/CloudPaymentsObject.php';
+require __DIR__ . '/lib/StripeObject.php';
 require __DIR__ . '/lib/ApiRequestor.php';
 require __DIR__ . '/lib/ApiResource.php';
 require __DIR__ . '/lib/SingletonApiResource.php';
@@ -73,12 +73,12 @@ require __DIR__ . '/lib/SearchResult.php';
 require __DIR__ . '/lib/ErrorObject.php';
 require __DIR__ . '/lib/Issuing/CardDetails.php';
 
-// CloudPaymentsClient
-require __DIR__ . '/lib/BaseCloudPaymentsClientInterface.php';
-require __DIR__ . '/lib/CloudPaymentsClientInterface.php';
-require __DIR__ . '/lib/CloudPaymentsStreamingClientInterface.php';
-require __DIR__ . '/lib/BaseCloudPaymentsClient.php';
-require __DIR__ . '/lib/CloudPaymentsClient.php';
+// StripeClient
+require __DIR__ . '/lib/BaseStripeClientInterface.php';
+require __DIR__ . '/lib/StripeClientInterface.php';
+require __DIR__ . '/lib/StripeStreamingClientInterface.php';
+require __DIR__ . '/lib/BaseStripeClient.php';
+require __DIR__ . '/lib/StripeClient.php';
 
 // The beginning of the section generated from our OpenAPI spec
 require __DIR__ . '/lib/Account.php';

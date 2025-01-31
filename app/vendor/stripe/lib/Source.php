@@ -2,58 +2,58 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments;
+namespace Voxel\Vendor\Stripe;
 
 /**
  * <code>Source</code> objects allow you to accept a variety of payment methods. They
- * represent a customer's payment instrument, and can be used with the CloudPayments API
+ * represent a customer's payment instrument, and can be used with the Stripe API
  * just like a <code>Card</code> object: once chargeable, they can be charged, or can be
  * attached to customers.
  *
- * CloudPayments doesn't recommend using the deprecated <a href="https://cloudpayments.com/docs/api/sources">Sources API</a>.
- * We recommend that you adopt the <a href="https://cloudpayments.com/docs/api/payment_methods">PaymentMethods API</a>.
+ * Stripe doesn't recommend using the deprecated <a href="https://stripe.com/docs/api/sources">Sources API</a>.
+ * We recommend that you adopt the <a href="https://stripe.com/docs/api/payment_methods">PaymentMethods API</a>.
  * This newer API provides access to our latest features and payment method types.
  *
- * Related guides: <a href="https://cloudpayments.com/docs/sources">Sources API</a> and <a href="https://cloudpayments.com/docs/sources/customers">Sources &amp; Customers</a>.
+ * Related guides: <a href="https://stripe.com/docs/sources">Sources API</a> and <a href="https://stripe.com/docs/sources/customers">Sources &amp; Customers</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $ach_credit_transfer
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $ach_debit
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $acss_debit
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $alipay
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $ach_credit_transfer
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $ach_debit
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $acss_debit
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $alipay
  * @property null|int $amount A positive integer in the smallest currency unit (that is, 100 cents for $1.00, or 1 for ¥1, Japanese Yen being a zero-decimal currency) representing the total amount associated with the source. This is the amount for which the source will be chargeable once ready. Required for <code>single_use</code> sources.
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $au_becs_debit
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $bancontact
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $card
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $card_present
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $au_becs_debit
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $bancontact
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $card
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $card_present
  * @property string $client_secret The client secret of the source. Used for client-side retrieval using a publishable key.
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $code_verification
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $code_verification
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|string $currency Three-letter <a href="https://cloudpayments.com/docs/currencies">ISO code for the currency</a> associated with the source. This is the currency for which the source will be chargeable once ready. Required for <code>single_use</code> sources.
+ * @property null|string $currency Three-letter <a href="https://stripe.com/docs/currencies">ISO code for the currency</a> associated with the source. This is the currency for which the source will be chargeable once ready. Required for <code>single_use</code> sources.
  * @property null|string $customer The ID of the customer to which this source is attached. This will not be present when the source has not been attached to a customer.
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $eps
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $eps
  * @property string $flow The authentication <code>flow</code> of the source. <code>flow</code> is one of <code>redirect</code>, <code>receiver</code>, <code>code_verification</code>, <code>none</code>.
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $giropay
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $ideal
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $klarna
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $giropay
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $ideal
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $klarna
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $metadata Set of <a href="https://cloudpayments.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $multibanco
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $owner Information about the owner of the payment instrument that may be used or required by particular source types.
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $p24
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $receiver
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $redirect
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $sepa_credit_transfer
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $sepa_debit
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $sofort
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $source_order
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $multibanco
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $owner Information about the owner of the payment instrument that may be used or required by particular source types.
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $p24
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $receiver
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $redirect
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $sepa_credit_transfer
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $sepa_debit
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $sofort
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $source_order
  * @property null|string $statement_descriptor Extra information about a source. This will appear on your customer's statement every time you charge the source.
  * @property string $status The status of the source, one of <code>canceled</code>, <code>chargeable</code>, <code>consumed</code>, <code>failed</code>, or <code>pending</code>. Only <code>chargeable</code> sources can be used to create a charge.
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $three_d_secure
- * @property string $type The <code>type</code> of the source. The <code>type</code> is a payment method, one of <code>ach_credit_transfer</code>, <code>ach_debit</code>, <code>alipay</code>, <code>bancontact</code>, <code>card</code>, <code>card_present</code>, <code>eps</code>, <code>giropay</code>, <code>ideal</code>, <code>multibanco</code>, <code>klarna</code>, <code>p24</code>, <code>sepa_debit</code>, <code>sofort</code>, <code>three_d_secure</code>, or <code>wechat</code>. An additional hash is included on the source with a name matching this value. It contains additional information specific to the <a href="https://cloudpayments.com/docs/sources">payment method</a> used.
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $three_d_secure
+ * @property string $type The <code>type</code> of the source. The <code>type</code> is a payment method, one of <code>ach_credit_transfer</code>, <code>ach_debit</code>, <code>alipay</code>, <code>bancontact</code>, <code>card</code>, <code>card_present</code>, <code>eps</code>, <code>giropay</code>, <code>ideal</code>, <code>multibanco</code>, <code>klarna</code>, <code>p24</code>, <code>sepa_debit</code>, <code>sofort</code>, <code>three_d_secure</code>, or <code>wechat</code>. An additional hash is included on the source with a name matching this value. It contains additional information specific to the <a href="https://stripe.com/docs/sources">payment method</a> used.
  * @property null|string $usage Either <code>reusable</code> or <code>single_use</code>. Whether this source should be reusable or not. Some source types may or may not be reusable by construction, while others may leave the option at creation. If an incompatible value is passed, an error will be returned.
- * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $wechat
+ * @property null|\Voxel\Vendor\Stripe\StripeObject $wechat
  */
 class Source extends ApiResource
 {
@@ -103,10 +103,10 @@ class Source extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\UnexpectedValueException if the source is not attached to a customer
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\UnexpectedValueException if the source is not attached to a customer
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Source the detached source
+     * @return \Voxel\Vendor\Stripe\Source the detached source
      */
     public function detach($params = null, $opts = null)
     {
@@ -143,15 +143,15 @@ class Source extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\SourceTransaction> list of source transactions
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\SourceTransaction> list of source transactions
      */
     public static function allSourceTransactions($id, $params = null, $opts = null)
     {
         $url = static::resourceUrl($id) . '/source_transactions';
         list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
-        $obj = \Voxel\Vendor\CloudPayments\Util\Util::convertToCloudPaymentsObject($response->json, $opts);
+        $obj = \Voxel\Vendor\Stripe\Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -161,9 +161,9 @@ class Source extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Source the verified source
+     * @return \Voxel\Vendor\Stripe\Source the verified source
      */
     public function verify($params = null, $opts = null)
     {

@@ -8,7 +8,7 @@ if ( ! defined('ABSPATH') ) {
 			<div class="field-head">
 				<p class="field-name" style="color: #fff;">{{ rate }}</p>
 				<div class="field-actions">
-					<a :href="(mode === 'live' ? 'https://dashboard.cloudpayments.com/tax-rates/' : 'https://dashboard.cloudpayments.com/test/tax-rates/') + rate" class="field-action all-center" target="_blank">
+					<a :href="(mode === 'live' ? 'https://dashboard.stripe.com/tax-rates/' : 'https://dashboard.stripe.com/test/tax-rates/') + rate" class="field-action all-center" target="_blank">
 						<i class="las la-external-link-alt"></i>
 					</a>
 					<a href="#" @click.prevent="remove(rate)" class="field-action all-center">

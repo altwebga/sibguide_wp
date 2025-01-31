@@ -2,25 +2,25 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service\Treasury;
+namespace Voxel\Vendor\Stripe\Service\Treasury;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
-class ReceivedCreditService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
+class ReceivedCreditService extends \Voxel\Vendor\Stripe\Service\AbstractService
 {
     /**
      * Returns a list of ReceivedCredits.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Treasury\ReceivedCredit>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Treasury\ReceivedCredit>
      */
     public function all($params = null, $opts = null)
     {
@@ -33,11 +33,11 @@ class ReceivedCreditService extends \Voxel\Vendor\CloudPayments\Service\Abstract
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Treasury\ReceivedCredit
+     * @return \Voxel\Vendor\Stripe\Treasury\ReceivedCredit
      */
     public function retrieve($id, $params = null, $opts = null)
     {

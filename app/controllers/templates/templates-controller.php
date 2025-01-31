@@ -133,7 +133,7 @@ class Templates_Controller extends \Voxel\Controllers\Base_Controller {
 			// 'reservations' => _x( 'Reservations Page', 'templates', 'voxel-backend' ),
 			// 'qr_tags' => _x( 'Order tags: QR code handler', 'templates', 'voxel-backend' ),
 			'terms' => _x( 'Terms & Conditions', 'templates', 'voxel-backend' ),
-			'cloudpayments_account' => _x( 'Seller Dashboard', 'templates', 'voxel-backend' ),
+			'stripe_account' => _x( 'Seller Dashboard', 'templates', 'voxel-backend' ),
 		];
 
 		$templates = \Voxel\get( 'templates', [] );

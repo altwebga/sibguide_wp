@@ -97,7 +97,7 @@ require_once locate_template( 'templates/backend/product-types/partials/rate-lis
 
 								<?php \Voxel\Form_Models\Switcher_Model::render( [
 									'v-model' => 'config.membership.checkout.tax.tax_id_collection',
-									'label' => 'Collect Tax ID in <a href="https://cloudpayments.com/docs/tax/checkout/tax-ids#supported-types" target="_blank">supported countries</a>',
+									'label' => 'Collect Tax ID in <a href="https://stripe.com/docs/tax/checkout/tax-ids#supported-types" target="_blank">supported countries</a>',
 									'classes' => 'x-col-12',
 								] ) ?>
 
@@ -109,7 +109,7 @@ require_once locate_template( 'templates/backend/product-types/partials/rate-lis
 
 								<?php \Voxel\Form_Models\Switcher_Model::render( [
 									'v-model' => 'config.membership.checkout.promotion_codes.enabled',
-									'label' => sprintf( 'Allow <a href="%s" target="_blank">promotion codes</a> in checkout', esc_url( \Voxel\CloudPayments::dashboard_url( '/coupons' ) ) ),
+									'label' => sprintf( 'Allow <a href="%s" target="_blank">promotion codes</a> in checkout', esc_url( \Voxel\Stripe::dashboard_url( '/coupons' ) ) ),
 									'classes' => 'x-col-12',
 								] ) ?>
 
@@ -159,7 +159,7 @@ require_once locate_template( 'templates/backend/product-types/partials/rate-lis
 									'label' => 'Tax collection mode',
 									'classes' => 'x-col-12',
 									'choices' => [
-										'auto' => 'Automatic (CloudPayments Tax)',
+										'auto' => 'Automatic (Stripe Tax)',
 										'manual' => 'Manual',
 										'none' => 'None',
 									],
@@ -168,7 +168,7 @@ require_once locate_template( 'templates/backend/product-types/partials/rate-lis
 								<template v-if="config.membership.checkout.tax.mode === 'manual'">
 									<div class="ts-form-group x-col-12 basic-ul">
 										<li>
-											<a href="<?= esc_url( \Voxel\CloudPayments::dashboard_url( '/tax-rates' ) ) ?>" target="_blank" class="ts-button ts-outline">
+											<a href="<?= esc_url( \Voxel\Stripe::dashboard_url( '/tax-rates' ) ) ?>" target="_blank" class="ts-button ts-outline">
 												<i class="las la-external-link-alt icon-sm"></i>
 												Setup tax rates
 											</a>

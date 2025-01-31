@@ -79,7 +79,7 @@ class Membership_Controller extends \Voxel\Controllers\Base_Controller {
 					}
 
 					$membership = $customer->get_membership();
-					$cloudpayments_base_url = \Voxel\CloudPayments::is_test_mode() ? 'https://dashboard.cloudpayments.com/test/' : 'https://dashboard.cloudpayments.com/';
+					$stripe_base_url = \Voxel\Stripe::is_test_mode() ? 'https://dashboard.stripe.com/test/' : 'https://dashboard.stripe.com/';
 					$plan = $membership->get_selected_plan();
 
 					$config = [
@@ -162,9 +162,9 @@ class Membership_Controller extends \Voxel\Controllers\Base_Controller {
 				// remove membership metadata from the old subscription (if one exists)
 				if ( $current_membership->get_type() === 'subscription' ) {
 					try {
-						$cloudpayments = \Voxel\CloudPayments::getClient();
-						$current_subscription = $cloudpayments->subscriptions->retrieve( $current_membership->get_subscription_id() );
-						$cloudpayments->subscriptions->update( $current_subscription->id, [
+						$stripe = \Voxel\Stripe::getClient();
+						$current_subscription = $stripe->subscriptions->retrieve( $current_membership->get_subscription_id() );
+						$stripe->subscriptions->update( $current_subscription->id, [
 							'metadata' => [
 								'voxel:payment_for' => null,
 								'voxel:plan' => null,
@@ -188,7 +188,7 @@ class Membership_Controller extends \Voxel\Controllers\Base_Controller {
 					$details['trial_allowed'] = true;
 				}
 
-				$meta_key = \Voxel\CloudPayments::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
+				$meta_key = \Voxel\Stripe::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
 				update_user_meta( $customer->get_id(), $meta_key, wp_slash( wp_json_encode( $details ) ) );
 
 				return wp_send_json( [
@@ -201,9 +201,9 @@ class Membership_Controller extends \Voxel\Controllers\Base_Controller {
 						throw new \Exception( __( 'Subscription ID is required', 'voxel-backend' ), 112 );
 					}
 
-					$cloudpayments = \Voxel\CloudPayments::getClient();
-					$subscription = $cloudpayments->subscriptions->retrieve( $payload['subscription_id'] ?? null );
-					if ( $subscription->customer !== $customer->get_cloudpayments_customer_id() ) {
+					$stripe = \Voxel\Stripe::getClient();
+					$subscription = $stripe->subscriptions->retrieve( $payload['subscription_id'] ?? null );
+					if ( $subscription->customer !== $customer->get_stripe_customer_id() ) {
 						throw new \Exception( __( 'Provided subscription does not belongs to this customer', 'voxel-backend' ), 106 );
 					}
 
@@ -213,7 +213,7 @@ class Membership_Controller extends \Voxel\Controllers\Base_Controller {
 
 					if ( $current_membership->get_type() === 'subscription' && $current_membership->get_subscription_id() === $subscription->id ) {
 						if ( $current_membership->get_selected_plan()->get_key() !== $new_plan->get_key() ) {
-							$subscription = $cloudpayments->subscriptions->update( $subscription->id, [
+							$subscription = $stripe->subscriptions->update( $subscription->id, [
 								'metadata' => [
 									'voxel:payment_for' => 'membership',
 									'voxel:plan' => $new_plan->get_key(),
@@ -239,7 +239,7 @@ class Membership_Controller extends \Voxel\Controllers\Base_Controller {
 					}
 
 					if ( ! empty( $update_metadata ) ) {
-						$subscription = $cloudpayments->subscriptions->update( $subscription->id, [
+						$subscription = $stripe->subscriptions->update( $subscription->id, [
 							'metadata' => $update_metadata,
 						] );
 					}
@@ -256,9 +256,9 @@ class Membership_Controller extends \Voxel\Controllers\Base_Controller {
 						throw new \Exception( __( 'Payment Intent ID is required', 'voxel-backend' ), 112 );
 					}
 
-					$cloudpayments = \Voxel\CloudPayments::getClient();
-					$payment_intent = $cloudpayments->paymentIntents->retrieve( $payload['payment_intent_id'] ?? null );
-					if ( $payment_intent->customer !== $customer->get_cloudpayments_customer_id() ) {
+					$stripe = \Voxel\Stripe::getClient();
+					$payment_intent = $stripe->paymentIntents->retrieve( $payload['payment_intent_id'] ?? null );
+					if ( $payment_intent->customer !== $customer->get_stripe_customer_id() ) {
 						throw new \Exception( __( 'Provided payment intent does not belongs to this customer', 'voxel-backend' ), 109 );
 					}
 
@@ -268,7 +268,7 @@ class Membership_Controller extends \Voxel\Controllers\Base_Controller {
 
 					if ( $current_membership->get_type() === 'payment' && $current_membership->get_payment_intent_id() === $payment_intent->id ) {
 						if ( $current_membership->get_selected_plan()->get_key() !== $new_plan->get_key() ) {
-							$payment_intent = $cloudpayments->paymentIntents->update( $payment_intent->id, [
+							$payment_intent = $stripe->paymentIntents->update( $payment_intent->id, [
 								'metadata' => [
 									'voxel:payment_for' => 'membership',
 									'voxel:plan' => $new_plan->get_key(),
@@ -296,7 +296,7 @@ class Membership_Controller extends \Voxel\Controllers\Base_Controller {
 					}
 
 					if ( ! empty( $update_metadata ) ) {
-						$payment_intent = $cloudpayments->paymentIntents->update( $payment_intent->id, [
+						$payment_intent = $stripe->paymentIntents->update( $payment_intent->id, [
 							'metadata' => $update_metadata,
 						] );
 					}
@@ -316,7 +316,7 @@ class Membership_Controller extends \Voxel\Controllers\Base_Controller {
 						'type' => 'default',
 					];
 
-					$meta_key = \Voxel\CloudPayments::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
+					$meta_key = \Voxel\Stripe::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
 					update_user_meta( $customer->get_id(), $meta_key, wp_slash( wp_json_encode( $details ) ) );
 
 					do_action(

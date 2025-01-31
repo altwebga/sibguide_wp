@@ -6,7 +6,7 @@ if ( ! defined('ABSPATH') ) {
 	exit;
 }
 
-trait CloudPayments_Commons {
+trait Stripe_Commons {
 
 	public function get_customer_details(): array {
 		$details = [];

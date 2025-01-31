@@ -22,7 +22,7 @@ class Library_Controller extends \Voxel\Controllers\Base_Controller {
 		'current_plan' => 'Current Plan',
 		'orders' => 'Orders page',
 		// 'reservations' => 'Reservations page',
-		'cloudpayments_account' => 'CloudPayments Connect account',
+		'stripe_account' => 'Stripe Connect account',
 		'checkout' => 'Checkout',
 		// 'qr_tags' => 'Order tags: QR code handler',
 		'kit_popups' => 'Popup styles',

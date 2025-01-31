@@ -29,7 +29,7 @@ return [
 	\Voxel\Controllers\Settings\Settings_Controller::class,
 	\Voxel\Controllers\Settings\Map_Settings_Controller::class,
 	\Voxel\Controllers\Settings\Membership_Settings_Controller::class,
-	\Voxel\Controllers\Settings\CloudPayments_Settings_Controller::class,
+	\Voxel\Controllers\Settings\Stripe_Settings_Controller::class,
 
 	// membership
 	\Voxel\Controllers\Membership\Membership_Controller::class,
@@ -92,12 +92,12 @@ return [
 	\Voxel\Controllers\Frontend\Products\Orders\Modules\Promotion_Controller::class,
 	\Voxel\Controllers\Frontend\Products\Orders\Modules\Stock_Controller::class,
 	\Voxel\Controllers\Frontend\Products\Orders\Modules\Shipping_Controller::class,
-	\Voxel\Controllers\Frontend\Products\CloudPayments_Connect\CloudPayments_Connect_Controller::class,
+	\Voxel\Controllers\Frontend\Products\Stripe_Connect\Stripe_Connect_Controller::class,
 
 	// payments
-	\Voxel\Controllers\Frontend\Payments\CloudPayments\CloudPayments_Controller::class,
-	\Voxel\Controllers\Frontend\Payments\CloudPayments\CloudPayments_Payments_Controller::class,
-	\Voxel\Controllers\Frontend\Payments\CloudPayments\CloudPayments_Subscriptions_Controller::class,
+	\Voxel\Controllers\Frontend\Payments\Stripe\Stripe_Controller::class,
+	\Voxel\Controllers\Frontend\Payments\Stripe\Stripe_Payments_Controller::class,
+	\Voxel\Controllers\Frontend\Payments\Stripe\Stripe_Subscriptions_Controller::class,
 
 	// async actions
 	\Voxel\Controllers\Async\Create_Taxonomy_Action::class,

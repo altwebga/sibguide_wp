@@ -16,7 +16,7 @@ if ( ! defined('ABSPATH') ) {
 <template v-if="config.multivendor.enabled">
 	<div class="ts-group">
 		<div class="ts-group-head">
-			<h3>CloudPayments payments</h3>
+			<h3>Stripe payments</h3>
 		</div>
 		<div class="x-row">
 			<?php \Voxel\Form_Models\Select_Model::render( [
@@ -37,7 +37,7 @@ Separate Charges and Transfers: Creates a charge on the platform. Funds (after f
 			<template v-if="config.multivendor.charge_type === 'destination_charges'">
 				<?php \Voxel\Form_Models\Select_Model::render( [
 					'v-model' => 'config.multivendor.settlement_merchant',
-					'label' => 'Settlement merchant <a style="float:right;" href="https://docs.cloudpayments.com/connect/destination-charges?platform=web&ui=cloudpayments-hosted#settlement-merchant" target="_blank">Learn more</a>',
+					'label' => 'Settlement merchant <a style="float:right;" href="https://docs.stripe.com/connect/destination-charges?platform=web&ui=stripe-hosted#settlement-merchant" target="_blank">Learn more</a>',
 					'classes' => 'x-col-6',
 					'choices' => [
 						'platform' => 'Platform',
@@ -57,7 +57,7 @@ Vendor: The vendor is responsible for their own compliance and legal obligations
 
 	<div class="ts-group">
 		<div class="ts-group-head">
-			<h3>CloudPayments subscriptions</h3>
+			<h3>Stripe subscriptions</h3>
 		</div>
 		<div class="x-row">
 			<div class="ts-form-group x-col-6">
@@ -70,7 +70,7 @@ Vendor: The vendor is responsible for their own compliance and legal obligations
 			<template v-if="config.multivendor.subscriptions.charge_type === 'destination_charges'">
 				<?php \Voxel\Form_Models\Select_Model::render( [
 					'v-model' => 'config.multivendor.subscriptions.settlement_merchant',
-					'label' => 'Settlement merchant <a style="float:right;" href="https://docs.cloudpayments.com/connect/destination-charges?platform=web&ui=cloudpayments-hosted#settlement-merchant" target="_blank">Learn more</a>',
+					'label' => 'Settlement merchant <a style="float:right;" href="https://docs.stripe.com/connect/destination-charges?platform=web&ui=stripe-hosted#settlement-merchant" target="_blank">Learn more</a>',
 					'classes' => 'x-col-6',
 					'choices' => [
 						'platform' => 'Platform',
@@ -140,7 +140,7 @@ Vendor: The vendor is responsible for their own compliance and legal obligations
 									<?php \Voxel\Form_Models\Number_Model::render( [
 										'v-model' => 'fee.fixed_amount',
 										'v-if' => 'fee.type === \'fixed\'',
-										'label' => sprintf( 'Amount (%s)', \Voxel\get('settings.cloudpayments.currency') ),
+										'label' => sprintf( 'Amount (%s)', \Voxel\get('settings.stripe.currency') ),
 										'classes' => 'x-col-4',
 										'min' => 0,
 										'step' => 'any',

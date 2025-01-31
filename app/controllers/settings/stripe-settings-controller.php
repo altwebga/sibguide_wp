@@ -8,7 +8,7 @@ if ( ! defined('ABSPATH') ) {
 	exit;
 }
 
-class CloudPayments_Settings_Controller extends \Voxel\Controllers\Base_Controller {
+class Stripe_Settings_Controller extends \Voxel\Controllers\Base_Controller {
 
 	protected function hooks() {
 		$this->filter( 'voxel/global-settings/register', '@register_settings' );
@@ -16,7 +16,7 @@ class CloudPayments_Settings_Controller extends \Voxel\Controllers\Base_Controll
 	}
 
 	protected function register_settings( $settings ) {
-		$settings['cloudpayments'] = Schema::Object( [
+		$settings['stripe'] = Schema::Object( [
 			'test_mode' => Schema::Bool()->default(true),
 			'key' => Schema::String(),
 			'secret' => Schema::String(),
@@ -71,42 +71,42 @@ class CloudPayments_Settings_Controller extends \Voxel\Controllers\Base_Controll
 
 	protected function settings_updated( $config, $previous_config ) {
 		// if customer portal settings have changed, update configuration (or create new if it doesn't exist)
-		if ( \Voxel\get( 'settings.cloudpayments.secret' ) ) {
-			if ( empty( \Voxel\get( 'settings.cloudpayments.portal.live_config_id' ) ) ) {
+		if ( \Voxel\get( 'settings.stripe.secret' ) ) {
+			if ( empty( \Voxel\get( 'settings.stripe.portal.live_config_id' ) ) ) {
 				// \Voxel\log( 'create_live_customer_portal' );
 				$this->create_live_customer_portal();
-			} elseif ( ( $previous_config['cloudpayments']['portal'] ?? [] ) !== \Voxel\get( 'settings.cloudpayments.portal', [] ) ) {
+			} elseif ( ( $previous_config['stripe']['portal'] ?? [] ) !== \Voxel\get( 'settings.stripe.portal', [] ) ) {
 				// \Voxel\log( 'update_live_customer_portal' );
 				$this->update_live_customer_portal();
 			}
 		}
 
-		if ( \Voxel\get( 'settings.cloudpayments.test_secret' ) ) {
-			if ( empty( \Voxel\get( 'settings.cloudpayments.portal.test_config_id' ) ) ) {
+		if ( \Voxel\get( 'settings.stripe.test_secret' ) ) {
+			if ( empty( \Voxel\get( 'settings.stripe.portal.test_config_id' ) ) ) {
 				// \Voxel\log( 'create_test_customer_portal' );
 				$this->create_test_customer_portal();
-			} elseif ( ( $previous_config['cloudpayments']['portal'] ?? [] ) !== \Voxel\get( 'settings.cloudpayments.portal', [] ) ) {
+			} elseif ( ( $previous_config['stripe']['portal'] ?? [] ) !== \Voxel\get( 'settings.stripe.portal', [] ) ) {
 				// \Voxel\log( 'update_test_customer_portal' );
 				$this->update_test_customer_portal();
 			}
 		}
 
-		if ( ! empty( \Voxel\get( 'settings.cloudpayments.secret' ) ) && empty( \Voxel\get( 'settings.cloudpayments.webhooks.live.id' ) ) ) {
+		if ( ! empty( \Voxel\get( 'settings.stripe.secret' ) ) && empty( \Voxel\get( 'settings.stripe.webhooks.live.id' ) ) ) {
 			// \Voxel\log( 'create_live_webhook_endpoint' );
 			$this->create_live_webhook_endpoint();
 		}
 
-		if ( ! empty( \Voxel\get( 'settings.cloudpayments.secret' ) ) && empty( \Voxel\get( 'settings.cloudpayments.webhooks.live_connect.id' ) ) ) {
+		if ( ! empty( \Voxel\get( 'settings.stripe.secret' ) ) && empty( \Voxel\get( 'settings.stripe.webhooks.live_connect.id' ) ) ) {
 			// \Voxel\log( 'create_live_connect_webhook_endpoint' );
 			$this->create_live_connect_webhook_endpoint();
 		}
 
-		if ( ! empty( \Voxel\get( 'settings.cloudpayments.test_secret' ) ) && empty( \Voxel\get( 'settings.cloudpayments.webhooks.test.id' ) ) ) {
+		if ( ! empty( \Voxel\get( 'settings.stripe.test_secret' ) ) && empty( \Voxel\get( 'settings.stripe.webhooks.test.id' ) ) ) {
 			// \Voxel\log( 'create_test_webhook_endpoint' );
 			$this->create_test_webhook_endpoint();
 		}
 
-		if ( ! empty( \Voxel\get( 'settings.cloudpayments.test_secret' ) ) && empty( \Voxel\get( 'settings.cloudpayments.webhooks.test_connect.id' ) ) ) {
+		if ( ! empty( \Voxel\get( 'settings.stripe.test_secret' ) ) && empty( \Voxel\get( 'settings.stripe.webhooks.test_connect.id' ) ) ) {
 			// \Voxel\log( 'create_test_connect_webhook_endpoint' );
 			$this->create_test_connect_webhook_endpoint();
 		}
@@ -114,13 +114,13 @@ class CloudPayments_Settings_Controller extends \Voxel\Controllers\Base_Controll
 
 	protected function create_live_webhook_endpoint() {
 		try {
-			$cloudpayments = \Voxel\CloudPayments::getLiveClient();
-			$endpoint = $cloudpayments->webhookEndpoints->create( [
-				'url' => home_url( '/?vx=1&action=cloudpayments.webhooks' ),
-				'enabled_events' => \Voxel\CloudPayments::WEBHOOK_EVENTS,
+			$stripe = \Voxel\Stripe::getLiveClient();
+			$endpoint = $stripe->webhookEndpoints->create( [
+				'url' => home_url( '/?vx=1&action=stripe.webhooks' ),
+				'enabled_events' => \Voxel\Stripe::WEBHOOK_EVENTS,
 			] );
 
-			\Voxel\set( 'settings.cloudpayments.webhooks.live', [
+			\Voxel\set( 'settings.stripe.webhooks.live', [
 				'id' => $endpoint->id,
 				'secret' => $endpoint->secret,
 			] );
@@ -131,13 +131,13 @@ class CloudPayments_Settings_Controller extends \Voxel\Controllers\Base_Controll
 
 	protected function create_test_webhook_endpoint() {
 		try {
-			$cloudpayments = \Voxel\CloudPayments::getTestClient();
-			$endpoint = $cloudpayments->webhookEndpoints->create( [
-				'url' => home_url( '/?vx=1&action=cloudpayments.webhooks' ),
-				'enabled_events' => \Voxel\CloudPayments::WEBHOOK_EVENTS,
+			$stripe = \Voxel\Stripe::getTestClient();
+			$endpoint = $stripe->webhookEndpoints->create( [
+				'url' => home_url( '/?vx=1&action=stripe.webhooks' ),
+				'enabled_events' => \Voxel\Stripe::WEBHOOK_EVENTS,
 			] );
 
-			\Voxel\set( 'settings.cloudpayments.webhooks.test', [
+			\Voxel\set( 'settings.stripe.webhooks.test', [
 				'id' => $endpoint->id,
 				'secret' => $endpoint->secret,
 			] );
@@ -148,14 +148,14 @@ class CloudPayments_Settings_Controller extends \Voxel\Controllers\Base_Controll
 
 	protected function create_live_connect_webhook_endpoint() {
 		try {
-			$cloudpayments = \Voxel\CloudPayments::getLiveClient();
-			$endpoint = $cloudpayments->webhookEndpoints->create( [
-				'url' => home_url( '/?vx=1&action=cloudpayments.connect_webhooks' ),
+			$stripe = \Voxel\Stripe::getLiveClient();
+			$endpoint = $stripe->webhookEndpoints->create( [
+				'url' => home_url( '/?vx=1&action=stripe.connect_webhooks' ),
 				'connect' => true,
-				'enabled_events' => \Voxel\CloudPayments::CONNECT_WEBHOOK_EVENTS,
+				'enabled_events' => \Voxel\Stripe::CONNECT_WEBHOOK_EVENTS,
 			] );
 
-			\Voxel\set( 'settings.cloudpayments.webhooks.live_connect', [
+			\Voxel\set( 'settings.stripe.webhooks.live_connect', [
 				'id' => $endpoint->id,
 				'secret' => $endpoint->secret,
 			] );
@@ -166,14 +166,14 @@ class CloudPayments_Settings_Controller extends \Voxel\Controllers\Base_Controll
 
 	protected function create_test_connect_webhook_endpoint() {
 		try {
-			$cloudpayments = \Voxel\CloudPayments::getTestClient();
-			$endpoint = $cloudpayments->webhookEndpoints->create( [
-				'url' => home_url( '/?vx=1&action=cloudpayments.connect_webhooks' ),
+			$stripe = \Voxel\Stripe::getTestClient();
+			$endpoint = $stripe->webhookEndpoints->create( [
+				'url' => home_url( '/?vx=1&action=stripe.connect_webhooks' ),
 				'connect' => true,
-				'enabled_events' => \Voxel\CloudPayments::CONNECT_WEBHOOK_EVENTS,
+				'enabled_events' => \Voxel\Stripe::CONNECT_WEBHOOK_EVENTS,
 			] );
 
-			\Voxel\set( 'settings.cloudpayments.webhooks.test_connect', [
+			\Voxel\set( 'settings.stripe.webhooks.test_connect', [
 				'id' => $endpoint->id,
 				'secret' => $endpoint->secret,
 			] );
@@ -184,9 +184,9 @@ class CloudPayments_Settings_Controller extends \Voxel\Controllers\Base_Controll
 
 	protected function create_live_customer_portal() {
 		try {
-			$cloudpayments = \Voxel\CloudPayments::getLiveClient();
-			$configuration = $cloudpayments->billingPortal->configurations->create( $this->_get_portal_config() );
-			\Voxel\set( 'settings.cloudpayments.portal.live_config_id', $configuration->id );
+			$stripe = \Voxel\Stripe::getLiveClient();
+			$configuration = $stripe->billingPortal->configurations->create( $this->_get_portal_config() );
+			\Voxel\set( 'settings.stripe.portal.live_config_id', $configuration->id );
 		} catch ( \Exception $e ) {
 			\Voxel\log( $e );
 		}
@@ -194,9 +194,9 @@ class CloudPayments_Settings_Controller extends \Voxel\Controllers\Base_Controll
 
 	protected function update_live_customer_portal() {
 		try {
-			$cloudpayments = \Voxel\CloudPayments::getLiveClient();
-			$configuration_id = \Voxel\get( 'settings.cloudpayments.portal.live_config_id' );
-			$cloudpayments->billingPortal->configurations->update( $configuration_id, $this->_get_portal_config() );
+			$stripe = \Voxel\Stripe::getLiveClient();
+			$configuration_id = \Voxel\get( 'settings.stripe.portal.live_config_id' );
+			$stripe->billingPortal->configurations->update( $configuration_id, $this->_get_portal_config() );
 		} catch ( \Exception $e ) {
 			\Voxel\log( $e );
 		}
@@ -204,9 +204,9 @@ class CloudPayments_Settings_Controller extends \Voxel\Controllers\Base_Controll
 
 	protected function create_test_customer_portal() {
 		try {
-			$cloudpayments = \Voxel\CloudPayments::getTestClient();
-			$configuration = $cloudpayments->billingPortal->configurations->create( $this->_get_portal_config() );
-			\Voxel\set( 'settings.cloudpayments.portal.test_config_id', $configuration->id );
+			$stripe = \Voxel\Stripe::getTestClient();
+			$configuration = $stripe->billingPortal->configurations->create( $this->_get_portal_config() );
+			\Voxel\set( 'settings.stripe.portal.test_config_id', $configuration->id );
 		} catch ( \Exception $e ) {
 			\Voxel\log( $e );
 		}
@@ -214,16 +214,16 @@ class CloudPayments_Settings_Controller extends \Voxel\Controllers\Base_Controll
 
 	protected function update_test_customer_portal() {
 		try {
-			$cloudpayments = \Voxel\CloudPayments::getTestClient();
-			$configuration_id = \Voxel\get( 'settings.cloudpayments.portal.test_config_id' );
-			$cloudpayments->billingPortal->configurations->update( $configuration_id, $this->_get_portal_config() );
+			$stripe = \Voxel\Stripe::getTestClient();
+			$configuration_id = \Voxel\get( 'settings.stripe.portal.test_config_id' );
+			$stripe->billingPortal->configurations->update( $configuration_id, $this->_get_portal_config() );
 		} catch ( \Exception $e ) {
 			\Voxel\log( $e );
 		}
 	}
 
 	protected function _get_portal_config() {
-		$portal = \Voxel\get( 'settings.cloudpayments.portal', [] );
+		$portal = \Voxel\get( 'settings.stripe.portal', [] );
 		return [
 			'business_profile' => [
 				'headline' => get_bloginfo( 'name' ),

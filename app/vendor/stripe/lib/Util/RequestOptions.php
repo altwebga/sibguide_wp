@@ -1,10 +1,10 @@
 <?php
 
-namespace Voxel\Vendor\CloudPayments\Util;
+namespace Voxel\Vendor\Stripe\Util;
 
 /**
- * @phpstan-type RequestOptionsArray array{api_key?: string, idempotency_key?: string, cloudpayments_account?: string, cloudpayments_version?: string, api_base?: string }
- * @psalm-type RequestOptionsArray = array{api_key?: string, idempotency_key?: string, cloudpayments_account?: string, cloudpayments_version?: string, api_base?: string }
+ * @phpstan-type RequestOptionsArray array{api_key?: string, idempotency_key?: string, stripe_account?: string, stripe_version?: string, api_base?: string }
+ * @psalm-type RequestOptionsArray = array{api_key?: string, idempotency_key?: string, stripe_account?: string, stripe_version?: string, api_base?: string }
  */
 class RequestOptions
 {
@@ -12,8 +12,8 @@ class RequestOptions
      * @var array<string> a list of headers that should be persisted across requests
      */
     public static $HEADERS_TO_PERSIST = [
-        'CloudPayments-Account',
-        'CloudPayments-Version',
+        'Stripe-Account',
+        'Stripe-Version',
     ];
 
     /** @var array<string, string> */
@@ -90,7 +90,7 @@ class RequestOptions
      * @param null|array|RequestOptions|string $options a key => value array
      * @param bool $strict when true, forbid string form and arbitrary keys in array form
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\InvalidArgumentException
+     * @throws \Voxel\Vendor\Stripe\Exception\InvalidArgumentException
      *
      * @return RequestOptions
      */
@@ -109,7 +109,7 @@ class RequestOptions
                 $message = 'Do not pass a string for request options. If you want to set the '
                     . 'API key, pass an array like ["api_key" => <apiKey>] instead.';
 
-                throw new \Voxel\Vendor\CloudPayments\Exception\InvalidArgumentException($message);
+                throw new \Voxel\Vendor\Stripe\Exception\InvalidArgumentException($message);
             }
 
             return new RequestOptions($options, [], null);
@@ -128,13 +128,13 @@ class RequestOptions
                 $headers['Idempotency-Key'] = $options['idempotency_key'];
                 unset($options['idempotency_key']);
             }
-            if (\array_key_exists('cloudpayments_account', $options)) {
-                $headers['CloudPayments-Account'] = $options['cloudpayments_account'];
-                unset($options['cloudpayments_account']);
+            if (\array_key_exists('stripe_account', $options)) {
+                $headers['Stripe-Account'] = $options['stripe_account'];
+                unset($options['stripe_account']);
             }
-            if (\array_key_exists('cloudpayments_version', $options)) {
-                $headers['CloudPayments-Version'] = $options['cloudpayments_version'];
-                unset($options['cloudpayments_version']);
+            if (\array_key_exists('stripe_version', $options)) {
+                $headers['Stripe-Version'] = $options['stripe_version'];
+                unset($options['stripe_version']);
             }
             if (\array_key_exists('api_base', $options)) {
                 $base = $options['api_base'];
@@ -144,18 +144,18 @@ class RequestOptions
             if ($strict && !empty($options)) {
                 $message = 'Got unexpected keys in options array: ' . \implode(', ', \array_keys($options));
 
-                throw new \Voxel\Vendor\CloudPayments\Exception\InvalidArgumentException($message);
+                throw new \Voxel\Vendor\Stripe\Exception\InvalidArgumentException($message);
             }
 
             return new RequestOptions($key, $headers, $base);
         }
 
-        $message = 'The second argument to CloudPayments API method calls is an '
+        $message = 'The second argument to Stripe API method calls is an '
            . 'optional per-request apiKey, which must be a string, or '
            . 'per-request options, which must be an array. (HINT: you can set '
-           . 'a global apiKey by "CloudPayments::setApiKey(<apiKey>)")';
+           . 'a global apiKey by "Stripe::setApiKey(<apiKey>)")';
 
-        throw new \Voxel\Vendor\CloudPayments\Exception\InvalidArgumentException($message);
+        throw new \Voxel\Vendor\Stripe\Exception\InvalidArgumentException($message);
     }
 
     /** @return string */

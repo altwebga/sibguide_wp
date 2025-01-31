@@ -1,12 +1,12 @@
 <?php
 
-namespace Voxel\Vendor\CloudPayments\Exception\OAuth;
+namespace Voxel\Vendor\Stripe\Exception\OAuth;
 
 /**
- * Implements properties and methods common to all (non-SPL) CloudPayments OAuth
+ * Implements properties and methods common to all (non-SPL) Stripe OAuth
  * exceptions.
  */
-abstract class OAuthErrorException extends \Voxel\Vendor\CloudPayments\Exception\ApiErrorException
+abstract class OAuthErrorException extends \Voxel\Vendor\Stripe\Exception\ApiErrorException
 {
     protected function constructErrorObject()
     {
@@ -14,6 +14,6 @@ abstract class OAuthErrorException extends \Voxel\Vendor\CloudPayments\Exception
             return null;
         }
 
-        return \Voxel\Vendor\CloudPayments\OAuthErrorObject::constructFrom($this->jsonBody);
+        return \Voxel\Vendor\Stripe\OAuthErrorObject::constructFrom($this->jsonBody);
     }
 }

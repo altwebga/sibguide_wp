@@ -2,15 +2,15 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service\TestHelpers\Treasury;
+namespace Voxel\Vendor\Stripe\Service\TestHelpers\Treasury;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
-class InboundTransferService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
+class InboundTransferService extends \Voxel\Vendor\Stripe\Service\AbstractService
 {
     /**
      * Transitions a test mode created InboundTransfer to the <code>failed</code>
@@ -19,11 +19,11 @@ class InboundTransferService extends \Voxel\Vendor\CloudPayments\Service\Abstrac
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Treasury\InboundTransfer
+     * @return \Voxel\Vendor\Stripe\Treasury\InboundTransfer
      */
     public function fail($id, $params = null, $opts = null)
     {
@@ -37,11 +37,11 @@ class InboundTransferService extends \Voxel\Vendor\CloudPayments\Service\Abstrac
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Treasury\InboundTransfer
+     * @return \Voxel\Vendor\Stripe\Treasury\InboundTransfer
      */
     public function returnInboundTransfer($id, $params = null, $opts = null)
     {
@@ -55,11 +55,11 @@ class InboundTransferService extends \Voxel\Vendor\CloudPayments\Service\Abstrac
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Treasury\InboundTransfer
+     * @return \Voxel\Vendor\Stripe\Treasury\InboundTransfer
      */
     public function succeed($id, $params = null, $opts = null)
     {

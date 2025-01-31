@@ -2,25 +2,25 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service\Terminal;
+namespace Voxel\Vendor\Stripe\Service\Terminal;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
-class ReaderService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
+class ReaderService extends \Voxel\Vendor\Stripe\Service\AbstractService
 {
     /**
      * Returns a list of <code>Reader</code> objects.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Terminal\Reader>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Terminal\Reader>
      */
     public function all($params = null, $opts = null)
     {
@@ -32,11 +32,11 @@ class ReaderService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Terminal\Reader
+     * @return \Voxel\Vendor\Stripe\Terminal\Reader
      */
     public function cancelAction($id, $params = null, $opts = null)
     {
@@ -47,11 +47,11 @@ class ReaderService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      * Creates a new <code>Reader</code> object.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Terminal\Reader
+     * @return \Voxel\Vendor\Stripe\Terminal\Reader
      */
     public function create($params = null, $opts = null)
     {
@@ -63,11 +63,11 @@ class ReaderService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Terminal\Reader
+     * @return \Voxel\Vendor\Stripe\Terminal\Reader
      */
     public function delete($id, $params = null, $opts = null)
     {
@@ -79,11 +79,11 @@ class ReaderService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Terminal\Reader
+     * @return \Voxel\Vendor\Stripe\Terminal\Reader
      */
     public function processPaymentIntent($id, $params = null, $opts = null)
     {
@@ -95,11 +95,11 @@ class ReaderService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Terminal\Reader
+     * @return \Voxel\Vendor\Stripe\Terminal\Reader
      */
     public function processSetupIntent($id, $params = null, $opts = null)
     {
@@ -111,11 +111,11 @@ class ReaderService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Terminal\Reader
+     * @return \Voxel\Vendor\Stripe\Terminal\Reader
      */
     public function refundPayment($id, $params = null, $opts = null)
     {
@@ -127,11 +127,11 @@ class ReaderService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Terminal\Reader
+     * @return \Voxel\Vendor\Stripe\Terminal\Reader
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -143,11 +143,11 @@ class ReaderService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Terminal\Reader
+     * @return \Voxel\Vendor\Stripe\Terminal\Reader
      */
     public function setReaderDisplay($id, $params = null, $opts = null)
     {
@@ -160,11 +160,11 @@ class ReaderService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Terminal\Reader
+     * @return \Voxel\Vendor\Stripe\Terminal\Reader
      */
     public function update($id, $params = null, $opts = null)
     {

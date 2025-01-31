@@ -2,12 +2,12 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Radar;
+namespace Voxel\Vendor\Stripe\Radar;
 
 /**
  * Value list items allow you to add specific values to a given Radar value list, which can then be used in rules.
  *
- * Related guide: <a href="https://cloudpayments.com/docs/radar/lists#managing-list-items">Managing list items</a>
+ * Related guide: <a href="https://stripe.com/docs/radar/lists#managing-list-items">Managing list items</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -17,12 +17,12 @@ namespace Voxel\Vendor\CloudPayments\Radar;
  * @property string $value The value of the item.
  * @property string $value_list The identifier of the value list this item belongs to.
  */
-class ValueListItem extends \Voxel\Vendor\CloudPayments\ApiResource
+class ValueListItem extends \Voxel\Vendor\Stripe\ApiResource
 {
     const OBJECT_NAME = 'radar.value_list_item';
 
-    use \Voxel\Vendor\CloudPayments\ApiOperations\All;
-    use \Voxel\Vendor\CloudPayments\ApiOperations\Create;
-    use \Voxel\Vendor\CloudPayments\ApiOperations\Delete;
-    use \Voxel\Vendor\CloudPayments\ApiOperations\Retrieve;
+    use \Voxel\Vendor\Stripe\ApiOperations\All;
+    use \Voxel\Vendor\Stripe\ApiOperations\Create;
+    use \Voxel\Vendor\Stripe\ApiOperations\Delete;
+    use \Voxel\Vendor\Stripe\ApiOperations\Retrieve;
 }

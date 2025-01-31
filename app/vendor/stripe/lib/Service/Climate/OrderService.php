@@ -2,26 +2,26 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service\Climate;
+namespace Voxel\Vendor\Stripe\Service\Climate;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
-class OrderService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
+class OrderService extends \Voxel\Vendor\Stripe\Service\AbstractService
 {
     /**
      * Lists all Climate order objects. The orders are returned sorted by creation
      * date, with the most recently created orders appearing first.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Climate\Order>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Climate\Order>
      */
     public function all($params = null, $opts = null)
     {
@@ -30,19 +30,19 @@ class OrderService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 
     /**
      * Cancels a Climate order. You can cancel an order within 30 days of creation.
-     * CloudPayments refunds the reservation <code>amount_subtotal</code>, but not the
+     * Stripe refunds the reservation <code>amount_subtotal</code>, but not the
      * <code>amount_fees</code> for user-triggered cancellations. Frontier might cancel
      * reservations if suppliers fail to deliver. If Frontier cancels the reservation,
-     * CloudPayments provides 90 days advance notice and refunds the
+     * Stripe provides 90 days advance notice and refunds the
      * <code>amount_total</code>.
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Climate\Order
+     * @return \Voxel\Vendor\Stripe\Climate\Order
      */
     public function cancel($id, $params = null, $opts = null)
     {
@@ -51,15 +51,15 @@ class OrderService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 
     /**
      * Creates a Climate order object for a given Climate product. The order will be
-     * processed immediately after creation and payment will be deducted your CloudPayments
+     * processed immediately after creation and payment will be deducted your Stripe
      * balance.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Climate\Order
+     * @return \Voxel\Vendor\Stripe\Climate\Order
      */
     public function create($params = null, $opts = null)
     {
@@ -71,11 +71,11 @@ class OrderService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Climate\Order
+     * @return \Voxel\Vendor\Stripe\Climate\Order
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -87,11 +87,11 @@ class OrderService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Climate\Order
+     * @return \Voxel\Vendor\Stripe\Climate\Order
      */
     public function update($id, $params = null, $opts = null)
     {

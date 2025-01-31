@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\CloudPayments\Exception\OAuth;
+namespace Voxel\Vendor\Stripe\Exception\OAuth;
 
 /**
  * InvalidRequestException is thrown when a code, refresh token, or grant

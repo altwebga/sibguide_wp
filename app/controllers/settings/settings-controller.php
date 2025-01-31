@@ -77,8 +77,8 @@ class Settings_Controller extends \Voxel\Controllers\Base_Controller {
 		$submitted_config = json_decode( stripslashes( $_POST['config'] ), true );
 
 		// sort allowed_updates so checking for changed settings works properly
-		if ( is_array( $submitted_config['cloudpayments']['portal']['customer_update']['allowed_updates'] ?? null ) ) {
-			sort( $submitted_config['cloudpayments']['portal']['customer_update']['allowed_updates'] );
+		if ( is_array( $submitted_config['stripe']['portal']['customer_update']['allowed_updates'] ?? null ) ) {
+			sort( $submitted_config['stripe']['portal']['customer_update']['allowed_updates'] );
 		}
 
 		$schema = static::get_settings_schema();

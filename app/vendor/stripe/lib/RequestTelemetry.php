@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\CloudPayments;
+namespace Voxel\Vendor\Stripe;
 
 /**
  * Class RequestTelemetry.

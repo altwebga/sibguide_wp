@@ -6,33 +6,33 @@ if ( ! defined('ABSPATH') ) {
 	exit;
 }
 
-class CloudPayments_Subscription extends Base_Payment_Method {
-	use CloudPayments_Subscription\Order_Actions;
-	use Traits\CloudPayments_Commons;
+class Stripe_Subscription extends Base_Payment_Method {
+	use Stripe_Subscription\Order_Actions;
+	use Traits\Stripe_Commons;
 
 	public function get_type(): string {
-		return 'cloudpayments_subscription';
+		return 'stripe_subscription';
 	}
 
 	public function get_label(): string {
-		return _x( 'CloudPayments subscription', 'payment methods', 'voxel' );
+		return _x( 'Stripe subscription', 'payment methods', 'voxel' );
 	}
 
 	public function process_payment() {
 		try {
 			$customer = $this->order->get_customer();
-			$cloudpayments_customer = $customer->get_or_create_cloudpayments_customer();
-			$billing_address_collection = \Voxel\get( 'product_settings.cloudpayments_subscriptions.billing_address_collection', 'auto' );
-			$tax_id_collection = !! \Voxel\get( 'product_settings.cloudpayments_subscriptions.tax_id_collection.enabled', true );
+			$stripe_customer = $customer->get_or_create_stripe_customer();
+			$billing_address_collection = \Voxel\get( 'product_settings.stripe_subscriptions.billing_address_collection', 'auto' );
+			$tax_id_collection = !! \Voxel\get( 'product_settings.stripe_subscriptions.tax_id_collection.enabled', true );
 
 			$tax_collection_method = null;
 			if ( \Voxel\get( 'product_settings.tax_collection.enabled' ) ) {
-				$tax_collection_method = \Voxel\get( 'product_settings.tax_collection.collection_method', 'cloudpayments_tax' );
+				$tax_collection_method = \Voxel\get( 'product_settings.tax_collection.collection_method', 'stripe_tax' );
 			}
 
 			$args = [
 				'client_reference_id' => sprintf( 'order:%d', $this->order->get_id() ),
-				'customer' => $cloudpayments_customer->id,
+				'customer' => $stripe_customer->id,
 				'mode' => 'subscription',
 				'currency' => $this->order->get_currency(),
 				'customer_update' => [
@@ -62,9 +62,9 @@ class CloudPayments_Subscription extends Base_Payment_Method {
 						$data['price_data']['product_data']['images'] = [ $line_item['product']['thumbnail_url'] ];
 					}
 
-					if ( $tax_collection_method === 'cloudpayments_tax' ) {
+					if ( $tax_collection_method === 'stripe_tax' ) {
 						$tax_behavior = \Voxel\get( sprintf(
-							'product_settings.tax_collection.cloudpayments_tax.product_types.%s.tax_behavior',
+							'product_settings.tax_collection.stripe_tax.product_types.%s.tax_behavior',
 							$order_item->get_product_type_key()
 						), 'default' );
 
@@ -73,7 +73,7 @@ class CloudPayments_Subscription extends Base_Payment_Method {
 						}
 
 						$tax_code = \Voxel\get( sprintf(
-							'product_settings.tax_collection.cloudpayments_tax.product_types.%s.tax_code',
+							'product_settings.tax_collection.stripe_tax.product_types.%s.tax_code',
 							$order_item->get_product_type_key()
 						) );
 
@@ -90,7 +90,7 @@ class CloudPayments_Subscription extends Base_Payment_Method {
 							$tax_rates = \Voxel\get( sprintf(
 								'product_settings.tax_collection.tax_rates.product_types.%s.fixed_rates.%s',
 								$order_item->get_product_type_key(),
-								\Voxel\CloudPayments::is_test_mode() ? 'test_mode' : 'live_mode'
+								\Voxel\Stripe::is_test_mode() ? 'test_mode' : 'live_mode'
 							), [] );
 
 							if ( ! empty( $tax_rates ) ) {
@@ -100,7 +100,7 @@ class CloudPayments_Subscription extends Base_Payment_Method {
 							$dynamic_tax_rates = \Voxel\get( sprintf(
 								'product_settings.tax_collection.tax_rates.product_types.%s.dynamic_rates.%s',
 								$order_item->get_product_type_key(),
-								\Voxel\CloudPayments::is_test_mode() ? 'test_mode' : 'live_mode'
+								\Voxel\Stripe::is_test_mode() ? 'test_mode' : 'live_mode'
 							), [] );
 
 							if ( ! empty( $dynamic_tax_rates ) ) {
@@ -132,16 +132,16 @@ class CloudPayments_Subscription extends Base_Payment_Method {
 				'tax_id_collection' => [
 					'enabled' => $tax_id_collection,
 				],
-				'allow_promotion_codes' => !! \Voxel\get( 'product_settings.cloudpayments_subscriptions.promotion_codes.enabled', false ),
+				'allow_promotion_codes' => !! \Voxel\get( 'product_settings.stripe_subscriptions.promotion_codes.enabled', false ),
 			];
 
-			if ( $tax_collection_method === 'cloudpayments_tax' ) {
+			if ( $tax_collection_method === 'stripe_tax' ) {
 				$args['automatic_tax'] = [
 					'enabled' => true,
 				];
 			}
 
-			if ( \Voxel\get( 'product_settings.cloudpayments_subscriptions.phone_number_collection.enabled' ) ) {
+			if ( \Voxel\get( 'product_settings.stripe_subscriptions.phone_number_collection.enabled' ) ) {
 				$args['phone_number_collection'] = [
 					'enabled' => true,
 				];
@@ -152,15 +152,15 @@ class CloudPayments_Subscription extends Base_Payment_Method {
 				if ( \Voxel\get('product_settings.multivendor.subscriptions.charge_type') === 'destination_charges' ) {
 					$args['subscription_data']['application_fee_percent'] = $this->get_application_fee_percent();
 					$args['subscription_data']['transfer_data'] = [
-						'destination' => $vendor->get_cloudpayments_vendor_id(),
+						'destination' => $vendor->get_stripe_vendor_id(),
 					];
 
 					$args['allow_promotion_codes'] = false;
 
 					if ( \Voxel\get('product_settings.multivendor.subscriptions.settlement_merchant') === 'vendor' ) {
-						$args['subscription_data']['on_behalf_of'] = $vendor->get_cloudpayments_vendor_id();
+						$args['subscription_data']['on_behalf_of'] = $vendor->get_stripe_vendor_id();
 
-						if ( $tax_collection_method === 'cloudpayments_tax' ) {
+						if ( $tax_collection_method === 'stripe_tax' ) {
 							$args['automatic_tax'] = [
 								'enabled' => true,
 								'liability' => [
@@ -181,10 +181,10 @@ class CloudPayments_Subscription extends Base_Payment_Method {
 				}
 			}
 
-			$session = \Voxel\Vendor\CloudPayments\Checkout\Session::create( $args );
+			$session = \Voxel\Vendor\Stripe\Checkout\Session::create( $args );
 
 			$total_order_amount = $session->amount_total;
-			if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( $session->currency ) ) {
+			if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( $session->currency ) ) {
 				$total_order_amount /= 100;
 			}
 
@@ -197,13 +197,13 @@ class CloudPayments_Subscription extends Base_Payment_Method {
 				'success' => true,
 				'redirect_url' => $session->url,
 			] );
-		} catch ( \Voxel\Vendor\CloudPayments\Exception\ApiErrorException | \Voxel\Vendor\CloudPayments\Exception\InvalidArgumentException $e ) {
+		} catch ( \Voxel\Vendor\Stripe\Exception\ApiErrorException | \Voxel\Vendor\Stripe\Exception\InvalidArgumentException $e ) {
 			return wp_send_json( [
 				'success' => false,
 				'message' => _x( 'Something went wrong', 'checkout', 'voxel' ),
 				'debug' => [
-					'type' => 'cloudpayments_error',
-					'code' => method_exists( $e, 'getCloudPaymentsCode' ) ? $e->getCloudPaymentsCode() : $e->getCode(),
+					'type' => 'stripe_error',
+					'code' => method_exists( $e, 'getStripeCode' ) ? $e->getStripeCode() : $e->getCode(),
 					'message' => $e->getMessage(),
 				],
 			] );
@@ -213,7 +213,7 @@ class CloudPayments_Subscription extends Base_Payment_Method {
 	protected function get_success_url() {
 		return add_query_arg( [
 			'vx' => 1,
-			'action' => 'cloudpayments_subscriptions.checkout.success',
+			'action' => 'stripe_subscriptions.checkout.success',
 			'session_id' => '{CHECKOUT_SESSION_ID}',
 			'order_id' => $this->order->get_id(),
 		], home_url('/') );
@@ -225,7 +225,7 @@ class CloudPayments_Subscription extends Base_Payment_Method {
 
 		return add_query_arg( [
 			'vx' => 1,
-			'action' => 'cloudpayments_subscriptions.checkout.cancel',
+			'action' => 'stripe_subscriptions.checkout.cancel',
 			'session_id' => '{CHECKOUT_SESSION_ID}',
 			'order_id' => $this->order->get_id(),
 			'redirect_to' => rawurlencode( $redirect_url ),
@@ -233,10 +233,10 @@ class CloudPayments_Subscription extends Base_Payment_Method {
 	}
 
 	public function subscription_updated(
-		\Voxel\Vendor\CloudPayments\Subscription $subscription,
-		\Voxel\Vendor\CloudPayments\Checkout\Session $session = null
+		\Voxel\Vendor\Stripe\Subscription $subscription,
+		\Voxel\Vendor\Stripe\Checkout\Session $session = null
 	) {
-		$cloudpayments = \Voxel\CloudPayments::getClient();
+		$stripe = \Voxel\Stripe::getClient();
 
 		$this->order->set_status( sprintf( 'sub_%s', $subscription->status ) );
 		$this->order->set_transaction_id( $subscription->id );
@@ -279,14 +279,14 @@ class CloudPayments_Subscription extends Base_Payment_Method {
 		] );
 
 		if ( $subscription->latest_invoice !== null ) {
-			if ( $subscription->latest_invoice instanceof \Voxel\Vendor\CloudPayments\Invoice ) {
+			if ( $subscription->latest_invoice instanceof \Voxel\Vendor\Stripe\Invoice ) {
 				$latest_invoice = $subscription->latest_invoice;
 			} else {
-				$latest_invoice = $cloudpayments->invoices->retrieve( $subscription->latest_invoice, [] );
+				$latest_invoice = $stripe->invoices->retrieve( $subscription->latest_invoice, [] );
 			}
 		}
 
-		if ( $latest_invoice instanceof \Voxel\Vendor\CloudPayments\Invoice ) {
+		if ( $latest_invoice instanceof \Voxel\Vendor\Stripe\Invoice ) {
 			$this->order->set_details( 'subscription.latest_invoice', [
 				'id' => $latest_invoice->id,
 				'currency' => $latest_invoice->currency,
@@ -303,7 +303,7 @@ class CloudPayments_Subscription extends Base_Payment_Method {
 			] );
 
 			$total_order_amount = $latest_invoice->total;
-			if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( $latest_invoice->currency ) ) {
+			if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( $latest_invoice->currency ) ) {
 				$total_order_amount /= 100;
 			}
 
@@ -335,7 +335,7 @@ class CloudPayments_Subscription extends Base_Payment_Method {
 		$this->order->save();
 	}
 
-	protected function _get_checkout_session_details_for_storage( \Voxel\Vendor\CloudPayments\Checkout\Session $session ) {
+	protected function _get_checkout_session_details_for_storage( \Voxel\Vendor\Stripe\Checkout\Session $session ) {
 		return [
 			'customer_details' => [
 				'address' => [
@@ -364,13 +364,13 @@ class CloudPayments_Subscription extends Base_Payment_Method {
 		];
 	}
 
-	protected function _get_tax_amount_from_invoice( \Voxel\Vendor\CloudPayments\Invoice $invoice ) {
+	protected function _get_tax_amount_from_invoice( \Voxel\Vendor\Stripe\Invoice $invoice ) {
 		$tax_amount = $invoice->tax;
 		if ( ! is_numeric( $tax_amount ) ) {
 			return null;
 		}
 
-		if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( $invoice->currency ) ) {
+		if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( $invoice->currency ) ) {
 			$tax_amount /= 100;
 		}
 
@@ -381,13 +381,13 @@ class CloudPayments_Subscription extends Base_Payment_Method {
 		return $tax_amount;
 	}
 
-	protected function _get_discount_amount_from_invoice( \Voxel\Vendor\CloudPayments\Invoice $invoice ) {
+	protected function _get_discount_amount_from_invoice( \Voxel\Vendor\Stripe\Invoice $invoice ) {
 		$discount_amount = array_sum( array_column( $invoice->total_discount_amounts, 'amount' ) );
 		if ( ! is_numeric( $discount_amount ) ) {
 			return null;
 		}
 
-		if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( $invoice->currency ) ) {
+		if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( $invoice->currency ) ) {
 			$discount_amount /= 100;
 		}
 
@@ -398,13 +398,13 @@ class CloudPayments_Subscription extends Base_Payment_Method {
 		return $discount_amount;
 	}
 
-	protected function _get_shipping_amount_from_invoice( \Voxel\Vendor\CloudPayments\Invoice $invoice ) {
+	protected function _get_shipping_amount_from_invoice( \Voxel\Vendor\Stripe\Invoice $invoice ) {
 		$shipping_amount = $invoice->amount_shipping;
 		if ( ! is_numeric( $shipping_amount ) ) {
 			return null;
 		}
 
-		if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( $invoice->currency ) ) {
+		if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( $invoice->currency ) ) {
 			$shipping_amount /= 100;
 		}
 
@@ -420,12 +420,12 @@ class CloudPayments_Subscription extends Base_Payment_Method {
 	}
 
 	public function sync(): void {
-		$cloudpayments = \Voxel\CloudPayments::getClient();
+		$stripe = \Voxel\Stripe::getClient();
 		if ( $transaction_id = $this->order->get_transaction_id() ) {
-			$subscription = $cloudpayments->subscriptions->retrieve( $transaction_id );
+			$subscription = $stripe->subscriptions->retrieve( $transaction_id );
 			$this->subscription_updated( $subscription );
 		} elseif ( $checkout_session_id = $this->order->get_details( 'checkout.session_id' ) ) {
-			$session = $cloudpayments->checkout->sessions->retrieve( $checkout_session_id, [
+			$session = $stripe->checkout->sessions->retrieve( $checkout_session_id, [
 				'expand' => [ 'subscription' ],
 			] );
 
@@ -461,7 +461,7 @@ class CloudPayments_Subscription extends Base_Payment_Method {
 	protected function get_application_fee_percent() {
 		$currency = $this->order->get_currency();
 		$subtotal_in_cents = $this->order->get_subtotal();
-		if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( $currency ) ) {
+		if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( $currency ) ) {
 			$subtotal_in_cents *= 100;
 		}
 
@@ -469,7 +469,7 @@ class CloudPayments_Subscription extends Base_Payment_Method {
 		foreach ( $this->order->get_vendor()->get_vendor_fees() as $fee ) {
 			if ( $fee['type'] === 'fixed' ) {
 				$fee_amount_in_cents = $fee['fixed_amount'];
-				if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( $currency ) ) {
+				if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( $currency ) ) {
 					$fee_amount_in_cents *= 100;
 				}
 
@@ -497,7 +497,7 @@ class CloudPayments_Subscription extends Base_Payment_Method {
 				return [];
 			}
 
-			if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( $currency ) ) {
+			if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( $currency ) ) {
 				$application_fee_amount /= 100;
 			}
 

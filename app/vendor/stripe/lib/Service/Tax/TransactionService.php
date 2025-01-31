@@ -2,26 +2,26 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service\Tax;
+namespace Voxel\Vendor\Stripe\Service\Tax;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
-class TransactionService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
+class TransactionService extends \Voxel\Vendor\Stripe\Service\AbstractService
 {
     /**
      * Retrieves the line items of a committed standalone transaction as a collection.
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Tax\TransactionLineItem>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Tax\TransactionLineItem>
      */
     public function allLineItems($id, $params = null, $opts = null)
     {
@@ -32,11 +32,11 @@ class TransactionService extends \Voxel\Vendor\CloudPayments\Service\AbstractSer
      * Creates a Tax <code>Transaction</code> from a calculation.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Tax\Transaction
+     * @return \Voxel\Vendor\Stripe\Tax\Transaction
      */
     public function createFromCalculation($params = null, $opts = null)
     {
@@ -47,11 +47,11 @@ class TransactionService extends \Voxel\Vendor\CloudPayments\Service\AbstractSer
      * Partially or fully reverses a previously created <code>Transaction</code>.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Tax\Transaction
+     * @return \Voxel\Vendor\Stripe\Tax\Transaction
      */
     public function createReversal($params = null, $opts = null)
     {
@@ -63,11 +63,11 @@ class TransactionService extends \Voxel\Vendor\CloudPayments\Service\AbstractSer
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Tax\Transaction
+     * @return \Voxel\Vendor\Stripe\Tax\Transaction
      */
     public function retrieve($id, $params = null, $opts = null)
     {

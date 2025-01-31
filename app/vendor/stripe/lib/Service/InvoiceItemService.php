@@ -2,26 +2,26 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service;
+namespace Voxel\Vendor\Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
-class InvoiceItemService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
+class InvoiceItemService extends \Voxel\Vendor\Stripe\Service\AbstractService
 {
     /**
      * Returns a list of your invoice items. Invoice items are returned sorted by
      * creation date, with the most recently created invoice items appearing first.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\InvoiceItem>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\InvoiceItem>
      */
     public function all($params = null, $opts = null)
     {
@@ -34,11 +34,11 @@ class InvoiceItemService extends \Voxel\Vendor\CloudPayments\Service\AbstractSer
      * customer specified.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\InvoiceItem
+     * @return \Voxel\Vendor\Stripe\InvoiceItem
      */
     public function create($params = null, $opts = null)
     {
@@ -52,11 +52,11 @@ class InvoiceItemService extends \Voxel\Vendor\CloudPayments\Service\AbstractSer
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\InvoiceItem
+     * @return \Voxel\Vendor\Stripe\InvoiceItem
      */
     public function delete($id, $params = null, $opts = null)
     {
@@ -68,11 +68,11 @@ class InvoiceItemService extends \Voxel\Vendor\CloudPayments\Service\AbstractSer
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\InvoiceItem
+     * @return \Voxel\Vendor\Stripe\InvoiceItem
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -86,11 +86,11 @@ class InvoiceItemService extends \Voxel\Vendor\CloudPayments\Service\AbstractSer
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\InvoiceItem
+     * @return \Voxel\Vendor\Stripe\InvoiceItem
      */
     public function update($id, $params = null, $opts = null)
     {

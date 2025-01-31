@@ -2,15 +2,15 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service\TestHelpers\Treasury;
+namespace Voxel\Vendor\Stripe\Service\TestHelpers\Treasury;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
-class ReceivedDebitService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
+class ReceivedDebitService extends \Voxel\Vendor\Stripe\Service\AbstractService
 {
     /**
      * Use this endpoint to simulate a test mode ReceivedDebit initiated by a third
@@ -18,11 +18,11 @@ class ReceivedDebitService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      * parties.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Treasury\ReceivedDebit
+     * @return \Voxel\Vendor\Stripe\Treasury\ReceivedDebit
      */
     public function create($params = null, $opts = null)
     {

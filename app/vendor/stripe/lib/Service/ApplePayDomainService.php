@@ -2,25 +2,25 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service;
+namespace Voxel\Vendor\Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
-class ApplePayDomainService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
+class ApplePayDomainService extends \Voxel\Vendor\Stripe\Service\AbstractService
 {
     /**
      * List apple pay domains.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\ApplePayDomain>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\ApplePayDomain>
      */
     public function all($params = null, $opts = null)
     {
@@ -31,11 +31,11 @@ class ApplePayDomainService extends \Voxel\Vendor\CloudPayments\Service\Abstract
      * Create an apple pay domain.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\ApplePayDomain
+     * @return \Voxel\Vendor\Stripe\ApplePayDomain
      */
     public function create($params = null, $opts = null)
     {
@@ -47,11 +47,11 @@ class ApplePayDomainService extends \Voxel\Vendor\CloudPayments\Service\Abstract
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\ApplePayDomain
+     * @return \Voxel\Vendor\Stripe\ApplePayDomain
      */
     public function delete($id, $params = null, $opts = null)
     {
@@ -63,11 +63,11 @@ class ApplePayDomainService extends \Voxel\Vendor\CloudPayments\Service\Abstract
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\ApplePayDomain
+     * @return \Voxel\Vendor\Stripe\ApplePayDomain
      */
     public function retrieve($id, $params = null, $opts = null)
     {

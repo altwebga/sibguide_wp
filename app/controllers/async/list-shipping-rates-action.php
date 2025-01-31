@@ -19,9 +19,9 @@ class List_Shipping_Rates_Action extends \Voxel\Controllers\Base_Controller {
 	protected function list_rates() {
 		try {
 			$mode = $_REQUEST['mode'] ?? 'test';
-			$cloudpayments = $mode === 'test'
-				? \Voxel\CloudPayments::getTestClient()
-				: \Voxel\CloudPayments::getLiveClient();
+			$stripe = $mode === 'test'
+				? \Voxel\Stripe::getTestClient()
+				: \Voxel\Stripe::getLiveClient();
 
 			$args = [
 				'active' => true,
@@ -36,7 +36,7 @@ class List_Shipping_Rates_Action extends \Voxel\Controllers\Base_Controller {
 				$args['starting_after'] = $_REQUEST['starting_after'];
 			}
 
-			$rates = $cloudpayments->shippingRates->all( $args );
+			$rates = $stripe->shippingRates->all( $args );
 
 			return wp_send_json( [
 				'success' => true,

@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\CloudPayments;
+namespace Voxel\Stripe;
 
 if ( ! defined('ABSPATH') ) {
 	exit;

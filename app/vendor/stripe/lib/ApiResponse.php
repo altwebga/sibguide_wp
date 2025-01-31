@@ -1,8 +1,8 @@
 <?php
 
-namespace Voxel\Vendor\CloudPayments;
+namespace Voxel\Vendor\Stripe;
 
-use Voxel\Vendor\CloudPayments\Util\CaseInsensitiveArray;
+use Voxel\Vendor\Stripe\Util\CaseInsensitiveArray;
 
 /**
  * Class ApiResponse.

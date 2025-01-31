@@ -2,26 +2,26 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service\TestHelpers\Issuing;
+namespace Voxel\Vendor\Stripe\Service\TestHelpers\Issuing;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
-class AuthorizationService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
+class AuthorizationService extends \Voxel\Vendor\Stripe\Service\AbstractService
 {
     /**
      * Capture a test-mode authorization.
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Issuing\Authorization
+     * @return \Voxel\Vendor\Stripe\Issuing\Authorization
      */
     public function capture($id, $params = null, $opts = null)
     {
@@ -32,11 +32,11 @@ class AuthorizationService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      * Create a test-mode authorization.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Issuing\Authorization
+     * @return \Voxel\Vendor\Stripe\Issuing\Authorization
      */
     public function create($params = null, $opts = null)
     {
@@ -48,11 +48,11 @@ class AuthorizationService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Issuing\Authorization
+     * @return \Voxel\Vendor\Stripe\Issuing\Authorization
      */
     public function expire($id, $params = null, $opts = null)
     {
@@ -64,11 +64,11 @@ class AuthorizationService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Issuing\Authorization
+     * @return \Voxel\Vendor\Stripe\Issuing\Authorization
      */
     public function increment($id, $params = null, $opts = null)
     {
@@ -80,11 +80,11 @@ class AuthorizationService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Issuing\Authorization
+     * @return \Voxel\Vendor\Stripe\Issuing\Authorization
      */
     public function reverse($id, $params = null, $opts = null)
     {

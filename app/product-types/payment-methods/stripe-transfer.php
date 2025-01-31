@@ -6,14 +6,14 @@ if ( ! defined('ABSPATH') ) {
 	exit;
 }
 
-class CloudPayments_Transfer extends Base_Payment_Method {
+class Stripe_Transfer extends Base_Payment_Method {
 
 	public function get_type(): string {
-		return 'cloudpayments_transfer';
+		return 'stripe_transfer';
 	}
 
 	public function get_label(): string {
-		return _x( 'CloudPayments vendor transfer', 'payment methods', 'voxel' );
+		return _x( 'Stripe vendor transfer', 'payment methods', 'voxel' );
 	}
 
 	public function process_payment() {
@@ -35,7 +35,7 @@ class CloudPayments_Transfer extends Base_Payment_Method {
 		}
 
 		$payment_method = $parent_order->get_payment_method();
-		if ( $payment_method === null || $payment_method->get_type() !== 'cloudpayments_payment' ) {
+		if ( $payment_method === null || $payment_method->get_type() !== 'stripe_payment' ) {
 			return [];
 		}
 
@@ -47,7 +47,7 @@ class CloudPayments_Transfer extends Base_Payment_Method {
 			return [];
 		}
 
-		if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( $currency ) ) {
+		if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( $currency ) ) {
 			$fee_in_cents /= 100;
 		}
 
@@ -81,7 +81,7 @@ class CloudPayments_Transfer extends Base_Payment_Method {
 		$shipping_fee_in_cents = $parent_order->get_details( sprintf( 'multivendor.transfer_data.%d.shipping_fee_in_cents', $this->order->get_vendor_id() ) );
 		if ( is_numeric( $shipping_fee_in_cents ) ) {
 			$shipping_fee = $shipping_fee_in_cents;
-			if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( $currency ) ) {
+			if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( $currency ) ) {
 				$shipping_fee /= 100;
 			}
 
@@ -101,7 +101,7 @@ class CloudPayments_Transfer extends Base_Payment_Method {
 		}
 
 		$payment_method = $parent_order->get_payment_method();
-		if ( $payment_method === null || $payment_method->get_type() !== 'cloudpayments_payment' ) {
+		if ( $payment_method === null || $payment_method->get_type() !== 'stripe_payment' ) {
 			return [];
 		}
 
@@ -115,7 +115,7 @@ class CloudPayments_Transfer extends Base_Payment_Method {
 		}
 
 		$payment_method = $parent_order->get_payment_method();
-		if ( $payment_method === null || $payment_method->get_type() !== 'cloudpayments_payment' ) {
+		if ( $payment_method === null || $payment_method->get_type() !== 'stripe_payment' ) {
 			return [];
 		}
 

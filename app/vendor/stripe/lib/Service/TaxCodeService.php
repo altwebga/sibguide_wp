@@ -2,26 +2,26 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service;
+namespace Voxel\Vendor\Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
-class TaxCodeService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
+class TaxCodeService extends \Voxel\Vendor\Stripe\Service\AbstractService
 {
     /**
-     * A list of <a href="https://cloudpayments.com/docs/tax/tax-categories">all tax codes
+     * A list of <a href="https://stripe.com/docs/tax/tax-categories">all tax codes
      * available</a> to add to Products in order to allow specific tax calculations.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\TaxCode>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\TaxCode>
      */
     public function all($params = null, $opts = null)
     {
@@ -30,15 +30,15 @@ class TaxCodeService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 
     /**
      * Retrieves the details of an existing tax code. Supply the unique tax code ID and
-     * CloudPayments will return the corresponding tax code information.
+     * Stripe will return the corresponding tax code information.
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\TaxCode
+     * @return \Voxel\Vendor\Stripe\TaxCode
      */
     public function retrieve($id, $params = null, $opts = null)
     {

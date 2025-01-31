@@ -1,11 +1,11 @@
 <?php
 
-namespace Voxel\Vendor\CloudPayments;
+namespace Voxel\Vendor\Stripe;
 
 /**
- * Interface for a CloudPayments client.
+ * Interface for a Stripe client.
  */
-interface CloudPaymentsStreamingClientInterface extends BaseCloudPaymentsClientInterface
+interface StripeStreamingClientInterface extends BaseStripeClientInterface
 {
     public function requestStream($method, $path, $readBodyChunkCallable, $params, $opts);
 }

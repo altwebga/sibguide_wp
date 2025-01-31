@@ -19,7 +19,7 @@ trait Member_Trait {
 			return $this->membership;
 		}
 
-		$meta_key = \Voxel\CloudPayments::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
+		$meta_key = \Voxel\Stripe::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
 		$details = (array) json_decode( get_user_meta( $this->get_id(), $meta_key, true ), ARRAY_A );
 		$type = $details['type'] ?? 'default';
 
@@ -35,7 +35,7 @@ trait Member_Trait {
 	}
 
 	public function is_eligible_for_free_trial(): bool {
-		$meta_key = \Voxel\CloudPayments::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
+		$meta_key = \Voxel\Stripe::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
 		if ( ! metadata_exists( 'user', $this->get_id(), $meta_key ) ) {
 			return true;
 		}

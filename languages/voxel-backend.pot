@@ -361,7 +361,7 @@ msgid "Cart summary"
 msgstr ""
 
 #: app/utils/template-utils.php:413
-msgid "CloudPayments Connect account"
+msgid "Stripe Connect account"
 msgstr ""
 
 #: app/utils/template-utils.php:431
@@ -430,7 +430,7 @@ msgid "Taxonomy created."
 msgstr ""
 
 #: app/controllers/async/general-actions.php:45
-msgid "Endpoint could not be found in the CloudPayments servers. A new endpoint has been generated as replacement."
+msgid "Endpoint could not be found in the Stripe servers. A new endpoint has been generated as replacement."
 msgstr ""
 
 #: app/controllers/async/general-actions.php:67
@@ -442,7 +442,7 @@ msgid "No issues with this endpoint were detected."
 msgstr ""
 
 #: app/controllers/async/general-actions.php:103
-msgid "Connect endpoint could not be found in the CloudPayments servers. A new endpoint has been generated as replacement."
+msgid "Connect endpoint could not be found in the Stripe servers. A new endpoint has been generated as replacement."
 msgstr ""
 
 #: app/controllers/async/general-actions.php:135
@@ -1214,7 +1214,7 @@ msgstr ""
 
 #: app/dynamic-data/visibility-rules/author-is-vendor.php:16
 msgctxt "visibility rules"
-msgid "Author is a CloudPayments Connect vendor"
+msgid "Author is a Stripe Connect vendor"
 msgstr ""
 
 #: app/dynamic-data/visibility-rules/author-is-verified.php:16
@@ -1384,7 +1384,7 @@ msgstr ""
 
 #: app/dynamic-data/visibility-rules/user-is-vendor.php:16
 msgctxt "visibility rules"
-msgid "User is a CloudPayments Connect vendor"
+msgid "User is a Stripe Connect vendor"
 msgstr ""
 
 #: app/dynamic-data/visibility-rules/user-is-verified.php:16

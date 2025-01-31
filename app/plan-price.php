@@ -78,7 +78,7 @@ class Plan_Price {
 			return null;
 		}
 
-		if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( $this->get_currency() ) ) {
+		if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( $this->get_currency() ) ) {
 			$amount *= 100;
 		}
 

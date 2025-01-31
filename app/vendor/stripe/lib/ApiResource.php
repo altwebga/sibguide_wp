@@ -1,17 +1,17 @@
 <?php
 
-namespace Voxel\Vendor\CloudPayments;
+namespace Voxel\Vendor\Stripe;
 
 /**
  * Class ApiResource.
  *
  * */
-abstract class ApiResource extends CloudPaymentsObject
+abstract class ApiResource extends StripeObject
 {
     use ApiOperations\Request;
 
     /**
-     * @return \Voxel\Vendor\CloudPayments\Util\Set A list of fields that can be their own type of
+     * @return \Voxel\Vendor\Stripe\Util\Set A list of fields that can be their own type of
      * API resource (say a nested card under an account for example), and if
      * that resource is set, it should be transmitted to the API on a create or
      * update. Doing so is not the default behavior because API resources
@@ -73,7 +73,7 @@ abstract class ApiResource extends CloudPaymentsObject
      */
     public static function baseUrl()
     {
-        return CloudPayments::$apiBase;
+        return Stripe::$apiBase;
     }
 
     /**

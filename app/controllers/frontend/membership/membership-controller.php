@@ -13,7 +13,7 @@ class Membership_Controller extends \Voxel\Controllers\Base_Controller {
 		$this->on( 'voxel/membership/pricing-plan-updated', '@unpublish_posts_over_the_limit', 10, 3 );
 		$this->on( 'voxel/membership/pricing-plan-updated', '@trigger_app_event', 100, 3 );
 
-		$this->on( 'voxel_ajax_cloudpayments.customer.portal', '@access_customer_portal' );
+		$this->on( 'voxel_ajax_stripe.customer.portal', '@access_customer_portal' );
 	}
 
 	protected function checkout_successful() {
@@ -28,19 +28,19 @@ class Membership_Controller extends \Voxel\Controllers\Base_Controller {
 		// update plan information in case webhook hasn't been triggered yet
 		if ( wp_verify_nonce( $_GET['_wpnonce'] ?? '', 'vx_pricing_checkout' ) && $last_session_id === $session_id ) {
 			try {
-				$cloudpayments = \Voxel\CloudPayments::getClient();
+				$stripe = \Voxel\Stripe::getClient();
 				$membership = \Voxel\current_user()->get_membership();
-				$session = \Voxel\CloudPayments::getClient()->checkout->sessions->retrieve( $session_id );
+				$session = \Voxel\Stripe::getClient()->checkout->sessions->retrieve( $session_id );
 
 				if ( ( $session->mode ?? null ) === 'subscription' ) {
-					$subscription = $cloudpayments->subscriptions->retrieve( $session->subscription );
+					$subscription = $stripe->subscriptions->retrieve( $session->subscription );
 					if ( $subscription ) {
 						do_action( 'voxel/membership/subscription-updated', $subscription );
 					}
 				}
 
 				if ( ( $session->mode ?? null ) === 'payment' ) {
-					$payment_intent = $cloudpayments->paymentIntents->retrieve( $session->payment_intent );
+					$payment_intent = $stripe->paymentIntents->retrieve( $session->payment_intent );
 					if ( $payment_intent ) {
 						$payment_for = $payment_intent->metadata['voxel:payment_for'];
 						if ( $payment_for === 'additional_submissions' ) {
@@ -127,7 +127,7 @@ class Membership_Controller extends \Voxel\Controllers\Base_Controller {
 
 	protected function unpublish_posts_over_the_limit( $user, $old_plan, $new_plan ) {
 		// incomplete gives the customer 23 hours to complete payment, don't unpublish posts right away
-		// @link https://cloudpayments.com/docs/billing/subscriptions/overview#payment-window
+		// @link https://stripe.com/docs/billing/subscriptions/overview#payment-window
 		if ( $new_plan->get_type() === 'subscription' && $new_plan->get_status() === 'incomplete' ) {
 			return;
 		}
@@ -137,10 +137,10 @@ class Membership_Controller extends \Voxel\Controllers\Base_Controller {
 
 	protected function access_customer_portal() {
 		try {
-			$cloudpayments = \Voxel\CloudPayments::getClient();
-			$session = $cloudpayments->billingPortal->sessions->create( [
-				'customer' => \Voxel\current_user()->get_cloudpayments_customer_id(),
-				'configuration' => \Voxel\CloudPayments::get_portal_configuration_id(),
+			$stripe = \Voxel\Stripe::getClient();
+			$session = $stripe->billingPortal->sessions->create( [
+				'customer' => \Voxel\current_user()->get_stripe_customer_id(),
+				'configuration' => \Voxel\Stripe::get_portal_configuration_id(),
 				'return_url' => get_permalink( \Voxel\get( 'templates.current_plan' ) ) ?: home_url('/'),
 			] );
 

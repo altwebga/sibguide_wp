@@ -2,26 +2,26 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service;
+namespace Voxel\Vendor\Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
-class QuoteService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
+class QuoteService extends \Voxel\Vendor\Stripe\Service\AbstractService
 {
     /**
      * Accepts the specified quote.
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Quote
+     * @return \Voxel\Vendor\Stripe\Quote
      */
     public function accept($id, $params = null, $opts = null)
     {
@@ -32,11 +32,11 @@ class QuoteService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      * Returns a list of your quotes.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Quote>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Quote>
      */
     public function all($params = null, $opts = null)
     {
@@ -45,17 +45,17 @@ class QuoteService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 
     /**
      * When retrieving a quote, there is an includable <a
-     * href="https://cloudpayments.com/docs/api/quotes/object#quote_object-computed-upfront-line_items"><strong>computed.upfront.line_items</strong></a>
+     * href="https://stripe.com/docs/api/quotes/object#quote_object-computed-upfront-line_items"><strong>computed.upfront.line_items</strong></a>
      * property containing the first handful of those items. There is also a URL where
      * you can retrieve the full (paginated) list of upfront line items.
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\LineItem>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\LineItem>
      */
     public function allComputedUpfrontLineItems($id, $params = null, $opts = null)
     {
@@ -69,11 +69,11 @@ class QuoteService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\LineItem>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\LineItem>
      */
     public function allLineItems($id, $params = null, $opts = null)
     {
@@ -85,11 +85,11 @@ class QuoteService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Quote
+     * @return \Voxel\Vendor\Stripe\Quote
      */
     public function cancel($id, $params = null, $opts = null)
     {
@@ -100,14 +100,14 @@ class QuoteService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      * A quote models prices and services for a customer. Default options for
      * <code>header</code>, <code>description</code>, <code>footer</code>, and
      * <code>expires_at</code> can be set in the dashboard via the <a
-     * href="https://dashboard.cloudpayments.com/settings/billing/quote">quote template</a>.
+     * href="https://dashboard.stripe.com/settings/billing/quote">quote template</a>.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Quote
+     * @return \Voxel\Vendor\Stripe\Quote
      */
     public function create($params = null, $opts = null)
     {
@@ -119,11 +119,11 @@ class QuoteService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Quote
+     * @return \Voxel\Vendor\Stripe\Quote
      */
     public function finalizeQuote($id, $params = null, $opts = null)
     {
@@ -136,15 +136,15 @@ class QuoteService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      * @param string $id
      * @param callable $readBodyChunkCallable
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
      * @return mixed
      */
     public function pdf($id, $readBodyChunkCallable, $params = null, $opts = null)
     {
-        $opts = \Voxel\Vendor\CloudPayments\Util\RequestOptions::parse($opts);
+        $opts = \Voxel\Vendor\Stripe\Util\RequestOptions::parse($opts);
         if (!isset($opts->apiBase)) {
             $opts->apiBase = $this->getClient()->getFilesBase();
         }
@@ -157,11 +157,11 @@ class QuoteService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Quote
+     * @return \Voxel\Vendor\Stripe\Quote
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -173,11 +173,11 @@ class QuoteService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Quote
+     * @return \Voxel\Vendor\Stripe\Quote
      */
     public function update($id, $params = null, $opts = null)
     {

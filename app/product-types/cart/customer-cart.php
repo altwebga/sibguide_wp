@@ -53,6 +53,6 @@ class Customer_Cart extends Base_Cart {
 	}
 
 	public function get_payment_method(): ?string {
-		return 'cloudpayments_payment';
+		return 'stripe_payment';
 	}
 }

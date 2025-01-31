@@ -1,10 +1,10 @@
 <?php
 
-namespace Voxel\Vendor\CloudPayments\Exception;
+namespace Voxel\Vendor\Stripe\Exception;
 
 /**
  * AuthenticationException is thrown when invalid credentials are used to
- * connect to CloudPayments's servers.
+ * connect to Stripe's servers.
  */
 class AuthenticationException extends ApiErrorException
 {

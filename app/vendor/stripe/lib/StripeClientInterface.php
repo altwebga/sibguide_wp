@@ -1,21 +1,21 @@
 <?php
 
-namespace Voxel\Vendor\CloudPayments;
+namespace Voxel\Vendor\Stripe;
 
 /**
- * Interface for a CloudPayments client.
+ * Interface for a Stripe client.
  */
-interface CloudPaymentsClientInterface extends BaseCloudPaymentsClientInterface
+interface StripeClientInterface extends BaseStripeClientInterface
 {
     /**
-     * Sends a request to CloudPayments's API.
+     * Sends a request to Stripe's API.
      *
      * @param 'delete'|'get'|'post' $method the HTTP method
      * @param string $path the path of the request
      * @param array $params the parameters of the request
-     * @param array|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts the special modifiers of the request
+     * @param array|\Voxel\Vendor\Stripe\Util\RequestOptions $opts the special modifiers of the request
      *
-     * @return \Voxel\Vendor\CloudPayments\CloudPaymentsObject the object returned by CloudPayments's API
+     * @return \Voxel\Vendor\Stripe\StripeObject the object returned by Stripe's API
      */
     public function request($method, $path, $params, $opts);
 }

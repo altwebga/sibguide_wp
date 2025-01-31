@@ -15,11 +15,11 @@ class Vendor_Stats {
 	public function __construct( \Voxel\User $vendor ) {
 		$this->vendor = $vendor;
 		$this->vendor_id = absint( $vendor->get_id() );
-		$this->testmode = \Voxel\CloudPayments::is_test_mode() ? 'true' : 'false';
+		$this->testmode = \Voxel\Stripe::is_test_mode() ? 'true' : 'false';
 	}
 
 	protected function _where_vendor_is() {
-		if ( $this->vendor->has_cap('administrator') && apply_filters( 'voxel/cloudpayments_connect/enable_onboarding_for_admins', false ) !== true ) {
+		if ( $this->vendor->has_cap('administrator') && apply_filters( 'voxel/stripe_connect/enable_onboarding_for_admins', false ) !== true ) {
 			return 'orders.vendor_id IS NULL';
 		}
 
@@ -133,7 +133,7 @@ class Vendor_Stats {
 
 	public function get_year_chart( $year ) {
 		$months = $this->get_general_stats()['categorized'][ $year ] ?? [];
-		$currency = \Voxel\get('settings.cloudpayments.currency');
+		$currency = \Voxel\get('settings.stripe.currency');
 
 		$min = 0;
 		$max = max( ! empty( $months ) ? max( array_column( $months, 'earnings_in_cents' ) ) : 0, 1 );
@@ -182,7 +182,7 @@ class Vendor_Stats {
 		$start_year = ! empty( $years) ? min( array_keys( $years ) ) : $current_year;
 
 		$stats = [];
-		$currency = \Voxel\get('settings.cloudpayments.currency');
+		$currency = \Voxel\get('settings.stripe.currency');
 
 		for ( $i = $start_year; $i <= $current_year; $i++ ) {
 			$stats[ $i ] = $this->get_year_stats( $i );
@@ -235,7 +235,7 @@ class Vendor_Stats {
 		$min = 0;
 		$max = max( ! empty( $days ) ? max( array_column( $days, 'earnings_in_cents' ) ) : 0, 1 );
 		$steps = $this->get_steps_from_max_earnings( $max );
-		$currency = \Voxel\get('settings.cloudpayments.currency');
+		$currency = \Voxel\get('settings.stripe.currency');
 		$days_in_month = (int) date( 't', $timestamp );
 
 		$items = [];
@@ -293,7 +293,7 @@ class Vendor_Stats {
 		$min = 0;
 		$max = max( ! empty( $days ) ? max( array_column( $days, 'earnings_in_cents' ) ) : 0, 1 );
 		$steps = $this->get_steps_from_max_earnings( $max );
-		$currency = \Voxel\get('settings.cloudpayments.currency');
+		$currency = \Voxel\get('settings.stripe.currency');
 
 		$items = [];
 
@@ -337,10 +337,10 @@ class Vendor_Stats {
 	}
 
 	protected function get_steps_from_max_earnings( $max ) {
-		$currency = \Voxel\get('settings.cloudpayments.currency');
+		$currency = \Voxel\get('settings.stripe.currency');
 		$steps = [ $max, $max * 0.8, $max * 0.6, $max * 0.4, $max * 0.2, 0 ];
 		$steps = array_map( function( $step ) use ( $currency ) {
-			if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( $currency ) ) {
+			if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( $currency ) ) {
 				$step /= 100;
 			}
 

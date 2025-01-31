@@ -23,7 +23,7 @@ class One_Time_Payment_Controller extends \Voxel\Controllers\Base_Controller {
 	 * @since 1.0
 	 */
 	protected function one_time_payment_succeeded( $payment_intent, $args = null ) {
-		$cloudpayments = \Voxel\CloudPayments::getClient();
+		$stripe = \Voxel\Stripe::getClient();
 
 		$plan_key = $payment_intent->metadata['voxel:plan'];
 		$plan = \Voxel\Plan::get( $plan_key );
@@ -39,10 +39,10 @@ class One_Time_Payment_Controller extends \Voxel\Controllers\Base_Controller {
 		// cancel existing subscription (if any)
 		$membership = $user->get_membership();
 		if ( $membership->get_type() === 'subscription' && $membership->is_active() ) {
-			\Voxel\CloudPayments::getClient()->subscriptions->cancel( $membership->get_subscription_id() );
+			\Voxel\Stripe::getClient()->subscriptions->cancel( $membership->get_subscription_id() );
 		}
 
-		$meta_key = \Voxel\CloudPayments::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
+		$meta_key = \Voxel\Stripe::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
 		$previous_details = (array) json_decode( get_user_meta( $user->get_id(), $meta_key, true ), true );
 
 		$details = [
@@ -62,7 +62,7 @@ class One_Time_Payment_Controller extends \Voxel\Controllers\Base_Controller {
 		}
 
 		try {
-			$latest_charge = $cloudpayments->charges->retrieve( $payment_intent->latest_charge, [] );
+			$latest_charge = $stripe->charges->retrieve( $payment_intent->latest_charge, [] );
 			if ( $latest_charge && ( $latest_charge->refunded || $latest_charge->amount_refunded > 0 ) ) {
 				$details['status'] = 'refunded';
 			}
@@ -107,7 +107,7 @@ class One_Time_Payment_Controller extends \Voxel\Controllers\Base_Controller {
 			return;
 		}
 
-		$meta_key = \Voxel\CloudPayments::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
+		$meta_key = \Voxel\Stripe::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
 		$details = (array) json_decode( get_user_meta( $user->get_id(), $meta_key, true ), true );
 		if ( ! isset( $details['additional_submissions'] ) ) {
 			$details['additional_submissions'] = [];

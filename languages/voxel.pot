@@ -416,7 +416,7 @@ msgstr ""
 
 #: app/users/customer-trait.php:31
 msgctxt "orders"
-msgid "CloudPayments customer account not set up for this user."
+msgid "Stripe customer account not set up for this user."
 msgstr ""
 
 #: app/users/security-trait.php:13
@@ -429,7 +429,7 @@ msgctxt "auth"
 msgid "Your recovery code is %s"
 msgstr ""
 
-#: app/users/security-trait.php:30, app/users/security-trait.php:62, app/controllers/async/purge-stats-cache-action.php:22, app/controllers/frontend/inbox-controller.php:287, app/controllers/frontend/inbox-controller.php:565, app/controllers/frontend/inbox-controller.php:624, app/controllers/frontend/inbox-controller.php:673, app/controllers/frontend/inbox-controller.php:677, app/controllers/frontend/tabs-controller.php:26, app/controllers/frontend/tabs-controller.php:32, app/controllers/frontend/tabs-controller.php:40, app/controllers/frontend/tabs-controller.php:107, app/controllers/frontend/tabs-controller.php:121, app/controllers/frontend/user-controller.php:105, app/controllers/frontend/user-controller.php:278, app/controllers/onboarding/onboarding-controller.php:134, app/controllers/frontend/membership/checkout-controller.php:45, app/controllers/frontend/membership/checkout-controller.php:49, app/controllers/frontend/membership/checkout-controller.php:54, app/controllers/frontend/membership/checkout-controller.php:58, app/controllers/frontend/membership/modify-plan-controller.php:463, app/controllers/frontend/membership/modify-plan-controller.php:467, app/controllers/frontend/membership/modify-plan-controller.php:472, app/controllers/frontend/membership/modify-plan-controller.php:476, app/controllers/frontend/statistics/visits-chart-controller.php:64, app/controllers/frontend/statistics/visits-chart-controller.php:25, app/controllers/frontend/statistics/visits-chart-controller.php:30, app/controllers/frontend/statistics/visits-chart-controller.php:128, app/controllers/frontend/statistics/visits-chart-controller.php:148, app/controllers/frontend/statistics/visits-chart-controller.php:174, app/controllers/frontend/timeline/comment-controller.php:26, app/controllers/frontend/timeline/comment-controller.php:184, app/controllers/frontend/timeline/comment-controller.php:253, app/controllers/frontend/timeline/comment-controller.php:287, app/controllers/frontend/timeline/comment-controller.php:344, app/controllers/frontend/timeline/comment-controller.php:372, app/controllers/frontend/timeline/comment-feed-controller.php:21, app/controllers/frontend/timeline/status-controller.php:29, app/controllers/frontend/timeline/status-controller.php:306, app/controllers/frontend/timeline/status-controller.php:420, app/controllers/frontend/timeline/status-controller.php:447, app/controllers/frontend/timeline/status-controller.php:476, app/controllers/frontend/timeline/status-controller.php:537, app/controllers/frontend/timeline/status-controller.php:603, app/controllers/frontend/timeline/status-controller.php:696, app/controllers/frontend/timeline/status-controller.php:724, app/controllers/frontend/timeline/status-feed-controller.php:21, app/controllers/frontend/timeline/suggestions-controller.php:21, app/controllers/frontend/products/orders/orders-controller.php:129, app/controllers/frontend/products/cloudpayments-connect/cloudpayments-connect-controller.php:52
+#: app/users/security-trait.php:30, app/users/security-trait.php:62, app/controllers/async/purge-stats-cache-action.php:22, app/controllers/frontend/inbox-controller.php:287, app/controllers/frontend/inbox-controller.php:565, app/controllers/frontend/inbox-controller.php:624, app/controllers/frontend/inbox-controller.php:673, app/controllers/frontend/inbox-controller.php:677, app/controllers/frontend/tabs-controller.php:26, app/controllers/frontend/tabs-controller.php:32, app/controllers/frontend/tabs-controller.php:40, app/controllers/frontend/tabs-controller.php:107, app/controllers/frontend/tabs-controller.php:121, app/controllers/frontend/user-controller.php:105, app/controllers/frontend/user-controller.php:278, app/controllers/onboarding/onboarding-controller.php:134, app/controllers/frontend/membership/checkout-controller.php:45, app/controllers/frontend/membership/checkout-controller.php:49, app/controllers/frontend/membership/checkout-controller.php:54, app/controllers/frontend/membership/checkout-controller.php:58, app/controllers/frontend/membership/modify-plan-controller.php:463, app/controllers/frontend/membership/modify-plan-controller.php:467, app/controllers/frontend/membership/modify-plan-controller.php:472, app/controllers/frontend/membership/modify-plan-controller.php:476, app/controllers/frontend/statistics/visits-chart-controller.php:64, app/controllers/frontend/statistics/visits-chart-controller.php:25, app/controllers/frontend/statistics/visits-chart-controller.php:30, app/controllers/frontend/statistics/visits-chart-controller.php:128, app/controllers/frontend/statistics/visits-chart-controller.php:148, app/controllers/frontend/statistics/visits-chart-controller.php:174, app/controllers/frontend/timeline/comment-controller.php:26, app/controllers/frontend/timeline/comment-controller.php:184, app/controllers/frontend/timeline/comment-controller.php:253, app/controllers/frontend/timeline/comment-controller.php:287, app/controllers/frontend/timeline/comment-controller.php:344, app/controllers/frontend/timeline/comment-controller.php:372, app/controllers/frontend/timeline/comment-feed-controller.php:21, app/controllers/frontend/timeline/status-controller.php:29, app/controllers/frontend/timeline/status-controller.php:306, app/controllers/frontend/timeline/status-controller.php:420, app/controllers/frontend/timeline/status-controller.php:447, app/controllers/frontend/timeline/status-controller.php:476, app/controllers/frontend/timeline/status-controller.php:537, app/controllers/frontend/timeline/status-controller.php:603, app/controllers/frontend/timeline/status-controller.php:696, app/controllers/frontend/timeline/status-controller.php:724, app/controllers/frontend/timeline/status-feed-controller.php:21, app/controllers/frontend/timeline/suggestions-controller.php:21, app/controllers/frontend/products/orders/orders-controller.php:129, app/controllers/frontend/products/stripe-connect/stripe-connect-controller.php:52
 msgid "Invalid request."
 msgstr ""
 
@@ -460,7 +460,7 @@ msgstr ""
 
 #: app/users/vendor-trait.php:33
 msgctxt "orders"
-msgid "CloudPayments account not set up for this user."
+msgid "Stripe account not set up for this user."
 msgstr ""
 
 #: app/utils/auth-utils.php:118
@@ -1034,8 +1034,8 @@ msgstr ""
 msgid "Max height"
 msgstr ""
 
-#: app/widgets/cloudpayments-account.php:2899
-msgctxt "cloudpayments vendor shipping"
+#: app/widgets/stripe-account.php:2899
+msgctxt "stripe vendor shipping"
 msgid "@count countries selected"
 msgstr ""
 
@@ -1549,7 +1549,7 @@ msgstr ""
 
 #: templates/widgets/current-plan.php:153, templates/widgets/current-plan.php:114
 msgctxt "current plan"
-msgid "CloudPayments portal"
+msgid "Stripe portal"
 msgstr ""
 
 #: templates/widgets/current-plan.php:86
@@ -1915,213 +1915,213 @@ msgctxt "search form"
 msgid "Map view"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:15
-msgctxt "cloudpayments vendor"
-msgid "CloudPayments Connect"
+#: templates/widgets/stripe-account.php:15
+msgctxt "stripe vendor"
+msgid "Stripe Connect"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:26
-msgctxt "cloudpayments vendor"
-msgid "Setup your CloudPayments vendor account in order to accept payments."
+#: templates/widgets/stripe-account.php:26
+msgctxt "stripe vendor"
+msgid "Setup your Stripe vendor account in order to accept payments."
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:24
-msgctxt "cloudpayments vendor"
+#: templates/widgets/stripe-account.php:24
+msgctxt "stripe vendor"
 msgid "Your account is pending verification."
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:22
-msgctxt "cloudpayments vendor"
+#: templates/widgets/stripe-account.php:22
+msgctxt "stripe vendor"
 msgid "Your account is ready to accept payments."
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:59
-msgctxt "cloudpayments vendor"
+#: templates/widgets/stripe-account.php:59
+msgctxt "stripe vendor"
 msgid "Vendor dashboard"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:65
-msgctxt "cloudpayments vendor"
+#: templates/widgets/stripe-account.php:65
+msgctxt "stripe vendor"
 msgid "Update information"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:72
-msgctxt "cloudpayments vendor"
+#: templates/widgets/stripe-account.php:72
+msgctxt "stripe vendor"
 msgid "Shipping"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:43
-msgctxt "cloudpayments vendor"
+#: templates/widgets/stripe-account.php:43
+msgctxt "stripe vendor"
 msgid "Complete onboarding"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:50, templates/widgets/cloudpayments-account.php:101
-msgctxt "cloudpayments vendor"
+#: templates/widgets/stripe-account.php:50, templates/widgets/stripe-account.php:101
+msgctxt "stripe vendor"
 msgid "Configure Shipping"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:34
-msgctxt "cloudpayments vendor"
+#: templates/widgets/stripe-account.php:34
+msgctxt "stripe vendor"
 msgid "Start setup"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:19
-msgctxt "cloudpayments vendor"
-msgid "CloudPayments vendor onboarding is not necessary for admin accounts."
+#: templates/widgets/stripe-account.php:19
+msgctxt "stripe vendor"
+msgid "Stripe vendor onboarding is not necessary for admin accounts."
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:92
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:92
+msgctxt "stripe vendor shipping"
 msgid "Go back"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:98
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:98
+msgctxt "stripe vendor shipping"
 msgid "Save changes"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:103
-msgctxt "cloudpayments vendor"
+#: templates/widgets/stripe-account.php:103
+msgctxt "stripe vendor"
 msgid "Shipping zones"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:109, templates/widgets/cloudpayments-account.php:183
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:109, templates/widgets/stripe-account.php:183
+msgctxt "stripe vendor shipping"
 msgid "(untitled)"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:121, templates/widgets/cloudpayments-account.php:195
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:121, templates/widgets/stripe-account.php:195
+msgctxt "stripe vendor shipping"
 msgid "Label"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:128
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:128
+msgctxt "stripe vendor shipping"
 msgid "Countries"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:132
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:132
+msgctxt "stripe vendor shipping"
 msgid "Select one or more countries"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:140
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:140
+msgctxt "stripe vendor shipping"
 msgid "Search countries"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:154
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:154
+msgctxt "stripe vendor shipping"
 msgid "All countries"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:176
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:176
+msgctxt "stripe vendor shipping"
 msgid "Shipping rates"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:200
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:200
+msgctxt "stripe vendor shipping"
 msgid "Type"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:203
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:203
+msgctxt "stripe vendor shipping"
 msgid "Free shipping"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:204
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:204
+msgctxt "stripe vendor shipping"
 msgid "Fixed rate"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:211
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:211
+msgctxt "stripe vendor shipping"
 msgid "Free shipping requires"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:214
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:214
+msgctxt "stripe vendor shipping"
 msgid "No requirement"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:215
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:215
+msgctxt "stripe vendor shipping"
 msgid "Minimum order amount"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:222
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:222
+msgctxt "stripe vendor shipping"
 msgid "Min. order amount"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:238, templates/widgets/cloudpayments-account.php:343
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:238, templates/widgets/stripe-account.php:343
+msgctxt "stripe vendor shipping"
 msgid "Add delivery estimate?"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:244, templates/widgets/cloudpayments-account.php:349
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:244, templates/widgets/stripe-account.php:349
+msgctxt "stripe vendor shipping"
 msgid "Between"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:248, templates/widgets/cloudpayments-account.php:264, templates/widgets/cloudpayments-account.php:309, templates/widgets/cloudpayments-account.php:353, templates/widgets/cloudpayments-account.php:369
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:248, templates/widgets/stripe-account.php:264, templates/widgets/stripe-account.php:309, templates/widgets/stripe-account.php:353, templates/widgets/stripe-account.php:369
+msgctxt "stripe vendor shipping"
 msgid "Period"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:251, templates/widgets/cloudpayments-account.php:267, templates/widgets/cloudpayments-account.php:356, templates/widgets/cloudpayments-account.php:372
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:251, templates/widgets/stripe-account.php:267, templates/widgets/stripe-account.php:356, templates/widgets/stripe-account.php:372
+msgctxt "stripe vendor shipping"
 msgid "Hour(s)"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:252, templates/widgets/cloudpayments-account.php:268, templates/widgets/cloudpayments-account.php:357, templates/widgets/cloudpayments-account.php:373
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:252, templates/widgets/stripe-account.php:268, templates/widgets/stripe-account.php:357, templates/widgets/stripe-account.php:373
+msgctxt "stripe vendor shipping"
 msgid "Day(s)"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:253, templates/widgets/cloudpayments-account.php:269, templates/widgets/cloudpayments-account.php:358, templates/widgets/cloudpayments-account.php:374
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:253, templates/widgets/stripe-account.php:269, templates/widgets/stripe-account.php:358, templates/widgets/stripe-account.php:374
+msgctxt "stripe vendor shipping"
 msgid "Business day(s)"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:254, templates/widgets/cloudpayments-account.php:270, templates/widgets/cloudpayments-account.php:359, templates/widgets/cloudpayments-account.php:375
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:254, templates/widgets/stripe-account.php:270, templates/widgets/stripe-account.php:359, templates/widgets/stripe-account.php:375
+msgctxt "stripe vendor shipping"
 msgid "Week(s)"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:255, templates/widgets/cloudpayments-account.php:271, templates/widgets/cloudpayments-account.php:360, templates/widgets/cloudpayments-account.php:376
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:255, templates/widgets/stripe-account.php:271, templates/widgets/stripe-account.php:360, templates/widgets/stripe-account.php:376
+msgctxt "stripe vendor shipping"
 msgid "Month(s)"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:260, templates/widgets/cloudpayments-account.php:365
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:260, templates/widgets/stripe-account.php:365
+msgctxt "stripe vendor shipping"
 msgid "And"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:281
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:281
+msgctxt "stripe vendor shipping"
 msgid "Price per unit"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:293
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:293
+msgctxt "stripe vendor shipping"
 msgid "Price by class"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:311, templates/widgets/create-post/product-field/booking/timeslots.php:129
+#: templates/widgets/stripe-account.php:311, templates/widgets/create-post/product-field/booking/timeslots.php:129
 msgctxt "product field timeslots"
 msgid "Remove"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:391
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:391
+msgctxt "stripe vendor shipping"
 msgid "Add shipping rate"
 msgstr ""
 
-#: templates/widgets/cloudpayments-account.php:405
-msgctxt "cloudpayments vendor shipping"
+#: templates/widgets/stripe-account.php:405
+msgctxt "stripe vendor shipping"
 msgid "Add shipping zone"
 msgstr ""
 
@@ -2793,7 +2793,7 @@ msgstr ""
 
 #: app/product-types/payment-methods/base-payment-method.php:102
 msgctxt "order actions"
-msgid "Sync with CloudPayments"
+msgid "Sync with Stripe"
 msgstr ""
 
 #: app/product-types/payment-methods/base-payment-method.php:114
@@ -2806,69 +2806,69 @@ msgctxt "payment methods"
 msgid "Offline payment"
 msgstr ""
 
-#: app/product-types/payment-methods/offline-payment.php:58, app/product-types/payment-methods/cloudpayments-payment/order-actions.php:16
+#: app/product-types/payment-methods/offline-payment.php:58, app/product-types/payment-methods/stripe-payment/order-actions.php:16
 msgctxt "order actions"
 msgid "Approve"
 msgstr ""
 
-#: app/product-types/payment-methods/offline-payment.php:74, app/product-types/payment-methods/cloudpayments-payment/order-actions.php:40
+#: app/product-types/payment-methods/offline-payment.php:74, app/product-types/payment-methods/stripe-payment/order-actions.php:40
 msgctxt "order actions"
 msgid "Decline"
 msgstr ""
 
-#: app/product-types/payment-methods/offline-payment.php:96, app/product-types/payment-methods/cloudpayments-payment/order-actions.php:69
+#: app/product-types/payment-methods/offline-payment.php:96, app/product-types/payment-methods/stripe-payment/order-actions.php:69
 msgctxt "order customer actions"
 msgid "Cancel order"
 msgstr ""
 
-#: app/product-types/payment-methods/cloudpayments-payment.php:18
+#: app/product-types/payment-methods/stripe-payment.php:18
 msgctxt "payment methods"
-msgid "CloudPayments payment"
+msgid "Stripe payment"
 msgstr ""
 
-#: app/product-types/payment-methods/cloudpayments-payment.php:192, app/product-types/payment-methods/cloudpayments-subscription.php:203, app/controllers/frontend/membership/modify-plan-controller.php:27, app/controllers/frontend/products/orders/single-order-controller.php:243, app/controllers/frontend/products/orders/single-order-controller.php:303
+#: app/product-types/payment-methods/stripe-payment.php:192, app/product-types/payment-methods/stripe-subscription.php:203, app/controllers/frontend/membership/modify-plan-controller.php:27, app/controllers/frontend/products/orders/single-order-controller.php:243, app/controllers/frontend/products/orders/single-order-controller.php:303
 msgctxt "checkout"
 msgid "Something went wrong"
 msgstr ""
 
-#: app/product-types/payment-methods/cloudpayments-payment.php:608, app/product-types/payment-methods/cloudpayments-payment.php:599, app/product-types/payment-methods/cloudpayments-subscription.php:533, app/product-types/payment-methods/cloudpayments-subscription.php:523, app/product-types/payment-methods/cloudpayments-transfer.php:75, app/product-types/payment-methods/cloudpayments-transfer.php:66
+#: app/product-types/payment-methods/stripe-payment.php:608, app/product-types/payment-methods/stripe-payment.php:599, app/product-types/payment-methods/stripe-subscription.php:533, app/product-types/payment-methods/stripe-subscription.php:523, app/product-types/payment-methods/stripe-transfer.php:75, app/product-types/payment-methods/stripe-transfer.php:66
 msgctxt "vendor fees"
 msgid "Platform fee"
 msgstr ""
 
-#: app/product-types/payment-methods/cloudpayments-payment.php:622, app/product-types/payment-methods/cloudpayments-transfer.php:89
+#: app/product-types/payment-methods/stripe-payment.php:622, app/product-types/payment-methods/stripe-transfer.php:89
 msgctxt "vendor fees"
 msgid "Shipping fee"
 msgstr ""
 
-#: app/product-types/payment-methods/cloudpayments-payment.php:815
+#: app/product-types/payment-methods/stripe-payment.php:815
 msgctxt "cart summary"
 msgid "Shipping costs for vendor @vendor_name"
 msgstr ""
 
-#: app/product-types/payment-methods/cloudpayments-payment.php:777
+#: app/product-types/payment-methods/stripe-payment.php:777
 msgctxt "cart summary"
 msgid "Platform shipping costs"
 msgstr ""
 
-#: app/product-types/payment-methods/cloudpayments-payment.php:943
+#: app/product-types/payment-methods/stripe-payment.php:943
 msgctxt "cart summary"
 msgid "Shipping via \"@shipping_rate\" requires a minimum order amount of @amount"
 msgstr ""
 
-#: app/product-types/payment-methods/cloudpayments-subscription.php:18
+#: app/product-types/payment-methods/stripe-subscription.php:18
 msgctxt "payment methods"
-msgid "CloudPayments subscription"
+msgid "Stripe subscription"
 msgstr ""
 
-#: app/product-types/payment-methods/cloudpayments-transfer-platform.php:16
+#: app/product-types/payment-methods/stripe-transfer-platform.php:16
 msgctxt "payment methods"
-msgid "CloudPayments platform transfer"
+msgid "Stripe platform transfer"
 msgstr ""
 
-#: app/product-types/payment-methods/cloudpayments-transfer.php:16
+#: app/product-types/payment-methods/stripe-transfer.php:16
 msgctxt "payment methods"
-msgid "CloudPayments vendor transfer"
+msgid "Stripe vendor transfer"
 msgstr ""
 
 #: app/product-types/product-addons/custom-multiselect-addon.php:87, app/product-types/product-addons/custom-select-addon.php:233, app/product-types/product-addons/multiselect-addon.php:187, app/product-types/product-addons/select-addon.php:189
@@ -4384,102 +4384,102 @@ msgctxt "timezones"
 msgid "site default"
 msgstr ""
 
-#: app/product-types/payment-methods/cloudpayments-payment/order-actions.php:94, app/product-types/payment-methods/cloudpayments-subscription/order-actions.php:118
+#: app/product-types/payment-methods/stripe-payment/order-actions.php:94, app/product-types/payment-methods/stripe-subscription/order-actions.php:118
 msgctxt "order customer actions"
 msgid "Customer portal"
 msgstr ""
 
-#: app/product-types/payment-methods/cloudpayments-subscription/order-actions.php:27
+#: app/product-types/payment-methods/stripe-subscription/order-actions.php:27
 msgctxt "order customer actions"
 msgid "Cancel renewals"
 msgstr ""
 
-#: app/product-types/payment-methods/cloudpayments-subscription/order-actions.php:46
+#: app/product-types/payment-methods/stripe-subscription/order-actions.php:46
 msgctxt "order customer actions"
 msgid "Enable renewals"
 msgstr ""
 
-#: app/product-types/payment-methods/cloudpayments-subscription/order-actions.php:101
+#: app/product-types/payment-methods/stripe-subscription/order-actions.php:101
 msgctxt "order customer actions"
 msgid "Cancel subscription"
 msgstr ""
 
-#: app/product-types/payment-methods/traits/cloudpayments-commons.php:17
+#: app/product-types/payment-methods/traits/stripe-commons.php:17
 msgctxt "order customer details"
 msgid "Customer name"
 msgstr ""
 
-#: app/product-types/payment-methods/traits/cloudpayments-commons.php:24
+#: app/product-types/payment-methods/traits/stripe-commons.php:24
 msgctxt "order customer details"
 msgid "Email"
 msgstr ""
 
-#: app/product-types/payment-methods/traits/cloudpayments-commons.php:34
+#: app/product-types/payment-methods/traits/stripe-commons.php:34
 msgctxt "order customer details"
 msgid "Country"
 msgstr ""
 
-#: app/product-types/payment-methods/traits/cloudpayments-commons.php:41
+#: app/product-types/payment-methods/traits/stripe-commons.php:41
 msgctxt "order customer details"
 msgid "Address line 1"
 msgstr ""
 
-#: app/product-types/payment-methods/traits/cloudpayments-commons.php:48
+#: app/product-types/payment-methods/traits/stripe-commons.php:48
 msgctxt "order customer details"
 msgid "Address line 2"
 msgstr ""
 
-#: app/product-types/payment-methods/traits/cloudpayments-commons.php:55
+#: app/product-types/payment-methods/traits/stripe-commons.php:55
 msgctxt "order customer details"
 msgid "City"
 msgstr ""
 
-#: app/product-types/payment-methods/traits/cloudpayments-commons.php:62
+#: app/product-types/payment-methods/traits/stripe-commons.php:62
 msgctxt "order customer details"
 msgid "Postal code"
 msgstr ""
 
-#: app/product-types/payment-methods/traits/cloudpayments-commons.php:69
+#: app/product-types/payment-methods/traits/stripe-commons.php:69
 msgctxt "order customer details"
 msgid "State"
 msgstr ""
 
-#: app/product-types/payment-methods/traits/cloudpayments-commons.php:76
+#: app/product-types/payment-methods/traits/stripe-commons.php:76
 msgctxt "order customer details"
 msgid "Phone number"
 msgstr ""
 
-#: app/product-types/payment-methods/traits/cloudpayments-commons.php:90
+#: app/product-types/payment-methods/traits/stripe-commons.php:90
 msgctxt "order shipping details"
 msgid "Recipient name"
 msgstr ""
 
-#: app/product-types/payment-methods/traits/cloudpayments-commons.php:100
+#: app/product-types/payment-methods/traits/stripe-commons.php:100
 msgctxt "order shipping details"
 msgid "Country"
 msgstr ""
 
-#: app/product-types/payment-methods/traits/cloudpayments-commons.php:107
+#: app/product-types/payment-methods/traits/stripe-commons.php:107
 msgctxt "order shipping details"
 msgid "Address line 1"
 msgstr ""
 
-#: app/product-types/payment-methods/traits/cloudpayments-commons.php:114
+#: app/product-types/payment-methods/traits/stripe-commons.php:114
 msgctxt "order shipping details"
 msgid "Address line 2"
 msgstr ""
 
-#: app/product-types/payment-methods/traits/cloudpayments-commons.php:121
+#: app/product-types/payment-methods/traits/stripe-commons.php:121
 msgctxt "order shipping details"
 msgid "City"
 msgstr ""
 
-#: app/product-types/payment-methods/traits/cloudpayments-commons.php:128
+#: app/product-types/payment-methods/traits/stripe-commons.php:128
 msgctxt "order shipping details"
 msgid "Postal code"
 msgstr ""
 
-#: app/product-types/payment-methods/traits/cloudpayments-commons.php:135
+#: app/product-types/payment-methods/traits/stripe-commons.php:135
 msgctxt "order shipping details"
 msgid "State"
 msgstr ""
@@ -5175,38 +5175,38 @@ msgstr ""
 msgid "Could not process action"
 msgstr ""
 
-#: app/controllers/frontend/products/cloudpayments-connect/cloudpayments-connect-controller.php:63
-msgctxt "cloudpayments vendor shipping"
+#: app/controllers/frontend/products/stripe-connect/stripe-connect-controller.php:63
+msgctxt "stripe vendor shipping"
 msgid "You cannot add more than 25 shipping zones"
 msgstr ""
 
-#: app/controllers/frontend/products/cloudpayments-connect/cloudpayments-connect-controller.php:73, app/controllers/frontend/products/cloudpayments-connect/cloudpayments-connect-controller.php:90, app/controllers/frontend/products/cloudpayments-connect/cloudpayments-connect-controller.php:107
-msgctxt "cloudpayments vendor shipping"
+#: app/controllers/frontend/products/stripe-connect/stripe-connect-controller.php:73, app/controllers/frontend/products/stripe-connect/stripe-connect-controller.php:90, app/controllers/frontend/products/stripe-connect/stripe-connect-controller.php:107
+msgctxt "stripe vendor shipping"
 msgid "Could not save shipping details"
 msgstr ""
 
-#: app/controllers/frontend/products/cloudpayments-connect/cloudpayments-connect-controller.php:77
-msgctxt "cloudpayments vendor shipping"
+#: app/controllers/frontend/products/stripe-connect/stripe-connect-controller.php:77
+msgctxt "stripe vendor shipping"
 msgid "Shipping zone label is required"
 msgstr ""
 
-#: app/controllers/frontend/products/cloudpayments-connect/cloudpayments-connect-controller.php:81
-msgctxt "cloudpayments vendor shipping"
+#: app/controllers/frontend/products/stripe-connect/stripe-connect-controller.php:81
+msgctxt "stripe vendor shipping"
 msgid "Shipping zones must have at least one country selected"
 msgstr ""
 
-#: app/controllers/frontend/products/cloudpayments-connect/cloudpayments-connect-controller.php:85
-msgctxt "cloudpayments vendor shipping"
+#: app/controllers/frontend/products/stripe-connect/stripe-connect-controller.php:85
+msgctxt "stripe vendor shipping"
 msgid "Shipping zones must contain at least one shipping rate"
 msgstr ""
 
-#: app/controllers/frontend/products/cloudpayments-connect/cloudpayments-connect-controller.php:94
-msgctxt "cloudpayments vendor shipping"
+#: app/controllers/frontend/products/stripe-connect/stripe-connect-controller.php:94
+msgctxt "stripe vendor shipping"
 msgid "Shipping rate label is required"
 msgstr ""
 
-#: app/controllers/frontend/products/cloudpayments-connect/cloudpayments-connect-controller.php:117
-msgctxt "cloudpayments vendor shipping"
+#: app/controllers/frontend/products/stripe-connect/stripe-connect-controller.php:117
+msgctxt "stripe vendor shipping"
 msgid "Shipping details saved."
 msgstr ""
 

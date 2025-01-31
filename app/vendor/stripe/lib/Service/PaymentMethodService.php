@@ -2,15 +2,15 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service;
+namespace Voxel\Vendor\Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
-class PaymentMethodService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
+class PaymentMethodService extends \Voxel\Vendor\Stripe\Service\AbstractService
 {
     /**
      * Returns a list of PaymentMethods for Treasury flows. If you want to list the
@@ -19,11 +19,11 @@ class PaymentMethodService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      * PaymentMethods</a> API instead.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\PaymentMethod>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\PaymentMethod>
      */
     public function all($params = null, $opts = null)
     {
@@ -52,11 +52,11 @@ class PaymentMethodService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\PaymentMethod
+     * @return \Voxel\Vendor\Stripe\PaymentMethod
      */
     public function attach($id, $params = null, $opts = null)
     {
@@ -65,8 +65,8 @@ class PaymentMethodService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
 
     /**
      * Creates a PaymentMethod object. Read the <a
-     * href="/docs/cloudpayments-js/reference#cloudpayments-create-payment-method">CloudPayments.js
-     * reference</a> to learn how to create PaymentMethods via CloudPayments.js.
+     * href="/docs/stripe-js/reference#stripe-create-payment-method">Stripe.js
+     * reference</a> to learn how to create PaymentMethods via Stripe.js.
      *
      * Instead of creating a PaymentMethod directly, we recommend using the <a
      * href="/docs/payments/accept-a-payment">PaymentIntents</a> API to accept a
@@ -75,11 +75,11 @@ class PaymentMethodService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      * method details ahead of a future payment.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\PaymentMethod
+     * @return \Voxel\Vendor\Stripe\PaymentMethod
      */
     public function create($params = null, $opts = null)
     {
@@ -92,11 +92,11 @@ class PaymentMethodService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\PaymentMethod
+     * @return \Voxel\Vendor\Stripe\PaymentMethod
      */
     public function detach($id, $params = null, $opts = null)
     {
@@ -104,18 +104,18 @@ class PaymentMethodService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
     }
 
     /**
-     * Retrieves a PaymentMethod object attached to the CloudPaymentsAccount. To retrieve a
+     * Retrieves a PaymentMethod object attached to the StripeAccount. To retrieve a
      * payment method attached to a Customer, you should use <a
      * href="/docs/api/payment_methods/customer">Retrieve a Customer’s
      * PaymentMethods</a>.
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\PaymentMethod
+     * @return \Voxel\Vendor\Stripe\PaymentMethod
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -128,11 +128,11 @@ class PaymentMethodService extends \Voxel\Vendor\CloudPayments\Service\AbstractS
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\PaymentMethod
+     * @return \Voxel\Vendor\Stripe\PaymentMethod
      */
     public function update($id, $params = null, $opts = null)
     {

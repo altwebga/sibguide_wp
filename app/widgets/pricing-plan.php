@@ -1524,7 +1524,7 @@ class Pricing_Plan extends Base_Widget {
 		}
 
 		$default_group = $groups[0]['_id'];
-		$allow_autoselect = is_user_logged_in() && ! metadata_exists( 'user', get_current_user_id(), \Voxel\CloudPayments::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan' );
+		$allow_autoselect = is_user_logged_in() && ! metadata_exists( 'user', get_current_user_id(), \Voxel\Stripe::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan' );
 
 		wp_print_styles( $this->get_style_depends() );
 		require locate_template( 'templates/widgets/pricing-plan.php' );

@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments;
+namespace Voxel\Vendor\Stripe;
 
 /**
  * @property string $id Unique identifier for the object.
@@ -10,7 +10,7 @@ namespace Voxel\Vendor\CloudPayments;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property int $expires Time at which the key will expire. Measured in seconds since the Unix epoch.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|string $secret The key's secret. You can use this value to make authorized requests to the CloudPayments API.
+ * @property null|string $secret The key's secret. You can use this value to make authorized requests to the Stripe API.
  */
 class EphemeralKey extends ApiResource
 {
@@ -26,15 +26,15 @@ class EphemeralKey extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\InvalidArgumentException if cloudpayments_version is missing
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\InvalidArgumentException if stripe_version is missing
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\EphemeralKey the created key
+     * @return \Voxel\Vendor\Stripe\EphemeralKey the created key
      */
     public static function create($params = null, $opts = null)
     {
-        if (!$opts || !isset($opts['cloudpayments_version'])) {
-            throw new Exception\InvalidArgumentException('cloudpayments_version must be specified to create an ephemeral key');
+        if (!$opts || !isset($opts['stripe_version'])) {
+            throw new Exception\InvalidArgumentException('stripe_version must be specified to create an ephemeral key');
         }
 
         return self::_create($params, $opts);

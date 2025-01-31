@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service\Climate;
+namespace Voxel\Vendor\Stripe\Service\Climate;
 
 /**
  * Service factory class for API resources in the Climate namespace.
@@ -11,7 +11,7 @@ namespace Voxel\Vendor\CloudPayments\Service\Climate;
  * @property ProductService $products
  * @property SupplierService $suppliers
  */
-class ClimateServiceFactory extends \Voxel\Vendor\CloudPayments\Service\AbstractServiceFactory
+class ClimateServiceFactory extends \Voxel\Vendor\Stripe\Service\AbstractServiceFactory
 {
     /**
      * @var array<string, string>

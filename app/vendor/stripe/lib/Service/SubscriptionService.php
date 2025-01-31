@@ -2,26 +2,26 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\CloudPayments\Service;
+namespace Voxel\Vendor\Stripe\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
  */
-class SubscriptionService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
+class SubscriptionService extends \Voxel\Vendor\Stripe\Service\AbstractService
 {
     /**
      * By default, returns a list of subscriptions that have not been canceled. In
      * order to list canceled subscriptions, specify <code>status=canceled</code>.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Subscription>
+     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Subscription>
      */
     public function all($params = null, $opts = null)
     {
@@ -39,7 +39,7 @@ class SubscriptionService extends \Voxel\Vendor\CloudPayments\Service\AbstractSe
      * collected at the end of the period. But if the subscription is set to cancel
      * immediately, pending prorations will be removed.
      *
-     * By default, upon subscription cancellation, CloudPayments will stop automatic
+     * By default, upon subscription cancellation, Stripe will stop automatic
      * collection of all finalized invoices for the customer. This is intended to
      * prevent unexpected payment attempts after the customer has canceled a
      * subscription. However, you can resume automatic collection of the invoices
@@ -49,11 +49,11 @@ class SubscriptionService extends \Voxel\Vendor\CloudPayments\Service\AbstractSe
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Subscription
+     * @return \Voxel\Vendor\Stripe\Subscription
      */
     public function cancel($id, $params = null, $opts = null)
     {
@@ -76,11 +76,11 @@ class SubscriptionService extends \Voxel\Vendor\CloudPayments\Service\AbstractSe
      * billing configurations that change over time.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Subscription
+     * @return \Voxel\Vendor\Stripe\Subscription
      */
     public function create($params = null, $opts = null)
     {
@@ -92,11 +92,11 @@ class SubscriptionService extends \Voxel\Vendor\CloudPayments\Service\AbstractSe
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Discount
+     * @return \Voxel\Vendor\Stripe\Discount
      */
     public function deleteDiscount($id, $params = null, $opts = null)
     {
@@ -113,11 +113,11 @@ class SubscriptionService extends \Voxel\Vendor\CloudPayments\Service\AbstractSe
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Subscription
+     * @return \Voxel\Vendor\Stripe\Subscription
      */
     public function resume($id, $params = null, $opts = null)
     {
@@ -129,11 +129,11 @@ class SubscriptionService extends \Voxel\Vendor\CloudPayments\Service\AbstractSe
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Subscription
+     * @return \Voxel\Vendor\Stripe\Subscription
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -141,7 +141,7 @@ class SubscriptionService extends \Voxel\Vendor\CloudPayments\Service\AbstractSe
     }
 
     /**
-     * Search for subscriptions you’ve previously created using CloudPayments’s <a
+     * Search for subscriptions you’ve previously created using Stripe’s <a
      * href="/docs/search#search-query-language">Search Query Language</a>. Don’t use
      * search in read-after-write flows where strict consistency is necessary. Under
      * normal operating conditions, data is searchable in less than a minute.
@@ -149,11 +149,11 @@ class SubscriptionService extends \Voxel\Vendor\CloudPayments\Service\AbstractSe
      * during outages. Search functionality is not available to merchants in India.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\SearchResult<\Voxel\Vendor\CloudPayments\Subscription>
+     * @return \Voxel\Vendor\Stripe\SearchResult<\Voxel\Vendor\Stripe\Subscription>
      */
     public function search($params = null, $opts = null)
     {
@@ -210,11 +210,11 @@ class SubscriptionService extends \Voxel\Vendor\CloudPayments\Service\AbstractSe
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\CloudPayments\Subscription
+     * @return \Voxel\Vendor\Stripe\Subscription
      */
     public function update($id, $params = null, $opts = null)
     {

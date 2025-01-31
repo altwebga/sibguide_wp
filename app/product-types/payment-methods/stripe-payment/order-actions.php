@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Product_Types\Payment_Methods\CloudPayments_Payment;
+namespace Voxel\Product_Types\Payment_Methods\Stripe_Payment;
 
 if ( ! defined('ABSPATH') ) {
 	exit;
@@ -20,8 +20,8 @@ trait Order_Actions {
 						$this->order->set_status( \Voxel\ORDER_COMPLETED );
 						$this->order->save();
 					} else {
-						$cloudpayments = \Voxel\CloudPayments::getClient();
-						$payment_intent = $cloudpayments->paymentIntents->retrieve( $this->order->get_transaction_id() );
+						$stripe = \Voxel\Stripe::getClient();
+						$payment_intent = $stripe->paymentIntents->retrieve( $this->order->get_transaction_id() );
 						$payment_intent = $payment_intent->capture();
 
 						$this->payment_intent_updated( $payment_intent );
@@ -43,8 +43,8 @@ trait Order_Actions {
 						$this->order->set_status( \Voxel\ORDER_CANCELED );
 						$this->order->save();
 					} else {
-						$cloudpayments = \Voxel\CloudPayments::getClient();
-						$payment_intent = $cloudpayments->paymentIntents->cancel( $this->order->get_transaction_id() );
+						$stripe = \Voxel\Stripe::getClient();
+						$payment_intent = $stripe->paymentIntents->cancel( $this->order->get_transaction_id() );
 
 						$this->payment_intent_updated( $payment_intent );
 					}
@@ -72,8 +72,8 @@ trait Order_Actions {
 						$this->order->set_status( \Voxel\ORDER_CANCELED );
 						$this->order->save();
 					} else {
-						$cloudpayments = \Voxel\CloudPayments::getClient();
-						$payment_intent = $cloudpayments->paymentIntents->cancel( $this->order->get_transaction_id(), [
+						$stripe = \Voxel\Stripe::getClient();
+						$payment_intent = $stripe->paymentIntents->cancel( $this->order->get_transaction_id(), [
 							'cancellation_reason' => 'requested_by_customer',
 						] );
 
@@ -93,10 +93,10 @@ trait Order_Actions {
 			'action' => 'customer.access_portal',
 			'label' => _x( 'Customer portal', 'order customer actions', 'voxel' ),
 			'handler' => function() {
-				$cloudpayments = \Voxel\CloudPayments::getClient();
-				$session = $cloudpayments->billingPortal->sessions->create( [
-					'customer' => \Voxel\current_user()->get_cloudpayments_customer_id(),
-					'configuration' => \Voxel\CloudPayments::get_portal_configuration_id(),
+				$stripe = \Voxel\Stripe::getClient();
+				$session = $stripe->billingPortal->sessions->create( [
+					'customer' => \Voxel\current_user()->get_stripe_customer_id(),
+					'configuration' => \Voxel\Stripe::get_portal_configuration_id(),
 					'return_url' => $this->order->get_link(),
 				] );
 

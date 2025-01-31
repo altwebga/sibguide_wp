@@ -544,8 +544,8 @@ class Product_Field extends Base_Post_Field {
 			&& $product_type->config( 'settings.payments.mode' ) !== 'offline'
 		) {
 			$vendor = $this->post->get_author();
-			if ( ! ( $vendor->has_cap('administrator') && apply_filters( 'voxel/cloudpayments_connect/enable_onboarding_for_admins', false ) !== true ) ) {
-				$vendor_account = $vendor->get_cloudpayments_vendor_details();
+			if ( ! ( $vendor->has_cap('administrator') && apply_filters( 'voxel/stripe_connect/enable_onboarding_for_admins', false ) !== true ) ) {
+				$vendor_account = $vendor->get_stripe_vendor_details();
 				if ( ! $vendor_account->charges_enabled ) {
 					throw new \Exception( _x( 'Product not available', 'products', 'voxel' ) );
 				}
@@ -559,13 +559,13 @@ class Product_Field extends Base_Post_Field {
 				\Voxel\get( 'product_settings.multivendor.enabled' )
 				&& ! in_array( $product_type->get_key(), [ 'voxel:claim', 'voxel:promotion' ], true )
 				&& \Voxel\get( 'product_settings.multivendor.shipping.responsibility' ) === 'vendor'
-				&& ! ( $vendor->has_cap('administrator') && apply_filters( 'voxel/cloudpayments_connect/enable_onboarding_for_admins', false ) !== true )
+				&& ! ( $vendor->has_cap('administrator') && apply_filters( 'voxel/stripe_connect/enable_onboarding_for_admins', false ) !== true )
 			) {
 				if ( empty( $vendor->get_vendor_shipping_zones() ) ) {
 					if ( get_current_user_id() === $vendor->get_id() ) {
 						throw new \Exception( sprintf(
 							_x( 'No shipping zones available.<br>You can configure shipping through your <a href="%s" target="_blank">vendor dashboard</a>.', 'products', 'voxel' ),
-							esc_url( get_permalink( \Voxel\get( 'templates.cloudpayments_account' ) ) ?: home_url('/') )
+							esc_url( get_permalink( \Voxel\get( 'templates.stripe_account' ) ) ?: home_url('/') )
 						), \VOXEL\PRODUCT_ERR_NO_VENDOR_SHIPPING_ZONES );
 					} else {
 						throw new \Exception( _x( 'Shipping not available', 'products', 'voxel' ), \VOXEL\PRODUCT_ERR_NO_VENDOR_SHIPPING_ZONES );
@@ -608,7 +608,7 @@ class Product_Field extends Base_Post_Field {
 					return false;
 				}
 
-				if ( $vendor->has_cap('administrator') && apply_filters( 'voxel/cloudpayments_connect/enable_onboarding_for_admins', false ) === true ) {
+				if ( $vendor->has_cap('administrator') && apply_filters( 'voxel/stripe_connect/enable_onboarding_for_admins', false ) === true ) {
 					return false;
 				}
 			}
@@ -623,7 +623,7 @@ class Product_Field extends Base_Post_Field {
 				return false;
 			}
 
-			if ( $vendor->has_cap('administrator') && apply_filters( 'voxel/cloudpayments_connect/enable_onboarding_for_admins', false ) === true ) {
+			if ( $vendor->has_cap('administrator') && apply_filters( 'voxel/stripe_connect/enable_onboarding_for_admins', false ) === true ) {
 				return false;
 			}
 		}

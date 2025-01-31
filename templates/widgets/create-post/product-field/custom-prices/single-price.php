@@ -142,14 +142,14 @@ if ( ! defined('ABSPATH') ) {
 							<label><?= _x( 'Price', 'product field custom prices', 'voxel' ) ?></label>
 							<div class="input-container">
 								<input v-model="pricing.prices.base_price.amount" type="number" class="ts-filter" min="0" placeholder="<?= esc_attr( _x( 'Add price', 'product field custom prices', 'voxel' ) ) ?>">
-								<span class="input-suffix"><?= \Voxel\get('settings.cloudpayments.currency') ?></span>
+								<span class="input-suffix"><?= \Voxel\get('settings.stripe.currency') ?></span>
 							</div>
 						</div>
 						<div v-if="customPrices.field.props.base_price.discount_price.enabled" class="ts-form-group vx-1-2">
 							<label><?= _x( 'Discount price', 'product field custom prices', 'voxel' ) ?></label>
 							<div class="input-container">
 								<input v-model="pricing.prices.base_price.discount_amount" type="number" class="ts-filter" min="0" placeholder="<?= esc_attr( _x( 'Add price', 'product field custom prices', 'voxel' ) ) ?>">
-								<span class="input-suffix"><?= \Voxel\get('settings.cloudpayments.currency') ?></span>
+								<span class="input-suffix"><?= \Voxel\get('settings.stripe.currency') ?></span>
 							</div>
 						</div>
 					</template>
@@ -161,7 +161,7 @@ if ( ! defined('ABSPATH') ) {
 									<label>{{ addon.label }}</label>
 									<div class="input-container">
 										<input v-model="pricing.prices.addons[addon.key].price" type="number" class="ts-filter" min="0" placeholder="<?= esc_attr( _x( 'Add price', 'product field custom prices', 'voxel' ) ) ?>">
-										<span class="input-suffix"><?= \Voxel\get('settings.cloudpayments.currency') ?></span>
+										<span class="input-suffix"><?= \Voxel\get('settings.stripe.currency') ?></span>
 									</div>
 								</div>
 							</template>
@@ -180,7 +180,7 @@ if ( ! defined('ABSPATH') ) {
 													<label>{{ choice.value }}</label>
 													<div class="input-container">
 														<input v-model="pricing.prices.addons[addon.key][choice.value].price" type="number" class="ts-filter" min="0" placeholder="<?= esc_attr( _x( 'Add price', 'product field custom prices', 'voxel' ) ) ?>">
-														<span class="input-suffix"><?= \Voxel\get('settings.cloudpayments.currency') ?></span>
+														<span class="input-suffix"><?= \Voxel\get('settings.stripe.currency') ?></span>
 													</div>
 												</div>
 											</template>
@@ -198,7 +198,7 @@ if ( ! defined('ABSPATH') ) {
 													<label>{{ choice.label }}</label>
 													<div class="input-container">
 														<input v-model="pricing.prices.addons[addon.key][choice.value].price" type="number" class="ts-filter" min="0" placeholder="<?= esc_attr( _x( 'Add price', 'product field custom prices', 'voxel' ) ) ?>">
-														<span class="input-suffix"><?= \Voxel\get('settings.cloudpayments.currency') ?></span>
+														<span class="input-suffix"><?= \Voxel\get('settings.stripe.currency') ?></span>
 													</div>
 												</div>
 											</template>

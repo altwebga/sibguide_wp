@@ -2649,7 +2649,7 @@ class Cart_Summary extends Base_Widget {
 		];
 
 		// determine countries with shipping support
-		$countries = \Voxel\CloudPayments\Country_Codes::all();
+		$countries = \Voxel\Stripe\Country_Codes::all();
 		foreach ( \Voxel\Product_Types\Shipping\Shipping_Zone::get_all() as $shipping_zone ) {
 			foreach ( $shipping_zone->get_supported_country_codes() as $country_code => $enabled ) {
 				if ( isset( $countries[ $country_code ] ) ) {

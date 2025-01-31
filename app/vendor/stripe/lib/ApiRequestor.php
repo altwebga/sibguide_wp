@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\CloudPayments;
+namespace Voxel\Vendor\Stripe;
 
 /**
  * Class ApiRequestor.
@@ -31,7 +31,7 @@ class ApiRequestor
      */
     private static $requestTelemetry;
 
-    private static $OPTIONS_KEYS = ['api_key', 'idempotency_key', 'cloudpayments_account', 'cloudpayments_version', 'api_base'];
+    private static $OPTIONS_KEYS = ['api_key', 'idempotency_key', 'stripe_account', 'stripe_version', 'api_base'];
 
     /**
      * ApiRequestor constructor.
@@ -43,13 +43,13 @@ class ApiRequestor
     {
         $this->_apiKey = $apiKey;
         if (!$apiBase) {
-            $apiBase = CloudPayments::$apiBase;
+            $apiBase = Stripe::$apiBase;
         }
         $this->_apiBase = $apiBase;
     }
 
     /**
-     * Creates a telemetry json blob for use in 'X-CloudPayments-Client-Telemetry' headers.
+     * Creates a telemetry json blob for use in 'X-Stripe-Client-Telemetry' headers.
      *
      * @static
      *
@@ -73,7 +73,7 @@ class ApiRequestor
         if (false !== $result) {
             return $result;
         }
-        CloudPayments::getLogger()->error('Serializing telemetry payload failed!');
+        Stripe::getLogger()->error('Serializing telemetry payload failed!');
 
         return '{}';
     }
@@ -327,18 +327,18 @@ class ApiRequestor
      */
     private static function _defaultHeaders($apiKey, $clientInfo = null)
     {
-        $uaString = 'CloudPayments/v1 PhpBindings/' . CloudPayments::VERSION;
+        $uaString = 'Stripe/v1 PhpBindings/' . Stripe::VERSION;
 
         $langVersion = \PHP_VERSION;
         $uname_disabled = self::_isDisabled(\ini_get('disable_functions'), 'php_uname');
         $uname = $uname_disabled ? '(disabled)' : \php_uname();
 
-        $appInfo = CloudPayments::getAppInfo();
+        $appInfo = Stripe::getAppInfo();
         $ua = [
-            'bindings_version' => CloudPayments::VERSION,
+            'bindings_version' => Stripe::VERSION,
             'lang' => 'php',
             'lang_version' => $langVersion,
-            'publisher' => 'cloudpayments',
+            'publisher' => 'stripe',
             'uname' => $uname,
         ];
         if ($clientInfo) {
@@ -350,10 +350,10 @@ class ApiRequestor
         }
 
         return [
-            'X-CloudPayments-Client-User-Agent' => \json_encode($ua),
+            'X-Stripe-Client-User-Agent' => \json_encode($ua),
             'User-Agent' => $uaString,
             'Authorization' => 'Bearer ' . $apiKey,
-            'CloudPayments-Version' => CloudPayments::getApiVersion(),
+            'Stripe-Version' => Stripe::getApiVersion(),
         ];
     }
 
@@ -361,20 +361,20 @@ class ApiRequestor
     {
         $myApiKey = $this->_apiKey;
         if (!$myApiKey) {
-            $myApiKey = CloudPayments::$apiKey;
+            $myApiKey = Stripe::$apiKey;
         }
 
         if (!$myApiKey) {
             $msg = 'No API key provided.  (HINT: set your API key using '
-              . '"CloudPayments::setApiKey(<API-KEY>)".  You can generate API keys from '
-              . 'the CloudPayments web interface.  See https://cloudpayments.com/api for '
-              . 'details, or email support@cloudpayments.com if you have any questions.';
+              . '"Stripe::setApiKey(<API-KEY>)".  You can generate API keys from '
+              . 'the Stripe web interface.  See https://stripe.com/api for '
+              . 'details, or email support@stripe.com if you have any questions.';
 
             throw new Exception\AuthenticationException($msg);
         }
 
         // Clients can supply arbitrary additional keys to be included in the
-        // X-CloudPayments-Client-User-Agent header via the optional getUserAgentInfo()
+        // X-Stripe-Client-User-Agent header via the optional getUserAgentInfo()
         // method
         $clientUAInfo = null;
         if (\method_exists($this->httpClient(), 'getUserAgentInfo')) {
@@ -400,12 +400,12 @@ class ApiRequestor
         $params = self::_encodeObjects($params);
         $defaultHeaders = $this->_defaultHeaders($myApiKey, $clientUAInfo);
 
-        if (CloudPayments::$accountId) {
-            $defaultHeaders['CloudPayments-Account'] = CloudPayments::$accountId;
+        if (Stripe::$accountId) {
+            $defaultHeaders['Stripe-Account'] = Stripe::$accountId;
         }
 
-        if (CloudPayments::$enableTelemetry && null !== self::$requestTelemetry) {
-            $defaultHeaders['X-CloudPayments-Client-Telemetry'] = self::_telemetryJson(self::$requestTelemetry);
+        if (Stripe::$enableTelemetry && null !== self::$requestTelemetry) {
+            $defaultHeaders['X-Stripe-Client-Telemetry'] = self::_telemetryJson(self::$requestTelemetry);
         }
 
         $hasFile = false;

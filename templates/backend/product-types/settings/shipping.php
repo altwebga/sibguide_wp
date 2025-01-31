@@ -284,10 +284,10 @@ if ( ! defined('ABSPATH') ) {
 
 																<?php \Voxel\Form_Models\Select_Model::render( [
 																	'v-model' => 'shipping_rate.fixed_rate.tax_behavior',
-																	'label' => sprintf( 'Tax behavior <a style="float:right;" href="%s" target="_blank">Set default tax behavior</a>', esc_url( \Voxel\CloudPayments::dashboard_url( '/settings/tax' ) ) ),
+																	'label' => sprintf( 'Tax behavior <a style="float:right;" href="%s" target="_blank">Set default tax behavior</a>', esc_url( \Voxel\Stripe::dashboard_url( '/settings/tax' ) ) ),
 																	'classes' => 'x-col-6',
 																	'choices' => [
-																		'default' => 'Default: Use default tax behavior configured in your CloudPayments dashboard',
+																		'default' => 'Default: Use default tax behavior configured in your Stripe dashboard',
 																		'inclusive' => 'Inclusive: Tax is included in the price',
 																		'exclusive' => 'Exclusive: Tax is added on top of the price',
 																	],
