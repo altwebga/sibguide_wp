@@ -13,36 +13,36 @@ class General_Actions extends \Voxel\Controllers\Base_Controller {
 	}
 
 	protected function hooks() {
-		$this->on( 'voxel_ajax_general.stripe.endpoint_status', '@check_stripe_endpoint_status' );
-		$this->on( 'voxel_ajax_general.stripe.connect_endpoint_status', '@check_stripe_connect_endpoint_status' );
+		$this->on( 'voxel_ajax_general.cloudpayments.endpoint_status', '@check_cloudpayments_endpoint_status' );
+		$this->on( 'voxel_ajax_general.cloudpayments.connect_endpoint_status', '@check_cloudpayments_connect_endpoint_status' );
 		$this->on( 'voxel_ajax_general.search_users', '@search_users' );
 		$this->on( 'voxel_ajax_general.search_posts', '@search_posts' );
 		$this->on( 'voxel_ajax_general.search_terms', '@search_terms' );
 	}
 
-	protected function check_stripe_endpoint_status() {
+	protected function check_cloudpayments_endpoint_status() {
 		try {
 			$mode = \Voxel\from_list( $_GET['mode'] ?? null, [ 'live', 'test' ], 'test' );
-			$stripe = $mode === 'live' ? \Voxel\Stripe::getLiveClient() : \Voxel\Stripe::getTestClient();
-			$endpoint_id = \Voxel\get( 'settings.stripe.webhooks.'.$mode.'.id' );
+			$cloudpayments = $mode === 'live' ? \Voxel\CloudPayments::getLiveClient() : \Voxel\CloudPayments::getTestClient();
+			$endpoint_id = \Voxel\get( 'settings.cloudpayments.webhooks.'.$mode.'.id' );
 
 			try {
-				$endpoint = $stripe->webhookEndpoints->retrieve( $endpoint_id );
-			} catch ( \Voxel\Vendor\Stripe\Exception\InvalidRequestException $e ) {
-				if ( $e->getStripeCode() === 'resource_missing' ) {
-					$endpoint = $stripe->webhookEndpoints->create( [
-						'url' => home_url( '/?vx=1&action=stripe.webhooks' ),
-						'enabled_events' => \Voxel\Stripe::WEBHOOK_EVENTS,
+				$endpoint = $cloudpayments->webhookEndpoints->retrieve( $endpoint_id );
+			} catch ( \Voxel\Vendor\CloudPayments\Exception\InvalidRequestException $e ) {
+				if ( $e->getCloudPaymentsCode() === 'resource_missing' ) {
+					$endpoint = $cloudpayments->webhookEndpoints->create( [
+						'url' => home_url( '/?vx=1&action=cloudpayments.webhooks' ),
+						'enabled_events' => \Voxel\CloudPayments::WEBHOOK_EVENTS,
 					] );
 
-					\Voxel\set( 'settings.stripe.webhooks.'.$mode, [
+					\Voxel\set( 'settings.cloudpayments.webhooks.'.$mode, [
 						'id' => $endpoint->id,
 						'secret' => $endpoint->secret,
 					] );
 
 					return wp_send_json( [
 						'success' => true,
-						'message' => __( 'Endpoint could not be found in the Stripe servers. A new endpoint has been generated as replacement.', 'voxel-backend' ),
+						'message' => __( 'Endpoint could not be found in the CloudPayments servers. A new endpoint has been generated as replacement.', 'voxel-backend' ),
 						'id' => $endpoint->id,
 						'secret' => $endpoint->secret,
 					] );
@@ -53,12 +53,12 @@ class General_Actions extends \Voxel\Controllers\Base_Controller {
 
 			if (
 				$endpoint->status !== 'enabled' ||
-				$endpoint->url !== home_url( '/?vx=1&action=stripe.webhooks' ) ||
-				! empty( array_diff( \Voxel\Stripe::WEBHOOK_EVENTS, $endpoint->enabled_events ) )
+				$endpoint->url !== home_url( '/?vx=1&action=cloudpayments.webhooks' ) ||
+				! empty( array_diff( \Voxel\CloudPayments::WEBHOOK_EVENTS, $endpoint->enabled_events ) )
 			) {
-				$stripe->webhookEndpoints->update( $endpoint->id, [
-					'url' => home_url( '/?vx=1&action=stripe.webhooks' ),
-					'enabled_events' => \Voxel\Stripe::WEBHOOK_EVENTS,
+				$cloudpayments->webhookEndpoints->update( $endpoint->id, [
+					'url' => home_url( '/?vx=1&action=cloudpayments.webhooks' ),
+					'enabled_events' => \Voxel\CloudPayments::WEBHOOK_EVENTS,
 					'disabled' => false,
 				] );
 
@@ -80,39 +80,39 @@ class General_Actions extends \Voxel\Controllers\Base_Controller {
 		}
 	}
 
-	protected function check_stripe_connect_endpoint_status() {
+	protected function check_cloudpayments_connect_endpoint_status() {
 		try {
 			$mode = \Voxel\from_list( $_GET['mode'] ?? null, [ 'live', 'test' ], 'test' );
-			$stripe = $mode === 'live' ? \Voxel\Stripe::getLiveClient() : \Voxel\Stripe::getTestClient();
-			$endpoint_id = \Voxel\get( 'settings.stripe.webhooks.'.$mode.'_connect.id' );
+			$cloudpayments = $mode === 'live' ? \Voxel\CloudPayments::getLiveClient() : \Voxel\CloudPayments::getTestClient();
+			$endpoint_id = \Voxel\get( 'settings.cloudpayments.webhooks.'.$mode.'_connect.id' );
 
-			$createEndpoint = function() use ( $stripe, $mode ) {
-				$endpoint = $stripe->webhookEndpoints->create( [
-					'url' => home_url( '/?vx=1&action=stripe.connect_webhooks' ),
+			$createEndpoint = function() use ( $cloudpayments, $mode ) {
+				$endpoint = $cloudpayments->webhookEndpoints->create( [
+					'url' => home_url( '/?vx=1&action=cloudpayments.connect_webhooks' ),
 					'connect' => true,
-					'enabled_events' => \Voxel\Stripe::CONNECT_WEBHOOK_EVENTS,
+					'enabled_events' => \Voxel\CloudPayments::CONNECT_WEBHOOK_EVENTS,
 				] );
 
-				\Voxel\set( 'settings.stripe.webhooks.'.$mode.'_connect', [
+				\Voxel\set( 'settings.cloudpayments.webhooks.'.$mode.'_connect', [
 					'id' => $endpoint->id,
 					'secret' => $endpoint->secret,
 				] );
 
 				return wp_send_json( [
 					'success' => true,
-					'message' => __( 'Connect endpoint could not be found in the Stripe servers. A new endpoint has been generated as replacement.', 'voxel-backend' ),
+					'message' => __( 'Connect endpoint could not be found in the CloudPayments servers. A new endpoint has been generated as replacement.', 'voxel-backend' ),
 					'id' => $endpoint->id,
 					'secret' => $endpoint->secret,
 				] );
 			};
 
 			try {
-				$endpoint = $stripe->webhookEndpoints->retrieve( $endpoint_id );
+				$endpoint = $cloudpayments->webhookEndpoints->retrieve( $endpoint_id );
 				// if ( ! $endpoint->application ) {
 				// 	return $createEndpoint();
 				// }
-			} catch ( \Voxel\Vendor\Stripe\Exception\InvalidRequestException $e ) {
-				if ( $e->getStripeCode() === 'resource_missing' ) {
+			} catch ( \Voxel\Vendor\CloudPayments\Exception\InvalidRequestException $e ) {
+				if ( $e->getCloudPaymentsCode() === 'resource_missing' ) {
 					return $createEndpoint();
 				} else {
 					throw $e;
@@ -121,12 +121,12 @@ class General_Actions extends \Voxel\Controllers\Base_Controller {
 
 			if (
 				$endpoint->status !== 'enabled'
-				|| $endpoint->url !== home_url( '/?vx=1&action=stripe.connect_webhooks' )
-				|| ! empty( array_diff( \Voxel\Stripe::CONNECT_WEBHOOK_EVENTS, $endpoint->enabled_events ) )
+				|| $endpoint->url !== home_url( '/?vx=1&action=cloudpayments.connect_webhooks' )
+				|| ! empty( array_diff( \Voxel\CloudPayments::CONNECT_WEBHOOK_EVENTS, $endpoint->enabled_events ) )
 			) {
-				$stripe->webhookEndpoints->update( $endpoint->id, [
-					'url' => home_url( '/?vx=1&action=stripe.webhooks' ),
-					'enabled_events' => \Voxel\Stripe::CONNECT_WEBHOOK_EVENTS,
+				$cloudpayments->webhookEndpoints->update( $endpoint->id, [
+					'url' => home_url( '/?vx=1&action=cloudpayments.webhooks' ),
+					'enabled_events' => \Voxel\CloudPayments::CONNECT_WEBHOOK_EVENTS,
 					'disabled' => false,
 				] );
 

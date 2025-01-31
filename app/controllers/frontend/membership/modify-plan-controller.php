@@ -21,13 +21,13 @@ class Modify_Plan_Controller extends \Voxel\Controllers\Base_Controller {
 			} else {
 				$this->modify_current_price();
 			}
-		} catch ( \Voxel\Vendor\Stripe\Exception\ApiErrorException | \Voxel\Vendor\Stripe\Exception\InvalidArgumentException $e ) {
+		} catch ( \Voxel\Vendor\CloudPayments\Exception\ApiErrorException | \Voxel\Vendor\CloudPayments\Exception\InvalidArgumentException $e ) {
 			return wp_send_json( [
 				'success' => false,
 				'message' => _x( 'Something went wrong', 'checkout', 'voxel' ),
 				'debug' => [
-					'type' => 'stripe_error',
-					'code' => method_exists( $e, 'getStripeCode' ) ? $e->getStripeCode() : $e->getCode(),
+					'type' => 'cloudpayments_error',
+					'code' => method_exists( $e, 'getCloudPaymentsCode' ) ? $e->getCloudPaymentsCode() : $e->getCode(),
 					'message' => $e->getMessage(),
 				],
 			] );
@@ -43,8 +43,8 @@ class Modify_Plan_Controller extends \Voxel\Controllers\Base_Controller {
 	private function modify_current_price() {
 		$user = \Voxel\current_user();
 		$membership = $user->get_membership();
-		$is_test_mode = \Voxel\Stripe::is_test_mode();
-		$customer = $user->get_or_create_stripe_customer();
+		$is_test_mode = \Voxel\CloudPayments::is_test_mode();
+		$customer = $user->get_or_create_cloudpayments_customer();
 		$redirect_to = get_permalink( \Voxel\get( 'templates.current_plan' ) ) ?: home_url('/');
 		if ( ! empty( $_REQUEST['redirect_to'] ) ) {
 			$redirect_to = wp_validate_redirect( $_REQUEST['redirect_to'], $redirect_to );
@@ -61,7 +61,7 @@ class Modify_Plan_Controller extends \Voxel\Controllers\Base_Controller {
 		$plan = $membership->plan;
 		$price = new \Voxel\Plan_Price( [
 			'id' => $membership->get_price_id(),
-			'mode' => \Voxel\Stripe::is_test_mode() ? 'test' : 'live',
+			'mode' => \Voxel\CloudPayments::is_test_mode() ? 'test' : 'live',
 			'plan' => $plan->get_key(),
 		] );
 
@@ -80,7 +80,7 @@ class Modify_Plan_Controller extends \Voxel\Controllers\Base_Controller {
 		}
 
 		if ( $membership->get_type() === 'subscription' ) {
-			$subscription = \Voxel\Vendor\Stripe\Subscription::retrieve( $membership->get_subscription_id() );
+			$subscription = \Voxel\Vendor\CloudPayments\Subscription::retrieve( $membership->get_subscription_id() );
 			$stored_limits = json_decode( $subscription->metadata['voxel:limits'] ?? '', true );
 			if ( ! is_array( $stored_limits ) ) {
 				$stored_limits = [];
@@ -127,7 +127,7 @@ class Modify_Plan_Controller extends \Voxel\Controllers\Base_Controller {
 			];
 
 			$args = \Voxel\Membership\Tax_Details::apply_to_subscription_upgrade( $args );
-			$updatedSubscription = \Voxel\Vendor\Stripe\Subscription::update( $subscription->id, $args );
+			$updatedSubscription = \Voxel\Vendor\CloudPayments\Subscription::update( $subscription->id, $args );
 
 			do_action( 'voxel/membership/subscription-updated', $updatedSubscription );
 
@@ -186,7 +186,7 @@ class Modify_Plan_Controller extends \Voxel\Controllers\Base_Controller {
 			}
 
 			$args = \Voxel\Membership\Tax_Details::apply_to_checkout_session( $args );
-			$session = \Voxel\Vendor\Stripe\Checkout\Session::create( $args );
+			$session = \Voxel\Vendor\CloudPayments\Checkout\Session::create( $args );
 			update_user_meta( $user->get_id(), 'voxel:tmp_last_session_id', $session->id );
 
 			return wp_send_json( [
@@ -199,8 +199,8 @@ class Modify_Plan_Controller extends \Voxel\Controllers\Base_Controller {
 	private function modify_new_price() {
 		$user = \Voxel\current_user();
 		$membership = $user->get_membership();
-		$is_test_mode = \Voxel\Stripe::is_test_mode();
-		$customer = $user->get_or_create_stripe_customer();
+		$is_test_mode = \Voxel\CloudPayments::is_test_mode();
+		$customer = $user->get_or_create_cloudpayments_customer();
 		$redirect_to = get_permalink( \Voxel\get( 'templates.current_plan' ) ) ?: home_url('/');
 		if ( ! empty( $_REQUEST['redirect_to'] ) ) {
 			$redirect_to = wp_validate_redirect( $_REQUEST['redirect_to'], $redirect_to );
@@ -219,10 +219,10 @@ class Modify_Plan_Controller extends \Voxel\Controllers\Base_Controller {
 			}
 
 			if ( $membership->get_type() === 'subscription' && $membership->is_active() ) {
-				\Voxel\Stripe::getClient()->subscriptions->cancel( $membership->get_subscription_id() );
+				\Voxel\CloudPayments::getClient()->subscriptions->cancel( $membership->get_subscription_id() );
 			}
 
-			$meta_key = \Voxel\Stripe::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
+			$meta_key = \Voxel\CloudPayments::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
 			update_user_meta( $user->get_id(), $meta_key, wp_slash( wp_json_encode( [
 				'plan' => 'default',
 				'created' => \Voxel\utc()->format( 'Y-m-d H:i:s' ),
@@ -268,7 +268,7 @@ class Modify_Plan_Controller extends \Voxel\Controllers\Base_Controller {
 				$details = $price->get_details();
 
 				if ( $membership->get_type() === 'subscription' && $membership->is_active() ) {
-					$subscription = \Voxel\Vendor\Stripe\Subscription::retrieve( $membership->get_subscription_id() );
+					$subscription = \Voxel\Vendor\CloudPayments\Subscription::retrieve( $membership->get_subscription_id() );
 
 					$args = [
 						'items' => [ [
@@ -295,7 +295,7 @@ class Modify_Plan_Controller extends \Voxel\Controllers\Base_Controller {
 					];
 
 					$args = \Voxel\Membership\Tax_Details::apply_to_subscription_upgrade( $args );
-					$updatedSubscription = \Voxel\Vendor\Stripe\Subscription::update( $subscription->id, $args );
+					$updatedSubscription = \Voxel\Vendor\CloudPayments\Subscription::update( $subscription->id, $args );
 
 					do_action( 'voxel/membership/subscription-updated', $updatedSubscription );
 
@@ -361,7 +361,7 @@ class Modify_Plan_Controller extends \Voxel\Controllers\Base_Controller {
 					}
 
 					$args = \Voxel\Membership\Tax_Details::apply_to_checkout_session( $args );
-					$session = \Voxel\Vendor\Stripe\Checkout\Session::create( $args );
+					$session = \Voxel\Vendor\CloudPayments\Checkout\Session::create( $args );
 					update_user_meta( $user->get_id(), 'voxel:tmp_last_session_id', $session->id );
 
 					return wp_send_json( [
@@ -417,7 +417,7 @@ class Modify_Plan_Controller extends \Voxel\Controllers\Base_Controller {
 				}
 
 				$args = \Voxel\Membership\Tax_Details::apply_to_checkout_session( $args );
-				$session = \Voxel\Vendor\Stripe\Checkout\Session::create( $args );
+				$session = \Voxel\Vendor\CloudPayments\Checkout\Session::create( $args );
 				update_user_meta( $user->get_id(), 'voxel:tmp_last_session_id', $session->id );
 
 				return wp_send_json( [

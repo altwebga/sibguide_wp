@@ -2,15 +2,15 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service;
+namespace Voxel\Vendor\CloudPayments\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
-class PriceService extends \Voxel\Vendor\Stripe\Service\AbstractService
+class PriceService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 {
     /**
      * Returns a list of your active prices, excluding <a
@@ -18,11 +18,11 @@ class PriceService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * For the list of inactive prices, set <code>active</code> to false.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Price>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Price>
      */
     public function all($params = null, $opts = null)
     {
@@ -34,11 +34,11 @@ class PriceService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * one-time.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Price
+     * @return \Voxel\Vendor\CloudPayments\Price
      */
     public function create($params = null, $opts = null)
     {
@@ -50,11 +50,11 @@ class PriceService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Price
+     * @return \Voxel\Vendor\CloudPayments\Price
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -62,7 +62,7 @@ class PriceService extends \Voxel\Vendor\Stripe\Service\AbstractService
     }
 
     /**
-     * Search for prices you’ve previously created using Stripe’s <a
+     * Search for prices you’ve previously created using CloudPayments’s <a
      * href="/docs/search#search-query-language">Search Query Language</a>. Don’t use
      * search in read-after-write flows where strict consistency is necessary. Under
      * normal operating conditions, data is searchable in less than a minute.
@@ -70,11 +70,11 @@ class PriceService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * during outages. Search functionality is not available to merchants in India.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\SearchResult<\Voxel\Vendor\Stripe\Price>
+     * @return \Voxel\Vendor\CloudPayments\SearchResult<\Voxel\Vendor\CloudPayments\Price>
      */
     public function search($params = null, $opts = null)
     {
@@ -87,11 +87,11 @@ class PriceService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Price
+     * @return \Voxel\Vendor\CloudPayments\Price
      */
     public function update($id, $params = null, $opts = null)
     {

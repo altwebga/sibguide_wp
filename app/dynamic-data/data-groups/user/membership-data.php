@@ -34,7 +34,7 @@ trait Membership_Data {
 							$membership = $this->user->get_membership();
 							if ( $membership->get_type() === 'subscription' || $membership->get_type() === 'payment' ) {
 								$amount = $membership->get_amount();
-								if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( $membership->get_currency() ) ) {
+								if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( $membership->get_currency() ) ) {
 									$amount = round( $amount / 100, 2 );
 								}
 
@@ -58,7 +58,7 @@ trait Membership_Data {
 							if ( $membership->get_type() === 'subscription' || $membership->get_type() === 'payment' ) {
 								return $membership->get_currency();
 							} else {
-								return \Voxel\get( 'settings.stripe.currency' );
+								return \Voxel\get( 'settings.cloudpayments.currency' );
 							}
 						} ),
 					];

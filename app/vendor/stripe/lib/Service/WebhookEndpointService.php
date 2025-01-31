@@ -2,25 +2,25 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service;
+namespace Voxel\Vendor\CloudPayments\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
-class WebhookEndpointService extends \Voxel\Vendor\Stripe\Service\AbstractService
+class WebhookEndpointService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 {
     /**
      * Returns a list of your webhook endpoints.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\WebhookEndpoint>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\WebhookEndpoint>
      */
     public function all($params = null, $opts = null)
     {
@@ -35,15 +35,15 @@ class WebhookEndpointService extends \Voxel\Vendor\Stripe\Service\AbstractServic
      * accounts is created; otherwise an account webhook endpoint that notifies the
      * specified <code>url</code> only about events from your account is created. You
      * can also create webhook endpoints in the <a
-     * href="https://dashboard.stripe.com/account/webhooks">webhooks settings</a>
+     * href="https://dashboard.cloudpayments.com/account/webhooks">webhooks settings</a>
      * section of the Dashboard.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\WebhookEndpoint
+     * @return \Voxel\Vendor\CloudPayments\WebhookEndpoint
      */
     public function create($params = null, $opts = null)
     {
@@ -52,16 +52,16 @@ class WebhookEndpointService extends \Voxel\Vendor\Stripe\Service\AbstractServic
 
     /**
      * You can also delete webhook endpoints via the <a
-     * href="https://dashboard.stripe.com/account/webhooks">webhook endpoint
-     * management</a> page of the Stripe dashboard.
+     * href="https://dashboard.cloudpayments.com/account/webhooks">webhook endpoint
+     * management</a> page of the CloudPayments dashboard.
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\WebhookEndpoint
+     * @return \Voxel\Vendor\CloudPayments\WebhookEndpoint
      */
     public function delete($id, $params = null, $opts = null)
     {
@@ -73,11 +73,11 @@ class WebhookEndpointService extends \Voxel\Vendor\Stripe\Service\AbstractServic
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\WebhookEndpoint
+     * @return \Voxel\Vendor\CloudPayments\WebhookEndpoint
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -90,11 +90,11 @@ class WebhookEndpointService extends \Voxel\Vendor\Stripe\Service\AbstractServic
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\WebhookEndpoint
+     * @return \Voxel\Vendor\CloudPayments\WebhookEndpoint
      */
     public function update($id, $params = null, $opts = null)
     {

@@ -2,15 +2,15 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service\Radar;
+namespace Voxel\Vendor\CloudPayments\Service\Radar;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
-class ValueListItemService extends \Voxel\Vendor\Stripe\Service\AbstractService
+class ValueListItemService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 {
     /**
      * Returns a list of <code>ValueListItem</code> objects. The objects are sorted in
@@ -18,11 +18,11 @@ class ValueListItemService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * appearing first.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Radar\ValueListItem>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Radar\ValueListItem>
      */
     public function all($params = null, $opts = null)
     {
@@ -34,11 +34,11 @@ class ValueListItemService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * parent value list.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Radar\ValueListItem
+     * @return \Voxel\Vendor\CloudPayments\Radar\ValueListItem
      */
     public function create($params = null, $opts = null)
     {
@@ -51,11 +51,11 @@ class ValueListItemService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Radar\ValueListItem
+     * @return \Voxel\Vendor\CloudPayments\Radar\ValueListItem
      */
     public function delete($id, $params = null, $opts = null)
     {
@@ -67,11 +67,11 @@ class ValueListItemService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Radar\ValueListItem
+     * @return \Voxel\Vendor\CloudPayments\Radar\ValueListItem
      */
     public function retrieve($id, $params = null, $opts = null)
     {

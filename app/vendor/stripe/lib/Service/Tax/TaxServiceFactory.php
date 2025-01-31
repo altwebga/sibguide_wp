@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service\Tax;
+namespace Voxel\Vendor\CloudPayments\Service\Tax;
 
 /**
  * Service factory class for API resources in the Tax namespace.
@@ -12,7 +12,7 @@ namespace Voxel\Vendor\Stripe\Service\Tax;
  * @property SettingsService $settings
  * @property TransactionService $transactions
  */
-class TaxServiceFactory extends \Voxel\Vendor\Stripe\Service\AbstractServiceFactory
+class TaxServiceFactory extends \Voxel\Vendor\CloudPayments\Service\AbstractServiceFactory
 {
     /**
      * @var array<string, string>

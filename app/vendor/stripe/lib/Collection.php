@@ -1,19 +1,19 @@
 <?php
 
-namespace Voxel\Vendor\Stripe;
+namespace Voxel\Vendor\CloudPayments;
 
 /**
  * Class Collection.
  *
- * @template TStripeObject of StripeObject
- * @template-implements \IteratorAggregate<TStripeObject>
+ * @template TCloudPaymentsObject of CloudPaymentsObject
+ * @template-implements \IteratorAggregate<TCloudPaymentsObject>
  *
  * @property string $object
  * @property string $url
  * @property bool $has_more
- * @property TStripeObject[] $data
+ * @property TCloudPaymentsObject[] $data
  */
-class Collection extends StripeObject implements \Countable, \IteratorAggregate
+class Collection extends CloudPaymentsObject implements \Countable, \IteratorAggregate
 {
     const OBJECT_NAME = 'list';
 
@@ -27,7 +27,7 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
      */
     public static function baseUrl()
     {
-        return Stripe::$apiBase;
+        return CloudPayments::$apiBase;
     }
 
     /**
@@ -73,7 +73,7 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
      *
      * @throws Exception\ApiErrorException
      *
-     * @return Collection<TStripeObject>
+     * @return Collection<TCloudPaymentsObject>
      */
     public function all($params = null, $opts = null)
     {
@@ -81,10 +81,10 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
         list($url, $params) = $this->extractPathAndUpdateParams($params);
 
         list($response, $opts) = $this->_request('get', $url, $params, $opts);
-        $obj = Util\Util::convertToStripeObject($response, $opts);
-        if (!($obj instanceof \Voxel\Vendor\Stripe\Collection)) {
-            throw new \Voxel\Vendor\Stripe\Exception\UnexpectedValueException(
-                'Expected type ' . \Voxel\Vendor\Stripe\Collection::class . ', got "' . \get_class($obj) . '" instead.'
+        $obj = Util\Util::convertToCloudPaymentsObject($response, $opts);
+        if (!($obj instanceof \Voxel\Vendor\CloudPayments\Collection)) {
+            throw new \Voxel\Vendor\CloudPayments\Exception\UnexpectedValueException(
+                'Expected type ' . \Voxel\Vendor\CloudPayments\Collection::class . ', got "' . \get_class($obj) . '" instead.'
             );
         }
         $obj->setFilters($params);
@@ -98,7 +98,7 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
      *
      * @throws Exception\ApiErrorException
      *
-     * @return TStripeObject
+     * @return TCloudPaymentsObject
      */
     public function create($params = null, $opts = null)
     {
@@ -107,7 +107,7 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
 
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
 
-        return Util\Util::convertToStripeObject($response, $opts);
+        return Util\Util::convertToCloudPaymentsObject($response, $opts);
     }
 
     /**
@@ -117,7 +117,7 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
      *
      * @throws Exception\ApiErrorException
      *
-     * @return TStripeObject
+     * @return TCloudPaymentsObject
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -133,7 +133,7 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
             $opts
         );
 
-        return Util\Util::convertToStripeObject($response, $opts);
+        return Util\Util::convertToCloudPaymentsObject($response, $opts);
     }
 
     /**
@@ -165,7 +165,7 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
     }
 
     /**
-     * @return \Generator|TStripeObject[] A generator that can be used to
+     * @return \Generator|TCloudPaymentsObject[] A generator that can be used to
      *    iterate across all objects across all pages. As page boundaries are
      *    encountered, the next page will be fetched automatically for
      *    continued iteration.
@@ -228,7 +228,7 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Collection<TStripeObject>
+     * @return Collection<TCloudPaymentsObject>
      */
     public function nextPage($params = null, $opts = null)
     {
@@ -256,7 +256,7 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return Collection<TStripeObject>
+     * @return Collection<TCloudPaymentsObject>
      */
     public function previousPage($params = null, $opts = null)
     {
@@ -278,7 +278,7 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
     /**
      * Gets the first item from the current page. Returns `null` if the current page is empty.
      *
-     * @return null|TStripeObject
+     * @return null|TCloudPaymentsObject
      */
     public function first()
     {
@@ -288,7 +288,7 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
     /**
      * Gets the last item from the current page. Returns `null` if the current page is empty.
      *
-     * @return null|TStripeObject
+     * @return null|TCloudPaymentsObject
      */
     public function last()
     {

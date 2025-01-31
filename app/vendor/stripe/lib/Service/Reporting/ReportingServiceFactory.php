@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service\Reporting;
+namespace Voxel\Vendor\CloudPayments\Service\Reporting;
 
 /**
  * Service factory class for API resources in the Reporting namespace.
@@ -10,7 +10,7 @@ namespace Voxel\Vendor\Stripe\Service\Reporting;
  * @property ReportRunService $reportRuns
  * @property ReportTypeService $reportTypes
  */
-class ReportingServiceFactory extends \Voxel\Vendor\Stripe\Service\AbstractServiceFactory
+class ReportingServiceFactory extends \Voxel\Vendor\CloudPayments\Service\AbstractServiceFactory
 {
     /**
      * @var array<string, string>

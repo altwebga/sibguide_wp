@@ -24,7 +24,7 @@ class Currency_Format_Modifier extends Base_Modifier {
 		$this->define_arg( [
 			'type' => 'select',
 			'label' => _x( 'Currency', 'modifiers', 'voxel-backend' ),
-			'choices' => [ 'default' => 'Default platform currency' ] + \Voxel\Stripe\Currencies::all(),
+			'choices' => [ 'default' => 'Default platform currency' ] + \Voxel\CloudPayments\Currencies::all(),
 		] );
 
 		$this->define_arg( [
@@ -43,12 +43,12 @@ class Currency_Format_Modifier extends Base_Modifier {
 
 		$currency = $this->get_arg(0);
 		if ( empty( $currency ) || $currency === 'default' ) {
-			$currency = \Voxel\get( 'settings.stripe.currency' );
+			$currency = \Voxel\get( 'settings.cloudpayments.currency' );
 		}
 
 		// 'default_mods' backward compatibility (< v1.5)
 		if ( $this->get_arg(1) === 'true' ) {
-			$currency = \Voxel\get( 'settings.stripe.currency' );
+			$currency = \Voxel\get( 'settings.cloudpayments.currency' );
 			$amount_is_in_cents = false;
 		}
 

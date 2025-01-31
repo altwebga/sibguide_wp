@@ -2,25 +2,25 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service\TestHelpers\Issuing;
+namespace Voxel\Vendor\CloudPayments\Service\TestHelpers\Issuing;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
-class TransactionService extends \Voxel\Vendor\Stripe\Service\AbstractService
+class TransactionService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 {
     /**
      * Allows the user to capture an arbitrary amount, also known as a forced capture.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Issuing\Transaction
+     * @return \Voxel\Vendor\CloudPayments\Issuing\Transaction
      */
     public function createForceCapture($params = null, $opts = null)
     {
@@ -31,11 +31,11 @@ class TransactionService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * Allows the user to refund an arbitrary amount, also known as a unlinked refund.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Issuing\Transaction
+     * @return \Voxel\Vendor\CloudPayments\Issuing\Transaction
      */
     public function createUnlinkedRefund($params = null, $opts = null)
     {
@@ -47,11 +47,11 @@ class TransactionService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Issuing\Transaction
+     * @return \Voxel\Vendor\CloudPayments\Issuing\Transaction
      */
     public function refund($id, $params = null, $opts = null)
     {

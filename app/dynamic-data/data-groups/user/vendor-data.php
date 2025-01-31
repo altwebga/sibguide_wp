@@ -16,7 +16,7 @@ trait Vendor_Data {
 			return [
 				'earnings' => Tag::Number('Total earnings')->render( function() {
 					$amount = $this->user->get_vendor_stats()->get_total_earnings_in_cents();
-					if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( \Voxel\get( 'settings.stripe.currency' ) ) ) {
+					if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( \Voxel\get( 'settings.cloudpayments.currency' ) ) ) {
 						$amount = round( $amount / 100, 2 );
 					}
 
@@ -24,7 +24,7 @@ trait Vendor_Data {
 				} ),
 				'fees' => Tag::Number('Total platform fees')->render( function() {
 					$amount = $this->user->get_vendor_stats()->get_total_fees_in_cents();
-					if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( \Voxel\get( 'settings.stripe.currency' ) ) ) {
+					if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( \Voxel\get( 'settings.cloudpayments.currency' ) ) ) {
 						$amount = round( $amount / 100, 2 );
 					}
 
@@ -53,7 +53,7 @@ trait Vendor_Data {
 					return [
 						'earnings' => Tag::Number('Earnings')->render( function() {
 							$amount = $this->user->get_vendor_stats()->get_this_year_stats()['earnings_in_cents'];
-							if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( \Voxel\get( 'settings.stripe.currency' ) ) ) {
+							if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( \Voxel\get( 'settings.cloudpayments.currency' ) ) ) {
 								$amount = round( $amount / 100, 2 );
 							}
 
@@ -64,7 +64,7 @@ trait Vendor_Data {
 						} ),
 						'fees' => Tag::Number('Platform fees')->render( function() {
 							$amount = $this->user->get_vendor_stats()->get_this_year_stats()['fees_in_cents'];
-							if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( \Voxel\get( 'settings.stripe.currency' ) ) ) {
+							if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( \Voxel\get( 'settings.cloudpayments.currency' ) ) ) {
 								$amount = round( $amount / 100, 2 );
 							}
 
@@ -76,7 +76,7 @@ trait Vendor_Data {
 					return [
 						'earnings' => Tag::Number('Earnings')->render( function() {
 							$amount = $this->user->get_vendor_stats()->get_this_month_stats()['earnings_in_cents'];
-							if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( \Voxel\get( 'settings.stripe.currency' ) ) ) {
+							if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( \Voxel\get( 'settings.cloudpayments.currency' ) ) ) {
 								$amount = round( $amount / 100, 2 );
 							}
 
@@ -87,7 +87,7 @@ trait Vendor_Data {
 						} ),
 						'fees' => Tag::Number('Platform fees')->render( function() {
 							$amount = $this->user->get_vendor_stats()->get_this_month_stats()['fees_in_cents'];
-							if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( \Voxel\get( 'settings.stripe.currency' ) ) ) {
+							if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( \Voxel\get( 'settings.cloudpayments.currency' ) ) ) {
 								$amount = round( $amount / 100, 2 );
 							}
 
@@ -99,7 +99,7 @@ trait Vendor_Data {
 					return [
 						'earnings' => Tag::Number('Earnings')->render( function() {
 							$amount = $this->user->get_vendor_stats()->get_this_week_stats()['earnings_in_cents'];
-							if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( \Voxel\get( 'settings.stripe.currency' ) ) ) {
+							if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( \Voxel\get( 'settings.cloudpayments.currency' ) ) ) {
 								$amount = round( $amount / 100, 2 );
 							}
 
@@ -110,7 +110,7 @@ trait Vendor_Data {
 						} ),
 						'fees' => Tag::Number('Platform fees')->render( function() {
 							$amount = $this->user->get_vendor_stats()->get_this_week_stats()['fees_in_cents'];
-							if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( \Voxel\get( 'settings.stripe.currency' ) ) ) {
+							if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( \Voxel\get( 'settings.cloudpayments.currency' ) ) ) {
 								$amount = round( $amount / 100, 2 );
 							}
 
@@ -122,7 +122,7 @@ trait Vendor_Data {
 					return [
 						'earnings' => Tag::Number('Earnings')->render( function() {
 							$amount = $this->user->get_vendor_stats()->get_today_stats()['earnings_in_cents'];
-							if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( \Voxel\get( 'settings.stripe.currency' ) ) ) {
+							if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( \Voxel\get( 'settings.cloudpayments.currency' ) ) ) {
 								$amount = round( $amount / 100, 2 );
 							}
 
@@ -133,7 +133,7 @@ trait Vendor_Data {
 						} ),
 						'fees' => Tag::Number('Platform fees')->render( function() {
 							$amount = $this->user->get_vendor_stats()->get_today_stats()['fees_in_cents'];
-							if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( \Voxel\get( 'settings.stripe.currency' ) ) ) {
+							if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( \Voxel\get( 'settings.cloudpayments.currency' ) ) ) {
 								$amount = round( $amount / 100, 2 );
 							}
 

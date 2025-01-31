@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\Stripe;
+namespace Voxel\Vendor\CloudPayments;
 
 /**
  * Class SingletonApiResource.

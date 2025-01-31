@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service\TestHelpers;
+namespace Voxel\Vendor\CloudPayments\Service\TestHelpers;
 
 /**
  * Service factory class for API resources in the TestHelpers namespace.
@@ -14,7 +14,7 @@ namespace Voxel\Vendor\Stripe\Service\TestHelpers;
  * @property TestClockService $testClocks
  * @property Treasury\TreasuryServiceFactory $treasury
  */
-class TestHelpersServiceFactory extends \Voxel\Vendor\Stripe\Service\AbstractServiceFactory
+class TestHelpersServiceFactory extends \Voxel\Vendor\CloudPayments\Service\AbstractServiceFactory
 {
     /**
      * @var array<string, string>

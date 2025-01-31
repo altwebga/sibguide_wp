@@ -2,15 +2,15 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service\TestHelpers\Issuing;
+namespace Voxel\Vendor\CloudPayments\Service\TestHelpers\Issuing;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
-class CardService extends \Voxel\Vendor\Stripe\Service\AbstractService
+class CardService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 {
     /**
      * Updates the shipping status of the specified Issuing <code>Card</code> object to
@@ -18,11 +18,11 @@ class CardService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Issuing\Card
+     * @return \Voxel\Vendor\CloudPayments\Issuing\Card
      */
     public function deliverCard($id, $params = null, $opts = null)
     {
@@ -35,11 +35,11 @@ class CardService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Issuing\Card
+     * @return \Voxel\Vendor\CloudPayments\Issuing\Card
      */
     public function failCard($id, $params = null, $opts = null)
     {
@@ -52,11 +52,11 @@ class CardService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Issuing\Card
+     * @return \Voxel\Vendor\CloudPayments\Issuing\Card
      */
     public function returnCard($id, $params = null, $opts = null)
     {
@@ -69,11 +69,11 @@ class CardService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Issuing\Card
+     * @return \Voxel\Vendor\CloudPayments\Issuing\Card
      */
     public function shipCard($id, $params = null, $opts = null)
     {

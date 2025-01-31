@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe;
+namespace Voxel\Vendor\CloudPayments;
 
 /**
  * @property string $id Unique identifier for the object.

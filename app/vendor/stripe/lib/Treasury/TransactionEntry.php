@@ -2,31 +2,31 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Treasury;
+namespace Voxel\Vendor\CloudPayments\Treasury;
 
 /**
- * TransactionEntries represent individual units of money movements within a single <a href="https://stripe.com/docs/api#transactions">Transaction</a>.
+ * TransactionEntries represent individual units of money movements within a single <a href="https://cloudpayments.com/docs/api#transactions">Transaction</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property \Voxel\Vendor\Stripe\StripeObject $balance_impact Change to a FinancialAccount's balance
+ * @property \Voxel\Vendor\CloudPayments\CloudPaymentsObject $balance_impact Change to a FinancialAccount's balance
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
+ * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://cloudpayments.com/docs/currencies">supported currency</a>.
  * @property int $effective_at When the TransactionEntry will impact the FinancialAccount's balance.
  * @property string $financial_account The FinancialAccount associated with this object.
  * @property null|string $flow Token of the flow associated with the TransactionEntry.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $flow_details Details of the flow associated with the TransactionEntry.
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $flow_details Details of the flow associated with the TransactionEntry.
  * @property string $flow_type Type of the flow associated with the TransactionEntry.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property string|\Voxel\Vendor\Stripe\Treasury\Transaction $transaction The Transaction associated with this object.
+ * @property string|\Voxel\Vendor\CloudPayments\Treasury\Transaction $transaction The Transaction associated with this object.
  * @property string $type The specific money movement that generated the TransactionEntry.
  */
-class TransactionEntry extends \Voxel\Vendor\Stripe\ApiResource
+class TransactionEntry extends \Voxel\Vendor\CloudPayments\ApiResource
 {
     const OBJECT_NAME = 'treasury.transaction_entry';
 
-    use \Voxel\Vendor\Stripe\ApiOperations\All;
-    use \Voxel\Vendor\Stripe\ApiOperations\Retrieve;
+    use \Voxel\Vendor\CloudPayments\ApiOperations\All;
+    use \Voxel\Vendor\CloudPayments\ApiOperations\Retrieve;
 
     const FLOW_TYPE_CREDIT_REVERSAL = 'credit_reversal';
     const FLOW_TYPE_DEBIT_REVERSAL = 'debit_reversal';

@@ -6,14 +6,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class Stripe_Account extends Base_Widget {
+class CloudPayments_Account extends Base_Widget {
 
 	public function get_name() {
-		return 'ts-stripe-account';
+		return 'ts-cloudpayments-account';
 	}
 
 	public function get_title() {
-		return __( 'Stripe Account (VX)', 'voxel-elementor' );
+		return __( 'CloudPayments Account (VX)', 'voxel-elementor' );
 	}
 
 	public function get_categories() {
@@ -75,7 +75,7 @@ class Stripe_Account extends Base_Widget {
 			);
 
 			$this->add_control(
-				'ts_stripe_ico',
+				'ts_cloudpayments_ico',
 				[
 					'label' => __( 'Portal icon', 'text-domain' ),
 					'type' => \Elementor\Controls_Manager::ICONS,
@@ -2861,7 +2861,7 @@ class Stripe_Account extends Base_Widget {
 			if ( $_GET['onboarding_key'] === get_user_meta( $user->get_id(), 'voxel:connect_onboarding_key', true ) ) {
 				delete_user_meta( $user->get_id(), 'voxel:connect_onboarding_key' );
 				try {
-					$user->stripe_vendor_updated( $user->get_stripe_vendor() );
+					$user->cloudpayments_vendor_updated( $user->get_cloudpayments_vendor() );
 					wp_add_inline_script(
 						'vx:commons.js',
 						'window.addEventListener("DOMContentLoaded", () => Voxel.deleteSearchParam("onboarding_key"))'
@@ -2870,16 +2870,16 @@ class Stripe_Account extends Base_Widget {
 			}
 		}
 
-		$account = $user->get_stripe_vendor_details();
+		$account = $user->get_cloudpayments_vendor_details();
 
 		$onboard_link = add_query_arg( [
 			'vx' => 1,
-			'action' => 'stripe_connect.account.onboard',
+			'action' => 'cloudpayments_connect.account.onboard',
 		], home_url('/') );
 
 		$dashboard_link = add_query_arg( [
 			'vx' => 1,
-			'action' => 'stripe_connect.account.login',
+			'action' => 'cloudpayments_connect.account.login',
 		], home_url('/') );
 
 		$config = [
@@ -2887,7 +2887,7 @@ class Stripe_Account extends Base_Widget {
 		];
 
 		if ( \Voxel\get( 'product_settings.multivendor.shipping.responsibility' ) === 'vendor' ) {
-			$config['shipping_countries'] = \Voxel\Stripe\Country_Codes::shipping_supported();
+			$config['shipping_countries'] = \Voxel\CloudPayments\Country_Codes::shipping_supported();
 			$config['shipping_classes'] = array_map( function( $shipping_class ) {
 				return [
 					'key' => $shipping_class->get_key(),
@@ -2896,23 +2896,23 @@ class Stripe_Account extends Base_Widget {
 			}, \Voxel\Product_Types\Shipping\Shipping_Class::get_all() );
 			$config['zones'] = $user->get_vendor_shipping_zones_config();
 			$config['l10n'] = [
-				'countries_selected' => _x( '@count countries selected', 'stripe vendor shipping', 'voxel' ),
+				'countries_selected' => _x( '@count countries selected', 'cloudpayments vendor shipping', 'voxel' ),
 			];
 		}
 
-		// dump($user->get_stripe_vendor());
+		// dump($user->get_cloudpayments_vendor());
 
 		wp_print_styles( $this->get_style_depends() );
-		require locate_template( 'templates/widgets/stripe-account.php' );
+		require locate_template( 'templates/widgets/cloudpayments-account.php' );
 
 		if ( \Voxel\is_edit_mode() ) {
-			printf( '<script type="text/javascript">%s</script>', 'window.render_stripe_connect_dashboard();' );
+			printf( '<script type="text/javascript">%s</script>', 'window.render_cloudpayments_connect_dashboard();' );
 		}
 	}
 
 	public function get_script_depends() {
 		return [
-			'vx:stripe-connect-dashboard.js',
+			'vx:cloudpayments-connect-dashboard.js',
 		];
 	}
 

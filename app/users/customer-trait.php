@@ -9,7 +9,7 @@ if ( ! defined('ABSPATH') ) {
 trait Customer_Trait {
 
 	public static function get_by_customer_id( $customer_id ) {
-		$meta_key = \Voxel\Stripe::is_test_mode() ? 'voxel:test_stripe_customer_id' : 'voxel:stripe_customer_id';
+		$meta_key = \Voxel\CloudPayments::is_test_mode() ? 'voxel:test_cloudpayments_customer_id' : 'voxel:cloudpayments_customer_id';
 		$results = get_users( [
 			'meta_key' => $meta_key,
 			'meta_value' => $customer_id,
@@ -20,32 +20,32 @@ trait Customer_Trait {
 		return \Voxel\User::get( array_shift( $results ) );
 	}
 
-	public function get_stripe_customer_id() {
-		$meta_key = \Voxel\Stripe::is_test_mode() ? 'voxel:test_stripe_customer_id' : 'voxel:stripe_customer_id';
+	public function get_cloudpayments_customer_id() {
+		$meta_key = \Voxel\CloudPayments::is_test_mode() ? 'voxel:test_cloudpayments_customer_id' : 'voxel:cloudpayments_customer_id';
 		return get_user_meta( $this->get_id(), $meta_key, true );
 	}
 
-	public function get_stripe_customer() {
-		$customer_id = $this->get_stripe_customer_id();
+	public function get_cloudpayments_customer() {
+		$customer_id = $this->get_cloudpayments_customer_id();
 		if ( empty( $customer_id ) ) {
-			throw new \Exception( _x( 'Stripe customer account not set up for this user.', 'orders', 'voxel' ) );
+			throw new \Exception( _x( 'CloudPayments customer account not set up for this user.', 'orders', 'voxel' ) );
 		}
 
-		$stripe = \Voxel\Stripe::getClient();
-		return $stripe->customers->retrieve( $customer_id );
+		$cloudpayments = \Voxel\CloudPayments::getClient();
+		return $cloudpayments->customers->retrieve( $customer_id );
 	}
 
-	public function get_or_create_stripe_customer() {
+	public function get_or_create_cloudpayments_customer() {
 		try {
-			$customer = $this->get_stripe_customer();
+			$customer = $this->get_cloudpayments_customer();
 		} catch ( \Exception $e ) {
-			$stripe = \Voxel\Stripe::getClient();
-			$customer = $stripe->customers->create( [
+			$cloudpayments = \Voxel\CloudPayments::getClient();
+			$customer = $cloudpayments->customers->create( [
 				'email' => $this->get_email(),
 				'name' => $this->get_display_name(),
 			] );
 
-			$meta_key = \Voxel\Stripe::is_test_mode() ? 'voxel:test_stripe_customer_id' : 'voxel:stripe_customer_id';
+			$meta_key = \Voxel\CloudPayments::is_test_mode() ? 'voxel:test_cloudpayments_customer_id' : 'voxel:cloudpayments_customer_id';
 			update_user_meta( $this->get_id(), $meta_key, $customer->id );
 		}
 

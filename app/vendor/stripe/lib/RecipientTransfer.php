@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\Stripe;
+namespace Voxel\Vendor\CloudPayments;
 
 /**
  * Class RecipientTransfer.
@@ -20,10 +20,10 @@ namespace Voxel\Vendor\Stripe;
  * @property string $failure_code
  * @property string $failure_message
  * @property bool $livemode
- * @property \Voxel\Vendor\Stripe\StripeObject $metadata
+ * @property \Voxel\Vendor\CloudPayments\CloudPaymentsObject $metadata
  * @property string $method
  * @property string $recipient
- * @property \Voxel\Vendor\Stripe\Collection $reversals
+ * @property \Voxel\Vendor\CloudPayments\Collection $reversals
  * @property bool $reversed
  * @property string $source_type
  * @property string $statement_descriptor

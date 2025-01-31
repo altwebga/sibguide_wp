@@ -2,41 +2,41 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe;
+namespace Voxel\Vendor\CloudPayments;
 
 /**
  * This object represents a customer of your business. Use it to create recurring charges and track payments that belong to the same customer.
  *
- * Related guide: <a href="https://stripe.com/docs/payments/save-during-payment">Save a card during payment</a>
+ * Related guide: <a href="https://cloudpayments.com/docs/payments/save-during-payment">Save a card during payment</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $address The customer's address.
- * @property null|int $balance The current balance, if any, that's stored on the customer. If negative, the customer has credit to apply to their next invoice. If positive, the customer has an amount owed that's added to their next invoice. The balance only considers amounts that Stripe hasn't successfully applied to any invoice. It doesn't reflect unpaid invoices. This balance is only taken into account after invoices finalize.
- * @property null|\Voxel\Vendor\Stripe\CashBalance $cash_balance The current funds being held by Stripe on behalf of the customer. You can apply these funds towards payment intents when the source is &quot;cash_balance&quot;. The <code>settings[reconciliation_mode]</code> field describes if these funds apply to these payment intents manually or automatically.
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $address The customer's address.
+ * @property null|int $balance The current balance, if any, that's stored on the customer. If negative, the customer has credit to apply to their next invoice. If positive, the customer has an amount owed that's added to their next invoice. The balance only considers amounts that CloudPayments hasn't successfully applied to any invoice. It doesn't reflect unpaid invoices. This balance is only taken into account after invoices finalize.
+ * @property null|\Voxel\Vendor\CloudPayments\CashBalance $cash_balance The current funds being held by CloudPayments on behalf of the customer. You can apply these funds towards payment intents when the source is &quot;cash_balance&quot;. The <code>settings[reconciliation_mode]</code> field describes if these funds apply to these payment intents manually or automatically.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|string $currency Three-letter <a href="https://stripe.com/docs/currencies">ISO code for the currency</a> the customer can be charged in for recurring billing purposes.
- * @property null|string|\Voxel\Vendor\Stripe\Account|\Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card|\Voxel\Vendor\Stripe\Source $default_source <p>ID of the default payment source for the customer.</p><p>If you use payment methods created through the PaymentMethods API, see the <a href="https://stripe.com/docs/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a> field instead.</p>
- * @property null|bool $delinquent <p>Tracks the most recent state change on any invoice belonging to the customer. Paying an invoice or marking it uncollectible via the API will set this field to false. An automatic payment failure or passing the <code>invoice.due_date</code> will set this field to <code>true</code>.</p><p>If an invoice becomes uncollectible by <a href="https://stripe.com/docs/billing/automatic-collection">dunning</a>, <code>delinquent</code> doesn't reset to <code>false</code>.</p><p>If you care whether the customer has paid their most recent subscription invoice, use <code>subscription.status</code> instead. Paying or marking uncollectible any customer invoice regardless of whether it is the latest invoice for a subscription will always set this field to <code>false</code>.</p>
+ * @property null|string $currency Three-letter <a href="https://cloudpayments.com/docs/currencies">ISO code for the currency</a> the customer can be charged in for recurring billing purposes.
+ * @property null|string|\Voxel\Vendor\CloudPayments\Account|\Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card|\Voxel\Vendor\CloudPayments\Source $default_source <p>ID of the default payment source for the customer.</p><p>If you use payment methods created through the PaymentMethods API, see the <a href="https://cloudpayments.com/docs/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a> field instead.</p>
+ * @property null|bool $delinquent <p>Tracks the most recent state change on any invoice belonging to the customer. Paying an invoice or marking it uncollectible via the API will set this field to false. An automatic payment failure or passing the <code>invoice.due_date</code> will set this field to <code>true</code>.</p><p>If an invoice becomes uncollectible by <a href="https://cloudpayments.com/docs/billing/automatic-collection">dunning</a>, <code>delinquent</code> doesn't reset to <code>false</code>.</p><p>If you care whether the customer has paid their most recent subscription invoice, use <code>subscription.status</code> instead. Paying or marking uncollectible any customer invoice regardless of whether it is the latest invoice for a subscription will always set this field to <code>false</code>.</p>
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
- * @property null|\Voxel\Vendor\Stripe\Discount $discount Describes the current discount active on the customer, if there is one.
+ * @property null|\Voxel\Vendor\CloudPayments\Discount $discount Describes the current discount active on the customer, if there is one.
  * @property null|string $email The customer's email address.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $invoice_credit_balance The current multi-currency balances, if any, that's stored on the customer. If positive in a currency, the customer has a credit to apply to their next invoice denominated in that currency. If negative, the customer has an amount owed that's added to their next invoice denominated in that currency. These balances don't apply to unpaid invoices. They solely track amounts that Stripe hasn't successfully applied to any invoice. Stripe only applies a balance in a specific currency to an invoice after that invoice (which is in the same currency) finalizes.
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $invoice_credit_balance The current multi-currency balances, if any, that's stored on the customer. If positive in a currency, the customer has a credit to apply to their next invoice denominated in that currency. If negative, the customer has an amount owed that's added to their next invoice denominated in that currency. These balances don't apply to unpaid invoices. They solely track amounts that CloudPayments hasn't successfully applied to any invoice. CloudPayments only applies a balance in a specific currency to an invoice after that invoice (which is in the same currency) finalizes.
  * @property null|string $invoice_prefix The prefix for the customer used to generate unique invoice numbers.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $invoice_settings
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $invoice_settings
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $metadata Set of <a href="https://cloudpayments.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $name The customer's full name or business name.
  * @property null|int $next_invoice_sequence The suffix of the customer's next invoice number (for example, 0001).
  * @property null|string $phone The customer's phone number.
  * @property null|string[] $preferred_locales The customer's preferred locales (languages), ordered by preference.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $shipping Mailing and shipping address for the customer. Appears on invoices emailed to this customer.
- * @property null|\Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Account|\Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card|\Voxel\Vendor\Stripe\Source> $sources The customer's payment sources, if any.
- * @property null|\Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Subscription> $subscriptions The customer's current subscriptions, if any.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $tax
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $shipping Mailing and shipping address for the customer. Appears on invoices emailed to this customer.
+ * @property null|\Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Account|\Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card|\Voxel\Vendor\CloudPayments\Source> $sources The customer's payment sources, if any.
+ * @property null|\Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Subscription> $subscriptions The customer's current subscriptions, if any.
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $tax
  * @property null|string $tax_exempt Describes the customer's tax exemption status, which is <code>none</code>, <code>exempt</code>, or <code>reverse</code>. When set to <code>reverse</code>, invoice and receipt PDFs include the following text: <strong>&quot;Reverse charge&quot;</strong>.
- * @property null|\Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\TaxId> $tax_ids The customer's tax IDs.
- * @property null|string|\Voxel\Vendor\Stripe\TestHelpers\TestClock $test_clock ID of the test clock that this customer belongs to.
+ * @property null|\Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\TaxId> $tax_ids The customer's tax IDs.
+ * @property null|string|\Voxel\Vendor\CloudPayments\TestHelpers\TestClock $test_clock ID of the test clock that this customer belongs to.
  */
 class Customer extends ApiResource
 {
@@ -70,7 +70,7 @@ class Customer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return \Voxel\Vendor\Stripe\Customer the updated customer
+     * @return \Voxel\Vendor\CloudPayments\Customer the updated customer
      */
     public function deleteDiscount($params = null, $opts = null)
     {
@@ -86,15 +86,15 @@ class Customer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\PaymentMethod> list of payment methods
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\PaymentMethod> list of payment methods
      */
     public static function allPaymentMethods($id, $params = null, $opts = null)
     {
         $url = static::resourceUrl($id) . '/payment_methods';
         list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
-        $obj = \Voxel\Vendor\Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = \Voxel\Vendor\CloudPayments\Util\Util::convertToCloudPaymentsObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -105,15 +105,15 @@ class Customer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\PaymentMethod the retrieved payment method
+     * @return \Voxel\Vendor\CloudPayments\PaymentMethod the retrieved payment method
      */
     public function retrievePaymentMethod($payment_method, $params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/payment_methods/' . $payment_method;
         list($response, $opts) = $this->_request('get', $url, $params, $opts);
-        $obj = \Voxel\Vendor\Stripe\Util\Util::convertToStripeObject($response, $opts);
+        $obj = \Voxel\Vendor\CloudPayments\Util\Util::convertToCloudPaymentsObject($response, $opts);
         $obj->setLastResponse($response);
 
         return $obj;
@@ -123,15 +123,15 @@ class Customer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\SearchResult<\Voxel\Vendor\Stripe\Customer> the customer search results
+     * @return \Voxel\Vendor\CloudPayments\SearchResult<\Voxel\Vendor\CloudPayments\Customer> the customer search results
      */
     public static function search($params = null, $opts = null)
     {
         $url = '/v1/customers/search';
 
-        return static::_requestPage($url, \Voxel\Vendor\Stripe\SearchResult::class, $params, $opts);
+        return static::_requestPage($url, \Voxel\Vendor\CloudPayments\SearchResult::class, $params, $opts);
     }
 
     const PATH_BALANCE_TRANSACTIONS = '/balance_transactions';
@@ -141,9 +141,9 @@ class Customer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\CustomerBalanceTransaction> the list of customer balance transactions
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\CustomerBalanceTransaction> the list of customer balance transactions
      */
     public static function allBalanceTransactions($id, $params = null, $opts = null)
     {
@@ -155,9 +155,9 @@ class Customer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\CustomerBalanceTransaction
+     * @return \Voxel\Vendor\CloudPayments\CustomerBalanceTransaction
      */
     public static function createBalanceTransaction($id, $params = null, $opts = null)
     {
@@ -170,9 +170,9 @@ class Customer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\CustomerBalanceTransaction
+     * @return \Voxel\Vendor\CloudPayments\CustomerBalanceTransaction
      */
     public static function retrieveBalanceTransaction($id, $balanceTransactionId, $params = null, $opts = null)
     {
@@ -185,9 +185,9 @@ class Customer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\CustomerBalanceTransaction
+     * @return \Voxel\Vendor\CloudPayments\CustomerBalanceTransaction
      */
     public static function updateBalanceTransaction($id, $balanceTransactionId, $params = null, $opts = null)
     {
@@ -200,9 +200,9 @@ class Customer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\CustomerCashBalanceTransaction> the list of customer cash balance transactions
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\CustomerCashBalanceTransaction> the list of customer cash balance transactions
      */
     public static function allCashBalanceTransactions($id, $params = null, $opts = null)
     {
@@ -215,9 +215,9 @@ class Customer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\CustomerCashBalanceTransaction
+     * @return \Voxel\Vendor\CloudPayments\CustomerCashBalanceTransaction
      */
     public static function retrieveCashBalanceTransaction($id, $cashBalanceTransactionId, $params = null, $opts = null)
     {
@@ -230,9 +230,9 @@ class Customer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card|\Voxel\Vendor\Stripe\Source> the list of payment sources (BankAccount, Card or Source)
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card|\Voxel\Vendor\CloudPayments\Source> the list of payment sources (BankAccount, Card or Source)
      */
     public static function allSources($id, $params = null, $opts = null)
     {
@@ -244,9 +244,9 @@ class Customer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card|\Voxel\Vendor\Stripe\Source
+     * @return \Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card|\Voxel\Vendor\CloudPayments\Source
      */
     public static function createSource($id, $params = null, $opts = null)
     {
@@ -259,9 +259,9 @@ class Customer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card|\Voxel\Vendor\Stripe\Source
+     * @return \Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card|\Voxel\Vendor\CloudPayments\Source
      */
     public static function deleteSource($id, $sourceId, $params = null, $opts = null)
     {
@@ -274,9 +274,9 @@ class Customer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card|\Voxel\Vendor\Stripe\Source
+     * @return \Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card|\Voxel\Vendor\CloudPayments\Source
      */
     public static function retrieveSource($id, $sourceId, $params = null, $opts = null)
     {
@@ -289,9 +289,9 @@ class Customer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card|\Voxel\Vendor\Stripe\Source
+     * @return \Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card|\Voxel\Vendor\CloudPayments\Source
      */
     public static function updateSource($id, $sourceId, $params = null, $opts = null)
     {
@@ -305,9 +305,9 @@ class Customer extends ApiResource
      * @param null|array|string $opts
      * @param mixed $cashBalanceId
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\CashBalance
+     * @return \Voxel\Vendor\CloudPayments\CashBalance
      */
     public static function retrieveCashBalance($id, $cashBalanceId, $params = null, $opts = null)
     {
@@ -320,9 +320,9 @@ class Customer extends ApiResource
      * @param null|array|string $opts
      * @param mixed $cashBalanceId
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\CashBalance
+     * @return \Voxel\Vendor\CloudPayments\CashBalance
      */
     public static function updateCashBalance($id, $cashBalanceId, $params = null, $opts = null)
     {
@@ -335,9 +335,9 @@ class Customer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\TaxId> the list of tax ids
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\TaxId> the list of tax ids
      */
     public static function allTaxIds($id, $params = null, $opts = null)
     {
@@ -349,9 +349,9 @@ class Customer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\TaxId
+     * @return \Voxel\Vendor\CloudPayments\TaxId
      */
     public static function createTaxId($id, $params = null, $opts = null)
     {
@@ -364,9 +364,9 @@ class Customer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\TaxId
+     * @return \Voxel\Vendor\CloudPayments\TaxId
      */
     public static function deleteTaxId($id, $taxIdId, $params = null, $opts = null)
     {
@@ -379,9 +379,9 @@ class Customer extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\TaxId
+     * @return \Voxel\Vendor\CloudPayments\TaxId
      */
     public static function retrieveTaxId($id, $taxIdId, $params = null, $opts = null)
     {

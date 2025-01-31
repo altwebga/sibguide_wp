@@ -2,15 +2,15 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service\Issuing;
+namespace Voxel\Vendor\CloudPayments\Service\Issuing;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
-class TransactionService extends \Voxel\Vendor\Stripe\Service\AbstractService
+class TransactionService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 {
     /**
      * Returns a list of Issuing <code>Transaction</code> objects. The objects are
@@ -18,11 +18,11 @@ class TransactionService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * object appearing first.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Issuing\Transaction>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Issuing\Transaction>
      */
     public function all($params = null, $opts = null)
     {
@@ -34,11 +34,11 @@ class TransactionService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Issuing\Transaction
+     * @return \Voxel\Vendor\CloudPayments\Issuing\Transaction
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -52,11 +52,11 @@ class TransactionService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Issuing\Transaction
+     * @return \Voxel\Vendor\CloudPayments\Issuing\Transaction
      */
     public function update($id, $params = null, $opts = null)
     {

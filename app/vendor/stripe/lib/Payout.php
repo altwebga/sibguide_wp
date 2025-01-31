@@ -2,37 +2,37 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe;
+namespace Voxel\Vendor\CloudPayments;
 
 /**
- * A <code>Payout</code> object is created when you receive funds from Stripe, or when you
+ * A <code>Payout</code> object is created when you receive funds from CloudPayments, or when you
  * initiate a payout to either a bank account or debit card of a <a href="/docs/connect/bank-debit-card-payouts">connected
- * Stripe account</a>. You can retrieve individual payouts,
+ * CloudPayments account</a>. You can retrieve individual payouts,
  * and list all payouts. Payouts are made on <a href="/docs/connect/manage-payout-schedule">varying
  * schedules</a>, depending on your country and
  * industry.
  *
- * Related guide: <a href="https://stripe.com/docs/payouts">Receiving payouts</a>
+ * Related guide: <a href="https://cloudpayments.com/docs/payouts">Receiving payouts</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $amount The amount (in cents (or local equivalent)) that transfers to your bank account or debit card.
  * @property int $arrival_date Date that you can expect the payout to arrive in the bank. This factors in delays to account for weekends or bank holidays.
- * @property bool $automatic Returns <code>true</code> if the payout is created by an <a href="https://stripe.com/docs/payouts#payout-schedule">automated payout schedule</a> and <code>false</code> if it's <a href="https://stripe.com/docs/payouts#manual-payouts">requested manually</a>.
- * @property null|string|\Voxel\Vendor\Stripe\BalanceTransaction $balance_transaction ID of the balance transaction that describes the impact of this payout on your account balance.
+ * @property bool $automatic Returns <code>true</code> if the payout is created by an <a href="https://cloudpayments.com/docs/payouts#payout-schedule">automated payout schedule</a> and <code>false</code> if it's <a href="https://cloudpayments.com/docs/payouts#manual-payouts">requested manually</a>.
+ * @property null|string|\Voxel\Vendor\CloudPayments\BalanceTransaction $balance_transaction ID of the balance transaction that describes the impact of this payout on your account balance.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
+ * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://cloudpayments.com/docs/currencies">supported currency</a>.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
- * @property null|string|\Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card $destination ID of the bank account or card the payout is sent to.
- * @property null|string|\Voxel\Vendor\Stripe\BalanceTransaction $failure_balance_transaction If the payout fails or cancels, this is the ID of the balance transaction that reverses the initial balance transaction and returns the funds from the failed payout back in your balance.
- * @property null|string $failure_code Error code that provides a reason for a payout failure, if available. View our <a href="https://stripe.com/docs/api#payout_failures">list of failure codes</a>.
+ * @property null|string|\Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card $destination ID of the bank account or card the payout is sent to.
+ * @property null|string|\Voxel\Vendor\CloudPayments\BalanceTransaction $failure_balance_transaction If the payout fails or cancels, this is the ID of the balance transaction that reverses the initial balance transaction and returns the funds from the failed payout back in your balance.
+ * @property null|string $failure_code Error code that provides a reason for a payout failure, if available. View our <a href="https://cloudpayments.com/docs/api#payout_failures">list of failure codes</a>.
  * @property null|string $failure_message Message that provides the reason for a payout failure, if available.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property string $method The method used to send this payout, which can be <code>standard</code> or <code>instant</code>. <code>instant</code> is supported for payouts to debit cards and bank accounts in certain countries. Learn more about <a href="https://stripe.com/docs/payouts/instant-payouts-banks">bank support for Instant Payouts</a>.
- * @property null|string|\Voxel\Vendor\Stripe\Payout $original_payout If the payout reverses another, this is the ID of the original payout.
- * @property string $reconciliation_status If <code>completed</code>, you can use the <a href="https://stripe.com/docs/api/balance_transactions/list#balance_transaction_list-payout">Balance Transactions API</a> to list all balance transactions that are paid out in this payout.
- * @property null|string|\Voxel\Vendor\Stripe\Payout $reversed_by If the payout reverses, this is the ID of the payout that reverses this payout.
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $metadata Set of <a href="https://cloudpayments.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property string $method The method used to send this payout, which can be <code>standard</code> or <code>instant</code>. <code>instant</code> is supported for payouts to debit cards and bank accounts in certain countries. Learn more about <a href="https://cloudpayments.com/docs/payouts/instant-payouts-banks">bank support for Instant Payouts</a>.
+ * @property null|string|\Voxel\Vendor\CloudPayments\Payout $original_payout If the payout reverses another, this is the ID of the original payout.
+ * @property string $reconciliation_status If <code>completed</code>, you can use the <a href="https://cloudpayments.com/docs/api/balance_transactions/list#balance_transaction_list-payout">Balance Transactions API</a> to list all balance transactions that are paid out in this payout.
+ * @property null|string|\Voxel\Vendor\CloudPayments\Payout $reversed_by If the payout reverses, this is the ID of the payout that reverses this payout.
  * @property string $source_type The source balance this payout came from, which can be one of the following: <code>card</code>, <code>fpx</code>, or <code>bank_account</code>.
  * @property null|string $statement_descriptor Extra information about a payout that displays on the user's bank statement.
  * @property string $status Current status of the payout: <code>paid</code>, <code>pending</code>, <code>in_transit</code>, <code>canceled</code> or <code>failed</code>. A payout is <code>pending</code> until it's submitted to the bank, when it becomes <code>in_transit</code>. The status changes to <code>paid</code> if the transaction succeeds, or to <code>failed</code> or <code>canceled</code> (within 5 business days). Some payouts that fail might initially show as <code>paid</code>, then change to <code>failed</code>.
@@ -83,9 +83,9 @@ class Payout extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Payout the canceled payout
+     * @return \Voxel\Vendor\CloudPayments\Payout the canceled payout
      */
     public function cancel($params = null, $opts = null)
     {
@@ -100,9 +100,9 @@ class Payout extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Payout the reversed payout
+     * @return \Voxel\Vendor\CloudPayments\Payout the reversed payout
      */
     public function reverse($params = null, $opts = null)
     {

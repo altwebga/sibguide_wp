@@ -2,27 +2,27 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service;
+namespace Voxel\Vendor\CloudPayments\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
-class PayoutService extends \Voxel\Vendor\Stripe\Service\AbstractService
+class PayoutService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 {
     /**
      * Returns a list of existing payouts sent to third-party bank accounts or payouts
-     * that Stripe sent to you. The payouts return in sorted order, with the most
+     * that CloudPayments sent to you. The payouts return in sorted order, with the most
      * recently created payouts appearing first.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Payout>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Payout>
      */
     public function all($params = null, $opts = null)
     {
@@ -31,16 +31,16 @@ class PayoutService extends \Voxel\Vendor\Stripe\Service\AbstractService
 
     /**
      * You can cancel a previously created payout if its status is
-     * <code>pending</code>. Stripe refunds the funds to your available balance. You
-     * can’t cancel automatic Stripe payouts.
+     * <code>pending</code>. CloudPayments refunds the funds to your available balance. You
+     * can’t cancel automatic CloudPayments payouts.
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Payout
+     * @return \Voxel\Vendor\CloudPayments\Payout
      */
     public function cancel($id, $params = null, $opts = null)
     {
@@ -49,23 +49,23 @@ class PayoutService extends \Voxel\Vendor\Stripe\Service\AbstractService
 
     /**
      * To send funds to your own bank account, create a new payout object. Your <a
-     * href="#balance">Stripe balance</a> must cover the payout amount. If it doesn’t,
+     * href="#balance">CloudPayments balance</a> must cover the payout amount. If it doesn’t,
      * you receive an “Insufficient Funds” error.
      *
      * If your API key is in test mode, money won’t actually be sent, though every
      * other action occurs as if you’re in live mode.
      *
-     * If you create a manual payout on a Stripe account that uses multiple payment
+     * If you create a manual payout on a CloudPayments account that uses multiple payment
      * source types, you need to specify the source type balance that the payout draws
      * from. The <a href="#balance_object">balance object</a> details available and
      * pending amounts by source type.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Payout
+     * @return \Voxel\Vendor\CloudPayments\Payout
      */
     public function create($params = null, $opts = null)
     {
@@ -74,16 +74,16 @@ class PayoutService extends \Voxel\Vendor\Stripe\Service\AbstractService
 
     /**
      * Retrieves the details of an existing payout. Supply the unique payout ID from
-     * either a payout creation request or the payout list. Stripe returns the
+     * either a payout creation request or the payout list. CloudPayments returns the
      * corresponding payout information.
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Payout
+     * @return \Voxel\Vendor\CloudPayments\Payout
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -102,11 +102,11 @@ class PayoutService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Payout
+     * @return \Voxel\Vendor\CloudPayments\Payout
      */
     public function reverse($id, $params = null, $opts = null)
     {
@@ -120,11 +120,11 @@ class PayoutService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Payout
+     * @return \Voxel\Vendor\CloudPayments\Payout
      */
     public function update($id, $params = null, $opts = null)
     {

@@ -2,26 +2,26 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service;
+namespace Voxel\Vendor\CloudPayments\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
-class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
+class CustomerService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 {
     /**
      * Returns a list of your customers. The customers are returned sorted by creation
      * date, with the most recent customers appearing first.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Customer>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Customer>
      */
     public function all($params = null, $opts = null)
     {
@@ -34,11 +34,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $parentId
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\CustomerBalanceTransaction>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\CustomerBalanceTransaction>
      */
     public function allBalanceTransactions($parentId, $params = null, $opts = null)
     {
@@ -51,11 +51,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $parentId
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\CustomerCashBalanceTransaction>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\CustomerCashBalanceTransaction>
      */
     public function allCashBalanceTransactions($parentId, $params = null, $opts = null)
     {
@@ -67,11 +67,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\PaymentMethod>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\PaymentMethod>
      */
     public function allPaymentMethods($id, $params = null, $opts = null)
     {
@@ -83,11 +83,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $parentId
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Account|\Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card|\Voxel\Vendor\Stripe\Source>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Account|\Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card|\Voxel\Vendor\CloudPayments\Source>
      */
     public function allSources($parentId, $params = null, $opts = null)
     {
@@ -99,11 +99,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $parentId
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\TaxId>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\TaxId>
      */
     public function allTaxIds($parentId, $params = null, $opts = null)
     {
@@ -114,11 +114,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * Creates a new customer object.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Customer
+     * @return \Voxel\Vendor\CloudPayments\Customer
      */
     public function create($params = null, $opts = null)
     {
@@ -131,11 +131,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $parentId
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\CustomerBalanceTransaction
+     * @return \Voxel\Vendor\CloudPayments\CustomerBalanceTransaction
      */
     public function createBalanceTransaction($parentId, $params = null, $opts = null)
     {
@@ -151,11 +151,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\FundingInstructions
+     * @return \Voxel\Vendor\CloudPayments\FundingInstructions
      */
     public function createFundingInstructions($id, $params = null, $opts = null)
     {
@@ -173,11 +173,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $parentId
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Account|\Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card|\Voxel\Vendor\Stripe\Source
+     * @return \Voxel\Vendor\CloudPayments\Account|\Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card|\Voxel\Vendor\CloudPayments\Source
      */
     public function createSource($parentId, $params = null, $opts = null)
     {
@@ -189,11 +189,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $parentId
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\TaxId
+     * @return \Voxel\Vendor\CloudPayments\TaxId
      */
     public function createTaxId($parentId, $params = null, $opts = null)
     {
@@ -206,11 +206,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Customer
+     * @return \Voxel\Vendor\CloudPayments\Customer
      */
     public function delete($id, $params = null, $opts = null)
     {
@@ -222,11 +222,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Discount
+     * @return \Voxel\Vendor\CloudPayments\Discount
      */
     public function deleteDiscount($id, $params = null, $opts = null)
     {
@@ -239,11 +239,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * @param string $parentId
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Account|\Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card|\Voxel\Vendor\Stripe\Source
+     * @return \Voxel\Vendor\CloudPayments\Account|\Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card|\Voxel\Vendor\CloudPayments\Source
      */
     public function deleteSource($parentId, $id, $params = null, $opts = null)
     {
@@ -256,11 +256,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * @param string $parentId
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\TaxId
+     * @return \Voxel\Vendor\CloudPayments\TaxId
      */
     public function deleteTaxId($parentId, $id, $params = null, $opts = null)
     {
@@ -272,11 +272,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Customer
+     * @return \Voxel\Vendor\CloudPayments\Customer
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -290,11 +290,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * @param string $parentId
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\CustomerBalanceTransaction
+     * @return \Voxel\Vendor\CloudPayments\CustomerBalanceTransaction
      */
     public function retrieveBalanceTransaction($parentId, $id, $params = null, $opts = null)
     {
@@ -306,11 +306,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $parentId
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\CashBalance
+     * @return \Voxel\Vendor\CloudPayments\CashBalance
      */
     public function retrieveCashBalance($parentId, $params = null, $opts = null)
     {
@@ -324,11 +324,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * @param string $parentId
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\CustomerCashBalanceTransaction
+     * @return \Voxel\Vendor\CloudPayments\CustomerCashBalanceTransaction
      */
     public function retrieveCashBalanceTransaction($parentId, $id, $params = null, $opts = null)
     {
@@ -341,11 +341,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * @param string $parentId
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\PaymentMethod
+     * @return \Voxel\Vendor\CloudPayments\PaymentMethod
      */
     public function retrievePaymentMethod($parentId, $id, $params = null, $opts = null)
     {
@@ -358,11 +358,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * @param string $parentId
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Account|\Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card|\Voxel\Vendor\Stripe\Source
+     * @return \Voxel\Vendor\CloudPayments\Account|\Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card|\Voxel\Vendor\CloudPayments\Source
      */
     public function retrieveSource($parentId, $id, $params = null, $opts = null)
     {
@@ -375,11 +375,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * @param string $parentId
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\TaxId
+     * @return \Voxel\Vendor\CloudPayments\TaxId
      */
     public function retrieveTaxId($parentId, $id, $params = null, $opts = null)
     {
@@ -387,7 +387,7 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
     }
 
     /**
-     * Search for customers you’ve previously created using Stripe’s <a
+     * Search for customers you’ve previously created using CloudPayments’s <a
      * href="/docs/search#search-query-language">Search Query Language</a>. Don’t use
      * search in read-after-write flows where strict consistency is necessary. Under
      * normal operating conditions, data is searchable in less than a minute.
@@ -395,11 +395,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * during outages. Search functionality is not available to merchants in India.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\SearchResult<\Voxel\Vendor\Stripe\Customer>
+     * @return \Voxel\Vendor\CloudPayments\SearchResult<\Voxel\Vendor\CloudPayments\Customer>
      */
     public function search($params = null, $opts = null)
     {
@@ -423,11 +423,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Customer
+     * @return \Voxel\Vendor\CloudPayments\Customer
      */
     public function update($id, $params = null, $opts = null)
     {
@@ -441,11 +441,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * @param string $parentId
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\CustomerBalanceTransaction
+     * @return \Voxel\Vendor\CloudPayments\CustomerBalanceTransaction
      */
     public function updateBalanceTransaction($parentId, $id, $params = null, $opts = null)
     {
@@ -457,11 +457,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $parentId
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\CashBalance
+     * @return \Voxel\Vendor\CloudPayments\CashBalance
      */
     public function updateCashBalance($parentId, $params = null, $opts = null)
     {
@@ -474,11 +474,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * @param string $parentId
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Account|\Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card|\Voxel\Vendor\Stripe\Source
+     * @return \Voxel\Vendor\CloudPayments\Account|\Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card|\Voxel\Vendor\CloudPayments\Source
      */
     public function updateSource($parentId, $id, $params = null, $opts = null)
     {
@@ -491,11 +491,11 @@ class CustomerService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * @param string $parentId
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Account|\Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card|\Voxel\Vendor\Stripe\Source
+     * @return \Voxel\Vendor\CloudPayments\Account|\Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card|\Voxel\Vendor\CloudPayments\Source
      */
     public function verifySource($parentId, $id, $params = null, $opts = null)
     {

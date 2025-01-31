@@ -37,7 +37,7 @@ class User_Is_Customer_Of_Author extends Base_Visibility_Rule {
 				return false;
 			}
 
-			if ( $vendor->has_cap('administrator') && apply_filters( 'voxel/stripe_connect/enable_onboarding_for_admins', false ) !== true ) {
+			if ( $vendor->has_cap('administrator') && apply_filters( 'voxel/cloudpayments_connect/enable_onboarding_for_admins', false ) !== true ) {
 				return $current_user->has_bought_product_from_platform();
 			}
 
@@ -53,7 +53,7 @@ class User_Is_Customer_Of_Author extends Base_Visibility_Rule {
 				return false;
 			}
 
-			if ( $vendor->has_cap('administrator') && apply_filters( 'voxel/stripe_connect/enable_onboarding_for_admins', false ) !== true ) {
+			if ( $vendor->has_cap('administrator') && apply_filters( 'voxel/cloudpayments_connect/enable_onboarding_for_admins', false ) !== true ) {
 				return $current_user->has_bought_product_from_platform();
 			}
 

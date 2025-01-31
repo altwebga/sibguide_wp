@@ -2,14 +2,14 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service\Checkout;
+namespace Voxel\Vendor\CloudPayments\Service\Checkout;
 
 /**
  * Service factory class for API resources in the Checkout namespace.
  *
  * @property SessionService $sessions
  */
-class CheckoutServiceFactory extends \Voxel\Vendor\Stripe\Service\AbstractServiceFactory
+class CheckoutServiceFactory extends \Voxel\Vendor\CloudPayments\Service\AbstractServiceFactory
 {
     /**
      * @var array<string, string>

@@ -1,28 +1,28 @@
 <?php
 
-namespace Voxel\Vendor\Stripe\ApiOperations;
+namespace Voxel\Vendor\CloudPayments\ApiOperations;
 
 /**
  * Trait for resources that need to make API requests.
  *
- * This trait should only be applied to classes that derive from StripeObject.
+ * This trait should only be applied to classes that derive from CloudPaymentsObject.
  */
 trait Request
 {
     /**
      * @param null|array|mixed $params The list of parameters to validate
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\InvalidArgumentException if $params exists and is not an array
+     * @throws \Voxel\Vendor\CloudPayments\Exception\InvalidArgumentException if $params exists and is not an array
      */
     protected static function _validateParams($params = null)
     {
         if ($params && !\is_array($params)) {
-            $message = 'You must pass an array as the first argument to Stripe API '
+            $message = 'You must pass an array as the first argument to CloudPayments API '
                 . 'method calls.  (HINT: an example call to create a charge '
-                . "would be: \"Stripe\\Charge::create(['amount' => 100, "
+                . "would be: \"CloudPayments\\Charge::create(['amount' => 100, "
                 . "'currency' => 'usd', 'source' => 'tok_1234'])\")";
 
-            throw new \Voxel\Vendor\Stripe\Exception\InvalidArgumentException($message);
+            throw new \Voxel\Vendor\CloudPayments\Exception\InvalidArgumentException($message);
         }
     }
 
@@ -33,7 +33,7 @@ trait Request
      * @param null|array|string $options
      * @param string[] $usage names of tracked behaviors associated with this request
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
      * @return array tuple containing (the JSON response, $options)
      */
@@ -48,23 +48,23 @@ trait Request
 
     /**
      * @param string $url URL for the request
-     * @param class-string< \Voxel\Vendor\Stripe\SearchResult|\Voxel\Vendor\Stripe\Collection > $resultClass indicating what type of paginated result is returned
+     * @param class-string< \Voxel\Vendor\CloudPayments\SearchResult|\Voxel\Vendor\CloudPayments\Collection > $resultClass indicating what type of paginated result is returned
      * @param null|array $params list of parameters for the request
      * @param null|array|string $options
      * @param string[] $usage names of tracked behaviors associated with this request
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection|\Voxel\Vendor\Stripe\SearchResult
+     * @return \Voxel\Vendor\CloudPayments\Collection|\Voxel\Vendor\CloudPayments\SearchResult
      */
     protected static function _requestPage($url, $resultClass, $params = null, $options = null, $usage = [])
     {
         self::_validateParams($params);
 
         list($response, $opts) = static::_staticRequest('get', $url, $params, $options, $usage);
-        $obj = \Voxel\Vendor\Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = \Voxel\Vendor\CloudPayments\Util\Util::convertToCloudPaymentsObject($response->json, $opts);
         if (!($obj instanceof $resultClass)) {
-            throw new \Voxel\Vendor\Stripe\Exception\UnexpectedValueException(
+            throw new \Voxel\Vendor\CloudPayments\Exception\UnexpectedValueException(
                 'Expected type ' . $resultClass . ', got "' . \get_class($obj) . '" instead.'
             );
         }
@@ -82,7 +82,7 @@ trait Request
      * @param null|array|string $options
      * @param string[] $usage names of tracked behaviors associated with this request
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      */
     protected function _requestStream($method, $url, $readBodyChunk, $params = [], $options = null, $usage = [])
     {
@@ -97,15 +97,15 @@ trait Request
      * @param null|array|string $options
      * @param string[] $usage names of tracked behaviors associated with this request
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
      * @return array tuple containing (the JSON response, $options)
      */
     protected static function _staticRequest($method, $url, $params, $options, $usage = [])
     {
-        $opts = \Voxel\Vendor\Stripe\Util\RequestOptions::parse($options);
+        $opts = \Voxel\Vendor\CloudPayments\Util\RequestOptions::parse($options);
         $baseUrl = isset($opts->apiBase) ? $opts->apiBase : static::baseUrl();
-        $requestor = new \Voxel\Vendor\Stripe\ApiRequestor($opts->apiKey, $baseUrl);
+        $requestor = new \Voxel\Vendor\CloudPayments\ApiRequestor($opts->apiKey, $baseUrl);
         list($response, $opts->apiKey) = $requestor->request($method, $url, $params, $opts->headers, $usage);
         $opts->discardNonPersistentHeaders();
 
@@ -120,13 +120,13 @@ trait Request
      * @param null|array|string $options
      * @param string[] $usage names of tracked behaviors associated with this request
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      */
     protected static function _staticStreamingRequest($method, $url, $readBodyChunk, $params, $options, $usage = [])
     {
-        $opts = \Voxel\Vendor\Stripe\Util\RequestOptions::parse($options);
+        $opts = \Voxel\Vendor\CloudPayments\Util\RequestOptions::parse($options);
         $baseUrl = isset($opts->apiBase) ? $opts->apiBase : static::baseUrl();
-        $requestor = new \Voxel\Vendor\Stripe\ApiRequestor($opts->apiKey, $baseUrl);
+        $requestor = new \Voxel\Vendor\CloudPayments\ApiRequestor($opts->apiKey, $baseUrl);
         $requestor->requestStream($method, $url, $readBodyChunk, $params, $opts->headers);
     }
 }

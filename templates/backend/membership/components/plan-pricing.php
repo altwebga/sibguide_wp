@@ -11,13 +11,13 @@ if ( ! defined('ABSPATH') ) {
 			<p>Loading...</p>
 		</div>
 		<div v-else class="ts-form-group">
-			<h3>Stripe error</h3>
+			<h3>CloudPayments error</h3>
 
 			<p>{{ priceSetup[mode+'Error'] }}</p>
 			<br>
 			<div class="basic-ul">
-				<a href="<?= esc_url( admin_url( 'admin.php?page=voxel-settings&tab=stripe' ) ) ?>" class="ts-button ts-outline full-width">
-					<i class="las la-external-link-alt icon-sm"></i> Configure Stripe
+				<a href="<?= esc_url( admin_url( 'admin.php?page=voxel-settings&tab=cloudpayments' ) ) ?>" class="ts-button ts-outline full-width">
+					<i class="las la-external-link-alt icon-sm"></i> Configure CloudPayments
 				</a>
 			</div>
 		</div>
@@ -61,9 +61,9 @@ if ( ! defined('ABSPATH') ) {
 							</div>
 							<div class="ts-form-group x-col-12">
 								<div class="basic-ul">
-									<a class="ts-button ts-outline" :href="stripePriceUrl( price.id )" target="_blank">
+									<a class="ts-button ts-outline" :href="cloudpaymentsPriceUrl( price.id )" target="_blank">
 										<i class="las la-external-link-alt icon-sm"></i>
-										View in Stripe
+										View in CloudPayments
 									</a>
 									<a class="ts-button ts-outline" href="#" @click.prevent="togglePrice( price.id )">
 										<i class="las icon-sm" :class="price.active ? 'la-minus-circle' : 'la-plus-circle'"></i>
@@ -97,7 +97,7 @@ if ( ! defined('ABSPATH') ) {
 					<?php \Voxel\Form_Models\Select_Model::render( [
 						'v-model' => 'createPrice[mode].currency',
 						'label' => 'Currency',
-						'choices' => \Voxel\Stripe\Currencies::all(),
+						'choices' => \Voxel\CloudPayments\Currencies::all(),
 						'classes' => 'x-col-6',
 					] ) ?>
 
@@ -150,7 +150,7 @@ if ( ! defined('ABSPATH') ) {
 				<div class="x-col-12">
 					<a href="#" @click.prevent="showPriceAdvanced = !showPriceAdvanced" class="ts-button ts-transparent full-width">
 						<i class="las la-arrow-down icon-sm"></i>
-						Stripe details
+						CloudPayments details
 					</a>
 				</div>
 				<div v-if="showPriceAdvanced" class="x-col-12">
@@ -162,13 +162,13 @@ if ( ! defined('ABSPATH') ) {
 							</div>
 							<div class="ts-form-group x-col-12">
 								<div class="basic-ul">
-									<a class="ts-button ts-outline" :href="stripeProductUrl()" target="_blank">
+									<a class="ts-button ts-outline" :href="cloudpaymentsProductUrl()" target="_blank">
 										<i class="las la-external-link-alt icon-sm"></i>
-										View in Stripe
+										View in CloudPayments
 									</a>
 									<a class="ts-button ts-outline" href="#" @click.prevent="syncPrices">
 										<i class="las la-sync icon-sm"></i>
-										Sync prices with Stripe
+										Sync prices with CloudPayments
 									</a>
 								</div>
 							</div>

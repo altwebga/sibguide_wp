@@ -2,19 +2,19 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Reporting;
+namespace Voxel\Vendor\CloudPayments\Reporting;
 
 /**
  * The Report Type resource corresponds to a particular type of report, such as
  * the &quot;Activity summary&quot; or &quot;Itemized payouts&quot; reports. These objects are
  * identified by an ID belonging to a set of enumerated values. See
- * <a href="https://stripe.com/docs/reporting/statements/api">API Access to Reports documentation</a>
+ * <a href="https://cloudpayments.com/docs/reporting/statements/api">API Access to Reports documentation</a>
  * for those Report Type IDs, along with required and optional parameters.
  *
  * Note that certain report types can only be run based on your live-mode data (not test-mode
- * data), and will error when queried without a <a href="https://stripe.com/docs/keys#test-live-modes">live-mode API key</a>.
+ * data), and will error when queried without a <a href="https://cloudpayments.com/docs/keys#test-live-modes">live-mode API key</a>.
  *
- * @property string $id The <a href="https://stripe.com/docs/reporting/statements/api#available-report-types">ID of the Report Type</a>, such as <code>balance.summary.1</code>.
+ * @property string $id The <a href="https://cloudpayments.com/docs/reporting/statements/api#available-report-types">ID of the Report Type</a>, such as <code>balance.summary.1</code>.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $data_available_end Most recent time for which this Report Type is available. Measured in seconds since the Unix epoch.
  * @property int $data_available_start Earliest time for which this Report Type is available. Measured in seconds since the Unix epoch.
@@ -24,10 +24,10 @@ namespace Voxel\Vendor\Stripe\Reporting;
  * @property int $updated When this Report Type was latest updated. Measured in seconds since the Unix epoch.
  * @property int $version Version of the Report Type. Different versions report with the same ID will have the same purpose, but may take different run parameters or have different result schemas.
  */
-class ReportType extends \Voxel\Vendor\Stripe\ApiResource
+class ReportType extends \Voxel\Vendor\CloudPayments\ApiResource
 {
     const OBJECT_NAME = 'reporting.report_type';
 
-    use \Voxel\Vendor\Stripe\ApiOperations\All;
-    use \Voxel\Vendor\Stripe\ApiOperations\Retrieve;
+    use \Voxel\Vendor\CloudPayments\ApiOperations\All;
+    use \Voxel\Vendor\CloudPayments\ApiOperations\Retrieve;
 }

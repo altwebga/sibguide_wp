@@ -1,29 +1,29 @@
 <?php
 
-namespace Voxel\Vendor\Stripe;
+namespace Voxel\Vendor\CloudPayments;
 
 /**
- * Class Stripe.
+ * Class CloudPayments.
  */
-class Stripe
+class CloudPayments
 {
-    /** @var string The Stripe API key to be used for requests. */
+    /** @var string The CloudPayments API key to be used for requests. */
     public static $apiKey;
 
-    /** @var string The Stripe client_id to be used for Connect requests. */
+    /** @var string The CloudPayments client_id to be used for Connect requests. */
     public static $clientId;
 
-    /** @var string The base URL for the Stripe API. */
-    public static $apiBase = 'https://api.stripe.com';
+    /** @var string The base URL for the CloudPayments API. */
+    public static $apiBase = 'https://api.cloudpayments.com';
 
     /** @var string The base URL for the OAuth API. */
-    public static $connectBase = 'https://connect.stripe.com';
+    public static $connectBase = 'https://connect.cloudpayments.com';
 
-    /** @var string The base URL for the Stripe API uploads endpoint. */
-    public static $apiUploadBase = 'https://files.stripe.com';
+    /** @var string The base URL for the CloudPayments API uploads endpoint. */
+    public static $apiUploadBase = 'https://files.cloudpayments.com';
 
-    /** @var string The version of the Stripe API to use for requests. */
-    public static $apiVersion = \Voxel\Vendor\Stripe\Util\ApiVersion::CURRENT;
+    /** @var string The version of the CloudPayments API to use for requests. */
+    public static $apiVersion = \Voxel\Vendor\CloudPayments\Util\ApiVersion::CURRENT;
 
     /** @var null|string The account ID for connected accounts requests. */
     public static $accountId = null;
@@ -52,7 +52,7 @@ class Stripe
     /** @var float Maximum delay between retries, in seconds */
     private static $maxNetworkRetryDelay = 2.0;
 
-    /** @var float Maximum delay between retries, in seconds, that will be respected from the Stripe API */
+    /** @var float Maximum delay between retries, in seconds, that will be respected from the CloudPayments API */
     private static $maxRetryAfter = 60.0;
 
     /** @var float Initial delay between retries, in seconds */
@@ -175,7 +175,7 @@ class Stripe
     }
 
     /**
-     * @return null|string The Stripe account ID for connected account
+     * @return null|string The CloudPayments account ID for connected account
      *   requests
      */
     public static function getAccountId()
@@ -184,7 +184,7 @@ class Stripe
     }
 
     /**
-     * @param null|string $accountId the Stripe account ID to set for connected
+     * @param null|string $accountId the CloudPayments account ID to set for connected
      *   account requests
      */
     public static function setAccountId($accountId)
@@ -240,7 +240,7 @@ class Stripe
     }
 
     /**
-     * @return float Maximum delay between retries, in seconds, that will be respected from the Stripe API
+     * @return float Maximum delay between retries, in seconds, that will be respected from the CloudPayments API
      */
     public static function getMaxRetryAfter()
     {
@@ -266,8 +266,8 @@ class Stripe
     /**
      * @param bool $enableTelemetry Enables client telemetry.
      *
-     * Client telemetry enables timing and request metrics to be sent back to Stripe as an HTTP Header
-     * with the current request. This enables Stripe to do latency and metrics analysis without adding extra
+     * Client telemetry enables timing and request metrics to be sent back to CloudPayments as an HTTP Header
+     * with the current request. This enables CloudPayments to do latency and metrics analysis without adding extra
      * overhead (such as extra network calls) on the client.
      */
     public static function setEnableTelemetry($enableTelemetry)

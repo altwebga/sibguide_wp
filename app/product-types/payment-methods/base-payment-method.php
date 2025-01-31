@@ -38,19 +38,19 @@ abstract class Base_Payment_Method {
 
 	public static function get_all(): array {
 		return [
-			'stripe_payment' => Stripe_Payment::class,
-			'stripe_subscription' => Stripe_Subscription::class,
+			'cloudpayments_payment' => CloudPayments_Payment::class,
+			'cloudpayments_subscription' => CloudPayments_Subscription::class,
 			'offline_payment' => Offline_Payment::class,
 
-			'stripe_transfer' => Stripe_Transfer::class,
-			'stripe_transfer_platform' => Stripe_Transfer_Platform::class,
+			'cloudpayments_transfer' => CloudPayments_Transfer::class,
+			'cloudpayments_transfer_platform' => CloudPayments_Transfer_Platform::class,
 		];
 	}
 
 	public function get_line_items(): array {
 		$line_items = [];
 
-		// remove any non-ASCII characters from the URL (which trigger url_invalid in Stripe)
+		// remove any non-ASCII characters from the URL (which trigger url_invalid in CloudPayments)
 		$clean_url = function( $url ) {
 			return is_string( $url ) ? preg_replace( '/[^\x20-\x7E]/', '', $url ) : null;
 		};
@@ -65,7 +65,7 @@ abstract class Base_Payment_Method {
 				$amount = $item->get_subtotal_per_unit();
 			}
 
-			if ( ! \Voxel\Stripe\Currencies::is_zero_decimal( $currency ) ) {
+			if ( ! \Voxel\CloudPayments\Currencies::is_zero_decimal( $currency ) ) {
 				$amount_in_cents = $amount * 100;
 			} else {
 				$amount_in_cents = $amount;
@@ -96,10 +96,10 @@ abstract class Base_Payment_Method {
 	public function get_admin_actions(): array {
 		$actions = [];
 
-		if ( in_array( $this->get_type(), [ 'stripe_payment', 'stripe_subscription' ], true ) ) {
+		if ( in_array( $this->get_type(), [ 'cloudpayments_payment', 'cloudpayments_subscription' ], true ) ) {
 			$actions[] = [
-				'action' => 'admin.sync_with_stripe',
-				'label' => _x( 'Sync with Stripe', 'order actions', 'voxel' ),
+				'action' => 'admin.sync_with_cloudpayments',
+				'label' => _x( 'Sync with CloudPayments', 'order actions', 'voxel' ),
 				'handler' => function() {
 					$this->sync();
 					return wp_send_json( [

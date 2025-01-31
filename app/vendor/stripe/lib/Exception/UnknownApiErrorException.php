@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\Stripe\Exception;
+namespace Voxel\Vendor\CloudPayments\Exception;
 
 /**
  * UnknownApiErrorException is thrown when the client library receives an

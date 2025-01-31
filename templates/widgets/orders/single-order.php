@@ -273,7 +273,7 @@ require_once locate_template( 'templates/widgets/orders/item-promotion-details.p
 					</template>
 				</template>
 
-				<div v-if="order.pricing.payment_method === 'stripe_subscription' && order.status.key !== 'pending_payment'" class="order-event">
+				<div v-if="order.pricing.payment_method === 'cloudpayments_subscription' && order.status.key !== 'pending_payment'" class="order-event">
 					<div v-if="orders.config.statuses_ui[ order.status.key ]?.icon"
 						class="order-event-icon"
 						:class="orders.config.statuses_ui[ order.status.key ]?.class || 'vx-neutral'"
@@ -292,8 +292,8 @@ require_once locate_template( 'templates/widgets/orders/item-promotion-details.p
 							'@period_end' => '{{ order.pricing.details.current_period_end_display }}',
 						] ) ?></span>
 
-						<div v-if="getAction('payments/stripe_subscription/customers/customer.subscriptions.enable_renewal')" class="further-actions">
-							<a href="#" @click.prevent="runAction( getAction('payments/stripe_subscription/customers/customer.subscriptions.enable_renewal') )" class="ts-btn ts-btn-1"><?= _x( 'Enable renewals', 'single order subscriptions', 'voxel' ) ?></a>
+						<div v-if="getAction('payments/cloudpayments_subscription/customers/customer.subscriptions.enable_renewal')" class="further-actions">
+							<a href="#" @click.prevent="runAction( getAction('payments/cloudpayments_subscription/customers/customer.subscriptions.enable_renewal') )" class="ts-btn ts-btn-1"><?= _x( 'Enable renewals', 'single order subscriptions', 'voxel' ) ?></a>
 						</div>
 					</template>
 					<template v-else-if="order.pricing.details.status === 'trialing'">
@@ -311,7 +311,7 @@ require_once locate_template( 'templates/widgets/orders/item-promotion-details.p
 					<template v-else-if="order.pricing.details.status === 'incomplete'">
 						<b><?= _x( 'Subscription payment has not been completed', 'single order subscriptions', 'voxel' ) ?></b>
 						<div class="further-actions">
-							<a v-if="getAction('payments/stripe_subscription/customers/customer.subscriptions.finalize_payment')" href="#" @click.prevent="runAction( getAction('payments/stripe_subscription/customers/customer.subscriptions.finalize_payment') )" class="ts-btn ts-btn-1"><?= _x( 'Finalize payment', 'single order subscriptions', 'voxel' ) ?></a>
+							<a v-if="getAction('payments/cloudpayments_subscription/customers/customer.subscriptions.finalize_payment')" href="#" @click.prevent="runAction( getAction('payments/cloudpayments_subscription/customers/customer.subscriptions.finalize_payment') )" class="ts-btn ts-btn-1"><?= _x( 'Finalize payment', 'single order subscriptions', 'voxel' ) ?></a>
 						</div>
 					</template>
 					<template v-else-if="order.pricing.details.status === 'incomplete_expired'">
@@ -322,8 +322,8 @@ require_once locate_template( 'templates/widgets/orders/item-promotion-details.p
 						<b><?= _x( 'Subscription is past due', 'single order subscriptions', 'voxel' ) ?></b>
 						<span><?= _x( 'Subscription renewal failed', 'single order subscriptions', 'voxel' ) ?></span>
 						<div class="further-actions">
-							<a v-if="getAction('payments/stripe_subscription/customers/customer.subscriptions.finalize_payment')" href="#" @click.prevent="runAction( getAction('payments/stripe_subscription/customers/customer.subscriptions.finalize_payment') )" class="ts-btn ts-btn-1"><?= _x( 'Finalize payment', 'single order subscriptions', 'voxel' ) ?></a>
-							<a v-if="getAction('payments/stripe_subscription/customers/customer.access_portal')" href="#" @click.prevent="runAction( getAction('payments/stripe_subscription/customers/customer.access_portal') )" class="ts-btn ts-btn-1"><?= _x( 'Update payment method', 'single order subscriptions', 'voxel' ) ?></a>
+							<a v-if="getAction('payments/cloudpayments_subscription/customers/customer.subscriptions.finalize_payment')" href="#" @click.prevent="runAction( getAction('payments/cloudpayments_subscription/customers/customer.subscriptions.finalize_payment') )" class="ts-btn ts-btn-1"><?= _x( 'Finalize payment', 'single order subscriptions', 'voxel' ) ?></a>
+							<a v-if="getAction('payments/cloudpayments_subscription/customers/customer.access_portal')" href="#" @click.prevent="runAction( getAction('payments/cloudpayments_subscription/customers/customer.access_portal') )" class="ts-btn ts-btn-1"><?= _x( 'Update payment method', 'single order subscriptions', 'voxel' ) ?></a>
 						</div>
 					</template>
 					<template v-else-if="order.pricing.details.status === 'canceled'">
@@ -334,8 +334,8 @@ require_once locate_template( 'templates/widgets/orders/item-promotion-details.p
 						<b><?= _x( 'Subscription is unpaid', 'single order subscriptions', 'voxel' ) ?></b>
 						<span><?= _x( 'Subscription has been deactivated due to failed renewal attempts.', 'single order subscriptions', 'voxel' ) ?></span>
 						<div class="further-actions">
-							<a v-if="getAction('payments/stripe_subscription/customers/customer.subscriptions.finalize_payment')" href="#" @click.prevent="runAction( getAction('payments/stripe_subscription/customers/customer.subscriptions.finalize_payment') )" class="ts-btn ts-btn-1"><?= _x( 'Finalize payment', 'single order subscriptions', 'voxel' ) ?></a>
-							<a v-if="getAction('payments/stripe_subscription/customers/customer.access_portal')" href="#" @click.prevent="runAction( getAction('payments/stripe_subscription/customers/customer.access_portal') )" class="ts-btn ts-btn-1"><?= _x( 'Update payment method', 'single order subscriptions', 'voxel' ) ?></a>
+							<a v-if="getAction('payments/cloudpayments_subscription/customers/customer.subscriptions.finalize_payment')" href="#" @click.prevent="runAction( getAction('payments/cloudpayments_subscription/customers/customer.subscriptions.finalize_payment') )" class="ts-btn ts-btn-1"><?= _x( 'Finalize payment', 'single order subscriptions', 'voxel' ) ?></a>
+							<a v-if="getAction('payments/cloudpayments_subscription/customers/customer.access_portal')" href="#" @click.prevent="runAction( getAction('payments/cloudpayments_subscription/customers/customer.access_portal') )" class="ts-btn ts-btn-1"><?= _x( 'Update payment method', 'single order subscriptions', 'voxel' ) ?></a>
 						</div>
 					</template>
 				</div>

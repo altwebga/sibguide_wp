@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\Stripe;
+namespace Voxel\Vendor\CloudPayments;
 
 /**
  * Class OAuthErrorObject.
@@ -8,7 +8,7 @@ namespace Voxel\Vendor\Stripe;
  * @property string $error
  * @property string $error_description
  */
-class OAuthErrorObject extends StripeObject
+class OAuthErrorObject extends CloudPaymentsObject
 {
     /**
      * Refreshes this object using the provided values.

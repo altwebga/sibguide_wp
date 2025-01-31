@@ -2,15 +2,15 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service\TestHelpers\Terminal;
+namespace Voxel\Vendor\CloudPayments\Service\TestHelpers\Terminal;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
-class ReaderService extends \Voxel\Vendor\Stripe\Service\AbstractService
+class ReaderService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 {
     /**
      * Presents a payment method on a simulated reader. Can be used to simulate
@@ -18,11 +18,11 @@ class ReaderService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Terminal\Reader
+     * @return \Voxel\Vendor\CloudPayments\Terminal\Reader
      */
     public function presentPaymentMethod($id, $params = null, $opts = null)
     {

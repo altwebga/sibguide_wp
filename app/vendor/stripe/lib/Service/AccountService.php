@@ -2,26 +2,26 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service;
+namespace Voxel\Vendor\CloudPayments\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
-class AccountService extends \Voxel\Vendor\Stripe\Service\AbstractService
+class AccountService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 {
     /**
      * Returns a list of accounts connected to your platform via <a
      * href="/docs/connect">Connect</a>. If you’re not a platform, the list is empty.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Account>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Account>
      */
     public function all($params = null, $opts = null)
     {
@@ -35,11 +35,11 @@ class AccountService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $parentId
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Capability>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Capability>
      */
     public function allCapabilities($parentId, $params = null, $opts = null)
     {
@@ -51,11 +51,11 @@ class AccountService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $parentId
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card>
      */
     public function allExternalAccounts($parentId, $params = null, $opts = null)
     {
@@ -69,11 +69,11 @@ class AccountService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $parentId
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Person>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Person>
      */
     public function allPersons($parentId, $params = null, $opts = null)
     {
@@ -81,9 +81,9 @@ class AccountService extends \Voxel\Vendor\Stripe\Service\AbstractService
     }
 
     /**
-     * With <a href="/docs/connect">Connect</a>, you can create Stripe accounts for
+     * With <a href="/docs/connect">Connect</a>, you can create CloudPayments accounts for
      * your users. To do this, you’ll first need to <a
-     * href="https://dashboard.stripe.com/account/applications/settings">register your
+     * href="https://dashboard.cloudpayments.com/account/applications/settings">register your
      * platform</a>.
      *
      * If you’ve already collected information for your connected accounts, you <a
@@ -93,11 +93,11 @@ class AccountService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * account.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Account
+     * @return \Voxel\Vendor\CloudPayments\Account
      */
     public function create($params = null, $opts = null)
     {
@@ -109,11 +109,11 @@ class AccountService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $parentId
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card
+     * @return \Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card
      */
     public function createExternalAccount($parentId, $params = null, $opts = null)
     {
@@ -121,7 +121,7 @@ class AccountService extends \Voxel\Vendor\Stripe\Service\AbstractService
     }
 
     /**
-     * Creates a single-use login link for an Express account to access their Stripe
+     * Creates a single-use login link for an Express account to access their CloudPayments
      * dashboard.
      *
      * <strong>You may only create login links for <a
@@ -130,11 +130,11 @@ class AccountService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $parentId
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\LoginLink
+     * @return \Voxel\Vendor\CloudPayments\LoginLink
      */
     public function createLoginLink($parentId, $params = null, $opts = null)
     {
@@ -146,11 +146,11 @@ class AccountService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $parentId
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Person
+     * @return \Voxel\Vendor\CloudPayments\Person
      */
     public function createPerson($parentId, $params = null, $opts = null)
     {
@@ -166,16 +166,16 @@ class AccountService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * zero.
      *
      * If you want to delete your own account, use the <a
-     * href="https://dashboard.stripe.com/settings/account">account information tab in
+     * href="https://dashboard.cloudpayments.com/settings/account">account information tab in
      * your account settings</a> instead.
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Account
+     * @return \Voxel\Vendor\CloudPayments\Account
      */
     public function delete($id, $params = null, $opts = null)
     {
@@ -188,11 +188,11 @@ class AccountService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * @param string $parentId
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card
+     * @return \Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card
      */
     public function deleteExternalAccount($parentId, $id, $params = null, $opts = null)
     {
@@ -209,11 +209,11 @@ class AccountService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * @param string $parentId
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Person
+     * @return \Voxel\Vendor\CloudPayments\Person
      */
     public function deletePerson($parentId, $id, $params = null, $opts = null)
     {
@@ -228,11 +228,11 @@ class AccountService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Account
+     * @return \Voxel\Vendor\CloudPayments\Account
      */
     public function reject($id, $params = null, $opts = null)
     {
@@ -245,11 +245,11 @@ class AccountService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * @param string $parentId
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Capability
+     * @return \Voxel\Vendor\CloudPayments\Capability
      */
     public function retrieveCapability($parentId, $id, $params = null, $opts = null)
     {
@@ -262,11 +262,11 @@ class AccountService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * @param string $parentId
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card
+     * @return \Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card
      */
     public function retrieveExternalAccount($parentId, $id, $params = null, $opts = null)
     {
@@ -279,11 +279,11 @@ class AccountService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * @param string $parentId
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Person
+     * @return \Voxel\Vendor\CloudPayments\Person
      */
     public function retrievePerson($parentId, $id, $params = null, $opts = null)
     {
@@ -302,17 +302,17 @@ class AccountService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * be changed or updated for Custom accounts.
      *
      * To update your own account, use the <a
-     * href="https://dashboard.stripe.com/settings/account">Dashboard</a>. Refer to our
+     * href="https://dashboard.cloudpayments.com/settings/account">Dashboard</a>. Refer to our
      * <a href="/docs/connect/updating-accounts">Connect</a> documentation to learn
      * more about updating accounts.
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Account
+     * @return \Voxel\Vendor\CloudPayments\Account
      */
     public function update($id, $params = null, $opts = null)
     {
@@ -326,11 +326,11 @@ class AccountService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * @param string $parentId
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Capability
+     * @return \Voxel\Vendor\CloudPayments\Capability
      */
     public function updateCapability($parentId, $id, $params = null, $opts = null)
     {
@@ -349,11 +349,11 @@ class AccountService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * @param string $parentId
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card
+     * @return \Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card
      */
     public function updateExternalAccount($parentId, $id, $params = null, $opts = null)
     {
@@ -366,11 +366,11 @@ class AccountService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * @param string $parentId
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Person
+     * @return \Voxel\Vendor\CloudPayments\Person
      */
     public function updatePerson($parentId, $id, $params = null, $opts = null)
     {
@@ -382,11 +382,11 @@ class AccountService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param null|string $id
      * @param null|array $params
-     * @param null|array|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|array|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Account
+     * @return \Voxel\Vendor\CloudPayments\Account
      */
     public function retrieve($id = null, $params = null, $opts = null)
     {

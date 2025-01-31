@@ -116,7 +116,7 @@ class Order {
 	}
 
 	public function get_status_long_label(): ?string {
-		if ( $this->status === 'canceled' && $this->payment_method === 'stripe_payment' && $this->get_details( 'payment_intent.cancellation_reason' ) === 'requested_by_customer' ) {
+		if ( $this->status === 'canceled' && $this->payment_method === 'cloudpayments_payment' && $this->get_details( 'payment_intent.cancellation_reason' ) === 'requested_by_customer' ) {
 			return _x( 'Order canceled by customer', 'orders', 'voxel' );
 		}
 
@@ -215,7 +215,7 @@ class Order {
 	public function get_billing_interval(): ?array {
 		$payment_method = $this->get_payment_method();
 		if ( $payment_method !== null ) {
-			if ( $payment_method->get_type() === 'stripe_subscription' ) {
+			if ( $payment_method->get_type() === 'cloudpayments_subscription' ) {
 				$interval = $this->get_details( 'subscription.items.0.price.recurring.interval' );
 				$interval_count = $this->get_details( 'subscription.items.0.price.recurring.interval_count' );
 
@@ -268,7 +268,7 @@ class Order {
 			$vendor_key = $this->has_vendor() ? sprintf( 'vendor_%d', $this->get_vendor_id() ) : 'platform';
 			$vendor_shipping_amount = $parent_order->get_details( sprintf( 'shipping.amounts_by_vendor.%s.amount_in_cents', $vendor_key ) );
 			if ( is_numeric( $vendor_shipping_amount ) ) {
-				if ( $vendor_shipping_amount > 0 && ! \Voxel\Stripe\Currencies::is_zero_decimal( $this->get_currency() ) ) {
+				if ( $vendor_shipping_amount > 0 && ! \Voxel\CloudPayments\Currencies::is_zero_decimal( $this->get_currency() ) ) {
 					$vendor_shipping_amount /= 100;
 				}
 
@@ -285,7 +285,7 @@ class Order {
 				}
 			}
 
-			if ( $vendor_amount_sum > 0 && ! \Voxel\Stripe\Currencies::is_zero_decimal( $this->get_currency() ) ) {
+			if ( $vendor_amount_sum > 0 && ! \Voxel\CloudPayments\Currencies::is_zero_decimal( $this->get_currency() ) ) {
 				$vendor_amount_sum /= 100;
 			}
 
@@ -336,13 +336,13 @@ class Order {
 	public function get_customer_details(): array {
 		$payment_method = $this->get_payment_method();
 		if ( $payment_method !== null ) {
-			if ( $payment_method->get_type() === 'stripe_payment' ) {
+			if ( $payment_method->get_type() === 'cloudpayments_payment' ) {
 				return $payment_method->get_customer_details();
-			} elseif ( $payment_method->get_type() === 'stripe_subscription' ) {
+			} elseif ( $payment_method->get_type() === 'cloudpayments_subscription' ) {
 				return $payment_method->get_customer_details();
-			} elseif ( $payment_method->get_type() === 'stripe_transfer' ) {
+			} elseif ( $payment_method->get_type() === 'cloudpayments_transfer' ) {
 				return $payment_method->get_customer_details();
-			} elseif ( $payment_method->get_type() === 'stripe_transfer_platform' ) {
+			} elseif ( $payment_method->get_type() === 'cloudpayments_transfer_platform' ) {
 				return $payment_method->get_customer_details();
 			}
 		}
@@ -353,13 +353,13 @@ class Order {
 	public function get_shipping_details(): array {
 		$payment_method = $this->get_payment_method();
 		if ( $payment_method !== null ) {
-			if ( $payment_method->get_type() === 'stripe_payment' ) {
+			if ( $payment_method->get_type() === 'cloudpayments_payment' ) {
 				return $payment_method->get_shipping_details();
-			} elseif ( $payment_method->get_type() === 'stripe_subscription' ) {
+			} elseif ( $payment_method->get_type() === 'cloudpayments_subscription' ) {
 				return $payment_method->get_shipping_details();
-			} elseif ( $payment_method->get_type() === 'stripe_transfer' ) {
+			} elseif ( $payment_method->get_type() === 'cloudpayments_transfer' ) {
 				return $payment_method->get_shipping_details();
-			} elseif ( $payment_method->get_type() === 'stripe_transfer_platform' ) {
+			} elseif ( $payment_method->get_type() === 'cloudpayments_transfer_platform' ) {
 				return $payment_method->get_shipping_details();
 			}
 		}
@@ -370,11 +370,11 @@ class Order {
 	public function get_vendor_fees_summary(): array {
 		$payment_method = $this->get_payment_method();
 		if ( $payment_method !== null ) {
-			if ( $payment_method->get_type() === 'stripe_payment' ) {
+			if ( $payment_method->get_type() === 'cloudpayments_payment' ) {
 				return $payment_method->get_vendor_fees_summary();
-			} elseif ( $payment_method->get_type() === 'stripe_subscription' ) {
+			} elseif ( $payment_method->get_type() === 'cloudpayments_subscription' ) {
 				return $payment_method->get_vendor_fees_summary();
-			} elseif ( $payment_method->get_type() === 'stripe_transfer' ) {
+			} elseif ( $payment_method->get_type() === 'cloudpayments_transfer' ) {
 				return $payment_method->get_vendor_fees_summary();
 			}
 		}
@@ -698,7 +698,7 @@ class Order {
 			'transaction_id' => null,
 			'details' => wp_json_encode( Schema::optimize_for_storage( $details ) ),
 			'parent_id' => null,
-			'testmode' => \Voxel\Stripe::is_test_mode() ? 1 : 0,
+			'testmode' => \Voxel\CloudPayments::is_test_mode() ? 1 : 0,
 			'created_at' => \Voxel\utc()->format( 'Y-m-d H:i:s' ),
 		] );
 

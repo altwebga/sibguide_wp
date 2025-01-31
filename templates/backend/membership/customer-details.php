@@ -98,7 +98,7 @@ if ( ! defined('ABSPATH') ) {
 								<th>Subscription ID</th>
 								<td><?= sprintf(
 									'<a href="%s" target="_blank">%s %s</a>',
-									$stripe_base_url . 'subscriptions/' . $membership->get_subscription_id(),
+									$cloudpayments_base_url . 'subscriptions/' . $membership->get_subscription_id(),
 									$membership->get_subscription_id(),
 									'<i class="las la-external-link-alt"></i>'
 								) ?></td>
@@ -141,7 +141,7 @@ if ( ! defined('ABSPATH') ) {
 								<th>Payment intent ID</th>
 								<td><?= sprintf(
 									'<a href="%s" target="_blank">%s %s</a>',
-									$stripe_base_url . 'payments/' . $membership->get_payment_intent(),
+									$cloudpayments_base_url . 'payments/' . $membership->get_payment_intent(),
 									$membership->get_payment_intent(),
 									'<i class="las la-external-link-alt"></i>'
 								) ?></td>
@@ -164,14 +164,14 @@ if ( ! defined('ABSPATH') ) {
 							<?php endif ?>
 						<?php endif ?>
 
-						<?php if ( $customer->get_stripe_customer_id() ): ?>
+						<?php if ( $customer->get_cloudpayments_customer_id() ): ?>
 							<tr>
-								<th>Stripe Customer ID</th>
+								<th>CloudPayments Customer ID</th>
 								<td>
 									<?= sprintf(
 										'<a href="%s" target="_blank">%s %s</a>',
-										$stripe_base_url . 'customers/' . $customer->get_stripe_customer_id(),
-										$customer->get_stripe_customer_id(),
+										$cloudpayments_base_url . 'customers/' . $customer->get_cloudpayments_customer_id(),
+										$customer->get_cloudpayments_customer_id(),
 										'<i class="las la-external-link-alt"></i>'
 									) ?>
 								</td>
@@ -217,8 +217,8 @@ if ( ! defined('ABSPATH') ) {
 									<th>Payment method</th>
 									<td>
 										<select v-model="edit_membership.type" style="width: 250px;">
-											<option value="subscription">Stripe subscription</option>
-											<option value="payment">Stripe payment</option>
+											<option value="subscription">CloudPayments subscription</option>
+											<option value="payment">CloudPayments payment</option>
 											<option value="default">No payment</option>
 										</select>
 									</td>

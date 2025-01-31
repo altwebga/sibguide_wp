@@ -2,14 +2,14 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service\TestHelpers\Terminal;
+namespace Voxel\Vendor\CloudPayments\Service\TestHelpers\Terminal;
 
 /**
  * Service factory class for API resources in the Terminal namespace.
  *
  * @property ReaderService $readers
  */
-class TerminalServiceFactory extends \Voxel\Vendor\Stripe\Service\AbstractServiceFactory
+class TerminalServiceFactory extends \Voxel\Vendor\CloudPayments\Service\AbstractServiceFactory
 {
     /**
      * @var array<string, string>

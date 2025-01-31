@@ -2,25 +2,25 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service\Tax;
+namespace Voxel\Vendor\CloudPayments\Service\Tax;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
-class SettingsService extends \Voxel\Vendor\Stripe\Service\AbstractService
+class SettingsService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 {
     /**
      * Retrieves Tax <code>Settings</code> for a merchant.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Tax\Settings
+     * @return \Voxel\Vendor\CloudPayments\Tax\Settings
      */
     public function retrieve($params = null, $opts = null)
     {
@@ -32,11 +32,11 @@ class SettingsService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * parameters are editable but none can be removed once set.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Tax\Settings
+     * @return \Voxel\Vendor\CloudPayments\Tax\Settings
      */
     public function update($params = null, $opts = null)
     {

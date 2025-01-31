@@ -2,27 +2,27 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service\FinancialConnections;
+namespace Voxel\Vendor\CloudPayments\Service\FinancialConnections;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
-class SessionService extends \Voxel\Vendor\Stripe\Service\AbstractService
+class SessionService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 {
     /**
      * To launch the Financial Connections authorization flow, create a
      * <code>Session</code>. The session’s <code>client_secret</code> can be used to
-     * launch the flow using Stripe.js.
+     * launch the flow using CloudPayments.js.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\FinancialConnections\Session
+     * @return \Voxel\Vendor\CloudPayments\FinancialConnections\Session
      */
     public function create($params = null, $opts = null)
     {
@@ -34,11 +34,11 @@ class SessionService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\FinancialConnections\Session
+     * @return \Voxel\Vendor\CloudPayments\FinancialConnections\Session
      */
     public function retrieve($id, $params = null, $opts = null)
     {

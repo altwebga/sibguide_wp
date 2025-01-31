@@ -137,7 +137,7 @@ class Order_List_Table extends \WP_List_Table {
 	protected function get_views() {
 		global $wpdb;
 
-		$testmode = \Voxel\Stripe::is_test_mode() ? 'true' : 'false';
+		$testmode = \Voxel\CloudPayments::is_test_mode() ? 'true' : 'false';
 		$total_counts = $wpdb->get_results( <<<SQL
 			SELECT status, COUNT(*) AS total
 			FROM {$wpdb->prefix}vx_orders

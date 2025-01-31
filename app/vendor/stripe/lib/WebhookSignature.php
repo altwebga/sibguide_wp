@@ -1,19 +1,19 @@
 <?php
 
-namespace Voxel\Vendor\Stripe;
+namespace Voxel\Vendor\CloudPayments;
 
 abstract class WebhookSignature
 {
     const EXPECTED_SCHEME = 'v1';
 
     /**
-     * Verifies the signature header sent by Stripe. Throws an
+     * Verifies the signature header sent by CloudPayments. Throws an
      * Exception\SignatureVerificationException exception if the verification fails for
      * any reason.
      *
-     * @param string $payload the payload sent by Stripe
+     * @param string $payload the payload sent by CloudPayments
      * @param string $header the contents of the signature header sent by
-     *  Stripe
+     *  CloudPayments
      * @param string $secret secret used to generate the signature
      * @param int $tolerance maximum difference allowed between the header's
      *  timestamp and the current time
@@ -126,7 +126,7 @@ abstract class WebhookSignature
     /**
      * Computes the signature for a given payload and secret.
      *
-     * The current scheme used by Stripe ("v1") is HMAC/SHA-256.
+     * The current scheme used by CloudPayments ("v1") is HMAC/SHA-256.
      *
      * @param string $payload the payload to sign
      * @param string $secret the secret used to generate the signature

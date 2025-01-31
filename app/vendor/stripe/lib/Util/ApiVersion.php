@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Util;
+namespace Voxel\Vendor\CloudPayments\Util;
 
 class ApiVersion
 {

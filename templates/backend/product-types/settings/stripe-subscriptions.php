@@ -5,7 +5,7 @@ if ( ! defined('ABSPATH') ) {
 <div class="ts-group">
 	<div class="x-row">
 		<?php \Voxel\Form_Models\Select_Model::render( [
-			'v-model' => 'config.stripe_subscriptions.billing_address_collection',
+			'v-model' => 'config.cloudpayments_subscriptions.billing_address_collection',
 			'label' => 'Billing address collection',
 			'classes' => 'x-col-12',
 			'choices' => [
@@ -15,20 +15,20 @@ if ( ! defined('ABSPATH') ) {
 		] ) ?>
 
 		<?php \Voxel\Form_Models\Switcher_Model::render( [
-			'v-model' => 'config.stripe_subscriptions.tax_id_collection.enabled',
-			'label' => 'Collect Tax ID in <a href="https://stripe.com/docs/tax/checkout/tax-ids#supported-types" target="_blank">supported countries</a>',
+			'v-model' => 'config.cloudpayments_subscriptions.tax_id_collection.enabled',
+			'label' => 'Collect Tax ID in <a href="https://cloudpayments.com/docs/tax/checkout/tax-ids#supported-types" target="_blank">supported countries</a>',
 			'classes' => 'x-col-12',
 		] ) ?>
 
 		<?php \Voxel\Form_Models\Switcher_Model::render( [
-			'v-model' => 'config.stripe_subscriptions.phone_number_collection.enabled',
+			'v-model' => 'config.cloudpayments_subscriptions.phone_number_collection.enabled',
 			'label' => 'Phone number collection',
 			'classes' => 'x-col-12',
 		] ) ?>
 
 		<?php \Voxel\Form_Models\Switcher_Model::render( [
-			'v-model' => 'config.stripe_subscriptions.promotion_codes.enabled',
-			'label' => sprintf( 'Allow <a href="%s" target="_blank">promotion codes</a> in checkout', esc_url( \Voxel\Stripe::dashboard_url( '/coupons' ) ) ),
+			'v-model' => 'config.cloudpayments_subscriptions.promotion_codes.enabled',
+			'label' => sprintf( 'Allow <a href="%s" target="_blank">promotion codes</a> in checkout', esc_url( \Voxel\CloudPayments::dashboard_url( '/coupons' ) ) ),
 			'classes' => 'x-col-12',
 		] ) ?>
 	</div>
@@ -40,13 +40,13 @@ if ( ! defined('ABSPATH') ) {
 	</div>
 	<div class="x-row">
 		<?php \Voxel\Form_Models\Switcher_Model::render( [
-			'v-model' => 'config.stripe_subscriptions.customer_actions.cancel_renewal.enabled',
+			'v-model' => 'config.cloudpayments_subscriptions.customer_actions.cancel_renewal.enabled',
 			'label' => 'Cancel subscription at the end of current period',
 			'classes' => 'x-col-12',
 		] ) ?>
 
 		<?php \Voxel\Form_Models\Switcher_Model::render( [
-			'v-model' => 'config.stripe_subscriptions.customer_actions.cancel_subscription.enabled',
+			'v-model' => 'config.cloudpayments_subscriptions.customer_actions.cancel_subscription.enabled',
 			'label' => 'Cancel subscription immediately',
 			'classes' => 'x-col-12',
 		] ) ?>

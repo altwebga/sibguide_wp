@@ -2,14 +2,14 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service\Sigma;
+namespace Voxel\Vendor\CloudPayments\Service\Sigma;
 
 /**
  * Service factory class for API resources in the Sigma namespace.
  *
  * @property ScheduledQueryRunService $scheduledQueryRuns
  */
-class SigmaServiceFactory extends \Voxel\Vendor\Stripe\Service\AbstractServiceFactory
+class SigmaServiceFactory extends \Voxel\Vendor\CloudPayments\Service\AbstractServiceFactory
 {
     /**
      * @var array<string, string>

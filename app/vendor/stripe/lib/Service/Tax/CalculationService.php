@@ -2,26 +2,26 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service\Tax;
+namespace Voxel\Vendor\CloudPayments\Service\Tax;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
-class CalculationService extends \Voxel\Vendor\Stripe\Service\AbstractService
+class CalculationService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 {
     /**
      * Retrieves the line items of a persisted tax calculation as a collection.
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Tax\CalculationLineItem>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Tax\CalculationLineItem>
      */
     public function allLineItems($id, $params = null, $opts = null)
     {
@@ -32,11 +32,11 @@ class CalculationService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * Calculates tax based on input and returns a Tax <code>Calculation</code> object.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Tax\Calculation
+     * @return \Voxel\Vendor\CloudPayments\Tax\Calculation
      */
     public function create($params = null, $opts = null)
     {

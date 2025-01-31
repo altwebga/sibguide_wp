@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\Stripe\Exception;
+namespace Voxel\Vendor\CloudPayments\Exception;
 
 /**
  * IdempotencyException is thrown in cases where an idempotency key was used

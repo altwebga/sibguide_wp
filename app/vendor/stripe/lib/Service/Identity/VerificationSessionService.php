@@ -2,25 +2,25 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service\Identity;
+namespace Voxel\Vendor\CloudPayments\Service\Identity;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
-class VerificationSessionService extends \Voxel\Vendor\Stripe\Service\AbstractService
+class VerificationSessionService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 {
     /**
      * Returns a list of VerificationSessions.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Identity\VerificationSession>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Identity\VerificationSession>
      */
     public function all($params = null, $opts = null)
     {
@@ -37,11 +37,11 @@ class VerificationSessionService extends \Voxel\Vendor\Stripe\Service\AbstractSe
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Identity\VerificationSession
+     * @return \Voxel\Vendor\CloudPayments\Identity\VerificationSession
      */
     public function cancel($id, $params = null, $opts = null)
     {
@@ -62,11 +62,11 @@ class VerificationSessionService extends \Voxel\Vendor\Stripe\Service\AbstractSe
      * users’ identity documents</a>
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Identity\VerificationSession
+     * @return \Voxel\Vendor\CloudPayments\Identity\VerificationSession
      */
     public function create($params = null, $opts = null)
     {
@@ -74,7 +74,7 @@ class VerificationSessionService extends \Voxel\Vendor\Stripe\Service\AbstractSe
     }
 
     /**
-     * Redact a VerificationSession to remove all collected information from Stripe.
+     * Redact a VerificationSession to remove all collected information from CloudPayments.
      * This will redact the VerificationSession and all objects related to it,
      * including VerificationReports, Events, request logs, etc.
      *
@@ -90,7 +90,7 @@ class VerificationSessionService extends \Voxel\Vendor\Stripe\Service\AbstractSe
      * <code>redacted</code> and an <code>identity.verification_session.redacted</code>
      * event will be emitted.
      *
-     * Redaction is irreversible. Redacted objects are still accessible in the Stripe
+     * Redaction is irreversible. Redacted objects are still accessible in the CloudPayments
      * API, but all the fields that contain personal data will be replaced by the
      * string <code>[redacted]</code> or a similar placeholder. The
      * <code>metadata</code> field will also be erased. Redacted objects cannot be
@@ -100,11 +100,11 @@ class VerificationSessionService extends \Voxel\Vendor\Stripe\Service\AbstractSe
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Identity\VerificationSession
+     * @return \Voxel\Vendor\CloudPayments\Identity\VerificationSession
      */
     public function redact($id, $params = null, $opts = null)
     {
@@ -120,11 +120,11 @@ class VerificationSessionService extends \Voxel\Vendor\Stripe\Service\AbstractSe
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Identity\VerificationSession
+     * @return \Voxel\Vendor\CloudPayments\Identity\VerificationSession
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -139,11 +139,11 @@ class VerificationSessionService extends \Voxel\Vendor\Stripe\Service\AbstractSe
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Identity\VerificationSession
+     * @return \Voxel\Vendor\CloudPayments\Identity\VerificationSession
      */
     public function update($id, $params = null, $opts = null)
     {

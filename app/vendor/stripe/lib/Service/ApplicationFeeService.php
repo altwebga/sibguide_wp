@@ -2,26 +2,26 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service;
+namespace Voxel\Vendor\CloudPayments\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
-class ApplicationFeeService extends \Voxel\Vendor\Stripe\Service\AbstractService
+class ApplicationFeeService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 {
     /**
      * Returns a list of application fees you’ve previously collected. The application
      * fees are returned in sorted order, with the most recent fees appearing first.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\ApplicationFee>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\ApplicationFee>
      */
     public function all($params = null, $opts = null)
     {
@@ -37,11 +37,11 @@ class ApplicationFeeService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $parentId
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\ApplicationFeeRefund>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\ApplicationFeeRefund>
      */
     public function allRefunds($parentId, $params = null, $opts = null)
     {
@@ -50,7 +50,7 @@ class ApplicationFeeService extends \Voxel\Vendor\Stripe\Service\AbstractService
 
     /**
      * Refunds an application fee that has previously been collected but not yet
-     * refunded. Funds will be refunded to the Stripe account from which the fee was
+     * refunded. Funds will be refunded to the CloudPayments account from which the fee was
      * originally collected.
      *
      * You can optionally refund only part of an application fee. You can do so
@@ -62,11 +62,11 @@ class ApplicationFeeService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $parentId
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\ApplicationFeeRefund
+     * @return \Voxel\Vendor\CloudPayments\ApplicationFeeRefund
      */
     public function createRefund($parentId, $params = null, $opts = null)
     {
@@ -79,11 +79,11 @@ class ApplicationFeeService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\ApplicationFee
+     * @return \Voxel\Vendor\CloudPayments\ApplicationFee
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -98,11 +98,11 @@ class ApplicationFeeService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * @param string $parentId
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\ApplicationFeeRefund
+     * @return \Voxel\Vendor\CloudPayments\ApplicationFeeRefund
      */
     public function retrieveRefund($parentId, $id, $params = null, $opts = null)
     {
@@ -118,11 +118,11 @@ class ApplicationFeeService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * @param string $parentId
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\ApplicationFeeRefund
+     * @return \Voxel\Vendor\CloudPayments\ApplicationFeeRefund
      */
     public function updateRefund($parentId, $id, $params = null, $opts = null)
     {

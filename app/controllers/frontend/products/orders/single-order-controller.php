@@ -237,13 +237,13 @@ class Single_Order_Controller extends \Voxel\Controllers\Base_Controller {
 				'success' => true,
 				'order' => $config,
 			] );
-		} catch ( \Voxel\Vendor\Stripe\Exception\ApiErrorException | \Voxel\Vendor\Stripe\Exception\InvalidArgumentException $e ) {
+		} catch ( \Voxel\Vendor\CloudPayments\Exception\ApiErrorException | \Voxel\Vendor\CloudPayments\Exception\InvalidArgumentException $e ) {
 			return wp_send_json( [
 				'success' => false,
 				'message' => _x( 'Something went wrong', 'checkout', 'voxel' ),
 				'debug' => [
-					'type' => 'stripe_error',
-					'code' => method_exists( $e, 'getStripeCode' ) ? $e->getStripeCode() : $e->getCode(),
+					'type' => 'cloudpayments_error',
+					'code' => method_exists( $e, 'getCloudPaymentsCode' ) ? $e->getCloudPaymentsCode() : $e->getCode(),
 					'message' => $e->getMessage(),
 				],
 			] );
@@ -297,13 +297,13 @@ class Single_Order_Controller extends \Voxel\Controllers\Base_Controller {
 			}
 
 			throw new \Exception( __( 'Could not process action', 'voxel' ), 99 );
-		} catch ( \Voxel\Vendor\Stripe\Exception\ApiErrorException | \Voxel\Vendor\Stripe\Exception\InvalidArgumentException $e ) {
+		} catch ( \Voxel\Vendor\CloudPayments\Exception\ApiErrorException | \Voxel\Vendor\CloudPayments\Exception\InvalidArgumentException $e ) {
 			return wp_send_json( [
 				'success' => false,
 				'message' => _x( 'Something went wrong', 'checkout', 'voxel' ),
 				'debug' => [
-					'type' => 'stripe_error',
-					'code' => method_exists( $e, 'getStripeCode' ) ? $e->getStripeCode() : $e->getCode(),
+					'type' => 'cloudpayments_error',
+					'code' => method_exists( $e, 'getCloudPaymentsCode' ) ? $e->getCloudPaymentsCode() : $e->getCode(),
 					'message' => $e->getMessage(),
 				],
 			] );

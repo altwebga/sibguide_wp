@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service\TestHelpers\Issuing;
+namespace Voxel\Vendor\CloudPayments\Service\TestHelpers\Issuing;
 
 /**
  * Service factory class for API resources in the Issuing namespace.
@@ -11,7 +11,7 @@ namespace Voxel\Vendor\Stripe\Service\TestHelpers\Issuing;
  * @property CardService $cards
  * @property TransactionService $transactions
  */
-class IssuingServiceFactory extends \Voxel\Vendor\Stripe\Service\AbstractServiceFactory
+class IssuingServiceFactory extends \Voxel\Vendor\CloudPayments\Service\AbstractServiceFactory
 {
     /**
      * @var array<string, string>

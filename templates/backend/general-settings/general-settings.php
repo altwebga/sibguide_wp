@@ -19,9 +19,9 @@ wp_enqueue_script('vx:general-settings.js');
 		<form method="POST" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ) ?>" @submit="state.submit_config = JSON.stringify( config )">
 			<div class="sticky-top">
 				<div class="vx-head x-container">
-					<h2 v-if="tab === 'stripe' && subtab === 'general'">Stripe</h2>
-					<h2 v-else-if="tab === 'stripe' && subtab === 'webhooks'">Webhooks</h2>
-					<h2 v-else-if="tab === 'stripe' && subtab === 'portal'">Customer portal</h2>
+					<h2 v-if="tab === 'cloudpayments' && subtab === 'general'">CloudPayments</h2>
+					<h2 v-else-if="tab === 'cloudpayments' && subtab === 'webhooks'">Webhooks</h2>
+					<h2 v-else-if="tab === 'cloudpayments' && subtab === 'portal'">Customer portal</h2>
 					<h2 v-else-if="tab === 'addons'">Addons</h2>
 					<h2 v-else-if="tab === 'maps'">Map providers</h2>
 					<h2 v-else-if="tab === 'notifications'">Notifications</h2>
@@ -53,8 +53,8 @@ wp_enqueue_script('vx:general-settings.js');
 							<li :class="{'current-item': tab === 'addons'}">
 								<a href="#" @click.prevent="setTab('addons')">Addons</a>
 							</li>
-							<li :class="{'current-item': tab === 'stripe'}">
-								<a href="#" @click.prevent="setTab('stripe', 'general')">Stripe</a>
+							<li :class="{'current-item': tab === 'cloudpayments'}">
+								<a href="#" @click.prevent="setTab('cloudpayments', 'general')">CloudPayments</a>
 							</li>
 							<li :class="{'current-item': tab === 'maps'}">
 								<a href="#" @click.prevent="setTab('maps')">Map providers</a>
@@ -86,8 +86,8 @@ wp_enqueue_script('vx:general-settings.js');
 						</ul>
 					</div>
 
-					<div v-if="tab === 'stripe'" class="x-col-9">
-						<?php require_once locate_template( 'templates/backend/general-settings/stripe/stripe-settings.php' ) ?>
+					<div v-if="tab === 'cloudpayments'" class="x-col-9">
+						<?php require_once locate_template( 'templates/backend/general-settings/cloudpayments/cloudpayments-settings.php' ) ?>
 					</div>
 					<div v-else-if="tab === 'maps'" class="x-col-9">
 						<?php require_once locate_template( 'templates/backend/general-settings/map-settings.php' ) ?>
@@ -150,13 +150,13 @@ wp_enqueue_script('vx:general-settings.js');
 					<div v-else-if="tab === 'addons'" class="x-col-9">
 						<div class="vx-panels">
 							<div class="vx-panel">
-								<div class="panel-image stripekit-membership">
-									<img src="<?= \Voxel\get_image('svgs/stripekit.svg') ?>">
+								<div class="panel-image cloudpaymentskit-membership">
+									<img src="<?= \Voxel\get_image('svgs/cloudpaymentskit.svg') ?>">
 								</div>
 								<div class="panel-info">
 									<h3>Paid Membership</h3>
 									<ul>
-										<li>Sell one time or subscription based membership plans powered by StripeAPI</li>
+										<li>Sell one time or subscription based membership plans powered by CloudPaymentsAPI</li>
 									</ul>
 								</div>
 								<div class="panel-switcher" style="cursor: not-allowed;" title="This addon is required">
@@ -164,13 +164,13 @@ wp_enqueue_script('vx:general-settings.js');
 								</div>
 							</div>
 							<div class="vx-panel">
-								<div class="panel-image stripekit-product-types">
-									<img src="<?= \Voxel\get_image('svgs/stripekit.svg') ?>">
+								<div class="panel-image cloudpaymentskit-product-types">
+									<img src="<?= \Voxel\get_image('svgs/cloudpaymentskit.svg') ?>">
 								</div>
 								<div class="panel-info">
 									<h3>Product Types</h3>
 									<ul>
-										<li>Create, customize and sell products natively with Voxel, powered by StripeAPI.</li>
+										<li>Create, customize and sell products natively with Voxel, powered by CloudPaymentsAPI.</li>
 									</ul>
 								</div>
 								<div class="panel-switcher">

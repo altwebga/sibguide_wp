@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\Stripe;
+namespace Voxel\Vendor\CloudPayments;
 
 /**
  * Class ErrorObject.
@@ -30,17 +30,17 @@ namespace Voxel\Vendor\Stripe;
  *    dashboard.
  * @property SetupIntent $setup_intent The SetupIntent object for errors
  *    returned on a request involving a SetupIntent.
- * @property StripeObject $source The source object for errors returned on a
+ * @property CloudPaymentsObject $source The source object for errors returned on a
  *    request involving a source.
  * @property string $type The type of error returned. One of `api_error`,
  *   `card_error`, `idempotency_error`, or `invalid_request_error`.
  */
-class ErrorObject extends StripeObject
+class ErrorObject extends CloudPaymentsObject
 {
     /**
      * Possible string representations of an error's code.
      *
-     * @see https://stripe.com/docs/error-codes
+     * @see https://cloudpayments.com/docs/error-codes
      */
     // The beginning of the section generated from our OpenAPI spec
     const CODE_ACCOUNT_CLOSED = 'account_closed';
@@ -190,7 +190,7 @@ class ErrorObject extends StripeObject
     const CODE_SKU_INACTIVE = 'sku_inactive';
     const CODE_STATE_UNSUPPORTED = 'state_unsupported';
     const CODE_STATUS_TRANSITION_INVALID = 'status_transition_invalid';
-    const CODE_STRIPE_TAX_INACTIVE = 'stripe_tax_inactive';
+    const CODE_STRIPE_TAX_INACTIVE = 'cloudpayments_tax_inactive';
     const CODE_TAX_ID_INVALID = 'tax_id_invalid';
     const CODE_TAXES_CALCULATION_FAILED = 'taxes_calculation_failed';
     const CODE_TERMINAL_LOCATION_COUNTRY_UNSUPPORTED = 'terminal_location_country_unsupported';

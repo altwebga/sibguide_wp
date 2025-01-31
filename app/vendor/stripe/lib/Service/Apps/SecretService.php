@@ -2,25 +2,25 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service\Apps;
+namespace Voxel\Vendor\CloudPayments\Service\Apps;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
-class SecretService extends \Voxel\Vendor\Stripe\Service\AbstractService
+class SecretService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 {
     /**
      * List all secrets stored on the given scope.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Apps\Secret>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Apps\Secret>
      */
     public function all($params = null, $opts = null)
     {
@@ -31,11 +31,11 @@ class SecretService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * Create or replace a secret in the secret store.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Apps\Secret
+     * @return \Voxel\Vendor\CloudPayments\Apps\Secret
      */
     public function create($params = null, $opts = null)
     {
@@ -46,11 +46,11 @@ class SecretService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * Deletes a secret from the secret store by name and scope.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Apps\Secret
+     * @return \Voxel\Vendor\CloudPayments\Apps\Secret
      */
     public function deleteWhere($params = null, $opts = null)
     {
@@ -61,11 +61,11 @@ class SecretService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * Finds a secret in the secret store by name and scope.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Apps\Secret
+     * @return \Voxel\Vendor\CloudPayments\Apps\Secret
      */
     public function find($params = null, $opts = null)
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\Stripe\Util;
+namespace Voxel\Vendor\CloudPayments\Util;
 
 /**
  * CaseInsensitiveArray is an array-like class that ignores case for keys.
@@ -9,7 +9,7 @@ namespace Voxel\Vendor\Stripe\Util;
  * Each header field consists of a name followed by a colon (":") and the field value. Field names
  * are case-insensitive.
  *
- * In the context of stripe-php, this is useful because the API will return headers with different
+ * In the context of cloudpayments-php, this is useful because the API will return headers with different
  * case depending on whether HTTP/2 is used or not (with HTTP/2, headers are always in lowercase).
  */
 class CaseInsensitiveArray implements \ArrayAccess, \Countable, \IteratorAggregate

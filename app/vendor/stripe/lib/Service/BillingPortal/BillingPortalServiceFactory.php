@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service\BillingPortal;
+namespace Voxel\Vendor\CloudPayments\Service\BillingPortal;
 
 /**
  * Service factory class for API resources in the BillingPortal namespace.
@@ -10,7 +10,7 @@ namespace Voxel\Vendor\Stripe\Service\BillingPortal;
  * @property ConfigurationService $configurations
  * @property SessionService $sessions
  */
-class BillingPortalServiceFactory extends \Voxel\Vendor\Stripe\Service\AbstractServiceFactory
+class BillingPortalServiceFactory extends \Voxel\Vendor\CloudPayments\Service\AbstractServiceFactory
 {
     /**
      * @var array<string, string>

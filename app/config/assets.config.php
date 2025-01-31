@@ -144,7 +144,7 @@ return [
 			'deps' => [ 'vx:commons.js' ]
 		],
 		[
-			'src' => 'stripe-connect-dashboard.js',
+			'src' => 'cloudpayments-connect-dashboard.js',
 			'deps' => [ 'vx:commons.js' ]
 		],
 	],

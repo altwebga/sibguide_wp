@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\Stripe\Exception;
+namespace Voxel\Vendor\CloudPayments\Exception;
 
 /**
  * PermissionException is thrown in cases where access was attempted on a

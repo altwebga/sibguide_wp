@@ -1,11 +1,11 @@
 <?php
 
-namespace Voxel\Vendor\Stripe\ApiOperations;
+namespace Voxel\Vendor\CloudPayments\ApiOperations;
 
 /**
  * Trait for deletable resources. Adds a `delete()` method to the class.
  *
- * This trait should only be applied to classes that derive from StripeObject.
+ * This trait should only be applied to classes that derive from CloudPaymentsObject.
  */
 trait Delete
 {
@@ -13,7 +13,7 @@ trait Delete
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
      * @return static the deleted resource
      */

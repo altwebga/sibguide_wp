@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\Stripe\Service;
+namespace Voxel\Vendor\CloudPayments\Service;
 
 /**
  * Service factory class for API resources in the root namespace.
@@ -72,7 +72,7 @@ namespace Voxel\Vendor\Stripe\Service;
  * @property WebhookEndpointService $webhookEndpoints
  * // Doc: The end of the section generated from our OpenAPI spec
  */
-class CoreServiceFactory extends \Voxel\Vendor\Stripe\Service\AbstractServiceFactory
+class CoreServiceFactory extends \Voxel\Vendor\CloudPayments\Service\AbstractServiceFactory
 {
     /**
      * @var array<string, string>

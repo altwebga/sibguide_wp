@@ -111,7 +111,7 @@ class Customer_List_Table extends \WP_List_Table {
 
 	protected function get_views() {
 		global $wpdb;
-		$meta_key = \Voxel\Stripe::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
+		$meta_key = \Voxel\CloudPayments::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
 
 		// $total_counts = $wpdb->get_results( <<<SQL
 		// 	SELECT COUNT(*) AS total, JSON_UNQUOTE( JSON_EXTRACT( m.meta_value, '$.plan' ) ) AS plan
@@ -223,7 +223,7 @@ class Customer_List_Table extends \WP_List_Table {
 			$join_blog = "INNER JOIN {$wpdb->usermeta} AS b ON ( u.ID = b.user_id AND b.meta_key = '{$blog_prefix}capabilities' )";
 		}
 
-		$meta_key = \Voxel\Stripe::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
+		$meta_key = \Voxel\CloudPayments::is_test_mode() ? 'voxel:test_plan' : 'voxel:plan';
 
 		$sql = <<<SQL
 			SELECT

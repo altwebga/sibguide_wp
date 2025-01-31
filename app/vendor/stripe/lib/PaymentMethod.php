@@ -2,59 +2,59 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe;
+namespace Voxel\Vendor\CloudPayments;
 
 /**
  * PaymentMethod objects represent your customer's payment instruments.
- * You can use them with <a href="https://stripe.com/docs/payments/payment-intents">PaymentIntents</a> to collect payments or save them to
+ * You can use them with <a href="https://cloudpayments.com/docs/payments/payment-intents">PaymentIntents</a> to collect payments or save them to
  * Customer objects to store instrument details for future payments.
  *
- * Related guides: <a href="https://stripe.com/docs/payments/payment-methods">Payment Methods</a> and <a href="https://stripe.com/docs/payments/more-payment-scenarios">More Payment Scenarios</a>.
+ * Related guides: <a href="https://cloudpayments.com/docs/payments/payment-methods">Payment Methods</a> and <a href="https://cloudpayments.com/docs/payments/more-payment-scenarios">More Payment Scenarios</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $acss_debit
- * @property null|\Voxel\Vendor\Stripe\StripeObject $affirm
- * @property null|\Voxel\Vendor\Stripe\StripeObject $afterpay_clearpay
- * @property null|\Voxel\Vendor\Stripe\StripeObject $alipay
- * @property null|\Voxel\Vendor\Stripe\StripeObject $au_becs_debit
- * @property null|\Voxel\Vendor\Stripe\StripeObject $bacs_debit
- * @property null|\Voxel\Vendor\Stripe\StripeObject $bancontact
- * @property \Voxel\Vendor\Stripe\StripeObject $billing_details
- * @property null|\Voxel\Vendor\Stripe\StripeObject $blik
- * @property null|\Voxel\Vendor\Stripe\StripeObject $boleto
- * @property null|\Voxel\Vendor\Stripe\StripeObject $card
- * @property null|\Voxel\Vendor\Stripe\StripeObject $card_present
- * @property null|\Voxel\Vendor\Stripe\StripeObject $cashapp
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $acss_debit
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $affirm
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $afterpay_clearpay
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $alipay
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $au_becs_debit
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $bacs_debit
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $bancontact
+ * @property \Voxel\Vendor\CloudPayments\CloudPaymentsObject $billing_details
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $blik
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $boleto
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $card
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $card_present
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $cashapp
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|string|\Voxel\Vendor\Stripe\Customer $customer The ID of the Customer to which this PaymentMethod is saved. This will not be set when the PaymentMethod has not been saved to a Customer.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $customer_balance
- * @property null|\Voxel\Vendor\Stripe\StripeObject $eps
- * @property null|\Voxel\Vendor\Stripe\StripeObject $fpx
- * @property null|\Voxel\Vendor\Stripe\StripeObject $giropay
- * @property null|\Voxel\Vendor\Stripe\StripeObject $grabpay
- * @property null|\Voxel\Vendor\Stripe\StripeObject $ideal
- * @property null|\Voxel\Vendor\Stripe\StripeObject $interac_present
- * @property null|\Voxel\Vendor\Stripe\StripeObject $klarna
- * @property null|\Voxel\Vendor\Stripe\StripeObject $konbini
- * @property null|\Voxel\Vendor\Stripe\StripeObject $link
+ * @property null|string|\Voxel\Vendor\CloudPayments\Customer $customer The ID of the Customer to which this PaymentMethod is saved. This will not be set when the PaymentMethod has not been saved to a Customer.
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $customer_balance
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $eps
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $fpx
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $giropay
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $grabpay
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $ideal
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $interac_present
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $klarna
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $konbini
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $link
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $oxxo
- * @property null|\Voxel\Vendor\Stripe\StripeObject $p24
- * @property null|\Voxel\Vendor\Stripe\StripeObject $paynow
- * @property null|\Voxel\Vendor\Stripe\StripeObject $paypal
- * @property null|\Voxel\Vendor\Stripe\StripeObject $pix
- * @property null|\Voxel\Vendor\Stripe\StripeObject $promptpay
- * @property null|\Voxel\Vendor\Stripe\StripeObject $radar_options Options to configure Radar. See <a href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more information.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $revolut_pay
- * @property null|\Voxel\Vendor\Stripe\StripeObject $sepa_debit
- * @property null|\Voxel\Vendor\Stripe\StripeObject $sofort
- * @property null|\Voxel\Vendor\Stripe\StripeObject $swish
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $metadata Set of <a href="https://cloudpayments.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $oxxo
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $p24
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $paynow
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $paypal
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $pix
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $promptpay
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $radar_options Options to configure Radar. See <a href="https://cloudpayments.com/docs/radar/radar-session">Radar Session</a> for more information.
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $revolut_pay
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $sepa_debit
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $sofort
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $swish
  * @property string $type The type of the PaymentMethod. An additional hash is included on the PaymentMethod with a name matching this value. It contains additional information specific to the PaymentMethod type.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $us_bank_account
- * @property null|\Voxel\Vendor\Stripe\StripeObject $wechat_pay
- * @property null|\Voxel\Vendor\Stripe\StripeObject $zip
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $us_bank_account
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $wechat_pay
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $zip
  */
 class PaymentMethod extends ApiResource
 {
@@ -105,9 +105,9 @@ class PaymentMethod extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\PaymentMethod the attached payment method
+     * @return \Voxel\Vendor\CloudPayments\PaymentMethod the attached payment method
      */
     public function attach($params = null, $opts = null)
     {
@@ -122,9 +122,9 @@ class PaymentMethod extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\PaymentMethod the detached payment method
+     * @return \Voxel\Vendor\CloudPayments\PaymentMethod the detached payment method
      */
     public function detach($params = null, $opts = null)
     {

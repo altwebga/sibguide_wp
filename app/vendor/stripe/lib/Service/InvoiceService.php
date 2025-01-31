@@ -2,15 +2,15 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service;
+namespace Voxel\Vendor\CloudPayments\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
-class InvoiceService extends \Voxel\Vendor\Stripe\Service\AbstractService
+class InvoiceService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 {
     /**
      * You can list all invoices, or list the invoices for a specific customer. The
@@ -18,11 +18,11 @@ class InvoiceService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * invoices appearing first.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Invoice>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Invoice>
      */
     public function all($params = null, $opts = null)
     {
@@ -37,11 +37,11 @@ class InvoiceService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $parentId
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\InvoiceLineItem>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\InvoiceLineItem>
      */
     public function allLines($parentId, $params = null, $opts = null)
     {
@@ -55,11 +55,11 @@ class InvoiceService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * the invoice to your customers.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Invoice
+     * @return \Voxel\Vendor\CloudPayments\Invoice
      */
     public function create($params = null, $opts = null)
     {
@@ -74,11 +74,11 @@ class InvoiceService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Invoice
+     * @return \Voxel\Vendor\CloudPayments\Invoice
      */
     public function delete($id, $params = null, $opts = null)
     {
@@ -86,17 +86,17 @@ class InvoiceService extends \Voxel\Vendor\Stripe\Service\AbstractService
     }
 
     /**
-     * Stripe automatically finalizes drafts before sending and attempting payment on
+     * CloudPayments automatically finalizes drafts before sending and attempting payment on
      * invoices. However, if you’d like to finalize a draft invoice manually, you can
      * do so using this method.
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Invoice
+     * @return \Voxel\Vendor\CloudPayments\Invoice
      */
     public function finalizeInvoice($id, $params = null, $opts = null)
     {
@@ -109,11 +109,11 @@ class InvoiceService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Invoice
+     * @return \Voxel\Vendor\CloudPayments\Invoice
      */
     public function markUncollectible($id, $params = null, $opts = null)
     {
@@ -121,19 +121,19 @@ class InvoiceService extends \Voxel\Vendor\Stripe\Service\AbstractService
     }
 
     /**
-     * Stripe automatically creates and then attempts to collect payment on invoices
+     * CloudPayments automatically creates and then attempts to collect payment on invoices
      * for customers on subscriptions according to your <a
-     * href="https://dashboard.stripe.com/account/billing/automatic">subscriptions
+     * href="https://dashboard.cloudpayments.com/account/billing/automatic">subscriptions
      * settings</a>. However, if you’d like to attempt payment on an invoice out of the
      * normal collection schedule or for some other reason, you can do so.
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Invoice
+     * @return \Voxel\Vendor\CloudPayments\Invoice
      */
     public function pay($id, $params = null, $opts = null)
     {
@@ -145,11 +145,11 @@ class InvoiceService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Invoice
+     * @return \Voxel\Vendor\CloudPayments\Invoice
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -157,7 +157,7 @@ class InvoiceService extends \Voxel\Vendor\Stripe\Service\AbstractService
     }
 
     /**
-     * Search for invoices you’ve previously created using Stripe’s <a
+     * Search for invoices you’ve previously created using CloudPayments’s <a
      * href="/docs/search#search-query-language">Search Query Language</a>. Don’t use
      * search in read-after-write flows where strict consistency is necessary. Under
      * normal operating conditions, data is searchable in less than a minute.
@@ -165,11 +165,11 @@ class InvoiceService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * during outages. Search functionality is not available to merchants in India.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\SearchResult<\Voxel\Vendor\Stripe\Invoice>
+     * @return \Voxel\Vendor\CloudPayments\SearchResult<\Voxel\Vendor\CloudPayments\Invoice>
      */
     public function search($params = null, $opts = null)
     {
@@ -177,8 +177,8 @@ class InvoiceService extends \Voxel\Vendor\Stripe\Service\AbstractService
     }
 
     /**
-     * Stripe will automatically send invoices to customers according to your <a
-     * href="https://dashboard.stripe.com/account/billing/automatic">subscriptions
+     * CloudPayments will automatically send invoices to customers according to your <a
+     * href="https://dashboard.cloudpayments.com/account/billing/automatic">subscriptions
      * settings</a>. However, if you’d like to manually send an invoice to your
      * customer out of the normal schedule, you can do so. When sending invoices that
      * have already been paid, there will be no reference to the payment in the email.
@@ -188,11 +188,11 @@ class InvoiceService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Invoice
+     * @return \Voxel\Vendor\CloudPayments\Invoice
      */
     public function sendInvoice($id, $params = null, $opts = null)
     {
@@ -223,11 +223,11 @@ class InvoiceService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * the <code>subscription_proration_date</code> on the upcoming invoice resource.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Invoice
+     * @return \Voxel\Vendor\CloudPayments\Invoice
      */
     public function upcoming($params = null, $opts = null)
     {
@@ -241,11 +241,11 @@ class InvoiceService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * line items.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\InvoiceLineItem>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\InvoiceLineItem>
      */
     public function upcomingLines($params = null, $opts = null)
     {
@@ -257,18 +257,18 @@ class InvoiceService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * href="/docs/billing/invoices/workflow#finalized">finalized</a>, monetary values,
      * as well as <code>collection_method</code>, become uneditable.
      *
-     * If you would like to stop the Stripe Billing engine from automatically
+     * If you would like to stop the CloudPayments Billing engine from automatically
      * finalizing, reattempting payments on, sending reminders for, or <a
      * href="/docs/billing/invoices/reconciliation">automatically reconciling</a>
      * invoices, pass <code>auto_advance=false</code>.
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Invoice
+     * @return \Voxel\Vendor\CloudPayments\Invoice
      */
     public function update($id, $params = null, $opts = null)
     {
@@ -286,11 +286,11 @@ class InvoiceService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * @param string $parentId
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\InvoiceLineItem
+     * @return \Voxel\Vendor\CloudPayments\InvoiceLineItem
      */
     public function updateLine($parentId, $id, $params = null, $opts = null)
     {
@@ -305,11 +305,11 @@ class InvoiceService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Invoice
+     * @return \Voxel\Vendor\CloudPayments\Invoice
      */
     public function voidInvoice($id, $params = null, $opts = null)
     {

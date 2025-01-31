@@ -815,7 +815,7 @@ readers do not read off random characters that represent icons */
 .la-cc-paypal:before {
   content: "\f1f4"; }
 
-.la-cc-stripe:before {
+.la-cc-cloudpayments:before {
   content: "\f1f5"; }
 
 .la-cc-visa:before {
@@ -3641,10 +3641,10 @@ readers do not read off random characters that represent icons */
 .la-strikethrough:before {
   content: "\f0cc"; }
 
-.la-stripe:before {
+.la-cloudpayments:before {
   content: "\f429"; }
 
-.la-stripe-s:before {
+.la-cloudpayments-s:before {
   content: "\f42a"; }
 
 .la-stroopwafel:before {
@@ -5799,7 +5799,7 @@ readers do not read off random characters that represent icons */
   font-family: 'Line Awesome Brands';
   font-weight: 400; }
 
-.la.la-cc-stripe {
+.la.la-cc-cloudpayments {
   font-family: 'Line Awesome Brands';
   font-weight: 400; }
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace Voxel\Vendor\Stripe;
+namespace Voxel\Vendor\CloudPayments;
 
 /**
- * Interface for a Stripe client.
+ * Interface for a CloudPayments client.
  */
-interface BaseStripeClientInterface
+interface BaseCloudPaymentsClientInterface
 {
     /**
      * Gets the API key used by the client to send requests.
@@ -22,23 +22,23 @@ interface BaseStripeClientInterface
     public function getClientId();
 
     /**
-     * Gets the base URL for Stripe's API.
+     * Gets the base URL for CloudPayments's API.
      *
-     * @return string the base URL for Stripe's API
+     * @return string the base URL for CloudPayments's API
      */
     public function getApiBase();
 
     /**
-     * Gets the base URL for Stripe's OAuth API.
+     * Gets the base URL for CloudPayments's OAuth API.
      *
-     * @return string the base URL for Stripe's OAuth API
+     * @return string the base URL for CloudPayments's OAuth API
      */
     public function getConnectBase();
 
     /**
-     * Gets the base URL for Stripe's Files API.
+     * Gets the base URL for CloudPayments's Files API.
      *
-     * @return string the base URL for Stripe's Files API
+     * @return string the base URL for CloudPayments's Files API
      */
     public function getFilesBase();
 }

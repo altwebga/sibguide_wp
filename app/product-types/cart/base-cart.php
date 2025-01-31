@@ -141,7 +141,7 @@ abstract class Base_Cart {
 
 	public function get_vendor_id(): ?int {
 		if (
-			$this->get_payment_method() === 'stripe_payment'
+			$this->get_payment_method() === 'cloudpayments_payment'
 			&& \Voxel\get('product_settings.multivendor.enabled')
 			&& \Voxel\get('product_settings.multivendor.charge_type') === 'separate_charges_and_transfers'
 		) {
@@ -152,7 +152,7 @@ abstract class Base_Cart {
 			\Voxel\get( 'product_settings.orders.managed_by', 'product_author' ) === 'platform'
 			&& ! (
 				\Voxel\get('product_settings.multivendor.enabled')
-				&& in_array( $this->get_payment_method(), [ 'stripe_payment', 'stripe_subscription' ], true )
+				&& in_array( $this->get_payment_method(), [ 'cloudpayments_payment', 'cloudpayments_subscription' ], true )
 			)
 		) {
 			return null;
@@ -171,11 +171,11 @@ abstract class Base_Cart {
 	}
 
 	public function get_payment_method(): ?string {
-		return 'stripe_payment';
+		return 'cloudpayments_payment';
 	}
 
 	public function get_currency() {
-		return \Voxel\get( 'settings.stripe.currency', 'USD' );
+		return \Voxel\get( 'settings.cloudpayments.currency', 'USD' );
 	}
 
 	public function get_subtotal() {

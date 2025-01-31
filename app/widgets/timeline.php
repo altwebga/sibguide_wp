@@ -356,7 +356,7 @@ class Timeline extends Base_Widget {
 					$current_user->get_id() === $current_author->get_id()
 					|| (
 						$current_author->has_cap('administrator')
-						&& apply_filters( 'voxel/stripe_connect/enable_onboarding_for_admins', false ) !== true
+						&& apply_filters( 'voxel/cloudpayments_connect/enable_onboarding_for_admins', false ) !== true
 						&& $current_user->has_bought_product_from_platform()
 					) || (
 						$current_user->has_bought_product_from_vendor( $current_author->get_id() )

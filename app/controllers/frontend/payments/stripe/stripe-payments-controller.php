@@ -1,21 +1,21 @@
 <?php
 
-namespace Voxel\Controllers\Frontend\Payments\Stripe;
+namespace Voxel\Controllers\Frontend\Payments\CloudPayments;
 
 if ( ! defined('ABSPATH') ) {
 	exit;
 }
 
-class Stripe_Payments_Controller extends \Voxel\Controllers\Base_Controller {
+class CloudPayments_Payments_Controller extends \Voxel\Controllers\Base_Controller {
 
 	protected function hooks() {
-		$this->on( 'voxel_ajax_stripe_payments.checkout.success', '@checkout_success_endpoint' );
-		$this->on( 'voxel_ajax_stripe_payments.checkout.cancel', '@checkout_cancel_endpoint' );
+		$this->on( 'voxel_ajax_cloudpayments_payments.checkout.success', '@checkout_success_endpoint' );
+		$this->on( 'voxel_ajax_cloudpayments_payments.checkout.cancel', '@checkout_cancel_endpoint' );
 
 		// webhook handlers
-		$this->on( 'voxel/stripe_payments/event:charge.captured', '@charge_updated', 10, 4 );
-		$this->on( 'voxel/stripe_payments/event:charge.refunded', '@charge_updated', 10, 4 );
-		$this->on( 'voxel/stripe_payments/event:charge.refund.updated', '@charge_refund_updated', 10, 4 );
+		$this->on( 'voxel/cloudpayments_payments/event:charge.captured', '@charge_updated', 10, 4 );
+		$this->on( 'voxel/cloudpayments_payments/event:charge.refunded', '@charge_updated', 10, 4 );
+		$this->on( 'voxel/cloudpayments_payments/event:charge.refund.updated', '@charge_refund_updated', 10, 4 );
 
 		// checkout session events
 		foreach ( [
@@ -23,8 +23,8 @@ class Stripe_Payments_Controller extends \Voxel\Controllers\Base_Controller {
 			'checkout.session.async_payment_succeeded',
 			'checkout.session.async_payment_failed',
 		] as $event_type ) {
-			$this->on( 'voxel/stripe_payments/event:'.$event_type, '@checkout_session_updated', 10, 4 );
-			$this->on( 'voxel/stripe_payments/zero_amount/event:'.$event_type, '@zero_amount_checkout_session_updated', 10, 3 );
+			$this->on( 'voxel/cloudpayments_payments/event:'.$event_type, '@checkout_session_updated', 10, 4 );
+			$this->on( 'voxel/cloudpayments_payments/zero_amount/event:'.$event_type, '@zero_amount_checkout_session_updated', 10, 3 );
 		}
 	}
 

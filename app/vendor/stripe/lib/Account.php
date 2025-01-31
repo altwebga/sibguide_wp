@@ -2,39 +2,39 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe;
+namespace Voxel\Vendor\CloudPayments;
 
 /**
- * This is an object representing a Stripe account. You can retrieve it to see
+ * This is an object representing a CloudPayments account. You can retrieve it to see
  * properties on the account like its current requirements or if the account is
  * enabled to make live charges or receive payouts.
  *
  * For Custom accounts, the properties below are always returned. For other accounts, some properties are returned until that
- * account has started to go through Connect Onboarding. Once you create an <a href="https://stripe.com/docs/api/account_links">Account Link</a> or <a href="https://stripe.com/docs/api/account_sessions">Account Session</a>,
- * some properties are only returned for Custom accounts. Learn about the differences <a href="https://stripe.com/docs/connect/accounts">between accounts</a>.
+ * account has started to go through Connect Onboarding. Once you create an <a href="https://cloudpayments.com/docs/api/account_links">Account Link</a> or <a href="https://cloudpayments.com/docs/api/account_sessions">Account Session</a>,
+ * some properties are only returned for Custom accounts. Learn about the differences <a href="https://cloudpayments.com/docs/connect/accounts">between accounts</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $business_profile Business information about the account.
- * @property null|string $business_type The business type. Once you create an <a href="https://stripe.com/docs/api/account_links">Account Link</a> or <a href="https://stripe.com/docs/api/account_sessions">Account Session</a>, this property is only returned for Custom accounts.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $capabilities
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $business_profile Business information about the account.
+ * @property null|string $business_type The business type. Once you create an <a href="https://cloudpayments.com/docs/api/account_links">Account Link</a> or <a href="https://cloudpayments.com/docs/api/account_sessions">Account Session</a>, this property is only returned for Custom accounts.
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $capabilities
  * @property null|bool $charges_enabled Whether the account can create live charges.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $company
- * @property null|\Voxel\Vendor\Stripe\StripeObject $controller
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $company
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $controller
  * @property null|string $country The account's country.
  * @property null|int $created Time at which the account was connected. Measured in seconds since the Unix epoch.
- * @property null|string $default_currency Three-letter ISO currency code representing the default currency for the account. This must be a currency that <a href="https://stripe.com/docs/payouts">Stripe supports in the account's country</a>.
+ * @property null|string $default_currency Three-letter ISO currency code representing the default currency for the account. This must be a currency that <a href="https://cloudpayments.com/docs/payouts">CloudPayments supports in the account's country</a>.
  * @property null|bool $details_submitted Whether account details have been submitted. Standard accounts cannot receive payouts before this is true.
- * @property null|string $email An email address associated with the account. It's not used for authentication and Stripe doesn't market to this field without explicit approval from the platform.
- * @property null|\Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card> $external_accounts External accounts (bank accounts and debit cards) currently attached to this account. External accounts are only returned for requests where <code>controller[is_controller]</code> is true.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $future_requirements
- * @property null|\Voxel\Vendor\Stripe\Person $individual <p>This is an object representing a person associated with a Stripe account.</p><p>A platform cannot access a Standard or Express account's persons after the account starts onboarding, such as after generating an account link for the account. See the <a href="https://stripe.com/docs/connect/standard-accounts">Standard onboarding</a> or <a href="https://stripe.com/docs/connect/express-accounts">Express onboarding documentation</a> for information about platform prefilling and account onboarding steps.</p><p>Related guide: <a href="https://stripe.com/docs/connect/handling-api-verification#person-information">Handling identity verification with the API</a></p>
- * @property null|\Voxel\Vendor\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property null|bool $payouts_enabled Whether Stripe can send payouts to this account.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $requirements
- * @property null|\Voxel\Vendor\Stripe\StripeObject $settings Options for customizing how the account functions within Stripe.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $tos_acceptance
- * @property null|string $type The Stripe account type. Can be <code>standard</code>, <code>express</code>, or <code>custom</code>.
+ * @property null|string $email An email address associated with the account. It's not used for authentication and CloudPayments doesn't market to this field without explicit approval from the platform.
+ * @property null|\Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card> $external_accounts External accounts (bank accounts and debit cards) currently attached to this account. External accounts are only returned for requests where <code>controller[is_controller]</code> is true.
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $future_requirements
+ * @property null|\Voxel\Vendor\CloudPayments\Person $individual <p>This is an object representing a person associated with a CloudPayments account.</p><p>A platform cannot access a Standard or Express account's persons after the account starts onboarding, such as after generating an account link for the account. See the <a href="https://cloudpayments.com/docs/connect/standard-accounts">Standard onboarding</a> or <a href="https://cloudpayments.com/docs/connect/express-accounts">Express onboarding documentation</a> for information about platform prefilling and account onboarding steps.</p><p>Related guide: <a href="https://cloudpayments.com/docs/connect/handling-api-verification#person-information">Handling identity verification with the API</a></p>
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $metadata Set of <a href="https://cloudpayments.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|bool $payouts_enabled Whether CloudPayments can send payouts to this account.
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $requirements
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $settings Options for customizing how the account functions within CloudPayments.
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $tos_acceptance
+ * @property null|string $type The CloudPayments account type. Can be <code>standard</code>, <code>express</code>, or <code>custom</code>.
  */
 class Account extends ApiResource
 {
@@ -86,9 +86,9 @@ class Account extends ApiResource
      *     options array containing an `id` key
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Account
+     * @return \Voxel\Vendor\CloudPayments\Account
      */
     public static function retrieve($id = null, $opts = null)
     {
@@ -137,7 +137,7 @@ class Account extends ApiResource
 
         $updateArr = [];
         foreach ($additionalOwners as $i => $v) {
-            $update = ($v instanceof StripeObject) ? $v->serializeParameters() : $v;
+            $update = ($v instanceof CloudPaymentsObject) ? $v->serializeParameters() : $v;
 
             if ([] !== $update) {
                 if (!$originalValue
@@ -155,15 +155,15 @@ class Account extends ApiResource
      * @param null|array $clientId
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\StripeObject object containing the response from the API
+     * @return \Voxel\Vendor\CloudPayments\CloudPaymentsObject object containing the response from the API
      */
     public function deauthorize($clientId = null, $opts = null)
     {
         $params = [
             'client_id' => $clientId,
-            'stripe_user_id' => $this->id,
+            'cloudpayments_user_id' => $this->id,
         ];
 
         return OAuth::deauthorize($params, $opts);
@@ -173,9 +173,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Account the rejected account
+     * @return \Voxel\Vendor\CloudPayments\Account the rejected account
      */
     public function reject($params = null, $opts = null)
     {
@@ -193,9 +193,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Capability> the list of capabilities
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Capability> the list of capabilities
      */
     public static function allCapabilities($id, $params = null, $opts = null)
     {
@@ -208,9 +208,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Capability
+     * @return \Voxel\Vendor\CloudPayments\Capability
      */
     public static function retrieveCapability($id, $capabilityId, $params = null, $opts = null)
     {
@@ -223,9 +223,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Capability
+     * @return \Voxel\Vendor\CloudPayments\Capability
      */
     public static function updateCapability($id, $capabilityId, $params = null, $opts = null)
     {
@@ -238,9 +238,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card> the list of external accounts (BankAccount or Card)
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card> the list of external accounts (BankAccount or Card)
      */
     public static function allExternalAccounts($id, $params = null, $opts = null)
     {
@@ -252,9 +252,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card
+     * @return \Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card
      */
     public static function createExternalAccount($id, $params = null, $opts = null)
     {
@@ -267,9 +267,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card
+     * @return \Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card
      */
     public static function deleteExternalAccount($id, $externalAccountId, $params = null, $opts = null)
     {
@@ -282,9 +282,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card
+     * @return \Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card
      */
     public static function retrieveExternalAccount($id, $externalAccountId, $params = null, $opts = null)
     {
@@ -297,9 +297,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\BankAccount|\Voxel\Vendor\Stripe\Card
+     * @return \Voxel\Vendor\CloudPayments\BankAccount|\Voxel\Vendor\CloudPayments\Card
      */
     public static function updateExternalAccount($id, $externalAccountId, $params = null, $opts = null)
     {
@@ -312,9 +312,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\LoginLink
+     * @return \Voxel\Vendor\CloudPayments\LoginLink
      */
     public static function createLoginLink($id, $params = null, $opts = null)
     {
@@ -327,9 +327,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Person> the list of persons
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Person> the list of persons
      */
     public static function allPersons($id, $params = null, $opts = null)
     {
@@ -341,9 +341,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Person
+     * @return \Voxel\Vendor\CloudPayments\Person
      */
     public static function createPerson($id, $params = null, $opts = null)
     {
@@ -356,9 +356,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Person
+     * @return \Voxel\Vendor\CloudPayments\Person
      */
     public static function deletePerson($id, $personId, $params = null, $opts = null)
     {
@@ -371,9 +371,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Person
+     * @return \Voxel\Vendor\CloudPayments\Person
      */
     public static function retrievePerson($id, $personId, $params = null, $opts = null)
     {
@@ -386,9 +386,9 @@ class Account extends ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Person
+     * @return \Voxel\Vendor\CloudPayments\Person
      */
     public static function updatePerson($id, $personId, $params = null, $opts = null)
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\Stripe;
+namespace Voxel\Vendor\CloudPayments;
 
 abstract class Webhook
 {
@@ -12,9 +12,9 @@ abstract class Webhook
      * an Exception\SignatureVerificationException if the signature
      * verification fails for any reason.
      *
-     * @param string $payload the payload sent by Stripe
+     * @param string $payload the payload sent by CloudPayments
      * @param string $sigHeader the contents of the signature header sent by
-     *  Stripe
+     *  CloudPayments
      * @param string $secret secret used to generate the signature
      * @param int $tolerance maximum difference allowed between the header's
      *  timestamp and the current time

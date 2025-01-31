@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\Stripe\Exception\OAuth;
+namespace Voxel\Vendor\CloudPayments\Exception\OAuth;
 
 /**
  * InvalidGrantException is thrown when a specified code doesn't exist, is

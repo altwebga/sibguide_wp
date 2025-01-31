@@ -1,10 +1,10 @@
 <?php
 
-namespace Voxel\Vendor\Stripe\HttpClient;
+namespace Voxel\Vendor\CloudPayments\HttpClient;
 
-use Voxel\Vendor\Stripe\Exception;
-use Voxel\Vendor\Stripe\Stripe;
-use Voxel\Vendor\Stripe\Util;
+use Voxel\Vendor\CloudPayments\Exception;
+use Voxel\Vendor\CloudPayments\CloudPayments;
+use Voxel\Vendor\CloudPayments\Util;
 
 // @codingStandardsIgnoreStart
 // PSR2 requires all constants be upper case. Sadly, the CURL_SSLVERSION
@@ -39,7 +39,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
 
     protected $defaultOptions;
 
-    /** @var \Voxel\Vendor\Stripe\Util\RandomGenerator */
+    /** @var \Voxel\Vendor\CloudPayments\Util\RandomGenerator */
     protected $randomGenerator;
 
     protected $userAgentInfo;
@@ -64,7 +64,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      * throw an exception if $defaultOptions returns a non-array value.
      *
      * @param null|array|callable $defaultOptions
-     * @param null|\Voxel\Vendor\Stripe\Util\RandomGenerator $randomGenerator
+     * @param null|\Voxel\Vendor\CloudPayments\Util\RandomGenerator $randomGenerator
      */
     public function __construct($defaultOptions = null, $randomGenerator = null)
     {
@@ -145,7 +145,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      * <ol>
      *   <li>string $rbody The response body</li>
      *   <li>integer $rcode The response status code</li>
-     *   <li>\Voxel\Vendor\Stripe\Util\CaseInsensitiveArray $rheaders The response headers</li>
+     *   <li>\Voxel\Vendor\CloudPayments\Util\CaseInsensitiveArray $rheaders The response headers</li>
      *   <li>integer $errno The curl error number</li>
      *   <li>string|null $message The curl error message</li>
      *   <li>boolean $shouldRetry Whether the request will be retried</li>
@@ -235,7 +235,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
 
         // It is only safe to retry network failures on POST requests if we
         // add an Idempotency-Key header
-        if (('post' === $method) && (Stripe::$maxNetworkRetries > 0)) {
+        if (('post' === $method) && (CloudPayments::$maxNetworkRetries > 0)) {
             if (!$this->hasHeader($headers, 'Idempotency-Key')) {
                 $headers[] = 'Idempotency-Key: ' . $this->randomGenerator->uuid();
             }
@@ -261,8 +261,8 @@ class CurlClient implements ClientInterface, StreamingClientInterface
         $opts[\CURLOPT_CONNECTTIMEOUT] = $this->connectTimeout;
         $opts[\CURLOPT_TIMEOUT] = $this->timeout;
         $opts[\CURLOPT_HTTPHEADER] = $headers;
-        $opts[\CURLOPT_CAINFO] = Stripe::getCABundlePath();
-        if (!Stripe::getVerifySslCerts()) {
+        $opts[\CURLOPT_CAINFO] = CloudPayments::getCABundlePath();
+        if (!CloudPayments::getVerifySslCerts()) {
             $opts[\CURLOPT_SSL_VERIFYPEER] = false;
         }
 
@@ -272,8 +272,8 @@ class CurlClient implements ClientInterface, StreamingClientInterface
         }
 
         // If the user didn't explicitly specify a CURLOPT_IPRESOLVE option, we
-        // force IPv4 resolving as Stripe's API servers are only accessible over
-        // IPv4 (see. https://github.com/stripe/stripe-php/issues/1045).
+        // force IPv4 resolving as CloudPayments's API servers are only accessible over
+        // IPv4 (see. https://github.com/cloudpayments/cloudpayments-php/issues/1045).
         // We let users specify a custom option in case they need to say proxy
         // through an IPv6 proxy.
         if (!isset($opts[\CURLOPT_IPRESOLVE])) {
@@ -548,16 +548,16 @@ class CurlClient implements ClientInterface, StreamingClientInterface
             case \CURLE_COULDNT_CONNECT:
             case \CURLE_COULDNT_RESOLVE_HOST:
             case \CURLE_OPERATION_TIMEOUTED:
-                $msg = "Could not connect to Stripe ({$url}).  Please check your "
+                $msg = "Could not connect to CloudPayments ({$url}).  Please check your "
                  . 'internet connection and try again.  If this problem persists, '
-                 . "you should check Stripe's service status at "
-                 . 'https://twitter.com/stripestatus, or';
+                 . "you should check CloudPayments's service status at "
+                 . 'https://twitter.com/cloudpaymentsstatus, or';
 
                 break;
 
             case \CURLE_SSL_CACERT:
             case \CURLE_SSL_PEER_CERTIFICATE:
-                $msg = "Could not verify Stripe's SSL certificate.  Please make sure "
+                $msg = "Could not verify CloudPayments's SSL certificate.  Please make sure "
                  . 'that your network is not intercepting certificates.  '
                  . "(Try going to {$url} in your browser.)  "
                  . 'If this problem persists,';
@@ -565,10 +565,10 @@ class CurlClient implements ClientInterface, StreamingClientInterface
                 break;
 
             default:
-                $msg = 'Unexpected error communicating with Stripe.  '
+                $msg = 'Unexpected error communicating with CloudPayments.  '
                  . 'If this problem persists,';
         }
-        $msg .= ' let us know at support@stripe.com.';
+        $msg .= ' let us know at support@cloudpayments.com.';
 
         $msg .= "\n\n(Network error [errno {$errno}]: {$message})";
 
@@ -586,14 +586,14 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      *
      * @param int $errno
      * @param int $rcode
-     * @param array|\Voxel\Vendor\Stripe\Util\CaseInsensitiveArray $rheaders
+     * @param array|\Voxel\Vendor\CloudPayments\Util\CaseInsensitiveArray $rheaders
      * @param int $numRetries
      *
      * @return bool
      */
     private function shouldRetry($errno, $rcode, $rheaders, $numRetries)
     {
-        if ($numRetries >= Stripe::getMaxNetworkRetries()) {
+        if ($numRetries >= CloudPayments::getMaxNetworkRetries()) {
             return false;
         }
 
@@ -611,11 +611,11 @@ class CurlClient implements ClientInterface, StreamingClientInterface
 
         // The API may ask us not to retry (eg; if doing so would be a no-op)
         // or advise us to retry (eg; in cases of lock timeouts); we defer to that.
-        if (isset($rheaders['stripe-should-retry'])) {
-            if ('false' === $rheaders['stripe-should-retry']) {
+        if (isset($rheaders['cloudpayments-should-retry'])) {
+            if ('false' === $rheaders['cloudpayments-should-retry']) {
                 return false;
             }
-            if ('true' === $rheaders['stripe-should-retry']) {
+            if ('true' === $rheaders['cloudpayments-should-retry']) {
                 return true;
             }
         }
@@ -627,7 +627,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
 
         // Retry on 500, 503, and other internal errors.
         //
-        // Note that we expect the stripe-should-retry header to be false
+        // Note that we expect the cloudpayments-should-retry header to be false
         // in most cases when a 500 is returned, since our idempotency framework
         // would typically replay it anyway.
         if ($rcode >= 500) {
@@ -641,7 +641,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      * Provides the number of seconds to wait before retrying a request.
      *
      * @param int $numRetries
-     * @param array|\Voxel\Vendor\Stripe\Util\CaseInsensitiveArray $rheaders
+     * @param array|\Voxel\Vendor\CloudPayments\Util\CaseInsensitiveArray $rheaders
      *
      * @return int
      */
@@ -651,8 +651,8 @@ class CurlClient implements ClientInterface, StreamingClientInterface
         // number of $numRetries so far as inputs. Do not allow the number to exceed
         // $maxNetworkRetryDelay.
         $sleepSeconds = \min(
-            Stripe::getInitialNetworkRetryDelay() * 1.0 * 2 ** ($numRetries - 1),
-            Stripe::getMaxNetworkRetryDelay()
+            CloudPayments::getInitialNetworkRetryDelay() * 1.0 * 2 ** ($numRetries - 1),
+            CloudPayments::getMaxNetworkRetryDelay()
         );
 
         // Apply some jitter by randomizing the value in the range of
@@ -660,11 +660,11 @@ class CurlClient implements ClientInterface, StreamingClientInterface
         $sleepSeconds *= 0.5 * (1 + $this->randomGenerator->randFloat());
 
         // But never sleep less than the base sleep seconds.
-        $sleepSeconds = \max(Stripe::getInitialNetworkRetryDelay(), $sleepSeconds);
+        $sleepSeconds = \max(CloudPayments::getInitialNetworkRetryDelay(), $sleepSeconds);
 
         // And never sleep less than the time the API asks us to wait, assuming it's a reasonable ask.
         $retryAfter = isset($rheaders['retry-after']) ? (float) ($rheaders['retry-after']) : 0.0;
-        if (\floor($retryAfter) === $retryAfter && $retryAfter <= Stripe::getMaxRetryAfter()) {
+        if (\floor($retryAfter) === $retryAfter && $retryAfter <= CloudPayments::getMaxRetryAfter()) {
             $sleepSeconds = \max($sleepSeconds, $retryAfter);
         }
 
@@ -712,7 +712,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
     private function canSafelyUseHttp2()
     {
         // Versions of curl older than 7.60.0 don't respect GOAWAY frames
-        // (cf. https://github.com/curl/curl/issues/2416), which Stripe use.
+        // (cf. https://github.com/curl/curl/issues/2416), which CloudPayments use.
         $curlVersion = \curl_version()['version'];
 
         return \version_compare($curlVersion, '7.60.0') >= 0;

@@ -8,13 +8,13 @@ if ( ! defined('ABSPATH') ) {
 	</div>
 	<div class="x-row">
 		<?php \Voxel\Form_Models\Switcher_Model::render( [
-			'v-model' => 'config.stripe.portal.invoice_history',
+			'v-model' => 'config.cloudpayments.portal.invoice_history',
 			'label' => 'Show invoice history',
 			'classes' => 'x-col-12',
 		] ) ?>
 
 		<?php \Voxel\Form_Models\Switcher_Model::render( [
-			'v-model' => 'config.stripe.portal.customer_update.enabled',
+			'v-model' => 'config.cloudpayments.portal.customer_update.enabled',
 			'label' => 'Allow updating details',
 			'classes' => 'x-col-12',
 		] ) ?>
@@ -26,8 +26,8 @@ if ( ! defined('ABSPATH') ) {
 	</div>
 	<div class="x-row">
 		<?php \Voxel\Form_Models\Checkboxes_Model::render( [
-			'v-if' => 'config.stripe.portal.customer_update.enabled',
-			'v-model' => 'config.stripe.portal.customer_update.allowed_updates',
+			'v-if' => 'config.cloudpayments.portal.customer_update.enabled',
+			'v-model' => 'config.cloudpayments.portal.customer_update.allowed_updates',
 			'label' => 'Allowed fields',
 			'classes' => 'x-col-12',
 			'choices' => [
@@ -53,13 +53,13 @@ if ( ! defined('ABSPATH') ) {
 	</div>
 	<div class="x-row">
 		<?php \Voxel\Form_Models\Key_Model::render( [
-			'v-model' => 'config.stripe.portal.live_config_id',
+			'v-model' => 'config.cloudpayments.portal.live_config_id',
 			'label' => 'Live configuration ID',
 			'classes' => 'x-col-12',
 		] ) ?>
 
 		<?php \Voxel\Form_Models\Key_Model::render( [
-			'v-model' => 'config.stripe.portal.test_config_id',
+			'v-model' => 'config.cloudpayments.portal.test_config_id',
 			'label' => 'Test configuration ID',
 			'classes' => 'x-col-12',
 		] ) ?>

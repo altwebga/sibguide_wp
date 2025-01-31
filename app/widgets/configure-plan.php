@@ -1045,7 +1045,7 @@ class Configure_Plan extends Base_Widget {
 					'key' => $price->to_key(),
 					'amount' => $price->get_amount(),
 					'currency' => $price->get_currency(),
-					'is_zero_decimal' => \Voxel\Stripe\Currencies::is_zero_decimal( $price->get_currency() ),
+					'is_zero_decimal' => \Voxel\CloudPayments\Currencies::is_zero_decimal( $price->get_currency() ),
 				],
 				'plan' => [
 					'key' => $plan->get_key(),
@@ -1069,7 +1069,7 @@ class Configure_Plan extends Base_Widget {
 					'key' => $price->to_key(),
 					'amount' => $price->get_amount(),
 					'currency' => $price->get_currency(),
-					'is_zero_decimal' => \Voxel\Stripe\Currencies::is_zero_decimal( $price->get_currency() ),
+					'is_zero_decimal' => \Voxel\CloudPayments\Currencies::is_zero_decimal( $price->get_currency() ),
 				],
 				'plan' => [
 					'key' => $plan->get_key(),
@@ -1103,7 +1103,7 @@ class Configure_Plan extends Base_Widget {
 			$plan = $membership->plan;
 			$price = new \Voxel\Plan_Price( [
 				'id' => $membership->get_price_id(),
-				'mode' => \Voxel\Stripe::is_test_mode() ? 'test' : 'live',
+				'mode' => \Voxel\CloudPayments::is_test_mode() ? 'test' : 'live',
 				'plan' => $plan->get_key(),
 			] );
 		} catch ( \Exception $e ) {
@@ -1126,7 +1126,7 @@ class Configure_Plan extends Base_Widget {
 					'key' => $price->to_key(),
 					'amount' => $membership->get_amount(),
 					'currency' => $membership->get_currency(),
-					'is_zero_decimal' => \Voxel\Stripe\Currencies::is_zero_decimal( $membership->get_currency() ),
+					'is_zero_decimal' => \Voxel\CloudPayments\Currencies::is_zero_decimal( $membership->get_currency() ),
 				],
 				'plan' => [
 					'key' => $plan->get_key(),
@@ -1150,7 +1150,7 @@ class Configure_Plan extends Base_Widget {
 					'key' => $price->to_key(),
 					'amount' => $membership->get_amount(),
 					'currency' => $membership->get_currency(),
-					'is_zero_decimal' => \Voxel\Stripe\Currencies::is_zero_decimal( $membership->get_currency() ),
+					'is_zero_decimal' => \Voxel\CloudPayments\Currencies::is_zero_decimal( $membership->get_currency() ),
 				],
 				'plan' => [
 					'key' => $plan->get_key(),

@@ -1,9 +1,9 @@
 <?php
 
-namespace Voxel\Vendor\Stripe\Exception;
+namespace Voxel\Vendor\CloudPayments\Exception;
 
 /**
- * Implements properties and methods common to all (non-SPL) Stripe exceptions.
+ * Implements properties and methods common to all (non-SPL) CloudPayments exceptions.
  */
 abstract class ApiErrorException extends \Exception implements ExceptionInterface
 {
@@ -13,7 +13,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     protected $httpStatus;
     protected $jsonBody;
     protected $requestId;
-    protected $stripeCode;
+    protected $cloudpaymentsCode;
 
     /**
      * Creates a new API error exception.
@@ -22,8 +22,8 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
      * @param null|int $httpStatus the HTTP status code
      * @param null|string $httpBody the HTTP body as a string
      * @param null|array $jsonBody the JSON deserialized body
-     * @param null|array|\Voxel\Vendor\Stripe\Util\CaseInsensitiveArray $httpHeaders the HTTP headers array
-     * @param null|string $stripeCode the Stripe error code
+     * @param null|array|\Voxel\Vendor\CloudPayments\Util\CaseInsensitiveArray $httpHeaders the HTTP headers array
+     * @param null|string $cloudpaymentsCode the CloudPayments error code
      *
      * @return static
      */
@@ -33,14 +33,14 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
         $httpBody = null,
         $jsonBody = null,
         $httpHeaders = null,
-        $stripeCode = null
+        $cloudpaymentsCode = null
     ) {
         $instance = new static($message);
         $instance->setHttpStatus($httpStatus);
         $instance->setHttpBody($httpBody);
         $instance->setJsonBody($jsonBody);
         $instance->setHttpHeaders($httpHeaders);
-        $instance->setStripeCode($stripeCode);
+        $instance->setCloudPaymentsCode($cloudpaymentsCode);
 
         $instance->setRequestId(null);
         if ($httpHeaders && isset($httpHeaders['Request-Id'])) {
@@ -53,9 +53,9 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     }
 
     /**
-     * Gets the Stripe error object.
+     * Gets the CloudPayments error object.
      *
-     * @return null|\Voxel\Vendor\Stripe\ErrorObject
+     * @return null|\Voxel\Vendor\CloudPayments\ErrorObject
      */
     public function getError()
     {
@@ -63,9 +63,9 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     }
 
     /**
-     * Sets the Stripe error object.
+     * Sets the CloudPayments error object.
      *
-     * @param null|\Voxel\Vendor\Stripe\ErrorObject $error
+     * @param null|\Voxel\Vendor\CloudPayments\ErrorObject $error
      */
     public function setError($error)
     {
@@ -95,7 +95,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     /**
      * Gets the HTTP headers array.
      *
-     * @return null|array|\Voxel\Vendor\Stripe\Util\CaseInsensitiveArray
+     * @return null|array|\Voxel\Vendor\CloudPayments\Util\CaseInsensitiveArray
      */
     public function getHttpHeaders()
     {
@@ -105,7 +105,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     /**
      * Sets the HTTP headers array.
      *
-     * @param null|array|\Voxel\Vendor\Stripe\Util\CaseInsensitiveArray $httpHeaders
+     * @param null|array|\Voxel\Vendor\CloudPayments\Util\CaseInsensitiveArray $httpHeaders
      */
     public function setHttpHeaders($httpHeaders)
     {
@@ -153,7 +153,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     }
 
     /**
-     * Gets the Stripe request ID.
+     * Gets the CloudPayments request ID.
      *
      * @return null|string
      */
@@ -163,7 +163,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     }
 
     /**
-     * Sets the Stripe request ID.
+     * Sets the CloudPayments request ID.
      *
      * @param null|string $requestId
      */
@@ -173,26 +173,26 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     }
 
     /**
-     * Gets the Stripe error code.
+     * Gets the CloudPayments error code.
      *
-     * Cf. the `CODE_*` constants on {@see \Voxel\Vendor\Stripe\ErrorObject} for possible
+     * Cf. the `CODE_*` constants on {@see \Voxel\Vendor\CloudPayments\ErrorObject} for possible
      * values.
      *
      * @return null|string
      */
-    public function getStripeCode()
+    public function getCloudPaymentsCode()
     {
-        return $this->stripeCode;
+        return $this->cloudpaymentsCode;
     }
 
     /**
-     * Sets the Stripe error code.
+     * Sets the CloudPayments error code.
      *
-     * @param null|string $stripeCode
+     * @param null|string $cloudpaymentsCode
      */
-    public function setStripeCode($stripeCode)
+    public function setCloudPaymentsCode($cloudpaymentsCode)
     {
-        $this->stripeCode = $stripeCode;
+        $this->cloudpaymentsCode = $cloudpaymentsCode;
     }
 
     /**
@@ -206,7 +206,7 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
         $statusStr = (null === $this->getHttpStatus()) ? '' : "(Status {$this->getHttpStatus()}) ";
         $idStr = (null === $this->getRequestId()) ? '' : "(Request {$this->getRequestId()}) ";
 
-        return "Error sending request to Stripe: {$statusStr}{$idStr}{$this->getMessage()}\n{$parentStr}";
+        return "Error sending request to CloudPayments: {$statusStr}{$idStr}{$this->getMessage()}\n{$parentStr}";
     }
 
     protected function constructErrorObject()
@@ -215,6 +215,6 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
             return null;
         }
 
-        return \Voxel\Vendor\Stripe\ErrorObject::constructFrom($this->jsonBody['error']);
+        return \Voxel\Vendor\CloudPayments\ErrorObject::constructFrom($this->jsonBody['error']);
     }
 }

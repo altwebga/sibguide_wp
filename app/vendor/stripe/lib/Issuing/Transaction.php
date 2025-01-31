@@ -2,45 +2,45 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Issuing;
+namespace Voxel\Vendor\CloudPayments\Issuing;
 
 /**
- * Any use of an <a href="https://stripe.com/docs/issuing">issued card</a> that results in funds entering or leaving
- * your Stripe account, such as a completed purchase or refund, is represented by an Issuing
+ * Any use of an <a href="https://cloudpayments.com/docs/issuing">issued card</a> that results in funds entering or leaving
+ * your CloudPayments account, such as a completed purchase or refund, is represented by an Issuing
  * <code>Transaction</code> object.
  *
- * Related guide: <a href="https://stripe.com/docs/issuing/purchases/transactions">Issued card transactions</a>
+ * Related guide: <a href="https://cloudpayments.com/docs/issuing/purchases/transactions">Issued card transactions</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property int $amount The transaction amount, which will be reflected in your balance. This amount is in your currency and in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $amount_details Detailed breakdown of amount components. These amounts are denominated in <code>currency</code> and in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
- * @property null|string|\Voxel\Vendor\Stripe\Issuing\Authorization $authorization The <code>Authorization</code> object that led to this transaction.
- * @property null|string|\Voxel\Vendor\Stripe\BalanceTransaction $balance_transaction ID of the <a href="https://stripe.com/docs/api/balance_transactions">balance transaction</a> associated with this transaction.
- * @property string|\Voxel\Vendor\Stripe\Issuing\Card $card The card used to make this transaction.
- * @property null|string|\Voxel\Vendor\Stripe\Issuing\Cardholder $cardholder The cardholder to whom this transaction belongs.
+ * @property int $amount The transaction amount, which will be reflected in your balance. This amount is in your currency and in the <a href="https://cloudpayments.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $amount_details Detailed breakdown of amount components. These amounts are denominated in <code>currency</code> and in the <a href="https://cloudpayments.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+ * @property null|string|\Voxel\Vendor\CloudPayments\Issuing\Authorization $authorization The <code>Authorization</code> object that led to this transaction.
+ * @property null|string|\Voxel\Vendor\CloudPayments\BalanceTransaction $balance_transaction ID of the <a href="https://cloudpayments.com/docs/api/balance_transactions">balance transaction</a> associated with this transaction.
+ * @property string|\Voxel\Vendor\CloudPayments\Issuing\Card $card The card used to make this transaction.
+ * @property null|string|\Voxel\Vendor\CloudPayments\Issuing\Cardholder $cardholder The cardholder to whom this transaction belongs.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
- * @property null|string|\Voxel\Vendor\Stripe\Issuing\Dispute $dispute If you've disputed the transaction, the ID of the dispute.
+ * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://cloudpayments.com/docs/currencies">supported currency</a>.
+ * @property null|string|\Voxel\Vendor\CloudPayments\Issuing\Dispute $dispute If you've disputed the transaction, the ID of the dispute.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property int $merchant_amount The amount that the merchant will receive, denominated in <code>merchant_currency</code> and in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>. It will be different from <code>amount</code> if the merchant is taking payment in a different currency.
+ * @property int $merchant_amount The amount that the merchant will receive, denominated in <code>merchant_currency</code> and in the <a href="https://cloudpayments.com/docs/currencies#zero-decimal">smallest currency unit</a>. It will be different from <code>amount</code> if the merchant is taking payment in a different currency.
  * @property string $merchant_currency The currency with which the merchant is taking payment.
- * @property \Voxel\Vendor\Stripe\StripeObject $merchant_data
- * @property \Voxel\Vendor\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $network_data Details about the transaction, such as processing dates, set by the card network.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $purchase_details Additional purchase information that is optionally provided by the merchant.
- * @property null|string|\Voxel\Vendor\Stripe\Issuing\Token $token <a href="https://stripe.com/docs/api/issuing/tokens/object">Token</a> object used for this transaction. If a network token was not used for this transaction, this field will be null.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $treasury <a href="https://stripe.com/docs/api/treasury">Treasury</a> details related to this transaction if it was created on a [FinancialAccount](/docs/api/treasury/financial_accounts
+ * @property \Voxel\Vendor\CloudPayments\CloudPaymentsObject $merchant_data
+ * @property \Voxel\Vendor\CloudPayments\CloudPaymentsObject $metadata Set of <a href="https://cloudpayments.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $network_data Details about the transaction, such as processing dates, set by the card network.
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $purchase_details Additional purchase information that is optionally provided by the merchant.
+ * @property null|string|\Voxel\Vendor\CloudPayments\Issuing\Token $token <a href="https://cloudpayments.com/docs/api/issuing/tokens/object">Token</a> object used for this transaction. If a network token was not used for this transaction, this field will be null.
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $treasury <a href="https://cloudpayments.com/docs/api/treasury">Treasury</a> details related to this transaction if it was created on a [FinancialAccount](/docs/api/treasury/financial_accounts
  * @property string $type The nature of the transaction.
  * @property null|string $wallet The digital wallet used for this transaction. One of <code>apple_pay</code>, <code>google_pay</code>, or <code>samsung_pay</code>.
  */
-class Transaction extends \Voxel\Vendor\Stripe\ApiResource
+class Transaction extends \Voxel\Vendor\CloudPayments\ApiResource
 {
     const OBJECT_NAME = 'issuing.transaction';
 
-    use \Voxel\Vendor\Stripe\ApiOperations\All;
-    use \Voxel\Vendor\Stripe\ApiOperations\Retrieve;
-    use \Voxel\Vendor\Stripe\ApiOperations\Update;
+    use \Voxel\Vendor\CloudPayments\ApiOperations\All;
+    use \Voxel\Vendor\CloudPayments\ApiOperations\Retrieve;
+    use \Voxel\Vendor\CloudPayments\ApiOperations\Update;
 
     const TYPE_CAPTURE = 'capture';
     const TYPE_REFUND = 'refund';

@@ -145,7 +145,7 @@ class Current_Plan extends Base_Widget {
 			);
 
 			$this->add_control(
-				'ts_stripe_ico',
+				'ts_cloudpayments_ico',
 				[
 					'label' => __( 'Portal icon', 'text-domain' ),
 					'type' => \Elementor\Controls_Manager::ICONS,
@@ -837,7 +837,7 @@ class Current_Plan extends Base_Widget {
 
 		$user = \Voxel\current_user();
 		$membership = $user->get_membership();
-		$portal_url = home_url( '/?vx=1&action=stripe.customer.portal' );
+		$portal_url = home_url( '/?vx=1&action=cloudpayments.customer.portal' );
 		$retry_payment_url = null;
 		$reactivate_url = null;
 		$cancel_url = null;
@@ -847,7 +847,7 @@ class Current_Plan extends Base_Widget {
 			$current_price_key = sprintf(
 				'%s@%s%s',
 				$membership->plan->get_key(),
-				\Voxel\Stripe::is_test_mode() ? 'test:' : '',
+				\Voxel\CloudPayments::is_test_mode() ? 'test:' : '',
 				$membership->get_price_id()
 			);
 

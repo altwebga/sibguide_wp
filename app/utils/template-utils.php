@@ -410,9 +410,9 @@ function get_base_templates(): array {
 		],
 		[
 			'category' => 'orders',
-			'label' => __( 'Stripe Connect account', 'voxel-backend' ),
-			'key' => 'templates.stripe_account',
-			'id' => \Voxel\get( 'templates.stripe_account' ),
+			'label' => __( 'CloudPayments Connect account', 'voxel-backend' ),
+			'key' => 'templates.cloudpayments_account',
+			'id' => \Voxel\get( 'templates.cloudpayments_account' ),
 			'image' => \Voxel\get_image('post-types/orders.png'),
 			'type' => 'page',
 		],

@@ -15,7 +15,7 @@ class Tax_Details {
 				'enabled' => true,
 			];
 		} elseif ( $tax_mode === 'manual' ) {
-			$tax_rates = \Voxel\Stripe::is_test_mode()
+			$tax_rates = \Voxel\CloudPayments::is_test_mode()
 				? (array) \Voxel\get('settings.membership.checkout.tax.manual.test_tax_rates')
 				: (array) \Voxel\get('settings.membership.checkout.tax.manual.tax_rates');
 
@@ -38,7 +38,7 @@ class Tax_Details {
 				'enabled' => true,
 			];
 		} elseif ( $tax_mode === 'manual' ) {
-			$tax_rates = \Voxel\Stripe::is_test_mode()
+			$tax_rates = \Voxel\CloudPayments::is_test_mode()
 				? (array) \Voxel\get('settings.membership.checkout.tax.manual.test_tax_rates')
 				: (array) \Voxel\get('settings.membership.checkout.tax.manual.tax_rates');
 

@@ -1,18 +1,18 @@
 <?php
 
-namespace Voxel\Vendor\Stripe\Service;
+namespace Voxel\Vendor\CloudPayments\Service;
 
-class OAuthService extends \Voxel\Vendor\Stripe\Service\AbstractService
+class OAuthService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 {
     /**
-     * Sends a request to Stripe's Connect API.
+     * Sends a request to CloudPayments's Connect API.
      *
      * @param 'delete'|'get'|'post' $method the HTTP method
      * @param string $path the path of the request
      * @param array $params the parameters of the request
-     * @param array|\Voxel\Vendor\Stripe\Util\RequestOptions $opts the special modifiers of the request
+     * @param array|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts the special modifiers of the request
      *
-     * @return \Voxel\Vendor\Stripe\StripeObject the object returned by Stripe's Connect API
+     * @return \Voxel\Vendor\CloudPayments\CloudPaymentsObject the object returned by CloudPayments's Connect API
      */
     protected function requestConnect($method, $path, $params, $opts)
     {
@@ -23,12 +23,12 @@ class OAuthService extends \Voxel\Vendor\Stripe\Service\AbstractService
     }
 
     /**
-     * Generates a URL to Stripe's OAuth form.
+     * Generates a URL to CloudPayments's OAuth form.
      *
      * @param null|array $params
      * @param null|array $opts
      *
-     * @return string the URL to Stripe's OAuth form
+     * @return string the URL to CloudPayments's OAuth form
      */
     public function authorizeUrl($params = null, $opts = null)
     {
@@ -41,7 +41,7 @@ class OAuthService extends \Voxel\Vendor\Stripe\Service\AbstractService
         if (!\array_key_exists('response_type', $params)) {
             $params['response_type'] = 'code';
         }
-        $query = \Voxel\Vendor\Stripe\Util\Util::encodeParameters($params);
+        $query = \Voxel\Vendor\CloudPayments\Util\Util::encodeParameters($params);
 
         return $base . '/oauth/authorize?' . $query;
     }
@@ -53,9 +53,9 @@ class OAuthService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|array $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\OAuth\OAuthErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\OAuth\OAuthErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\StripeObject object containing the response from the API
+     * @return \Voxel\Vendor\CloudPayments\CloudPaymentsObject object containing the response from the API
      */
     public function token($params = null, $opts = null)
     {
@@ -71,9 +71,9 @@ class OAuthService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * @param null|array $params
      * @param null|array $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\OAuth\OAuthErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\OAuth\OAuthErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\StripeObject object containing the response from the API
+     * @return \Voxel\Vendor\CloudPayments\CloudPaymentsObject object containing the response from the API
      */
     public function deauthorize($params = null, $opts = null)
     {
@@ -92,15 +92,15 @@ class OAuthService extends \Voxel\Vendor\Stripe\Service\AbstractService
         }
         if (null === $clientId) {
             $msg = 'No client_id provided. (HINT: set your client_id using '
-              . '`new \Voxel\Vendor\Stripe\StripeClient([clientId => <CLIENT-ID>
+              . '`new \Voxel\Vendor\CloudPayments\CloudPaymentsClient([clientId => <CLIENT-ID>
                 ])`)".  You can find your client_ids '
-              . 'in your Stripe dashboard at '
-              . 'https://dashboard.stripe.com/account/applications/settings, '
+              . 'in your CloudPayments dashboard at '
+              . 'https://dashboard.cloudpayments.com/account/applications/settings, '
               . 'after registering your account as a platform. See '
-              . 'https://stripe.com/docs/connect/standard-accounts for details, '
-              . 'or email support@stripe.com if you have any questions.';
+              . 'https://cloudpayments.com/docs/connect/standard-accounts for details, '
+              . 'or email support@cloudpayments.com if you have any questions.';
 
-            throw new \Voxel\Vendor\Stripe\Exception\AuthenticationException($msg);
+            throw new \Voxel\Vendor\CloudPayments\Exception\AuthenticationException($msg);
         }
 
         return $clientId;
@@ -116,28 +116,28 @@ class OAuthService extends \Voxel\Vendor\Stripe\Service\AbstractService
     }
 
     /**
-     * @param array|\Voxel\Vendor\Stripe\Util\RequestOptions $opts the special modifiers of the request
+     * @param array|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts the special modifiers of the request
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\InvalidArgumentException
+     * @throws \Voxel\Vendor\CloudPayments\Exception\InvalidArgumentException
      *
-     * @return \Voxel\Vendor\Stripe\Util\RequestOptions
+     * @return \Voxel\Vendor\CloudPayments\Util\RequestOptions
      */
     private function _parseOpts($opts)
     {
         if (\is_array($opts)) {
             if (\array_key_exists('connect_base', $opts)) {
                 // Throw an exception for the convenience of anybody migrating to
-                // \Voxel\Vendor\Stripe\Service\OAuthService from \Voxel\Vendor\Stripe\OAuth, where `connect_base`
+                // \Voxel\Vendor\CloudPayments\Service\OAuthService from \Voxel\Vendor\CloudPayments\OAuth, where `connect_base`
                 // was the name of the parameter that behaves as `api_base` does here.
-                throw new \Voxel\Vendor\Stripe\Exception\InvalidArgumentException('Use `api_base`, not `connect_base`');
+                throw new \Voxel\Vendor\CloudPayments\Exception\InvalidArgumentException('Use `api_base`, not `connect_base`');
             }
         }
 
-        return \Voxel\Vendor\Stripe\Util\RequestOptions::parse($opts);
+        return \Voxel\Vendor\CloudPayments\Util\RequestOptions::parse($opts);
     }
 
     /**
-     * @param \Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param \Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
      * @return string
      */

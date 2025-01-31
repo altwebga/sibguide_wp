@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Climate;
+namespace Voxel\Vendor\CloudPayments\Climate;
 
 /**
  * Orders represent your intent to purchase a particular Climate product. When you create an order, the
@@ -13,7 +13,7 @@ namespace Voxel\Vendor\Stripe\Climate;
  * @property int $amount_fees Total amount of <a href="https://frontierclimate.com/">Frontier</a>'s service fees in the currency's smallest unit.
  * @property int $amount_subtotal Total amount of the carbon removal in the currency's smallest unit.
  * @property int $amount_total Total amount of the order including fees in the currency's smallest unit.
- * @property null|\Voxel\Vendor\Stripe\StripeObject $beneficiary
+ * @property null|\Voxel\Vendor\CloudPayments\CloudPaymentsObject $beneficiary
  * @property null|int $canceled_at Time at which the order was canceled. Measured in seconds since the Unix epoch.
  * @property null|string $cancellation_reason Reason for the cancellation of this order.
  * @property null|string $certificate For delivered orders, a URL to a delivery certificate for the order.
@@ -22,23 +22,23 @@ namespace Voxel\Vendor\Stripe\Climate;
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase, representing the currency for this order.
  * @property null|int $delayed_at Time at which the order's expected_delivery_year was delayed. Measured in seconds since the Unix epoch.
  * @property null|int $delivered_at Time at which the order was delivered. Measured in seconds since the Unix epoch.
- * @property \Voxel\Vendor\Stripe\StripeObject[] $delivery_details Details about the delivery of carbon removal for this order.
+ * @property \Voxel\Vendor\CloudPayments\CloudPaymentsObject[] $delivery_details Details about the delivery of carbon removal for this order.
  * @property int $expected_delivery_year The year this order is expected to be delivered.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property \Voxel\Vendor\Stripe\StripeObject $metadata Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property \Voxel\Vendor\CloudPayments\CloudPaymentsObject $metadata Set of <a href="https://cloudpayments.com/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $metric_tons Quantity of carbon removal that is included in this order.
- * @property string|\Voxel\Vendor\Stripe\Climate\Product $product Unique ID for the Climate <code>Product</code> this order is purchasing.
+ * @property string|\Voxel\Vendor\CloudPayments\Climate\Product $product Unique ID for the Climate <code>Product</code> this order is purchasing.
  * @property null|int $product_substituted_at Time at which the order's product was substituted for a different product. Measured in seconds since the Unix epoch.
  * @property string $status The current status of this order.
  */
-class Order extends \Voxel\Vendor\Stripe\ApiResource
+class Order extends \Voxel\Vendor\CloudPayments\ApiResource
 {
     const OBJECT_NAME = 'climate.order';
 
-    use \Voxel\Vendor\Stripe\ApiOperations\All;
-    use \Voxel\Vendor\Stripe\ApiOperations\Create;
-    use \Voxel\Vendor\Stripe\ApiOperations\Retrieve;
-    use \Voxel\Vendor\Stripe\ApiOperations\Update;
+    use \Voxel\Vendor\CloudPayments\ApiOperations\All;
+    use \Voxel\Vendor\CloudPayments\ApiOperations\Create;
+    use \Voxel\Vendor\CloudPayments\ApiOperations\Retrieve;
+    use \Voxel\Vendor\CloudPayments\ApiOperations\Update;
 
     const CANCELLATION_REASON_EXPIRED = 'expired';
     const CANCELLATION_REASON_PRODUCT_UNAVAILABLE = 'product_unavailable';
@@ -54,9 +54,9 @@ class Order extends \Voxel\Vendor\Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Climate\Order the canceled order
+     * @return \Voxel\Vendor\CloudPayments\Climate\Order the canceled order
      */
     public function cancel($params = null, $opts = null)
     {

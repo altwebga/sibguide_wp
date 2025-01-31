@@ -6,7 +6,7 @@ if ( ! defined('ABSPATH') ) {
 	exit;
 }
 
-class Stripe {
+class CloudPayments {
 
 	private static $liveClient, $testClient;
 
@@ -32,7 +32,7 @@ class Stripe {
 	];
 
 	public static function is_test_mode() {
-		return ( !! \Voxel\get( 'settings.stripe.test_mode', true ) ) === true;
+		return ( !! \Voxel\get( 'settings.cloudpayments.test_mode', true ) ) === true;
 	}
 
 	public static function getClient() {
@@ -43,13 +43,13 @@ class Stripe {
 
 	public static function getLiveClient() {
 		if ( is_null( static::$liveClient ) ) {
-			require_once locate_template( 'app/vendor/stripe/init.php' );
+			require_once locate_template( 'app/vendor/cloudpayments/init.php' );
 
-			\Voxel\Vendor\Stripe\Stripe::setApiKey( \Voxel\get( 'settings.stripe.secret', '' ) );
-			\Voxel\Vendor\Stripe\Stripe::setApiVersion( static::API_VERSION );
-			static::$liveClient = new \Voxel\Vendor\Stripe\StripeClient( [
-				'api_key' => \Voxel\get( 'settings.stripe.secret', '' ),
-				'stripe_version' => static::API_VERSION,
+			\Voxel\Vendor\CloudPayments\CloudPayments::setApiKey( \Voxel\get( 'settings.cloudpayments.secret', '' ) );
+			\Voxel\Vendor\CloudPayments\CloudPayments::setApiVersion( static::API_VERSION );
+			static::$liveClient = new \Voxel\Vendor\CloudPayments\CloudPaymentsClient( [
+				'api_key' => \Voxel\get( 'settings.cloudpayments.secret', '' ),
+				'cloudpayments_version' => static::API_VERSION,
 			] );
 		}
 
@@ -58,13 +58,13 @@ class Stripe {
 
 	public static function getTestClient() {
 		if ( is_null( static::$testClient ) ) {
-			require_once locate_template( 'app/vendor/stripe/init.php' );
+			require_once locate_template( 'app/vendor/cloudpayments/init.php' );
 
-			\Voxel\Vendor\Stripe\Stripe::setApiKey( \Voxel\get( 'settings.stripe.test_secret', '' ) );
-			\Voxel\Vendor\Stripe\Stripe::setApiVersion( static::API_VERSION );
-			static::$testClient = new \Voxel\Vendor\Stripe\StripeClient( [
-				'api_key' => \Voxel\get( 'settings.stripe.test_secret', '' ),
-				'stripe_version' => static::API_VERSION,
+			\Voxel\Vendor\CloudPayments\CloudPayments::setApiKey( \Voxel\get( 'settings.cloudpayments.test_secret', '' ) );
+			\Voxel\Vendor\CloudPayments\CloudPayments::setApiVersion( static::API_VERSION );
+			static::$testClient = new \Voxel\Vendor\CloudPayments\CloudPaymentsClient( [
+				'api_key' => \Voxel\get( 'settings.cloudpayments.test_secret', '' ),
+				'cloudpayments_version' => static::API_VERSION,
 			] );
 		}
 
@@ -72,7 +72,7 @@ class Stripe {
 	}
 
 	public static function base_dashboard_url( $path = '' ) {
-		$url = 'https://dashboard.stripe.com/';
+		$url = 'https://dashboard.cloudpayments.com/';
 		$path = ltrim( $path, "/\\" );
 		return $url.$path;
 	}
@@ -88,12 +88,12 @@ class Stripe {
 	}
 
 	public static function get_portal_configuration_id() {
-		return \Voxel\Stripe::is_test_mode()
-			? \Voxel\get( 'settings.stripe.portal.test_config_id' )
-			: \Voxel\get( 'settings.stripe.portal.live_config_id' );
+		return \Voxel\CloudPayments::is_test_mode()
+			? \Voxel\get( 'settings.cloudpayments.portal.test_config_id' )
+			: \Voxel\get( 'settings.cloudpayments.portal.live_config_id' );
 	}
 
-	// @link https://docs.stripe.com/payments/checkout/taxes?tax-calculation=tax-rates#dynamic-tax-rates
+	// @link https://docs.cloudpayments.com/payments/checkout/taxes?tax-calculation=tax-rates#dynamic-tax-rates
 	public static function get_supported_countries_for_dynamic_tax_rates(): array {
 		return [
 			'US', 'GB', 'AU', 'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK',

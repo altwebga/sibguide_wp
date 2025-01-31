@@ -110,8 +110,8 @@
 					<?php endif ?>
 					<li>
 						<a href="<?= esc_url( $portal_url ) ?>" target="_blank" class="ts-btn ts-btn-1">
-							<?= \Voxel\get_icon_markup( $this->get_settings_for_display('ts_stripe_ico') ) ?: \Voxel\svg( 'link-alt.svg' ) ?>
-							<?= _x( 'Stripe portal', 'current plan', 'voxel' ) ?>
+							<?= \Voxel\get_icon_markup( $this->get_settings_for_display('ts_cloudpayments_ico') ) ?: \Voxel\svg( 'link-alt.svg' ) ?>
+							<?= _x( 'CloudPayments portal', 'current plan', 'voxel' ) ?>
 						</a>
 					</li>
 					<?php if ( $membership->is_active() ): ?>
@@ -149,8 +149,8 @@
 					</li>
 					<li>
 						<a href="<?= esc_url( $portal_url ) ?>" target="_blank" class="ts-btn ts-btn-1">
-							<?= \Voxel\get_icon_markup( $this->get_settings_for_display('ts_stripe_ico') ) ?: \Voxel\svg( 'link-alt.svg' ) ?>
-							<?= _x( 'Stripe portal', 'current plan', 'voxel' ) ?>
+							<?= \Voxel\get_icon_markup( $this->get_settings_for_display('ts_cloudpayments_ico') ) ?: \Voxel\svg( 'link-alt.svg' ) ?>
+							<?= _x( 'CloudPayments portal', 'current plan', 'voxel' ) ?>
 						</a>
 					</li>
 					<?php if ( $membership->is_active() ): ?>

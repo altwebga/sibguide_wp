@@ -38,7 +38,7 @@ class Membership_Data_Group extends \Voxel\Dynamic_Data\Data_Groups\Base_Data_Gr
 			'pricing' => Tag::Object('Pricing')->properties( function() {
 				return [
 					'amount' => Tag::String('Amount')->render( function() {
-						$currency = \Voxel\get('settings.stripe.currency', 'usd');
+						$currency = \Voxel\get('settings.cloudpayments.currency', 'usd');
 						if ( $this->membership->get_type() === 'subscription' || $this->membership->get_type() === 'payment' ) {
 							$currency = $this->membership->get_currency();
 						}

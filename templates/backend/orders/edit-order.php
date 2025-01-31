@@ -57,14 +57,14 @@ if ( ! defined('ABSPATH') ) {
 								<td><?= $payment_method->get_label() ?></td>
 							</tr>
 
-							<?php if ( $payment_method->get_type() === 'stripe_payment' ): ?>
+							<?php if ( $payment_method->get_type() === 'cloudpayments_payment' ): ?>
 								<?php if ( $transaction_id = $order->get_transaction_id() ): ?>
 									<tr>
 										<th>Transaction ID</th>
 										<td>
 											<?= sprintf(
 												'<a href="%s" target="_blank">%s %s</a>',
-												$stripe_base_url . 'payments/' . $transaction_id,
+												$cloudpayments_base_url . 'payments/' . $transaction_id,
 												$transaction_id,
 												'<i class="las la-external-link-alt"></i>'
 											) ?>
@@ -73,7 +73,7 @@ if ( ! defined('ABSPATH') ) {
 								<?php endif ?>
 							<?php endif ?>
 
-							<?php if ( $payment_method->get_type() === 'stripe_subscription' ): ?>
+							<?php if ( $payment_method->get_type() === 'cloudpayments_subscription' ): ?>
 								<?php if ( $billing_interval !== null && $billing_interval['type'] === 'recurring' ): ?>
 									<tr>
 										<th>Billing interval</th>
@@ -89,7 +89,7 @@ if ( ! defined('ABSPATH') ) {
 										<td>
 											<?= sprintf(
 												'<a href="%s" target="_blank">%s %s</a>',
-												$stripe_base_url . 'subscriptions/' . $transaction_id,
+												$cloudpayments_base_url . 'subscriptions/' . $transaction_id,
 												$transaction_id,
 												'<i class="las la-external-link-alt"></i>'
 											) ?>
@@ -98,14 +98,14 @@ if ( ! defined('ABSPATH') ) {
 								<?php endif ?>
 							<?php endif ?>
 
-							<?php if ( $payment_method->get_type() === 'stripe_transfer' ): ?>
+							<?php if ( $payment_method->get_type() === 'cloudpayments_transfer' ): ?>
 								<?php if ( $transaction_id = $order->get_transaction_id() ): ?>
 									<tr>
 										<th>Transaction ID</th>
 										<td>
 											<?= sprintf(
 												'<a href="%s" target="_blank">%s %s</a>',
-												$stripe_base_url . 'transfers/' . $transaction_id,
+												$cloudpayments_base_url . 'transfers/' . $transaction_id,
 												$transaction_id,
 												'<i class="las la-external-link-alt"></i>'
 											) ?>
@@ -235,15 +235,15 @@ if ( ! defined('ABSPATH') ) {
 								<td><?= sprintf( '<a href="mailto:%s">%s</a>', esc_attr( $customer->get_email() ), esc_html( $customer->get_email() ) ) ?></td>
 							</tr>
 
-							<?php if ( $payment_method && in_array( $payment_method->get_type(), [ 'stripe_payment', 'stripe_subscription' ], true ) ): ?>
-								<?php if ( $customer_id = $customer->get_stripe_customer_id() ): ?>
+							<?php if ( $payment_method && in_array( $payment_method->get_type(), [ 'cloudpayments_payment', 'cloudpayments_subscription' ], true ) ): ?>
+								<?php if ( $customer_id = $customer->get_cloudpayments_customer_id() ): ?>
 									<tr>
-										<th>Stripe Customer ID</th>
+										<th>CloudPayments Customer ID</th>
 										<td>
 											<?= sprintf(
 												'<a href="%s" target="_blank">%s %s</a>',
-												$stripe_base_url . 'customers/' . $customer_id,
-												$customer->get_stripe_customer_id(),
+												$cloudpayments_base_url . 'customers/' . $customer_id,
+												$customer->get_cloudpayments_customer_id(),
 												'<i class="las la-external-link-alt"></i>'
 											) ?>
 										</td>
@@ -303,15 +303,15 @@ if ( ! defined('ABSPATH') ) {
 								<td><?= sprintf( '<a href="mailto:%s">%s</a>', esc_attr( $vendor->get_email() ), esc_html( $vendor->get_email() ) ) ?></td>
 							</tr>
 
-							<?php if ( $payment_method && in_array( $payment_method->get_type(), [ 'stripe_payment', 'stripe_subscription' ], true ) ): ?>
-								<?php if ( $vendor_id = $vendor->get_stripe_vendor_id() ): ?>
+							<?php if ( $payment_method && in_array( $payment_method->get_type(), [ 'cloudpayments_payment', 'cloudpayments_subscription' ], true ) ): ?>
+								<?php if ( $vendor_id = $vendor->get_cloudpayments_vendor_id() ): ?>
 									<tr>
-										<th>Stripe Vendor ID</th>
+										<th>CloudPayments Vendor ID</th>
 										<td>
 											<?= sprintf(
 												'<a href="%s" target="_blank">%s %s</a>',
-												$stripe_base_url . 'connect/accounts/' . $vendor_id,
-												$vendor->get_stripe_vendor_id(),
+												$cloudpayments_base_url . 'connect/accounts/' . $vendor_id,
+												$vendor->get_cloudpayments_vendor_id(),
 												'<i class="las la-external-link-alt"></i>'
 											) ?>
 										</td>

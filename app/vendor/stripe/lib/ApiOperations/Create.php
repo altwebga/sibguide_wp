@@ -1,11 +1,11 @@
 <?php
 
-namespace Voxel\Vendor\Stripe\ApiOperations;
+namespace Voxel\Vendor\CloudPayments\ApiOperations;
 
 /**
  * Trait for creatable resources. Adds a `create()` static method to the class.
  *
- * This trait should only be applied to classes that derive from StripeObject.
+ * This trait should only be applied to classes that derive from CloudPaymentsObject.
  */
 trait Create
 {
@@ -13,7 +13,7 @@ trait Create
      * @param null|array $params
      * @param null|array|string $options
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
      * @return static the created resource
      */
@@ -23,7 +23,7 @@ trait Create
         $url = static::classUrl();
 
         list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
-        $obj = \Voxel\Vendor\Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj = \Voxel\Vendor\CloudPayments\Util\Util::convertToCloudPaymentsObject($response->json, $opts);
         $obj->setLastResponse($response);
 
         return $obj;

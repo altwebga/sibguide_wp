@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\Stripe;
+namespace Voxel\Vendor\CloudPayments;
 
 /**
  * Search results for an API resource.
@@ -15,17 +15,17 @@ namespace Voxel\Vendor\Stripe;
  * The {@see $total_count} property is only available when
  * the `expand` parameter contains `total_count`.
  *
- * @template TStripeObject of StripeObject
- * @template-implements \IteratorAggregate<TStripeObject>
+ * @template TCloudPaymentsObject of CloudPaymentsObject
+ * @template-implements \IteratorAggregate<TCloudPaymentsObject>
  *
  * @property string $object
  * @property string $url
  * @property string $next_page
  * @property int $total_count
  * @property bool $has_more
- * @property TStripeObject[] $data
+ * @property TCloudPaymentsObject[] $data
  */
-class SearchResult extends StripeObject implements \Countable, \IteratorAggregate
+class SearchResult extends CloudPaymentsObject implements \Countable, \IteratorAggregate
 {
     const OBJECT_NAME = 'search_result';
 
@@ -39,7 +39,7 @@ class SearchResult extends StripeObject implements \Countable, \IteratorAggregat
      */
     public static function baseUrl()
     {
-        return Stripe::$apiBase;
+        return CloudPayments::$apiBase;
     }
 
     /**
@@ -85,7 +85,7 @@ class SearchResult extends StripeObject implements \Countable, \IteratorAggregat
      *
      * @throws Exception\ApiErrorException
      *
-     * @return SearchResult<TStripeObject>
+     * @return SearchResult<TCloudPaymentsObject>
      */
     public function all($params = null, $opts = null)
     {
@@ -93,10 +93,10 @@ class SearchResult extends StripeObject implements \Countable, \IteratorAggregat
         list($url, $params) = $this->extractPathAndUpdateParams($params);
 
         list($response, $opts) = $this->_request('get', $url, $params, $opts);
-        $obj = Util\Util::convertToStripeObject($response, $opts);
-        if (!($obj instanceof \Voxel\Vendor\Stripe\SearchResult)) {
-            throw new \Voxel\Vendor\Stripe\Exception\UnexpectedValueException(
-                'Expected type ' . \Voxel\Vendor\Stripe\SearchResult::class . ', got "' . \get_class($obj) . '" instead.'
+        $obj = Util\Util::convertToCloudPaymentsObject($response, $opts);
+        if (!($obj instanceof \Voxel\Vendor\CloudPayments\SearchResult)) {
+            throw new \Voxel\Vendor\CloudPayments\Exception\UnexpectedValueException(
+                'Expected type ' . \Voxel\Vendor\CloudPayments\SearchResult::class . ', got "' . \get_class($obj) . '" instead.'
             );
         }
         $obj->setFilters($params);
@@ -124,7 +124,7 @@ class SearchResult extends StripeObject implements \Countable, \IteratorAggregat
     }
 
     /**
-     * @return \Generator|TStripeObject[] A generator that can be used to
+     * @return \Generator|TCloudPaymentsObject[] A generator that can be used to
      *    iterate across all objects across all pages. As page boundaries are
      *    encountered, the next page will be fetched automatically for
      *    continued iteration.
@@ -179,7 +179,7 @@ class SearchResult extends StripeObject implements \Countable, \IteratorAggregat
      * @param null|array $params
      * @param null|array|string $opts
      *
-     * @return SearchResult<TStripeObject>
+     * @return SearchResult<TCloudPaymentsObject>
      */
     public function nextPage($params = null, $opts = null)
     {
@@ -199,7 +199,7 @@ class SearchResult extends StripeObject implements \Countable, \IteratorAggregat
     /**
      * Gets the first item from the current page. Returns `null` if the current page is empty.
      *
-     * @return null|TStripeObject
+     * @return null|TCloudPaymentsObject
      */
     public function first()
     {
@@ -209,7 +209,7 @@ class SearchResult extends StripeObject implements \Countable, \IteratorAggregat
     /**
      * Gets the last item from the current page. Returns `null` if the current page is empty.
      *
-     * @return null|TStripeObject
+     * @return null|TCloudPaymentsObject
      */
     public function last()
     {

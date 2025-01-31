@@ -2,26 +2,26 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service;
+namespace Voxel\Vendor\CloudPayments\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
-class ChargeService extends \Voxel\Vendor\Stripe\Service\AbstractService
+class ChargeService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 {
     /**
      * Returns a list of charges you’ve previously created. The charges are returned in
      * sorted order, with the most recent charges appearing first.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Charge>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Charge>
      */
     public function all($params = null, $opts = null)
     {
@@ -41,11 +41,11 @@ class ChargeService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Charge
+     * @return \Voxel\Vendor\CloudPayments\Charge
      */
     public function capture($id, $params = null, $opts = null)
     {
@@ -59,11 +59,11 @@ class ChargeService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * <code>Charge</code> object used to request payment.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Charge
+     * @return \Voxel\Vendor\CloudPayments\Charge
      */
     public function create($params = null, $opts = null)
     {
@@ -72,17 +72,17 @@ class ChargeService extends \Voxel\Vendor\Stripe\Service\AbstractService
 
     /**
      * Retrieves the details of a charge that has previously been created. Supply the
-     * unique charge ID that was returned from your previous request, and Stripe will
+     * unique charge ID that was returned from your previous request, and CloudPayments will
      * return the corresponding charge information. The same information is returned
      * when creating or refunding the charge.
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Charge
+     * @return \Voxel\Vendor\CloudPayments\Charge
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -90,7 +90,7 @@ class ChargeService extends \Voxel\Vendor\Stripe\Service\AbstractService
     }
 
     /**
-     * Search for charges you’ve previously created using Stripe’s <a
+     * Search for charges you’ve previously created using CloudPayments’s <a
      * href="/docs/search#search-query-language">Search Query Language</a>. Don’t use
      * search in read-after-write flows where strict consistency is necessary. Under
      * normal operating conditions, data is searchable in less than a minute.
@@ -98,11 +98,11 @@ class ChargeService extends \Voxel\Vendor\Stripe\Service\AbstractService
      * during outages. Search functionality is not available to merchants in India.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\SearchResult<\Voxel\Vendor\Stripe\Charge>
+     * @return \Voxel\Vendor\CloudPayments\SearchResult<\Voxel\Vendor\CloudPayments\Charge>
      */
     public function search($params = null, $opts = null)
     {
@@ -115,11 +115,11 @@ class ChargeService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Charge
+     * @return \Voxel\Vendor\CloudPayments\Charge
      */
     public function update($id, $params = null, $opts = null)
     {

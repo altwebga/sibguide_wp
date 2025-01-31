@@ -1,10 +1,10 @@
 <?php
 
-namespace Voxel\Vendor\Stripe\Exception\OAuth;
+namespace Voxel\Vendor\CloudPayments\Exception\OAuth;
 
 /**
- * The base interface for all Stripe OAuth exceptions.
+ * The base interface for all CloudPayments OAuth exceptions.
  */
-interface ExceptionInterface extends \Voxel\Vendor\Stripe\Exception\ExceptionInterface
+interface ExceptionInterface extends \Voxel\Vendor\CloudPayments\Exception\ExceptionInterface
 {
 }

@@ -77,7 +77,7 @@ abstract class Cart_Item {
 			return null;
 		}
 
-		if ( $vendor->has_cap('administrator') && apply_filters( 'voxel/stripe_connect/enable_onboarding_for_admins', false ) !== true ) {
+		if ( $vendor->has_cap('administrator') && apply_filters( 'voxel/cloudpayments_connect/enable_onboarding_for_admins', false ) !== true ) {
 			return null;
 		}
 
@@ -101,16 +101,16 @@ abstract class Cart_Item {
 	}
 
 	public function get_currency() {
-		return \Voxel\get( 'settings.stripe.currency', 'USD' );
+		return \Voxel\get( 'settings.cloudpayments.currency', 'USD' );
 	}
 
 	public function get_payment_method(): ?string {
 		$payment_mode = $this->product_type->config( 'settings.payments.mode' );
 
 		if ( $payment_mode === 'payment' ) {
-			return 'stripe_payment';
+			return 'cloudpayments_payment';
 		} elseif ( $payment_mode === 'subscription' ) {
-			return 'stripe_subscription';
+			return 'cloudpayments_subscription';
 		} elseif ( $payment_mode === 'offline' ) {
 			return 'offline_payment';
 		} else {
@@ -223,7 +223,7 @@ abstract class Cart_Item {
 				$config['vendor']['shipping_countries'] = [];
 
 				// determine countries with shipping support
-				$countries = \Voxel\Stripe\Country_Codes::all();
+				$countries = \Voxel\CloudPayments\Country_Codes::all();
 				foreach ( $vendor->get_vendor_shipping_zones() as $shipping_zone ) {
 					foreach ( $shipping_zone->get_supported_country_codes() as $country_code => $enabled ) {
 						if ( isset( $countries[ $country_code ] ) ) {

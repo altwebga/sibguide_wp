@@ -24,7 +24,7 @@ return [
 	\Voxel\Widgets\Login::class,
 	\Voxel\Widgets\Product_Form::class,
 	\Voxel\Widgets\Orders::class,
-	\Voxel\Widgets\Stripe_Account::class,
+	\Voxel\Widgets\CloudPayments_Account::class,
 	\Voxel\Widgets\Map::class,
 	\Voxel\Widgets\Print_Template::class,
 	\Voxel\Widgets\Current_Plan::class,

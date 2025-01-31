@@ -224,7 +224,7 @@ class Status_Feed_Controller extends \Voxel\Controllers\Base_Controller {
 						$current_user->get_id() === $user->get_id()
 						|| (
 							$user->has_cap('administrator')
-							&& apply_filters( 'voxel/stripe_connect/enable_onboarding_for_admins', false ) !== true
+							&& apply_filters( 'voxel/cloudpayments_connect/enable_onboarding_for_admins', false ) !== true
 							&& $current_user->has_bought_product_from_platform()
 						) || (
 							$current_user->has_bought_product_from_vendor( $user->get_id() )

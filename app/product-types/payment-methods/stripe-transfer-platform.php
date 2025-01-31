@@ -6,14 +6,14 @@ if ( ! defined('ABSPATH') ) {
 	exit;
 }
 
-class Stripe_Transfer_Platform extends Base_Payment_Method {
+class CloudPayments_Transfer_Platform extends Base_Payment_Method {
 
 	public function get_type(): string {
-		return 'stripe_transfer_platform';
+		return 'cloudpayments_transfer_platform';
 	}
 
 	public function get_label(): string {
-		return _x( 'Stripe platform transfer', 'payment methods', 'voxel' );
+		return _x( 'CloudPayments platform transfer', 'payment methods', 'voxel' );
 	}
 
 	public function process_payment() {
@@ -35,7 +35,7 @@ class Stripe_Transfer_Platform extends Base_Payment_Method {
 		}
 
 		$payment_method = $parent_order->get_payment_method();
-		if ( $payment_method === null || $payment_method->get_type() !== 'stripe_payment' ) {
+		if ( $payment_method === null || $payment_method->get_type() !== 'cloudpayments_payment' ) {
 			return [];
 		}
 
@@ -49,7 +49,7 @@ class Stripe_Transfer_Platform extends Base_Payment_Method {
 		}
 
 		$payment_method = $parent_order->get_payment_method();
-		if ( $payment_method === null || $payment_method->get_type() !== 'stripe_payment' ) {
+		if ( $payment_method === null || $payment_method->get_type() !== 'cloudpayments_payment' ) {
 			return [];
 		}
 

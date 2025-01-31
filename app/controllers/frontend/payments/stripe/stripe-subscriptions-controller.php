@@ -1,16 +1,16 @@
 <?php
 
-namespace Voxel\Controllers\Frontend\Payments\Stripe;
+namespace Voxel\Controllers\Frontend\Payments\CloudPayments;
 
 if ( ! defined('ABSPATH') ) {
 	exit;
 }
 
-class Stripe_Subscriptions_Controller extends \Voxel\Controllers\Base_Controller {
+class CloudPayments_Subscriptions_Controller extends \Voxel\Controllers\Base_Controller {
 
 	protected function hooks() {
-		$this->on( 'voxel_ajax_stripe_subscriptions.checkout.success', '@checkout_success_endpoint' );
-		$this->on( 'voxel_ajax_stripe_subscriptions.checkout.cancel', '@checkout_cancel_endpoint' );
+		$this->on( 'voxel_ajax_cloudpayments_subscriptions.checkout.success', '@checkout_success_endpoint' );
+		$this->on( 'voxel_ajax_cloudpayments_subscriptions.checkout.cancel', '@checkout_cancel_endpoint' );
 
 		// checkout session events
 		foreach ( [
@@ -18,7 +18,7 @@ class Stripe_Subscriptions_Controller extends \Voxel\Controllers\Base_Controller
 			'checkout.session.async_payment_succeeded',
 			'checkout.session.async_payment_failed',
 		] as $event_type ) {
-			$this->on( 'voxel/stripe_subscriptions/event:'.$event_type, '@checkout_session_updated', 10, 4 );
+			$this->on( 'voxel/cloudpayments_subscriptions/event:'.$event_type, '@checkout_session_updated', 10, 4 );
 		}
 
 		// subscription events
@@ -27,7 +27,7 @@ class Stripe_Subscriptions_Controller extends \Voxel\Controllers\Base_Controller
 			'customer.subscription.updated',
 			'customer.subscription.deleted',
 		] as $event_type ) {
-			$this->on( 'voxel/stripe_subscriptions/event:'.$event_type, '@subscription_updated', 10, 3 );
+			$this->on( 'voxel/cloudpayments_subscriptions/event:'.$event_type, '@subscription_updated', 10, 3 );
 		}
 	}
 

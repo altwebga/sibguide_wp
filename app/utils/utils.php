@@ -393,7 +393,7 @@ function currency_format( $price, $currency, $amount_is_in_cents = true ) {
 	static $fraction_formatter, $whole_number_formatter;
 
 	// convert amount from cents to main currency, unless it's a zero decimal currency
-	if ( $amount_is_in_cents && ! \Voxel\Stripe\Currencies::is_zero_decimal( $currency ) ) {
+	if ( $amount_is_in_cents && ! \Voxel\CloudPayments\Currencies::is_zero_decimal( $currency ) ) {
 		$price /= 100;
 	}
 

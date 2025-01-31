@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\Stripe\Util;
+namespace Voxel\Vendor\CloudPayments\Util;
 
 /**
  * A basic random generator. This is in a separate class so we the generator

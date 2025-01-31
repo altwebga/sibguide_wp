@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\Stripe\Exception;
+namespace Voxel\Vendor\CloudPayments\Exception;
 
 /**
  * SignatureVerificationException is thrown when the signature verification for
@@ -16,7 +16,7 @@ class SignatureVerificationException extends \Exception implements ExceptionInte
      *
      * @param string $message the exception message
      * @param null|string $httpBody the HTTP body as a string
-     * @param null|string $sigHeader the `Stripe-Signature` HTTP header
+     * @param null|string $sigHeader the `CloudPayments-Signature` HTTP header
      *
      * @return SignatureVerificationException
      */
@@ -53,7 +53,7 @@ class SignatureVerificationException extends \Exception implements ExceptionInte
     }
 
     /**
-     * Gets the `Stripe-Signature` HTTP header.
+     * Gets the `CloudPayments-Signature` HTTP header.
      *
      * @return null|string
      */
@@ -63,7 +63,7 @@ class SignatureVerificationException extends \Exception implements ExceptionInte
     }
 
     /**
-     * Sets the `Stripe-Signature` HTTP header.
+     * Sets the `CloudPayments-Signature` HTTP header.
      *
      * @param null|string $sigHeader
      */

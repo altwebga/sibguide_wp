@@ -19,9 +19,9 @@ class List_Tax_Rates_Action extends \Voxel\Controllers\Base_Controller {
 	protected function list_rates() {
 		try {
 			$mode = $_REQUEST['mode'] ?? 'test';
-			$stripe = $mode === 'test'
-				? \Voxel\Stripe::getTestClient()
-				: \Voxel\Stripe::getLiveClient();
+			$cloudpayments = $mode === 'test'
+				? \Voxel\CloudPayments::getTestClient()
+				: \Voxel\CloudPayments::getLiveClient();
 
 			$args = [
 				'active' => true,
@@ -36,18 +36,18 @@ class List_Tax_Rates_Action extends \Voxel\Controllers\Base_Controller {
 				$args['starting_after'] = $_REQUEST['starting_after'];
 			}
 
-			// $rates = $stripe->taxRates->all( $args );
+			// $rates = $cloudpayments->taxRates->all( $args );
 			$rates = [];
 
 			do {
-				$response = $stripe->taxRates->all( $args );
+				$response = $cloudpayments->taxRates->all( $args );
 				$rates = array_merge( $rates, $response->data );
 				$last_tax_rate = end( $rates );
 				$args['starting_after'] = $last_tax_rate ? $last_tax_rate->id : null;
 			} while ( $response->has_more );
 
 			if ( ( $_REQUEST['dynamic'] ?? null ) === 'yes' ) {
-				$supported_countries = \Voxel\Stripe::get_supported_countries_for_dynamic_tax_rates();
+				$supported_countries = \Voxel\CloudPayments::get_supported_countries_for_dynamic_tax_rates();
 				$rates = array_values( array_filter( $rates, function( $rate ) use ( $supported_countries ) {
 					return in_array( $rate->country, $supported_countries, true );
 				} ) );

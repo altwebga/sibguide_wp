@@ -2,25 +2,25 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service;
+namespace Voxel\Vendor\CloudPayments\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
-class SubscriptionItemService extends \Voxel\Vendor\Stripe\Service\AbstractService
+class SubscriptionItemService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 {
     /**
      * Returns a list of your subscription items for a given subscription.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\SubscriptionItem>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\SubscriptionItem>
      */
     public function all($params = null, $opts = null)
     {
@@ -41,11 +41,11 @@ class SubscriptionItemService extends \Voxel\Vendor\Stripe\Service\AbstractServi
      *
      * @param string $parentId
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\UsageRecordSummary>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\UsageRecordSummary>
      */
     public function allUsageRecordSummaries($parentId, $params = null, $opts = null)
     {
@@ -57,11 +57,11 @@ class SubscriptionItemService extends \Voxel\Vendor\Stripe\Service\AbstractServi
      * or replaced.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\SubscriptionItem
+     * @return \Voxel\Vendor\CloudPayments\SubscriptionItem
      */
     public function create($params = null, $opts = null)
     {
@@ -72,17 +72,17 @@ class SubscriptionItemService extends \Voxel\Vendor\Stripe\Service\AbstractServi
      * Creates a usage record for a specified subscription item and date, and fills it
      * with a quantity.
      *
-     * Usage records provide <code>quantity</code> information that Stripe uses to
+     * Usage records provide <code>quantity</code> information that CloudPayments uses to
      * track how much a customer is using your service. With usage information and the
      * pricing model set up by the <a
-     * href="https://stripe.com/docs/billing/subscriptions/metered-billing">metered
-     * billing</a> plan, Stripe helps you send accurate invoices to your customers.
+     * href="https://cloudpayments.com/docs/billing/subscriptions/metered-billing">metered
+     * billing</a> plan, CloudPayments helps you send accurate invoices to your customers.
      *
      * The default calculation for usage is to add up all the <code>quantity</code>
      * values of the usage records within a billing period. You can change this default
      * behavior with the billing plan’s <code>aggregate_usage</code> <a
      * href="/docs/api/plans/create#create_plan-aggregate_usage">parameter</a>. When
-     * there is more than one usage record with the same timestamp, Stripe adds the
+     * there is more than one usage record with the same timestamp, CloudPayments adds the
      * <code>quantity</code> values together. In most cases, this is the desired
      * resolution, however, you can change this behavior with the <code>action</code>
      * parameter.
@@ -90,16 +90,16 @@ class SubscriptionItemService extends \Voxel\Vendor\Stripe\Service\AbstractServi
      * The default pricing model for metered billing is <a
      * href="/docs/api/plans/object#plan_object-billing_scheme">per-unit pricing</a>.
      * For finer granularity, you can configure metered billing to have a <a
-     * href="https://stripe.com/docs/billing/subscriptions/tiers">tiered pricing</a>
+     * href="https://cloudpayments.com/docs/billing/subscriptions/tiers">tiered pricing</a>
      * model.
      *
      * @param string $parentId
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\UsageRecord
+     * @return \Voxel\Vendor\CloudPayments\UsageRecord
      */
     public function createUsageRecord($parentId, $params = null, $opts = null)
     {
@@ -112,11 +112,11 @@ class SubscriptionItemService extends \Voxel\Vendor\Stripe\Service\AbstractServi
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\SubscriptionItem
+     * @return \Voxel\Vendor\CloudPayments\SubscriptionItem
      */
     public function delete($id, $params = null, $opts = null)
     {
@@ -128,11 +128,11 @@ class SubscriptionItemService extends \Voxel\Vendor\Stripe\Service\AbstractServi
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\SubscriptionItem
+     * @return \Voxel\Vendor\CloudPayments\SubscriptionItem
      */
     public function retrieve($id, $params = null, $opts = null)
     {
@@ -144,11 +144,11 @@ class SubscriptionItemService extends \Voxel\Vendor\Stripe\Service\AbstractServi
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\SubscriptionItem
+     * @return \Voxel\Vendor\CloudPayments\SubscriptionItem
      */
     public function update($id, $params = null, $opts = null)
     {

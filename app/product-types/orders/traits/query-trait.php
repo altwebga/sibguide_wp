@@ -175,7 +175,7 @@ trait Query_Trait {
 			SQL, $args['search_vendor'], $args['search_vendor'], $args['search_vendor'], $like );
 		}
 
-		$where_clauses[] = sprintf( 'orders.testmode IS %s', \Voxel\Stripe::is_test_mode() ? 'true' : 'false' );
+		$where_clauses[] = sprintf( 'orders.testmode IS %s', \Voxel\CloudPayments::is_test_mode() ? 'true' : 'false' );
 
 		if ( ! is_null( $args['search'] ) ) {
 			$join_posts = true;

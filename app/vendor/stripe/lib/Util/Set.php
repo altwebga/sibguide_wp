@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Vendor\Stripe\Util;
+namespace Voxel\Vendor\CloudPayments\Util;
 
 use ArrayIterator;
 use IteratorAggregate;

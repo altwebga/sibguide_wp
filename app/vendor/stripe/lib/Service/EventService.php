@@ -2,29 +2,29 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service;
+namespace Voxel\Vendor\CloudPayments\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
-class EventService extends \Voxel\Vendor\Stripe\Service\AbstractService
+class EventService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 {
     /**
      * List events, going back up to 30 days. Each event data is rendered according to
-     * Stripe API version at its creation time, specified in <a
+     * CloudPayments API version at its creation time, specified in <a
      * href="/docs/api/events/object">event object</a> <code>api_version</code>
-     * attribute (not according to your current Stripe API version or
-     * <code>Stripe-Version</code> header).
+     * attribute (not according to your current CloudPayments API version or
+     * <code>CloudPayments-Version</code> header).
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Collection<\Voxel\Vendor\Stripe\Event>
+     * @return \Voxel\Vendor\CloudPayments\Collection<\Voxel\Vendor\CloudPayments\Event>
      */
     public function all($params = null, $opts = null)
     {
@@ -37,11 +37,11 @@ class EventService extends \Voxel\Vendor\Stripe\Service\AbstractService
      *
      * @param string $id
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\Event
+     * @return \Voxel\Vendor\CloudPayments\Event
      */
     public function retrieve($id, $params = null, $opts = null)
     {

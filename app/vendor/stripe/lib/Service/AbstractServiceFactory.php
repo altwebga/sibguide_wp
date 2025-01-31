@@ -1,10 +1,10 @@
 <?php
 
-namespace Voxel\Vendor\Stripe\Service;
+namespace Voxel\Vendor\CloudPayments\Service;
 
 /**
  * Abstract base class for all service factories used to expose service
- * instances through {@link \Voxel\Vendor\Stripe\StripeClient}.
+ * instances through {@link \Voxel\Vendor\CloudPayments\CloudPaymentsClient}.
  *
  * Service factories serve two purposes:
  *
@@ -14,14 +14,14 @@ namespace Voxel\Vendor\Stripe\Service;
  */
 abstract class AbstractServiceFactory
 {
-    /** @var \Voxel\Vendor\Stripe\StripeClientInterface */
+    /** @var \Voxel\Vendor\CloudPayments\CloudPaymentsClientInterface */
     private $client;
 
     /** @var array<string, AbstractService|AbstractServiceFactory> */
     private $services;
 
     /**
-     * @param \Voxel\Vendor\Stripe\StripeClientInterface $client
+     * @param \Voxel\Vendor\CloudPayments\CloudPaymentsClientInterface $client
      */
     public function __construct($client)
     {

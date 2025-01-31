@@ -44,7 +44,7 @@ class Assets_Controller extends Base_Controller {
 		'vx:configure-plan.js' => true,
 		'vx:visit-tracker.js' => true,
 		'vx:visits-chart.js' => true,
-		'vx:stripe-connect-dashboard.js' => true,
+		'vx:cloudpayments-connect-dashboard.js' => true,
 	];
 
 	protected $soft_loaded_scripts = [
@@ -277,7 +277,7 @@ class Assets_Controller extends Base_Controller {
 				],
 			],
 			'locale' => get_locale(),
-			'currency' => \Voxel\get('settings.stripe.currency', 'usd'),
+			'currency' => \Voxel\get('settings.cloudpayments.currency', 'usd'),
 			'maps' => [
 				'provider' => \Voxel\get( 'settings.maps.provider' ),
 				'default_lat' => \Voxel\get( 'settings.maps.default_location.lat' ) ?: 42.5,

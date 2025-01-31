@@ -2,15 +2,15 @@
 
 // File generated from our OpenAPI spec
 
-namespace Voxel\Vendor\Stripe\Service;
+namespace Voxel\Vendor\CloudPayments\Service;
 
 /**
- * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @phpstan-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
 /**
- * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\Stripe\Util\RequestOptions
+ * @psalm-import-type RequestOptionsArray from \Voxel\Vendor\CloudPayments\Util\RequestOptions
  */
-class CustomerSessionService extends \Voxel\Vendor\Stripe\Service\AbstractService
+class CustomerSessionService extends \Voxel\Vendor\CloudPayments\Service\AbstractService
 {
     /**
      * Creates a customer session object that includes a single-use client secret that
@@ -18,11 +18,11 @@ class CustomerSessionService extends \Voxel\Vendor\Stripe\Service\AbstractServic
      * customer resources.
      *
      * @param null|array $params
-     * @param null|RequestOptionsArray|\Voxel\Vendor\Stripe\Util\RequestOptions $opts
+     * @param null|RequestOptionsArray|\Voxel\Vendor\CloudPayments\Util\RequestOptions $opts
      *
-     * @throws \Voxel\Vendor\Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Voxel\Vendor\CloudPayments\Exception\ApiErrorException if the request fails
      *
-     * @return \Voxel\Vendor\Stripe\CustomerSession
+     * @return \Voxel\Vendor\CloudPayments\CustomerSession
      */
     public function create($params = null, $opts = null)
     {

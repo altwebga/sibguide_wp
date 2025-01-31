@@ -1,6 +1,6 @@
 <?php
 
-namespace Voxel\Controllers\Frontend\Products\Stripe_Connect;
+namespace Voxel\Controllers\Frontend\Products\CloudPayments_Connect;
 
 use Voxel\Utils\Config_Schema\Schema;
 
@@ -8,33 +8,33 @@ if ( ! defined('ABSPATH') ) {
 	exit;
 }
 
-class Stripe_Connect_Controller extends \Voxel\Controllers\Base_Controller {
+class CloudPayments_Connect_Controller extends \Voxel\Controllers\Base_Controller {
 
 	protected function hooks() {
-		$this->on( 'voxel_ajax_stripe_connect.account.onboard', '@onboard_account' );
-		$this->on( 'voxel_ajax_stripe_connect.account.save_shipping', '@save_vendor_shipping' );
-		$this->on( 'voxel_ajax_stripe_connect.account.login', '@access_dashboard' );
-		$this->on( 'voxel/stripe_connect/event:account.updated', '@account_updated', 10, 2 );
+		$this->on( 'voxel_ajax_cloudpayments_connect.account.onboard', '@onboard_account' );
+		$this->on( 'voxel_ajax_cloudpayments_connect.account.save_shipping', '@save_vendor_shipping' );
+		$this->on( 'voxel_ajax_cloudpayments_connect.account.login', '@access_dashboard' );
+		$this->on( 'voxel/cloudpayments_connect/event:account.updated', '@account_updated', 10, 2 );
 
 		$this->on( 'voxel/product-types/orders/order:updated', '@process_separate_charges_and_transfers' );
 	}
 
 	protected function onboard_account() {
 		try {
-			$stripe = \Voxel\Stripe::getClient();
+			$cloudpayments = \Voxel\CloudPayments::getClient();
 			$user = \Voxel\get_current_user();
-			$account = $user->get_or_create_stripe_vendor();
+			$account = $user->get_or_create_cloudpayments_vendor();
 
 			$onboarding_key = \Voxel\random_string(8);
 			update_user_meta( $user->get_id(), 'voxel:connect_onboarding_key', $onboarding_key );
 
-			$link = $stripe->accountLinks->create( [
+			$link = $cloudpayments->accountLinks->create( [
 				'account' => $account->id,
 				'refresh_url' => add_query_arg( [
 					'vx' => 1,
-					'action' => 'stripe.account.onboard',
+					'action' => 'cloudpayments.account.onboard',
 				], home_url('/') ),
-				'return_url' => add_query_arg( 'onboarding_key', $onboarding_key, \Voxel\get_template_link('stripe_account') ),
+				'return_url' => add_query_arg( 'onboarding_key', $onboarding_key, \Voxel\get_template_link('cloudpayments_account') ),
 				'type' => 'account_onboarding',
 			] );
 
@@ -60,38 +60,38 @@ class Stripe_Connect_Controller extends \Voxel\Controllers\Base_Controller {
 			$value = $schema->export();
 
 			if ( count( $value ) > 25 ) {
-				throw new \Exception( _x( 'You cannot add more than 25 shipping zones', 'stripe vendor shipping', 'voxel' ) );
+				throw new \Exception( _x( 'You cannot add more than 25 shipping zones', 'cloudpayments vendor shipping', 'voxel' ) );
 			}
 
 			$validate_delivery_estimate = function( $estimate ) {
 				// @todo
 			};
 
-			$shipping_countries = \Voxel\Stripe\Country_Codes::shipping_supported();
+			$shipping_countries = \Voxel\CloudPayments\Country_Codes::shipping_supported();
 			foreach ( $value as $zone_index => $zone ) {
 				if ( $zone['key'] === null || mb_strlen( $zone['key'] ) !== 8 ) {
-					throw new \Exception( _x( 'Could not save shipping details', 'stripe vendor shipping', 'voxel' ), 90 );
+					throw new \Exception( _x( 'Could not save shipping details', 'cloudpayments vendor shipping', 'voxel' ), 90 );
 				}
 
 				if ( $zone['label'] === null || mb_strlen( $zone['label'] ) > 32 ) {
-					throw new \Exception( _x( 'Shipping zone label is required', 'stripe vendor shipping', 'voxel' ), 91 );
+					throw new \Exception( _x( 'Shipping zone label is required', 'cloudpayments vendor shipping', 'voxel' ), 91 );
 				}
 
 				if ( empty( $zone['countries'] ) ) {
-					throw new \Exception( _x( 'Shipping zones must have at least one country selected', 'stripe vendor shipping', 'voxel' ), 92 );
+					throw new \Exception( _x( 'Shipping zones must have at least one country selected', 'cloudpayments vendor shipping', 'voxel' ), 92 );
 				}
 
 				if ( empty( $zone['rates'] ) ) {
-					throw new \Exception( _x( 'Shipping zones must contain at least one shipping rate', 'stripe vendor shipping', 'voxel' ), 93 );
+					throw new \Exception( _x( 'Shipping zones must contain at least one shipping rate', 'cloudpayments vendor shipping', 'voxel' ), 93 );
 				}
 
 				foreach ( $zone['rates'] as $rate_index => $rate ) {
 					if ( $rate['key'] === null || mb_strlen( $rate['key'] ) !== 8 ) {
-						throw new \Exception( _x( 'Could not save shipping details', 'stripe vendor shipping', 'voxel' ), 94 );
+						throw new \Exception( _x( 'Could not save shipping details', 'cloudpayments vendor shipping', 'voxel' ), 94 );
 					}
 
 					if ( $rate['label'] === null || mb_strlen( $rate['label'] ) > 32 ) {
-						throw new \Exception( _x( 'Shipping rate label is required', 'stripe vendor shipping', 'voxel' ), 95 );
+						throw new \Exception( _x( 'Shipping rate label is required', 'cloudpayments vendor shipping', 'voxel' ), 95 );
 					}
 
 					if ( $rate['type'] === 'free_shipping' ) {
@@ -104,7 +104,7 @@ class Stripe_Connect_Controller extends \Voxel\Controllers\Base_Controller {
 						}
 
 						if ( count( $rate['fixed_rate']['shipping_classes'] ) > 100 ) {
-							throw new \Exception( _x( 'Could not save shipping details', 'stripe vendor shipping', 'voxel' ), 96 );
+							throw new \Exception( _x( 'Could not save shipping details', 'cloudpayments vendor shipping', 'voxel' ), 96 );
 						}
 					}
 				}
@@ -114,7 +114,7 @@ class Stripe_Connect_Controller extends \Voxel\Controllers\Base_Controller {
 
 			return wp_send_json( [
 				'success' => true,
-				'message' => _x( 'Shipping details saved.', 'stripe vendor shipping', 'voxel' ),
+				'message' => _x( 'Shipping details saved.', 'cloudpayments vendor shipping', 'voxel' ),
 			] );
 		} catch ( \Exception $e ) {
 			return wp_send_json( [
@@ -126,10 +126,10 @@ class Stripe_Connect_Controller extends \Voxel\Controllers\Base_Controller {
 
 	protected function access_dashboard() {
 		try {
-			$stripe = \Voxel\Stripe::getClient();
+			$cloudpayments = \Voxel\CloudPayments::getClient();
 			$user = \Voxel\get_current_user();
-			$link = $stripe->accounts->createLoginLink( $user->get_stripe_vendor_id(), [
-				'redirect_url' => \Voxel\get_template_link('stripe_account'),
+			$link = $cloudpayments->accounts->createLoginLink( $user->get_cloudpayments_vendor_id(), [
+				'redirect_url' => \Voxel\get_template_link('cloudpayments_account'),
 			] );
 
 			wp_redirect( $link->url );
@@ -140,8 +140,8 @@ class Stripe_Connect_Controller extends \Voxel\Controllers\Base_Controller {
 	}
 
 	protected function account_updated( $event, $account ) {
-		if ( $user = \Voxel\User::get_by_stripe_vendor_id( $account->id ) ) {
-			$user->stripe_vendor_updated( $account );
+		if ( $user = \Voxel\User::get_by_cloudpayments_vendor_id( $account->id ) ) {
+			$user->cloudpayments_vendor_updated( $account );
 		}
 	}
 
@@ -153,7 +153,7 @@ class Stripe_Connect_Controller extends \Voxel\Controllers\Base_Controller {
 		}
 
 		$payment_method = $order->get_payment_method();
-		if ( ! ( $payment_method !== null && $payment_method->get_type() === 'stripe_payment' ) ) {
+		if ( ! ( $payment_method !== null && $payment_method->get_type() === 'cloudpayments_payment' ) ) {
 			return;
 		}
 
@@ -220,7 +220,7 @@ class Stripe_Connect_Controller extends \Voxel\Controllers\Base_Controller {
 					'customer_id' => $order->get_customer_id(),
 					'vendor_id' => $vendor->get_id(),
 					'status' => 'pending_payment',
-					'payment_method' => 'stripe_transfer',
+					'payment_method' => 'cloudpayments_transfer',
 					'transaction_id' => null,
 					'details' => wp_json_encode( Schema::optimize_for_storage( [
 						'pricing' => [
@@ -255,7 +255,7 @@ class Stripe_Connect_Controller extends \Voxel\Controllers\Base_Controller {
 				$sub_order_shipping = null;
 				if ( is_numeric( $order->get_details('shipping.amounts_by_vendor.platform.amount_in_cents') ) ) {
 					$sub_order_shipping = (int) $order->get_details('shipping.amounts_by_vendor.platform.amount_in_cents');
-					if ( $sub_order_shipping > 0 && ! \Voxel\Stripe\Currencies::is_zero_decimal( $order->get_currency() ) ) {
+					if ( $sub_order_shipping > 0 && ! \Voxel\CloudPayments\Currencies::is_zero_decimal( $order->get_currency() ) ) {
 						$sub_order_shipping /= 100;
 					}
 
@@ -266,7 +266,7 @@ class Stripe_Connect_Controller extends \Voxel\Controllers\Base_Controller {
 					'customer_id' => $order->get_customer_id(),
 					'vendor_id' => null,
 					'status' => \Voxel\ORDER_COMPLETED,
-					'payment_method' => 'stripe_transfer_platform',
+					'payment_method' => 'cloudpayments_transfer_platform',
 					'transaction_id' => null,
 					'details' => wp_json_encode( Schema::optimize_for_storage( [
 						'pricing' => [
@@ -299,7 +299,7 @@ class Stripe_Connect_Controller extends \Voxel\Controllers\Base_Controller {
 			return;
 		}
 
-		$stripe = \Voxel\Stripe::getClient();
+		$cloudpayments = \Voxel\CloudPayments::getClient();
 
 		$schema = Schema::Keyed_Object_List( [
 			'vendor_id' => Schema::Int()->min(0),
@@ -312,8 +312,8 @@ class Stripe_Connect_Controller extends \Voxel\Controllers\Base_Controller {
 		$schema->set_value( $transfer_data );
 		$transfer_data = $schema->export();
 
-		$payment_intent = $stripe->paymentIntents->retrieve( $order->get_details('payment_intent.id') );
-		$latest_charge = $stripe->charges->retrieve( $order->get_details('payment_intent.latest_charge'), [
+		$payment_intent = $cloudpayments->paymentIntents->retrieve( $order->get_details('payment_intent.id') );
+		$latest_charge = $cloudpayments->charges->retrieve( $order->get_details('payment_intent.latest_charge'), [
 			'expand' => [ 'balance_transaction' ],
 		] );
 
@@ -354,7 +354,7 @@ class Stripe_Connect_Controller extends \Voxel\Controllers\Base_Controller {
 				 * transfer amount and currency must be converted to the balance currency using the
 				 * balance transaction's exchange rate property.
 				 *
-				 * @link https://docs.stripe.com/api/balance_transactions/object
+				 * @link https://docs.cloudpayments.com/api/balance_transactions/object
 				 */
 				$currency = $latest_charge->balance_transaction->currency;
 				$amount_to_transfer = $vendor_data['total_in_cents'] - $vendor_data['fee_in_cents'];
@@ -364,10 +364,10 @@ class Stripe_Connect_Controller extends \Voxel\Controllers\Base_Controller {
 
 				$amount_to_transfer = (int) round( $amount_to_transfer );
 
-				$transfer = $stripe->transfers->create( [
+				$transfer = $cloudpayments->transfers->create( [
 					'amount' => $amount_to_transfer,
 					'currency' => $currency,
-					'destination' => $vendor->get_stripe_vendor_id(),
+					'destination' => $vendor->get_cloudpayments_vendor_id(),
 					'transfer_group' => sprintf( 'ORDER_%d', $order->get_id() ),
 					'source_transaction' => $order->get_details('payment_intent.latest_charge'),
 				], [
@@ -392,14 +392,14 @@ class Stripe_Connect_Controller extends \Voxel\Controllers\Base_Controller {
 				] );
 
 				$total_in_cents = $vendor_data['total_in_cents'];
-				if ( $total_in_cents > 0 && ! \Voxel\Stripe\Currencies::is_zero_decimal( $order->get_currency() ) ) {
+				if ( $total_in_cents > 0 && ! \Voxel\CloudPayments\Currencies::is_zero_decimal( $order->get_currency() ) ) {
 					$total_in_cents /= 100;
 				}
 				$sub_order->set_details( 'pricing.total', $total_in_cents );
 
 				$sub_order->save();
 			} catch ( \Exception $e ) {
-				\Voxel\log( 'Stripe transfer failed: '.$e->getMessage());
+				\Voxel\log( 'CloudPayments transfer failed: '.$e->getMessage());
 			}
 		}
 
